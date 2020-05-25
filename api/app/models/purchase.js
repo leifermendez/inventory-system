@@ -8,7 +8,7 @@ const PurchaseSchema = new mongoose.Schema(
       required: true
     },
     items: {
-      type: Array,
+      type: Object,
       required: true
     },
     author: {
@@ -31,7 +31,7 @@ const PurchaseSchema = new mongoose.Schema(
     },
     total: {
       type: Object,
-      required: true
+      required: false
     },
     tag: {
       type: Object
