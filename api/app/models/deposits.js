@@ -18,7 +18,7 @@ const DepositsSchema = new mongoose.Schema(
       type: Object
     },
     manager: {
-      type: Object,
+      type: mongoose.Types.ObjectId,
       required: true
     },
     description: {

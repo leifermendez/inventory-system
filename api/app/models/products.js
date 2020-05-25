@@ -12,7 +12,7 @@ const ProductsSchema = new mongoose.Schema(
       required: true
     },
     author: {
-      type: Object,
+      type: mongoose.Types.ObjectId,
       required: true
     },
     measures: {

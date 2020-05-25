@@ -1,7 +1,35 @@
 const mongoose = require('mongoose')
 const requestIp = require('request-ip')
-const { validationResult } = require('express-validator')
+const {validationResult} = require('express-validator')
+const jwt = require('jsonwebtoken')
+const User = require('../models/user')
+const auth = require('../middleware/auth')
+/**
+ *
+ */
+const findUserById = async (userId) => {
+  return new Promise((resolve, reject) => {
+    User.findById(userId, (err, item) => {
+      this.itemNotFound(err, item, reject, 'USER_DOES_NOT_EXIST')
+      resolve(item)
+    })
+  })
+}
 
+/**
+ *
+ */
+const getUserIdFromToken = async (token) => {
+  return new Promise((resolve, reject) => {
+    // Decrypts, verifies and decode token
+    jwt.verify(auth.decrypt(token), process.env.JWT_SECRET, (err, decoded) => {
+      if (err) {
+        reject(utils.buildErrObject(409, 'BAD_TOKEN'))
+      }
+      resolve(decoded.data._id)
+    })
+  })
+}
 /**
  * Removes extension from file
  * @param {string} file - filename
@@ -131,3 +159,16 @@ exports.itemAlreadyExists = (err, item, reject, message) => {
     reject(this.buildErrObject(422, message))
   }
 }
+
+
+/**
+ * Get user
+ **/
+exports.getUserCurrent = (req, value = null) => new Promise(async (resolve, reject) => {
+  const tokenEncrypted = req.headers.authorization
+    .replace('Bearer ', '')
+    .trim();
+  let userId = await getUserIdFromToken(tokenEncrypted)
+  const user = await findUserById(userId);
+  resolve((value) ? user : userId);
+})
