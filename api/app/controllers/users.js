@@ -17,12 +17,13 @@ const createItem = async (req) => {
   return new Promise((resolve, reject) => {
     const user = new model({
       name: req.name,
+      lastName: req.lastName,
+      nie: req.nie,
       email: req.email,
       password: req.password,
       role: req.role,
       phone: req.phone,
-      city: req.city,
-      country: req.country,
+      address: req.address,
       verification: uuid.v4()
     })
     user.save((err, item) => {
