@@ -10,6 +10,9 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+.container-row {
+  padding: 1rem 5.5rem 1rem;
+}
 
 .customToolTip .tooltip-inner {
   background-color: #221ECD;
@@ -27,4 +30,24 @@ body {
 
 .customToolTip .arrow::before, .customToolTip .arrow::before {
   border-right-color: #221ECD;
+}
+
+::-webkit-input-placeholder { /* Edge */
+  color: #E1DFEA !important;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #E1DFEA !important;
+}
+
+::placeholder {
+  color: #E1DFEA !important;
+}
+
+.btn-radius {
+  border-radius: 1rem !important;
+}
+
+.btn-primary {
+  background-color: #221ECD !important;
 }

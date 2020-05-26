@@ -83,8 +83,21 @@
   object-fit: cover;
 }
 
+.footer .wrapper-avatar:before {
+  content: "";
+  position: absolute;
+  background: #ED3552;
+  margin-left: 25px;
+  margin-top: 0px;
+  width: 11px;
+  height: 11px;
+  border: solid 2px white;
+  border-radius: 14px;
+}
+
 .footer .btn-icon {
   color: #808291;
+  background-color: #F3F5F9;
   border-radius: 4rem;
 }
 
@@ -92,6 +105,7 @@
   background-color: #ED3552;
 
 }
+
 .footer .btn-icon:hover fa-icon {
   color: white;
 

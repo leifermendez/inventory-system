@@ -4,10 +4,121 @@
   /*box-shadow: 0 0 10px rgba(182, 182, 182, 0.21);*/
   z-index: 1;
 }
-.header-wrapper{
+
+.header-wrapper {
   padding-left: 5rem;;
+  padding-top: .65rem !important;
+  padding-bottom: .65rem !important;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(251, 250, 251, 1) 100%);
 }
 
 h6, h5, h4, h3, h2, h1 {
   font-weight: 600;
+}
+
+.section-search {
+  /*background: rebeccapurple;*/
+  width: 30%;
+  padding-right: 4rem;
+}
+
+.section-search .src-input, .section-search .src-input input {
+  /*background-color: red;*/
+  border: solid 2px #F1F1F4;
+  border-radius: 3rem;
+}
+
+.section-search .src-input input {
+  border: 0px;
+  font-size: .8rem;
+}
+
+.btn-icon {
+  background-color: transparent;
+  border: 0
+}
+
+.input-group {
+  width: 90%;
+}
+
+.list-menu-header ul {
+  height: 100%;
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.list-menu-header ul li {
+  /*background-color: red;*/
+}
+
+.list-menu-header .icon-list-menu {
+  padding: .5rem;
+  background-color: white;
+  border-radius: 4rem;
+  height: 35px;
+  color: #9E9CB2;
+  width: 35px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.icon-list-menu:hover {
+  box-shadow: 0 0 10px rgba(211, 211, 214, 0.61);
+  transform: scale(1.1);
+  background-color: #E9E5FD!important;
+  -webkit-transition: all 200ms;
+  -moz-transition: all 200ms;
+  -o-transition: all 200ms;
+  transition: all 200ms;
+}
+
+.icon-list-menu:hover fa-icon {
+  color: #221ECD;
+
+}
+
+.list-menu-header {
+  padding: .1rem 0 0 1rem;
+
+}
+
+.input-src-button-group {
+  cursor: pointer;
+  font-size: .8rem;
+  font-weight: 600;
+  color: #211F2B;
+}
+
+.dropdown-menu.show {
+  left: -100px !important;
+}
+
+.dropdown-item {
+  padding: .35rem 1rem !important;
+}
+
+.menu-options-header {
+  border: solid 1px #f3f3f3 !important;
+  border-radius: .5rem !important;
+  box-shadow: 0 0 11px rgba(185, 186, 195, 0.33);
+  font-size: .8rem;
+
+}
+
+.radius-btn {
+  background: #f6f5fa;
+  margin: .25rem;
+  min-height: 1.2rem;
+  border-radius: 1rem;
+  font-weight: 600;
+}
+
+.dropdown-item:hover {
+  color: #222 !important;
+  font-weight: 600;
+  background-color: #E9E5FD;
 }

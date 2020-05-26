@@ -1,0 +1,37 @@
+<div class="items w-100">
+  <div class="header d-flex justify-content-between">
+    <div>
+      {{title}}
+    </div>
+    <div class="text-right">
+      <button class="btn btn-primary btn-radius btn-sm">
+        <fa-icon [icon]="faPlus"></fa-icon>
+      </button>
+    </div>
+  </div>
+  <ul>
+    <li *ngFor="let a of [1,1,1,1,1,1,1]" class="d-flex item-list-single justify-content-between">
+      <div class="d-flex">
+        <div>
+          <img class="avatar"
+               src="https://images.unsplash.com/photo-1506919258185-6078bba55d2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
+               alt="">
+        </div>
+        <div class="pl-2 pr-2 pt-1 pb-1">
+          <h6 class="name">Yolanda Barrueco</h6>
+          <div>
+            <span class="badge badge-green">FULL</span>
+          </div>
+        </div>
+      </div>
+      <div class="text-right">
+        <div>
+          <b class="price-main">$ 100.00</b>
+        </div>
+        <div>
+          <small class="text-muted">SO-00001</small>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

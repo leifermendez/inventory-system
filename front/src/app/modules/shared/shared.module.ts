@@ -5,20 +5,23 @@ import {FooterComponent} from "../../components/footer/footer.component";
 import {SideBarComponent} from "../../components/side-bar/side-bar.component";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {TooltipModule} from "ngx-bootstrap/tooltip";
-
+import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
+import {ListItemsComponent} from "../../components/list-items/list-items.component";
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    SideBarComponent
+    SideBarComponent,
+    ListItemsComponent
   ],
   imports: [
     CommonModule,
     FontAwesomeModule,
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    BsDropdownModule
   ],
-  exports: [HeaderComponent, SideBarComponent]
+  exports: [HeaderComponent, SideBarComponent, ListItemsComponent]
 })
 export class SharedModule {
 }
