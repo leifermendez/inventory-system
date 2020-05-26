@@ -4,6 +4,7 @@ import {HeaderComponent} from "../../components/header/header.component";
 import {FooterComponent} from "../../components/footer/footer.component";
 import {SideBarComponent} from "../../components/side-bar/side-bar.component";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {TooltipModule} from "ngx-bootstrap/tooltip";
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
   ],
   imports: [
     CommonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    TooltipModule.forRoot()
   ],
   exports: [HeaderComponent, SideBarComponent]
 })

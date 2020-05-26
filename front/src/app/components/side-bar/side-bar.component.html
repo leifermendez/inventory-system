@@ -5,9 +5,13 @@
         <fa-icon [icon]="faCrown" size="lg"></fa-icon>
       </div>
     </div>
+
     <div class="menu-list text-center">
       <ul class="pt-4">
-        <li class="pl-1 pr-1 pt-2 pb-1" *ngFor="let a of menu">
+        <li class="pl-1 pr-1 pt-2 pb-1"
+            placement="right"
+            [tooltip]="tolTemplate" containerClass="customToolTip"  [delay]="350" *ngFor="let a of menu">
+          <ng-template #tolTemplate>{{a?.name}}</ng-template>
           <div class="p-2 icon-wrapper">
             <div class="p-1 sub-wrapper">
               <fa-icon class="icon" [icon]="a.icon"></fa-icon>

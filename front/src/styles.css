@@ -10,3 +10,21 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+
+.customToolTip .tooltip-inner {
+  background-color: #221ECD;
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: .5px;
+  font-size: .75rem;
+  box-shadow: 0 0 5px rgba(55, 51, 209, 0.56);
+}
+
+.customToolTip .tooltip.top .tooltip-arrow:before,
+.customToolTip .tooltip.top .tooltip-arrow {
+  border-top-color: #221ECD;
+}
+
+.customToolTip .arrow::before, .customToolTip .arrow::before {
+  border-right-color: #221ECD;
+}

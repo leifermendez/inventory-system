@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {faTruck, faFileAlt, faBox, faFolderOpen, faCrown, faChartPie, faUsers, faAngleRight,
-faCashRegister}
+import {
+  faTruck, faFileAlt, faBox, faFolderOpen, faCrown, faChartPie, faUsers, faAngleRight,
+  faCashRegister
+}
   from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -17,24 +19,31 @@ export class SideBarComponent implements OnInit {
   faCashRegister = faCashRegister
   public menu: any = [
     {
+      name: 'Inicio',
       icon: faChartPie
     },
     {
+      name: 'Productos',
       icon: faBox
     },
     {
+      name: 'Pedidos',
       icon: faFileAlt
     },
     {
+      name: 'Pagos',
       icon: faCashRegister
     },
     {
+      name: 'Usuarios',
       icon: faUsers
     },
     {
+      name: 'Carga y Descarga',
       icon: faFolderOpen
     },
     {
+      name: 'Envios',
       icon: faTruck
     }
   ]
