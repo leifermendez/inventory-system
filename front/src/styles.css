@@ -51,3 +51,9 @@ body {
 .btn-primary {
   background-color: #221ECD !important;
 }
+.detail-invoice .nav-tabs{
+  border-bottom: 0px !important;
+}
+.detail-invoice .tab-content{
+  padding: 1rem;
+}

@@ -5,7 +5,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BsDropdownModule} from "ngx-bootstrap/dropdown";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { ListItemsComponent } from './components/list-items/list-items.component';
+import {ListItemsComponent} from './components/list-items/list-items.component';
+import {DetailInvoiceComponent} from './components/detail-invoice/detail-invoice.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +19,7 @@ import { ListItemsComponent } from './components/list-items/list-items.component
     BsDropdownModule.forRoot(),
   ],
   providers: [],
-  exports: [
-  ],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
