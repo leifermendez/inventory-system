@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  background-color: white;
+  /*box-shadow: 0 0 10px rgba(182, 182, 182, 0.21);*/
+  z-index: 1;
+}
+.header-wrapper{
+  padding-left: 5rem;;
+}
+
+h6, h5, h4, h3, h2, h1 {
+  font-weight: 600;
+}

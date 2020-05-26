@@ -1,0 +1,98 @@
+:host {
+  display: block;
+  background: #ffffff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 65px;
+  height: 100%;
+}
+
+.logo {
+  display: table-cell;
+  vertical-align: middle;
+  height: 60px;
+  width: 100px;
+  text-align: center;
+}
+
+.menu-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0
+}
+
+.menu-list ul li {
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+
+}
+
+.menu-list .icon-wrapper {
+  margin: auto;
+  border-radius: 8rem;
+  width: 50px;
+  height: 50px;
+  /*vertical-align: middle;*/
+  /*display: table-cell;*/
+}
+
+.menu-list ul li .icon {
+  color: #808291;
+}
+
+.menu-list ul li:hover .icon {
+  color: #221ECD;
+  -webkit-transition: all 200ms;
+  -moz-transition: all 200ms;
+  -o-transition: all 200ms;
+  transition: all 200ms;
+}
+
+.menu-list ul li:hover .icon-wrapper {
+  background-color: #E9E5FD;
+  -webkit-transition: all 200ms;
+  -moz-transition: all 200ms;
+  -o-transition: all 200ms;
+  transition: all 200ms;
+
+}
+
+.menu-list ul li:hover .sub-wrapper {
+  transform: scale(1.1);
+  margin-top: .2rem;
+  border-radius: 8rem;
+  background-color: #D5CEF9;
+  -webkit-transition: all 200ms;
+  -moz-transition: all 200ms;
+  -o-transition: all 200ms;
+  transition: all 200ms;
+}
+
+/*.menu-list .icon-wrapper  .icon:after{*/
+/*  content: ".";*/
+/*  background-color: red;*/
+/*  position: absolute;*/
+
+/*}*/
+.footer .avatar {
+  border-radius: 6rem;
+  height: 35px;
+  width: 35px;
+  object-fit: cover;
+}
+
+.footer .btn-icon {
+  color: #808291;
+  border-radius: 4rem;
+}
+
+.footer .btn-icon:hover {
+  background-color: #ED3552;
+
+}
+.footer .btn-icon:hover fa-icon {
+  color: white;
+
+}

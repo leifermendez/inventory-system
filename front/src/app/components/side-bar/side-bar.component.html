@@ -1,0 +1,31 @@
+<div class="d-flex flex-column h-100 justify-content-between">
+  <div>
+    <div>
+      <div class="logo">
+        <fa-icon [icon]="faCrown" size="lg"></fa-icon>
+      </div>
+    </div>
+    <div class="menu-list text-center">
+      <ul class="pt-4">
+        <li class="pl-1 pr-1 pt-2 pb-1" *ngFor="let a of menu">
+          <div class="p-2 icon-wrapper">
+            <div class="p-1 sub-wrapper">
+              <fa-icon class="icon" [icon]="a.icon"></fa-icon>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer mb-3">
+    <div class="text-center p-2">
+      <img class="avatar" src="https://picsum.photos/536/354" alt="">
+    </div>
+    <div class="text-center pt-2">
+      <a href="" class="btn btn-icon">
+        <fa-icon class="" [icon]="faAngleRight"></fa-icon>
+      </a>
+    </div>
+  </div>
+
+</div>

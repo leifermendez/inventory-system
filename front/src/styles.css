@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;1,400;1,500&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 400;
+  background-color: #F6F5FA;
+  font-size: .85rem;
+  text-rendering: optimizeLegibility;
+}
+
