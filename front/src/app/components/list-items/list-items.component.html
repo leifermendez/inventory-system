@@ -18,7 +18,7 @@
       </button>
     </div>
   </div>
-  <ul *ngIf="!data?.length">
+  <ul *ngIf="data?.length && !mode">
     <li *ngFor="let a of data" class="d-flex item-list-single justify-content-between">
       <div class="d-flex">
         <div>
@@ -66,9 +66,13 @@
       </div>
     </li>
   </ul>
-  <div *ngIf="true">
-    <div class="text-center">
-      <app-box-empty></app-box-empty>
-    </div>
+  <div class="text-center" *ngIf="mode === 'working'">
+    <app-working-box></app-working-box>
+  </div>
+  <div class="text-center" *ngIf="mode === 'empty'">
+    <app-box-empty></app-box-empty>
+  </div>
+  <div class="text-center" *ngIf="mode === 'blocked'">
+    <app-locked-box></app-locked-box>
   </div>
 </div>

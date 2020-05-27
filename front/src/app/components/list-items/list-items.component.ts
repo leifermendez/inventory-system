@@ -8,6 +8,7 @@ import {faPlus, faCalendarCheck, faCalendarAlt} from '@fortawesome/free-solid-sv
 })
 export class ListItemsComponent implements OnInit {
   @Input() title: string;
+  @Input() mode: any = false;
   @Input() data: any = [];
   faPlus = faPlus;
   faCalendarCheck = faCalendarCheck;

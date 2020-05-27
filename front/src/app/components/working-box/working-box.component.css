@@ -1,0 +1,13 @@
+.margin-auto {
+  margin: auto;
+  display: inline-table;
+}
+
+ng-lottie .div {
+  margin: auto;
+}
+
+:host {
+  display: block;
+  opacity: .7;
+}

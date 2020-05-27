@@ -8,13 +8,21 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ListItemsComponent} from './components/list-items/list-items.component';
 import {DetailInvoiceComponent} from './components/detail-invoice/detail-invoice.component';
 import {BsDatepickerConfig, BsDatepickerModule} from "ngx-bootstrap/datepicker";
-import { BoxEmptyComponent } from './components/box-empty/box-empty.component';
+import {BoxEmptyComponent} from './components/box-empty/box-empty.component';
+import {LottieModule} from 'ngx-lottie';
+import player from 'lottie-web';
+import { WorkingBoxComponent } from './components/working-box/working-box.component';
+import { LockedBoxComponent } from './components/locked-box/locked-box.component';
 
 export function getDatepickerConfig(): BsDatepickerConfig {
   return Object.assign(new BsDatepickerConfig(), {
     dateInputFormat: 'YYYY-MMM-DD',
     isAnimated: true,
   });
+}
+
+export function playerFactory() {
+  return player;
 }
 
 @NgModule({
@@ -25,11 +33,13 @@ export function getDatepickerConfig(): BsDatepickerConfig {
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    LottieModule.forRoot({player: playerFactory}),
     BsDropdownModule.forRoot(),
     BsDatepickerModule.forRoot()
   ],
   providers: [{provide: BsDatepickerConfig, useFactory: getDatepickerConfig}],
-  exports: [],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

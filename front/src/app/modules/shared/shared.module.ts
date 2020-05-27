@@ -11,6 +11,9 @@ import {ListItemsComponent} from "../../components/list-items/list-items.compone
 import {DetailInvoiceComponent} from "../../components/detail-invoice/detail-invoice.component";
 import {BsDatepickerModule} from "ngx-bootstrap/datepicker";
 import {BoxEmptyComponent} from "../../components/box-empty/box-empty.component";
+import {WorkingBoxComponent} from "../../components/working-box/working-box.component";
+import {LottieModule} from "ngx-lottie";
+import {LockedBoxComponent} from "../../components/locked-box/locked-box.component";
 
 @NgModule({
   declarations: [
@@ -19,7 +22,9 @@ import {BoxEmptyComponent} from "../../components/box-empty/box-empty.component"
     SideBarComponent,
     ListItemsComponent,
     DetailInvoiceComponent,
-    BoxEmptyComponent
+    BoxEmptyComponent,
+    WorkingBoxComponent,
+    LockedBoxComponent
   ],
   imports: [
     CommonModule,
@@ -27,9 +32,12 @@ import {BoxEmptyComponent} from "../../components/box-empty/box-empty.component"
     TabsModule.forRoot(),
     TooltipModule.forRoot(),
     BsDropdownModule,
-    BsDatepickerModule
+    BsDatepickerModule,
+    LottieModule
   ],
-  exports: [HeaderComponent, SideBarComponent, ListItemsComponent, DetailInvoiceComponent, BoxEmptyComponent]
+  exports: [HeaderComponent, SideBarComponent, WorkingBoxComponent,
+    ListItemsComponent, DetailInvoiceComponent, BoxEmptyComponent,
+    LockedBoxComponent]
 })
 export class SharedModule {
 }
