@@ -14,6 +14,7 @@ import {BoxEmptyComponent} from "../../components/box-empty/box-empty.component"
 import {WorkingBoxComponent} from "../../components/working-box/working-box.component";
 import {LottieModule} from "ngx-lottie";
 import {LockedBoxComponent} from "../../components/locked-box/locked-box.component";
+import {ProductFormComponent} from "../../components/product-form/product-form.component";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {LockedBoxComponent} from "../../components/locked-box/locked-box.compone
     DetailInvoiceComponent,
     BoxEmptyComponent,
     WorkingBoxComponent,
-    LockedBoxComponent
+    LockedBoxComponent,
+    ProductFormComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +39,7 @@ import {LockedBoxComponent} from "../../components/locked-box/locked-box.compone
   ],
   exports: [HeaderComponent, SideBarComponent, WorkingBoxComponent,
     ListItemsComponent, DetailInvoiceComponent, BoxEmptyComponent,
-    LockedBoxComponent]
+    LockedBoxComponent, ProductFormComponent]
 })
 export class SharedModule {
 }

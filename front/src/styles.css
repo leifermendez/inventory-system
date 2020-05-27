@@ -113,3 +113,24 @@ body {
 .text-primary {
   color: #221ECD !important;
 }
+.img-section .margin-auto {
+  margin: auto;
+  display: inline-table;
+}
+
+.img-section ng-lottie div {
+  margin: auto !important;
+}
+
+/**
+Style
+ */
+.custom-card-style{
+  background-color: white;
+  padding: 1rem 1rem;
+  border-radius: .75rem;
+  font-weight: 600;
+  font-size: .9rem;
+  letter-spacing: .6px;
+  box-shadow: 1px 3px 0px #EEEFF6;
+}

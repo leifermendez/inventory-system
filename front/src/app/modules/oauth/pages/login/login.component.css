@@ -1,0 +1,44 @@
+.container-login {
+  background-color: #ffffff;
+  margin-top: 5%;
+  border-radius: 1rem;
+  padding: .5rem;
+  border: solid 1px #e7e6ed;
+  box-shadow: 1px 3px 10px rgba(205, 208, 227, 0.65);
+}
+
+:host {
+  display: block;
+  background-color: white;
+}
+
+.img-section {
+  padding-top: 10%;
+  height: 100vh;
+  /*border-left: solid 1px #eaeaf0;*/
+  background-color: #F6F5FA;
+  /*box-shadow: -2px 4px 20px rgba(202, 198, 217, 0.47);*/
+}
+.login-section {
+  /*text-align: center;*/
+  padding: 20% 12% 1rem
+}
+
+.login-section .form-control {
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  border-radius: 0;
+  padding: .75rem 0.5rem;
+}
+
+.login-section label {
+  font-weight: 600;
+}
+
+.login-section .title {
+  font-weight: 600 !important;
+}
+.login-section .title-section{
+  margin-bottom: 6rem;
+}
