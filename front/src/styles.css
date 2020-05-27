@@ -51,9 +51,65 @@ body {
 .btn-primary {
   background-color: #221ECD !important;
 }
-.detail-invoice .nav-tabs{
-  border-bottom: 0px !important;
+
+.detail-invoice .nav-tabs {
+  border-bottom: solid 1px #f2f3fd;
+  padding-bottom: .75rem;
+  padding-top: .5rem;
 }
-.detail-invoice .tab-content{
-  padding: 1rem;
+
+.detail-invoice .tab-content {
+  padding: 1rem .25rem;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  border-color: transparent;
+}
+
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+  /*padding: .35rem .65rem;*/
+  background-color: #918CE7;
+  border-radius: 1rem;
+  color: white;
+  border-color: transparent;
+  -webkit-transition: all 200ms;
+  -moz-transition: all 200ms;
+  -o-transition: all 200ms;
+  transition: all 200ms;
+}
+
+.nav-link {
+  padding: .25rem;
+  font-size: .8rem;
+}
+
+.nav-tabs .nav-item {
+  margin-right: 1rem;
+  font-weight: 600;
+}
+
+.theme-green {
+  background-color: transparent;
+}
+
+.theme-green .bs-calendar-container {
+  background-color: white;
+  box-shadow: 0 0 20px #dddee2;
+  border: solid 1px #efefef;
+}
+
+.bs-datepicker {
+  box-shadow: 0 0 0 transparent;
+}
+
+.theme-green .bs-datepicker-head, .theme-green .bs-datepicker-body table td span.selected {
+  background-color: #221CC5;
+}
+
+.theme-green .bs-datepicker-body table td.week span {
+  color: #221CC5;
+}
+
+.text-primary {
+  color: #221ECD !important;
 }

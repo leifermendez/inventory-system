@@ -66,9 +66,34 @@
 .items ul li .avatar {
   border: solid 2px rgba(255, 255, 255, 0.42)
 }
+.input-date{
+  padding: .25rem !important;
+  font-size: .7rem;
+  font-weight: 600;
+  color: #808291;
+  letter-spacing: 1px;
+  border: solid 0px;
+  cursor: pointer;
+}
+.badge-red {
+  background-color: #E93751;
+  color: #ffffff;
+  margin-left: .5rem;
+  padding: .2rem .35rem;
+  border-radius: 1rem;
+}
+
+.badge-red-1 {
+  background-color: #ff9b79;
+  color: #ffffff;
+  margin-left: .5rem;
+  padding: .2rem .35rem;
+  border-radius: 1rem;
+}
+
 
 .badge-green {
-  color: #30A032 !important;
+  color: #30A032;
   margin-left: .5rem;
 }
 
@@ -84,6 +109,62 @@
   border-radius: 12px;
 }
 
+.badge-blue {
+  color: #01B1FF;
+  margin-left: .5rem;
+}
+
+.badge-blue:before {
+  content: "";
+  background-color: #01B1FF;
+  width: 7px;
+  height: 7px;
+  position: absolute;
+  margin-right: .3rem;
+  margin-left: -11px;
+  margin-top: 1px;
+  border-radius: 12px;
+}
+
+.badge-purple {
+  color: #221CC5;
+  margin-left: .5rem;
+}
+
+.badge-purple:before {
+  content: "";
+  background-color: #221CC5;
+  width: 7px;
+  height: 7px;
+  position: absolute;
+  margin-right: .3rem;
+  margin-left: -11px;
+  margin-top: 1px;
+  border-radius: 12px;
+}
+
+.badge-orange {
+  color: #FDAC90;
+  margin-left: .5rem;
+}
+
+.badge-orange:before {
+  content: "";
+  background-color: #FDAC90;
+  width: 7px;
+  height: 7px;
+  position: absolute;
+  margin-right: .3rem;
+  margin-left: -11px;
+  margin-top: 1px;
+  border-radius: 12px;
+}
+
+
 .price-main {
   color: #6d6d6d;
+}
+
+.item-list-single:hover .badge {
+  color: rgba(255, 255, 255, 0.8) !important;
 }

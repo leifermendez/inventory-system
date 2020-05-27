@@ -1,8 +1,74 @@
 <div class="detail-invoice">
+  <!--  <div class="float-right menu-sub">-->
+  <!--    <ul>-->
+  <!--      <li *ngFor="let a of [1,1,1]">-->
+  <!--        <div class="btn">-->
+  <!--          <fa-icon [icon]="faTruck"></fa-icon>-->
+  <!--        </div>-->
+  <!--      </li>-->
+  <!--    </ul>-->
+  <!--  </div>-->
   <tabset>
-    <tab heading="Basic title" id="tab1">Basic content</tab>
-    <tab heading="Basic Title 1">Basic content 1</tab>
-    <tab heading="Basic Title 2">Basic content 2</tab>
+
+    <tab heading="Package" id="tab1">
+      <div class="col-12 row m-0 p-0">
+        <div class="col-9">
+          <h4 class="title">Sales order</h4>
+          <h6 class="text-muted">#S0-10000</h6>
+          <div>
+            <span class="badge badge-orange">PARTIAL SHIPPED</span>
+          </div>
+          <div class="pt-4 pb-2 d-flex">
+            <div class="d-flex mr-3" *ngFor="let a of [1,1,1]">
+              <div class="btn btn-invoice-in">
+                <fa-icon [icon]="faFileAlt"></fa-icon>
+              </div>
+              <div class="details-invoice-block pt-2 pb-2 pl-3 pr-3">
+                <div class="label-in">Order data</div>
+                <div class="data-in">20 MAY 2020</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="wrapper-address">
+            <div>
+              <small class="text-muted">Billing To</small>
+            </div>
+            <div class="mt-2">
+              <b class="text-primary">Miriam de Jesus</b>
+            </div>
+            <div class="mt-2 address">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            </div>
+          </div>
+        </div>
+        <div class="col-12 pt-4 pb-4">
+          <div class="items-wrapper">
+            <div class="d-flex mb-2">
+              <h6 class="title-in-items w-50">Items and Descriptions</h6>
+              <h6 class="title-in-items w-25 text-center">Items and Descriptions</h6>
+              <h6 class="title-in-items w-25 text-center">Items and Descriptions</h6>
+            </div>
+            <div class="d-flex item-self" *ngFor="let a of [1,1,1]">
+              <div class="p-1">
+                <span class="number-item">1</span>
+                <img class="image"
+                     src="https://res.cloudinary.com/mysterytacklebox/image/fetch/q_auto,f_auto/w_656,h_492,c_limit/w_656,h_492,c_pad,b_white/https://karls.azureedge.net/media/catalog/product/m/e/memorial-day-tshirt-mockup_copy.jpg"
+                     alt="">
+              </div>
+              <div class="p-1">
+                <div><b class="mt-1 item-name">Lorem ipsum dolor.</b></div>
+                <div>
+                  <small class="text-muted mt-1">SKU: 0000101</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </tab>
   </tabset>
 
 </div>

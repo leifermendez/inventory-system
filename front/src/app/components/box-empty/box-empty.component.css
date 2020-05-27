@@ -1,0 +1,11 @@
+:host{
+  opacity: .6;
+  display: block;
+  margin-top: 1rem;
+}
+.img-box{
+  width: 5rem;
+}
+.text-muted{
+  color: #7e8096 !important;
+}

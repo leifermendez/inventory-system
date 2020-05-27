@@ -2,13 +2,117 @@
   background-color: white;
   padding: 1rem 1rem;
   border-radius: .75rem;
-  font-weight: 600;
+  font-weight: 500;
   font-size: .9rem;
   display: block;
   width: 100%;
   letter-spacing: .6px;
   box-shadow: 1px 3px 0px #EEEFF6;
 }
-.separator{
+
+.separator {
   border-bottom: solid 1px black;
+}
+
+.title {
+  font-weight: 600;
+  margin-bottom: .5rem;
+}
+
+.badge-orange {
+  background-color: #ffa98a;
+  padding: .5rem;
+  border-radius: 1rem;
+  color: white;
+}
+
+.menu-sub ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.btn-invoice-in {
+  background: white;
+  border-radius: 5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  line-height: 2.8rem;
+  box-shadow: 3px 3px 15px rgba(223, 225, 239, 0.8);
+}
+
+.btn-invoice-in fa-icon {
+  color: #AAADC8;
+}
+
+.label-in {
+  font-weight: 600;
+  color: #999BAB;
+}
+
+.details-invoice-block {
+  font-size: .75rem;
+  color: #585858;
+  font-weight: 600;
+}
+
+.address {
+  font-size: .75rem;
+  font-weight: 600;
+}
+
+.wrapper-address {
+  border: solid 1px #eeeff6;
+  padding: .75rem .75rem;
+  border-radius: .5rem;
+  box-shadow: 1px 3px 0px #EEEFF6;
+}
+
+.items-wrapper {
+  background-color: #F6F5FA;
+  padding: .75rem 1rem;
+  border-radius: .7rem;
+}
+
+.items-wrapper .title-in-items {
+  font-weight: 600;
+  font-size: .8rem;
+  color: #A9A9B8;
+}
+
+.items-wrapper .item-self .image {
+  width: 45px;
+  height: 45px;
+  border-radius: .75rem;
+  border: solid 1px #fdfdfd;
+  object-fit: cover;
+  box-shadow: 4px 5px 15px #eeeff6;
+}
+
+.items-wrapper .item-self {
+  background-color: #FEFEFE;
+  border-radius: .75rem;
+  padding: .65rem;
+  margin-bottom: .5rem;
+}
+
+.number-item {
+  background: white;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin-left: -5px;
+  margin-top: -5px;
+  border-radius: 15px;
+  text-align: center;
+  border: solid 2px #599242;
+  font-size: 10px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+.items-wrapper .item-name {
+  color: #222222;
+  font-size: .8rem;
 }

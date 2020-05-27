@@ -7,6 +7,15 @@ import {BsDropdownModule} from "ngx-bootstrap/dropdown";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ListItemsComponent} from './components/list-items/list-items.component';
 import {DetailInvoiceComponent} from './components/detail-invoice/detail-invoice.component';
+import {BsDatepickerConfig, BsDatepickerModule} from "ngx-bootstrap/datepicker";
+import { BoxEmptyComponent } from './components/box-empty/box-empty.component';
+
+export function getDatepickerConfig(): BsDatepickerConfig {
+  return Object.assign(new BsDatepickerConfig(), {
+    dateInputFormat: 'YYYY-MMM-DD',
+    isAnimated: true,
+  });
+}
 
 @NgModule({
   declarations: [
@@ -17,8 +26,9 @@ import {DetailInvoiceComponent} from './components/detail-invoice/detail-invoice
     BrowserAnimationsModule,
     AppRoutingModule,
     BsDropdownModule.forRoot(),
+    BsDatepickerModule.forRoot()
   ],
-  providers: [],
+  providers: [{provide: BsDatepickerConfig, useFactory: getDatepickerConfig}],
   exports: [],
   bootstrap: [AppComponent]
 })

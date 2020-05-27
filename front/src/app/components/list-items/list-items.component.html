@@ -1,7 +1,16 @@
 <div class="items w-100">
   <div class="header d-flex justify-content-between">
     <div>
-      {{title}}
+      <div>
+        {{title}}
+      </div>
+      <div>
+        <input type="text"
+               placeholder="Datepicker"
+               class="form-control input-date custom-date-picker"
+               bsDatepicker>
+        <!--        <small class="text-muted">Mayo 20, 2020</small>-->
+      </div>
     </div>
     <div class="text-right">
       <button class="btn btn-primary btn-radius btn-sm">
@@ -9,8 +18,8 @@
       </button>
     </div>
   </div>
-  <ul>
-    <li *ngFor="let a of [1,1,1,1,1,1,1]" class="d-flex item-list-single justify-content-between">
+  <ul *ngIf="!data?.length">
+    <li *ngFor="let a of data" class="d-flex item-list-single justify-content-between">
       <div class="d-flex">
         <div>
           <img class="avatar"
@@ -18,9 +27,32 @@
                alt="">
         </div>
         <div class="pl-2 pr-2 pt-1 pb-1">
-          <h6 class="name">Yolanda Barrueco</h6>
-          <div>
-            <span class="badge badge-green">FULL</span>
+          <h6 class="name">{{a?.name}}</h6>
+          <div class="d-flex pt-1">
+            <span
+              [ngClass]="{
+              'badge-green':(a?.status === 'paid'),
+              'badge-blue':(a?.status === 'process'),
+              'badge-purple':(a?.status === 'exceptional'),
+              'badge-orange':(a?.status === 'hold')
+              }"
+              class="badge text-uppercase mr-2">
+              {{a?.status}}
+            </span>
+            <span
+              [ngClass]="{
+              'badge-red':(a?.delivery === 'today'),
+              'badge-red-1':(a?.delivery === 'tomorrow')
+              }"
+              class="badge text-uppercase mr-2">
+              <fa-icon
+                *ngIf="a?.delivery === 'today'"
+                [icon]="faCalendarCheck"></fa-icon>
+                <fa-icon
+                  *ngIf="a?.delivery === 'tomorrow'"
+                  [icon]="faCalendarAlt"></fa-icon>
+              {{a?.delivery}}
+            </span>
           </div>
         </div>
       </div>
@@ -34,4 +66,9 @@
       </div>
     </li>
   </ul>
+  <div *ngIf="true">
+    <div class="text-center">
+      <app-box-empty></app-box-empty>
+    </div>
+  </div>
 </div>

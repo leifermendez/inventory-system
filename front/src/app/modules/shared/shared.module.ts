@@ -9,6 +9,8 @@ import {TabsModule} from 'ngx-bootstrap/tabs';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {ListItemsComponent} from "../../components/list-items/list-items.component";
 import {DetailInvoiceComponent} from "../../components/detail-invoice/detail-invoice.component";
+import {BsDatepickerModule} from "ngx-bootstrap/datepicker";
+import {BoxEmptyComponent} from "../../components/box-empty/box-empty.component";
 
 @NgModule({
   declarations: [
@@ -16,16 +18,18 @@ import {DetailInvoiceComponent} from "../../components/detail-invoice/detail-inv
     FooterComponent,
     SideBarComponent,
     ListItemsComponent,
-    DetailInvoiceComponent
+    DetailInvoiceComponent,
+    BoxEmptyComponent
   ],
   imports: [
     CommonModule,
     FontAwesomeModule,
     TabsModule.forRoot(),
     TooltipModule.forRoot(),
-    BsDropdownModule
+    BsDropdownModule,
+    BsDatepickerModule
   ],
-  exports: [HeaderComponent, SideBarComponent, ListItemsComponent, DetailInvoiceComponent]
+  exports: [HeaderComponent, SideBarComponent, ListItemsComponent, DetailInvoiceComponent, BoxEmptyComponent]
 })
 export class SharedModule {
 }
