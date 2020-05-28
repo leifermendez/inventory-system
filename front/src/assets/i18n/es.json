@@ -1,6 +1,6 @@
 {
   "GENERAL": {
-    "CURRENCY": "MXN",
+    "CURRENCY": "MXN ",
     "CURRENCY_SYMBOL": "$"
   },
   "HOME": {
@@ -22,6 +22,8 @@
     "SKU": "SKU",
     "DEPOSIT": "Deposito",
     "CATEGORIES": "Categorias",
-    "PRICES": "Precios"
+    "PRICES": "Precios",
+    "TAG": "Etiquetas",
+    "ADD": "Agregar"
   }
 }

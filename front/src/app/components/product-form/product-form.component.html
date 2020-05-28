@@ -1,103 +1,117 @@
-<div class="form-product w-100 flex-wrap d-flex">
-  <div class="custom-card-style col-12">
+<form class="form-product w-100 flex-wrap d-flex" [formGroup]="form">
+  <div class="custom-card-style col-12 ">
     <div>
       <div class="name">
         <div class="form-group">
-          <label for="exampleInputEmail1">{{"PRODUCT.NAME" |translate}}</label>
-          <input type="text" class="form-control" aria-describedby="emailHelp"
+          <label>{{"PRODUCT.NAME" |translate}}</label>
+          <input type="text" formControlName="name" class="form-control" aria-describedby="emailHelp"
                  placeholder=""></div>
       </div>
     </div>
 
   </div>
+
   <div class="col-md-6 col-lg-6 col-sm-12 pl-0 pr-2">
     <div class="custom-card-style h-100 col-12 mt-3">
-      <form action="" [formGroup]="form">
-        <div class="description-text">
-          <ngx-editor [ngModel]="editorContent"
-                      [contentEditable]="true"
 
-                      formControlName="content"
-                      (ngModelChange)="editorContentChange($event)">
-          </ngx-editor>
-        </div>
-      </form>
+      <div class="description-text">
+        <ngx-editor [ngModel]="editorContent"
+                    [contentEditable]="true"
+                    formControlName="content"
+                    (ngModelChange)="editorContentChange($event)">
+        </ngx-editor>
+      </div>
+
     </div>
 
   </div>
 
   <div class="col-md-6 col-lg-3 col-sm-12 pl-0 pr-2">
     <div class="custom-card-style col-12 mt-3">
-<!--      <div class="form-group">-->
-<!--        <label for="exampleInputEmail1">{{"PRODUCT.PRICES" |translate}}</label>-->
-<!--        <tag-input class="chip-price" [removable]="true" [(ngModel)]="itemsAsObjects" [identifyBy]="'id'"-->
-<!--                   [displayBy]="'value'" #input>-->
-<!--          <ng-template let-item="item" let-index="index">-->
-<!--            {{ "GENERAL.CURRENCY_SYMBOL" |translate }} {{ item?.value | number: '1.2-2' }} {{ "GENERAL.CURRENCY" |translate }}-->
-<!--            <delete-icon (click)="input.removeItem(item, index)"></delete-icon>-->
-<!--          </ng-template>-->
-
-<!--        </tag-input>-->
-<!--      </div>-->
       <div class="form-group">
-        <label for="exampleInputEmail1">{{"PRODUCT.PRICES" |translate}}</label>
-        <input type="text" class="form-control" aria-describedby="emailHelp"
+        <label>{{"PRODUCT.SKU" |translate}}</label>
+        <input type="text" formControlName="sku" class="form-control" aria-describedby="emailHelp"
                placeholder=""></div>
     </div>
     <div class="custom-card-style col-12 mt-2">
       <div class="form-group">
-        <label for="exampleInputEmail1">{{"PRODUCT.SKU" |translate}}</label>
-        <input type="text" class="form-control" aria-describedby="emailHelp"
-               placeholder=""></div>
-    </div>
-    <div class="custom-card-style col-12 mt-2">
-      <div class="form-group">
-        <label for="exampleInputEmail1">{{"PRODUCT.DEPOSIT" |translate}}</label>
-        <input type="text" class="form-control" aria-describedby="emailHelp"
-               placeholder="">
-      </div>
-    </div>
-    <div class="custom-card-style col-12 mt-2">
-      <div class="form-group">
-        <label for="exampleInputEmail1">{{"PRODUCT.CATEGORIES" |translate}}</label>
-        <tag-input class="chip-price" [removable]="true" [(ngModel)]="itemsAsObjects" [identifyBy]="'id'"
-                   [displayBy]="'value'" #input>
-          <ng-template let-item="item" let-index="index">
-            {{ "GENERAL.CURRENCY_SYMBOL" |translate }} {{ item?.value | number: '1.2-2' }} {{ "GENERAL.CURRENCY" |translate }}
-            <delete-icon (click)="input.removeItem(item, index)"></delete-icon>
-          </ng-template>
-
-        </tag-input>
-      </div>
-    </div>
-    <div class="custom-card-style col-12 mt-2">
-      <div class="form-group">
-        <label for="exampleInputEmail1">{{"PRODUCT.PROVIDER" |translate}}</label>
-        <ng-select [items]="cities"
+        <label>{{"PRODUCT.CATEGORIES" |translate}}</label>
+        <ng-select formControlName="provider" [items]="cities"
                    bindLabel="name"
                    placeholder="Select city"
                    [(ngModel)]="selectedCity">
         </ng-select>
       </div>
     </div>
+    <div class="custom-card-style col-12 mt-2">
+      <div class="form-group">
+        <label>{{"PRODUCT.PROVIDER" |translate}}</label>
+        <ng-select formControlName="provider" [items]="cities"
+                   bindLabel="name"
+                   placeholder="Select city"
+                   [(ngModel)]="selectedCity">
+        </ng-select>
+      </div>
+    </div>
+    <div class="custom-card-style col-12 mt-2">
+      <div class="form-group">
+        <label>{{"PRODUCT.DEPOSIT" |translate}}</label>
+        <ng-select formControlName="provider" [items]="cities"
+                   bindLabel="name"
+                   placeholder="Select city"
+                   [(ngModel)]="selectedCity">
+        </ng-select>
+      </div>
+    </div>
+    <div class="custom-card-style col-12 mt-2">
+      <div class="form-group">
+        <label>{{"PRODUCT.TAG" |translate}}</label>
+        <tag-input class="chip-price" [(ngModel)]="itemsAsObjects"
+                   [identifyBy]="'id'"
+                   [displayBy]="'name'"></tag-input>
+      </div>
+    </div>
   </div>
-<!--  <div class="col-md-6 col-lg-3 col-sm-12 pl-0 pr-0">-->
-<!--    <div class="custom-card-style col-12 mt-3">-->
-<!--      <form action="" [formGroup]="form">-->
-<!--        <div class="description-text">-->
-<!--          <ngx-editor [ngModel]="editorContent"-->
-<!--                      [contentEditable]="true"-->
-<!--                      formControlName="content"-->
-<!--                      (ngModelChange)="editorContentChange($event)">-->
-<!--          </ngx-editor>-->
-<!--        </div>-->
-<!--      </form>-->
-<!--    </div>-->
-<!--    <div class="custom-card-style col-12 mt-2">-->
-<!--      <div class="form-group">-->
-<!--        <label for="exampleInputEmail1">{{"PRODUCT.PROVIDER" |translate}}</label>-->
-<!--        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"-->
-<!--               placeholder=""></div>-->
-<!--    </div>-->
-<!--  </div>-->
-</div>
+  <div class="col-md-6 col-lg-3 col-sm-12 pl-0 pr-2">
+    <div class="custom-card-style col-12 mt-3">
+      <!--      <div class="form-group">-->
+      <!--        <label >{{"PRODUCT.PRICES" |translate}}</label>-->
+      <!--        <tag-input class="chip-price" [removable]="true" [(ngModel)]="itemsAsObjects" [identifyBy]="'id'"-->
+      <!--                   [displayBy]="'value'" #input>-->
+      <!--          <ng-template let-item="item" let-index="index">-->
+      <!--            {{ "GENERAL.CURRENCY_SYMBOL" |translate }} {{ item?.value | number: '1.2-2' }} {{ "GENERAL.CURRENCY" |translate }}-->
+      <!--            <delete-icon (click)="input.removeItem(item, index)"></delete-icon>-->
+      <!--          </ng-template>-->
+
+      <!--        </tag-input>-->
+      <!--      </div>-->
+      <div class="form-group mb-0">
+
+
+        <label>{{"PRODUCT.PRICES" |translate}}</label>
+        <input currencyMask (focus)="onFocus($event)" class="form-control"
+               #valueInput [(ngModel)]="priceTmp" [ngModelOptions]="{standalone: true}"
+               [options]="ngxCurrencyOptions"/>
+
+        <div class="text-right pt-3 pb-3">
+          <button type="button" (click)="addPrice($event)" class="btn btn-sm btn-primary btn-radius btn-block">
+            <fa-icon [icon]="faCheck"></fa-icon>
+            <span class="pl-1">{{"PRODUCT.ADD" |translate}}</span>
+          </button>
+        </div>
+        <app-box-empty *ngIf="!prices.length"></app-box-empty>
+        <div class="list-prices" *ngIf="prices.length">
+          <ul>
+            <li *ngFor="let price of prices">
+              {{"GENERAL.CURRENCY_SYMBOL" |translate}} {{price?.amount | number :'1.2-2'}} {{"GENERAL.CURRENCY" |translate}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</form>

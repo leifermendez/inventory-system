@@ -144,7 +144,7 @@ Style
   border: 0px solid rgba(0, 0, 0, .2) !important;
 }
 
-.NgxEditor-Wrapper-full-width{
+.NgxEditor-Wrapper-full-width {
   position: fixed;
   top: 0;
   /* background: red; */
@@ -164,4 +164,19 @@ Style
 
 .ng-select .ng-select-container {
   border: 0 !important;
+}
+
+.btn-secondary {
+  background-color: #D4CDFD !important;
+  border: solid 0px #221ECE !important;
+}
+
+input.form-control.ng-invalid {
+  /*border: solid 1px transparent;*/
+  /*box-shadow: 2px 2px 0px red;*/
+  /*border-radius: 1rem;*/
+  /*background-color: #ffe5e9;*/
+}
+.min-height-style{
+  min-height: 400px !important;
 }

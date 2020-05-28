@@ -20,7 +20,7 @@ import {NgxEditorModule} from "ngx-editor";
 import {TranslateModule} from "@ngx-translate/core";
 import {TagInputModule} from "ngx-chips";
 import {NgSelectModule} from "@ng-select/ng-select";
-
+import { NgxCurrencyModule } from "ngx-currency";
 
 @NgModule({
   declarations: [
@@ -39,6 +39,7 @@ import {NgSelectModule} from "@ng-select/ng-select";
     FontAwesomeModule,
     TabsModule.forRoot(),
     TooltipModule.forRoot(),
+    NgxCurrencyModule,
     BsDropdownModule,
     BsDatepickerModule,
     LottieModule,
