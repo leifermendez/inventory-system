@@ -1,4 +1,8 @@
 {
+  "GENERAL": {
+    "CURRENCY": "MXN",
+    "CURRENCY_SYMBOL": "$"
+  },
   "HOME": {
   },
   "LOGIN": {
@@ -15,6 +19,9 @@
   "PRODUCT": {
     "NAME": "Nombre de producto",
     "PROVIDER": "Proveedor",
-    "SKU": "SKU"
+    "SKU": "SKU",
+    "DEPOSIT": "Deposito",
+    "CATEGORIES": "Categorias",
+    "PRICES": "Precios"
   }
 }

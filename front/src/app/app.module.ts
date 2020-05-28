@@ -13,6 +13,7 @@ import player from 'lottie-web';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {Page404Component} from './components/page404/page404.component';
 import {ProductFormComponent} from './components/product-form/product-form.component';
+import {TagInputModule} from "ngx-chips";
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
@@ -41,6 +42,7 @@ export function playerFactory() {
     HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    TagInputModule,
     TranslateModule.forRoot({
       defaultLanguage: 'es',
       loader: {

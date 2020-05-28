@@ -1,22 +1,30 @@
-.text-muted{
+.text-muted {
   font-weight: 600;
   color: #808291;
 }
-.description-text{
+
+.description-text {
   color: #808291;
   font-size: .8rem;
   font-weight: 500;
 }
-.form-control{
+
+.form-control {
   border: 0;
   padding: .25rem .25rem;
+  border-bottom: solid 1px #fcfcfc;
+  border-radius: 0;
+  background-color: #fcfcfc;
 }
-.form-group label{
+
+.form-group label {
   font-size: .8rem;
 }
-.form-product .label{
+
+.form-product .label {
   font-size: .8rem;
 }
-.form-product .name{
+
+.form-product .name {
   font-size: 1.5rem;
 }

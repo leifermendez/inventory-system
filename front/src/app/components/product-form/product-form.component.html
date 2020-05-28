@@ -1,9 +1,11 @@
 <div class="form-product w-100 flex-wrap d-flex">
   <div class="custom-card-style col-12">
     <div>
-      <b class="label">{{"PRODUCT.NAME" |translate}}</b>
       <div class="name">
-        Amasadora / AMASA-20
+        <div class="form-group">
+          <label for="exampleInputEmail1">{{"PRODUCT.NAME" |translate}}</label>
+          <input type="text" class="form-control" aria-describedby="emailHelp"
+                 placeholder=""></div>
       </div>
     </div>
 
@@ -23,35 +25,84 @@
     <div class="custom-card-style col-12 mt-2">
       <div class="form-group">
         <label for="exampleInputEmail1">{{"PRODUCT.PROVIDER" |translate}}</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-               placeholder=""></div>
+        <input type="text" class="form-control" aria-describedby="emailHelp"
+               placeholder="">
+      </div>
+    </div>
+    <div class="custom-card-style col-12 mt-2">
+      <div class="form-group">
+        <label for="exampleInputEmail1">{{"PRODUCT.CATEGORIES" |translate}}</label>
+        <tag-input class="chip-price" [removable]="true" [(ngModel)]="itemsAsObjects" [identifyBy]="'id'"
+                   [displayBy]="'value'" #input>
+          <ng-template let-item="item" let-index="index">
+            {{ "GENERAL.CURRENCY_SYMBOL" |translate }} {{ item?.value | number: '1.2-2' }} {{ "GENERAL.CURRENCY" |translate }}
+            <delete-icon (click)="input.removeItem(item, index)"></delete-icon>
+          </ng-template>
+
+        </tag-input>
+      </div>
     </div>
   </div>
+
   <div class="col-md-6 col-lg-3 col-sm-12 pl-0 pr-2">
     <div class="custom-card-style col-12 mt-3">
       <div class="form-group">
         <label for="exampleInputEmail1">{{"PRODUCT.SKU" |translate}}</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        <input type="text" class="form-control" aria-describedby="emailHelp"
                placeholder=""></div>
-    </div>
-  </div>
-  <div class="col-md-6 col-lg-3 col-sm-12 pl-0 pr-0">
-    <div class="custom-card-style col-12 mt-3">
-      <form action="" [formGroup]="form">
-        <div class="description-text">
-          <ngx-editor [ngModel]="editorContent"
-                      [contentEditable]="true"
-                      formControlName="content"
-                      (ngModelChange)="editorContentChange($event)">
-          </ngx-editor>
-        </div>
-      </form>
     </div>
     <div class="custom-card-style col-12 mt-2">
       <div class="form-group">
-        <label for="exampleInputEmail1">{{"PRODUCT.PROVIDER" |translate}}</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-               placeholder=""></div>
+        <label for="exampleInputEmail1">{{"PRODUCT.PRICES" |translate}}</label>
+        <tag-input class="chip-price" [removable]="true" [(ngModel)]="itemsAsObjects" [identifyBy]="'id'"
+                   [displayBy]="'value'" #input>
+          <ng-template let-item="item" let-index="index">
+            {{ "GENERAL.CURRENCY_SYMBOL" |translate }} {{ item?.value | number: '1.2-2' }} {{ "GENERAL.CURRENCY" |translate }}
+            <delete-icon (click)="input.removeItem(item, index)"></delete-icon>
+          </ng-template>
+
+        </tag-input>
+      </div>
+    </div>
+    <div class="custom-card-style col-12 mt-2">
+      <div class="form-group">
+        <label for="exampleInputEmail1">{{"PRODUCT.DEPOSIT" |translate}}</label>
+        <input type="text" class="form-control" aria-describedby="emailHelp"
+               placeholder="">
+      </div>
+    </div>
+
+    <div class="custom-card-style col-12 mt-2">
+      <div class="form-group">
+        <label for="exampleInputEmail1">{{"PRODUCT.CATEGORIES" |translate}}</label>
+        <tag-input class="chip-price" [removable]="true" [(ngModel)]="itemsAsObjects" [identifyBy]="'id'"
+                   [displayBy]="'value'" #input>
+          <ng-template let-item="item" let-index="index">
+            {{ "GENERAL.CURRENCY_SYMBOL" |translate }} {{ item?.value | number: '1.2-2' }} {{ "GENERAL.CURRENCY" |translate }}
+            <delete-icon (click)="input.removeItem(item, index)"></delete-icon>
+          </ng-template>
+
+        </tag-input>
+      </div>
     </div>
   </div>
+<!--  <div class="col-md-6 col-lg-3 col-sm-12 pl-0 pr-0">-->
+<!--    <div class="custom-card-style col-12 mt-3">-->
+<!--      <form action="" [formGroup]="form">-->
+<!--        <div class="description-text">-->
+<!--          <ngx-editor [ngModel]="editorContent"-->
+<!--                      [contentEditable]="true"-->
+<!--                      formControlName="content"-->
+<!--                      (ngModelChange)="editorContentChange($event)">-->
+<!--          </ngx-editor>-->
+<!--        </div>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--    <div class="custom-card-style col-12 mt-2">-->
+<!--      <div class="form-group">-->
+<!--        <label for="exampleInputEmail1">{{"PRODUCT.PROVIDER" |translate}}</label>-->
+<!--        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"-->
+<!--               placeholder=""></div>-->
+<!--    </div>-->
+<!--  </div>-->
 </div>

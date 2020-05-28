@@ -139,5 +139,13 @@ Style
 
 .NgxEditor-Wrapper {
   min-height: 20rem;
-  border: 0px solid rgba(0,0,0,.2) !important;
+  border: 0px solid rgba(0, 0, 0, .2) !important;
+}
+
+.chip-price tag {
+  background-color: #D4CDFD !important;
+}
+
+.chip-price tag:hover {
+  box-shadow: 2px 3px 3px 0px #EAEBF3 !important;
 }

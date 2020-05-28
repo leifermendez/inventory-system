@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Schema} from "prosemirror-model";
-import { schema } from "ngx-editor";
+import {schema} from "ngx-editor";
+
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
@@ -16,6 +17,7 @@ export class ProductFormComponent implements OnInit {
     type: 'doc',
     content: []
   };
+  itemsAsObjects = [];
 
   editorContentChange(doc: object) {
     this.editorContent = doc;
@@ -36,7 +38,7 @@ export class ProductFormComponent implements OnInit {
   }
 
   parseText = () => {
-     // const contentNode = schema.nodeFromJSON(jsonDoc);
+    // const contentNode = schema.nodeFromJSON(jsonDoc);
     this.editorContent = new Schema({
       nodes: {
         text: {},

@@ -18,6 +18,7 @@ import {ProductFormComponent} from "../../components/product-form/product-form.c
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgxEditorModule} from "ngx-editor";
 import {TranslateModule} from "@ngx-translate/core";
+import {TagInputModule} from "ngx-chips";
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import {TranslateModule} from "@ngx-translate/core";
     NgxEditorModule,
     ReactiveFormsModule,
     TranslateModule,
+    TagInputModule,
   ],
   exports: [HeaderComponent, SideBarComponent, WorkingBoxComponent,
     ListItemsComponent, DetailInvoiceComponent, BoxEmptyComponent,
