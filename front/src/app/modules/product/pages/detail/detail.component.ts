@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-detail',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
+
+  public text: any;
 
   ngOnInit(): void {
+    this.text = ` <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque et nulla possimus quaerat quam reiciendis
+        sequi, voluptatum. Accusamus doloremque error iure, laboriosam nesciunt nobis pariatur repellat, rerum
+        temporibus, veritatis vero.
+      </p>`;
   }
 
 }

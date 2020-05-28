@@ -10,9 +10,9 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {BsDatepickerConfig, BsDatepickerModule} from "ngx-bootstrap/datepicker";
 import {LottieModule} from 'ngx-lottie';
 import player from 'lottie-web';
-import {HttpClient} from "@angular/common/http";
-import { Page404Component } from './components/page404/page404.component';
-import { ProductFormComponent } from './components/product-form/product-form.component';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {Page404Component} from './components/page404/page404.component';
+import {ProductFormComponent} from './components/product-form/product-form.component';
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
@@ -22,10 +22,10 @@ export function getDatepickerConfig(): BsDatepickerConfig {
   });
 }
 
-// AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+
 
 export function playerFactory() {
   return player;
@@ -38,10 +38,16 @@ export function playerFactory() {
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     TranslateModule.forRoot({
-      defaultLanguage: 'es'
+      defaultLanguage: 'es',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
     }),
     LottieModule.forRoot({player: playerFactory}),
     BsDropdownModule.forRoot(),

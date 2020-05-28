@@ -15,6 +15,10 @@ import {WorkingBoxComponent} from "../../components/working-box/working-box.comp
 import {LottieModule} from "ngx-lottie";
 import {LockedBoxComponent} from "../../components/locked-box/locked-box.component";
 import {ProductFormComponent} from "../../components/product-form/product-form.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {NgxEditorModule} from "ngx-editor";
+import {TranslateModule} from "@ngx-translate/core";
+
 
 @NgModule({
   declarations: [
@@ -35,7 +39,11 @@ import {ProductFormComponent} from "../../components/product-form/product-form.c
     TooltipModule.forRoot(),
     BsDropdownModule,
     BsDatepickerModule,
-    LottieModule
+    LottieModule,
+    FormsModule,
+    NgxEditorModule,
+    ReactiveFormsModule,
+    TranslateModule,
   ],
   exports: [HeaderComponent, SideBarComponent, WorkingBoxComponent,
     ListItemsComponent, DetailInvoiceComponent, BoxEmptyComponent,

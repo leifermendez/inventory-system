@@ -11,7 +11,8 @@ body {
 }
 
 .container-row {
-  padding: 1rem 5.5rem 1rem;
+  padding: 5rem 0rem 1rem 5rem;
+  flex-wrap: wrap;
 }
 
 .customToolTip .tooltip-inner {
@@ -113,6 +114,7 @@ body {
 .text-primary {
   color: #221ECD !important;
 }
+
 .img-section .margin-auto {
   margin: auto;
   display: inline-table;
@@ -125,7 +127,7 @@ body {
 /**
 Style
  */
-.custom-card-style{
+.custom-card-style {
   background-color: white;
   padding: 1rem 1rem;
   border-radius: .75rem;
@@ -133,4 +135,9 @@ Style
   font-size: .9rem;
   letter-spacing: .6px;
   box-shadow: 1px 3px 0px #EEEFF6;
+}
+
+.NgxEditor-Wrapper {
+  min-height: 20rem;
+  border: 0px solid rgba(0,0,0,.2) !important;
 }

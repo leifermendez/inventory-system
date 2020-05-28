@@ -2,5 +2,19 @@
   "HOME": {
   },
   "LOGIN": {
+    "WELCOME": "Bienvenido",
+    "SUB_TITLE": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    "FORM": {
+      "EMAIL": "Email address",
+      "EMAIL_PLACEHOLDER": "Lorem ipsum dolor sit amet, consectetur adipisicing el",
+      "PASSWORD": "Password",
+      "PASSWORD_PLACEHOLDER": "Lorem ipsum dolor sit amet, consectetur adipisicing el",
+      "SEND": "Ingresar"
+    }
+  },
+  "PRODUCT": {
+    "NAME": "Nombre de producto",
+    "PROVIDER": "Proveedor",
+    "SKU": "SKU"
   }
 }

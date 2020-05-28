@@ -1,6 +1,8 @@
 :host {
   display: block;
   background-color: white;
+  position: fixed;
+  width: 100%;
   /*box-shadow: 0 0 10px rgba(182, 182, 182, 0.21);*/
   z-index: 1;
 }
@@ -19,8 +21,8 @@ h6, h5, h4, h3, h2, h1 {
 
 .section-search {
   /*background: rebeccapurple;*/
-  width: 30%;
-  padding-right: 4rem;
+  /*width: 30%;*/
+  /*padding-right: 4rem;*/
 }
 
 .section-search .src-input, .section-search .src-input input {

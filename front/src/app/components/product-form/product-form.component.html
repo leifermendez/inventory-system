@@ -1,19 +1,57 @@
-<div class="form-product w-100">
-  <div class="custom-card-style">
+<div class="form-product w-100 flex-wrap d-flex">
+  <div class="custom-card-style col-12">
     <div>
-      Amasadora / AMASA-20
+      <b class="label">{{"PRODUCT.NAME" |translate}}</b>
+      <div class="name">
+        Amasadora / AMASA-20
+      </div>
     </div>
-    <div>
-      <small class="text-muted">Dough Mixer</small>
+
+  </div>
+  <div class="col-md-6 col-lg-6 col-sm-12 pl-0 pr-2">
+    <div class="custom-card-style col-12 mt-3">
+      <form action="" [formGroup]="form">
+        <div class="description-text">
+          <ngx-editor [ngModel]="editorContent"
+                      [contentEditable]="true"
+                      formControlName="content"
+                      (ngModelChange)="editorContentChange($event)">
+          </ngx-editor>
+        </div>
+      </form>
+    </div>
+    <div class="custom-card-style col-12 mt-2">
+      <div class="form-group">
+        <label for="exampleInputEmail1">{{"PRODUCT.PROVIDER" |translate}}</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+               placeholder=""></div>
     </div>
   </div>
-  <div class="custom-card-style mt-3">
-    <div class="description-text">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque et nulla possimus quaerat quam reiciendis
-        sequi, voluptatum. Accusamus doloremque error iure, laboriosam nesciunt nobis pariatur repellat, rerum
-        temporibus, veritatis vero.
-      </p>
+  <div class="col-md-6 col-lg-3 col-sm-12 pl-0 pr-2">
+    <div class="custom-card-style col-12 mt-3">
+      <div class="form-group">
+        <label for="exampleInputEmail1">{{"PRODUCT.SKU" |translate}}</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+               placeholder=""></div>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-3 col-sm-12 pl-0 pr-0">
+    <div class="custom-card-style col-12 mt-3">
+      <form action="" [formGroup]="form">
+        <div class="description-text">
+          <ngx-editor [ngModel]="editorContent"
+                      [contentEditable]="true"
+                      formControlName="content"
+                      (ngModelChange)="editorContentChange($event)">
+          </ngx-editor>
+        </div>
+      </form>
+    </div>
+    <div class="custom-card-style col-12 mt-2">
+      <div class="form-group">
+        <label for="exampleInputEmail1">{{"PRODUCT.PROVIDER" |translate}}</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+               placeholder=""></div>
     </div>
   </div>
 </div>
