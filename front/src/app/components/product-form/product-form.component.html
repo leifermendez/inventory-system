@@ -11,58 +11,44 @@
 
   </div>
   <div class="col-md-6 col-lg-6 col-sm-12 pl-0 pr-2">
-    <div class="custom-card-style col-12 mt-3">
+    <div class="custom-card-style h-100 col-12 mt-3">
       <form action="" [formGroup]="form">
         <div class="description-text">
           <ngx-editor [ngModel]="editorContent"
                       [contentEditable]="true"
+
                       formControlName="content"
                       (ngModelChange)="editorContentChange($event)">
           </ngx-editor>
         </div>
       </form>
     </div>
-    <div class="custom-card-style col-12 mt-2">
-      <div class="form-group">
-        <label for="exampleInputEmail1">{{"PRODUCT.PROVIDER" |translate}}</label>
-        <input type="text" class="form-control" aria-describedby="emailHelp"
-               placeholder="">
-      </div>
-    </div>
-    <div class="custom-card-style col-12 mt-2">
-      <div class="form-group">
-        <label for="exampleInputEmail1">{{"PRODUCT.CATEGORIES" |translate}}</label>
-        <tag-input class="chip-price" [removable]="true" [(ngModel)]="itemsAsObjects" [identifyBy]="'id'"
-                   [displayBy]="'value'" #input>
-          <ng-template let-item="item" let-index="index">
-            {{ "GENERAL.CURRENCY_SYMBOL" |translate }} {{ item?.value | number: '1.2-2' }} {{ "GENERAL.CURRENCY" |translate }}
-            <delete-icon (click)="input.removeItem(item, index)"></delete-icon>
-          </ng-template>
 
-        </tag-input>
-      </div>
-    </div>
   </div>
 
   <div class="col-md-6 col-lg-3 col-sm-12 pl-0 pr-2">
     <div class="custom-card-style col-12 mt-3">
+<!--      <div class="form-group">-->
+<!--        <label for="exampleInputEmail1">{{"PRODUCT.PRICES" |translate}}</label>-->
+<!--        <tag-input class="chip-price" [removable]="true" [(ngModel)]="itemsAsObjects" [identifyBy]="'id'"-->
+<!--                   [displayBy]="'value'" #input>-->
+<!--          <ng-template let-item="item" let-index="index">-->
+<!--            {{ "GENERAL.CURRENCY_SYMBOL" |translate }} {{ item?.value | number: '1.2-2' }} {{ "GENERAL.CURRENCY" |translate }}-->
+<!--            <delete-icon (click)="input.removeItem(item, index)"></delete-icon>-->
+<!--          </ng-template>-->
+
+<!--        </tag-input>-->
+<!--      </div>-->
       <div class="form-group">
-        <label for="exampleInputEmail1">{{"PRODUCT.SKU" |translate}}</label>
+        <label for="exampleInputEmail1">{{"PRODUCT.PRICES" |translate}}</label>
         <input type="text" class="form-control" aria-describedby="emailHelp"
                placeholder=""></div>
     </div>
     <div class="custom-card-style col-12 mt-2">
       <div class="form-group">
-        <label for="exampleInputEmail1">{{"PRODUCT.PRICES" |translate}}</label>
-        <tag-input class="chip-price" [removable]="true" [(ngModel)]="itemsAsObjects" [identifyBy]="'id'"
-                   [displayBy]="'value'" #input>
-          <ng-template let-item="item" let-index="index">
-            {{ "GENERAL.CURRENCY_SYMBOL" |translate }} {{ item?.value | number: '1.2-2' }} {{ "GENERAL.CURRENCY" |translate }}
-            <delete-icon (click)="input.removeItem(item, index)"></delete-icon>
-          </ng-template>
-
-        </tag-input>
-      </div>
+        <label for="exampleInputEmail1">{{"PRODUCT.SKU" |translate}}</label>
+        <input type="text" class="form-control" aria-describedby="emailHelp"
+               placeholder=""></div>
     </div>
     <div class="custom-card-style col-12 mt-2">
       <div class="form-group">
@@ -71,7 +57,6 @@
                placeholder="">
       </div>
     </div>
-
     <div class="custom-card-style col-12 mt-2">
       <div class="form-group">
         <label for="exampleInputEmail1">{{"PRODUCT.CATEGORIES" |translate}}</label>
@@ -83,6 +68,16 @@
           </ng-template>
 
         </tag-input>
+      </div>
+    </div>
+    <div class="custom-card-style col-12 mt-2">
+      <div class="form-group">
+        <label for="exampleInputEmail1">{{"PRODUCT.PROVIDER" |translate}}</label>
+        <ng-select [items]="cities"
+                   bindLabel="name"
+                   placeholder="Select city"
+                   [(ngModel)]="selectedCity">
+        </ng-select>
       </div>
     </div>
   </div>

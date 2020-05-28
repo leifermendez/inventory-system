@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;1,400;1,500&display=swap');
+@import "~@ng-select/ng-select/themes/default.theme.css";
 
 body {
   font-family: 'Montserrat', sans-serif !important;
@@ -138,8 +139,19 @@ Style
 }
 
 .NgxEditor-Wrapper {
-  min-height: 20rem;
+  overflow: auto;
+  height: 30rem;
   border: 0px solid rgba(0, 0, 0, .2) !important;
+}
+
+.NgxEditor-Wrapper-full-width{
+  position: fixed;
+  top: 0;
+  /* background: red; */
+  z-index: 99;
+  left: 0;
+  height: 100%;
+  padding: 2rem .5rem 0rem .5rem;
 }
 
 .chip-price tag {
@@ -148,4 +160,8 @@ Style
 
 .chip-price tag:hover {
   box-shadow: 2px 3px 3px 0px #EAEBF3 !important;
+}
+
+.ng-select .ng-select-container {
+  border: 0 !important;
 }

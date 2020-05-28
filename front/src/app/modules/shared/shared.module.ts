@@ -19,6 +19,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgxEditorModule} from "ngx-editor";
 import {TranslateModule} from "@ngx-translate/core";
 import {TagInputModule} from "ngx-chips";
+import {NgSelectModule} from "@ng-select/ng-select";
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import {TagInputModule} from "ngx-chips";
     BsDropdownModule,
     BsDatepickerModule,
     LottieModule,
+    NgSelectModule,
     FormsModule,
     NgxEditorModule,
     ReactiveFormsModule,

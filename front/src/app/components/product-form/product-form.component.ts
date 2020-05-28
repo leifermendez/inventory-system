@@ -18,6 +18,14 @@ export class ProductFormComponent implements OnInit {
     content: []
   };
   itemsAsObjects = [];
+  cities = [
+    {id: 1, name: 'Vilnius'},
+    {id: 2, name: 'Kaunas'},
+    {id: 3, name: 'Pavilnys', disabled: true},
+    {id: 4, name: 'Pabradė'},
+    {id: 5, name: 'Klaipėda'}
+  ];
+  selectedCity: any;
 
   editorContentChange(doc: object) {
     this.editorContent = doc;
