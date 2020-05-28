@@ -20,7 +20,13 @@ import {NgxEditorModule} from "ngx-editor";
 import {TranslateModule} from "@ngx-translate/core";
 import {TagInputModule} from "ngx-chips";
 import {NgSelectModule} from "@ng-select/ng-select";
-import { NgxCurrencyModule } from "ngx-currency";
+import {NgxCurrencyModule} from "ngx-currency";
+import {CookieService} from "ngx-cookie-service";
+import {RouterModule} from "@angular/router";
+import {ProviderFormComponent} from "../../components/provider-form/provider-form.component";
+import {DepositFormComponent} from "../../components/deposit-form/deposit-form.component";
+import {SectionBtnComponent} from "../../components/section-btn/section-btn.component";
+import {UserFormComponent} from "../../components/user-form/user-form.component";
 
 @NgModule({
   declarations: [
@@ -32,7 +38,11 @@ import { NgxCurrencyModule } from "ngx-currency";
     BoxEmptyComponent,
     WorkingBoxComponent,
     LockedBoxComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProviderFormComponent,
+    DepositFormComponent,
+    SectionBtnComponent,
+    UserFormComponent
   ],
   imports: [
     CommonModule,
@@ -49,10 +59,14 @@ import { NgxCurrencyModule } from "ngx-currency";
     ReactiveFormsModule,
     TranslateModule,
     TagInputModule,
+    RouterModule,
   ],
   exports: [HeaderComponent, SideBarComponent, WorkingBoxComponent,
     ListItemsComponent, DetailInvoiceComponent, BoxEmptyComponent,
-    LockedBoxComponent, ProductFormComponent]
+    LockedBoxComponent, ProductFormComponent,
+    ProviderFormComponent, DepositFormComponent,
+    SectionBtnComponent,
+    UserFormComponent]
 })
 export class SharedModule {
 }

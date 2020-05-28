@@ -3,9 +3,24 @@
   background-color: white;
   position: fixed;
   width: 100%;
+  z-index: 9;
   /*box-shadow: 0 0 10px rgba(182, 182, 182, 0.21);*/
-  z-index: 1;
+  /*z-index: 1;*/
 }
+
+.history-menu {
+  list-style: none;
+  margin: 0;
+  display: flex;
+  padding: .5rem;
+}
+
+.history-menu li {
+  margin-right: .5rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 
 .header-wrapper {
   padding-left: 5rem;;
@@ -71,7 +86,7 @@ h6, h5, h4, h3, h2, h1 {
 .icon-list-menu:hover {
   box-shadow: 0 0 10px rgba(211, 211, 214, 0.61);
   transform: scale(1.1);
-  background-color: #E9E5FD!important;
+  background-color: #E9E5FD !important;
   -webkit-transition: all 200ms;
   -moz-transition: all 200ms;
   -o-transition: all 200ms;

@@ -6,6 +6,7 @@
   left: 0;
   width: 65px;
   height: 100%;
+  z-index: 9;
 }
 
 .logo {
@@ -42,7 +43,8 @@
   color: #808291;
 }
 
-.menu-list ul li:hover .icon {
+.menu-list ul li:hover .icon,
+.menu-list ul li .active .icon{
   color: #221ECD;
   -webkit-transition: all 200ms;
   -moz-transition: all 200ms;
@@ -59,7 +61,8 @@
 
 }
 
-.menu-list ul li:hover .sub-wrapper {
+.menu-list ul li:hover .sub-wrapper,
+.menu-list ul li .active {
   transform: scale(1.1);
   margin-top: .2rem;
   border-radius: 8rem;

@@ -1,0 +1,23 @@
+.form-control {
+  border: 0;
+  padding: .25rem .25rem;
+  border-bottom: solid 1px #fcfcfc;
+  border-radius: 0;
+  background-color: #fcfcfc;
+}
+
+.form-group label {
+  font-size: .8rem;
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
+.form-product .label {
+  font-size: .8rem;
+}
+
+.form-product .name {
+  font-size: 1rem;
+}

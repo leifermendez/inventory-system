@@ -7,16 +7,18 @@ import { RegisterComponent } from './pages/register/register.component';
 import {SharedModule} from "../shared/shared.module";
 import {LottieModule} from "ngx-lottie";
 import {TranslateModule} from "@ngx-translate/core";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
-    imports: [
-        CommonModule,
-        OauthRoutingModule,
-        SharedModule,
-        LottieModule,
-        TranslateModule
-    ]
+  imports: [
+    CommonModule,
+    OauthRoutingModule,
+    SharedModule,
+    LottieModule,
+    TranslateModule,
+    ReactiveFormsModule
+  ]
 })
 export class OauthModule { }

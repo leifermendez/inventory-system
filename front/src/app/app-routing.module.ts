@@ -5,6 +5,9 @@ import {OauthModule} from "./modules/oauth/oauth.module";
 import {AuthGuardGuard} from "./auth-guard.guard";
 import {Page404Component} from "./components/page404/page404.component";
 import {ProductModule} from "./modules/product/product.module";
+import {ProvidersModule} from "./modules/providers/providers.module";
+import {DepositModule} from "./modules/deposit/deposit.module";
+import {UserModule} from "./modules/user/user.module";
 
 
 const routes: Routes = [
@@ -20,6 +23,21 @@ const routes: Routes = [
   {
     path: 'product',
     loadChildren: () => ProductModule,
+    canActivate: [AuthGuardGuard]
+  },
+  {
+    path: 'providers',
+    loadChildren: () => ProvidersModule,
+    canActivate: [AuthGuardGuard]
+  },
+  {
+    path: 'deposits',
+    loadChildren: () => DepositModule,
+    canActivate: [AuthGuardGuard]
+  },
+  {
+    path: 'users',
+    loadChildren: () => UserModule,
     canActivate: [AuthGuardGuard]
   },
   {

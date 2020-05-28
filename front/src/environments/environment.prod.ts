@@ -1,4 +1,5 @@
 export const environment = {
   api: 'http://localhost:300',
-  production: true
+  production: true,
+  daysTokenExpire: 4
 }

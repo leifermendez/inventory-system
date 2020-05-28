@@ -5,16 +5,20 @@
         <h1 class="title">{{"LOGIN.WELCOME" | translate}}</h1>
         <span class="text-muted">{{"LOGIN.SUB_TITLE" |translate}}</span>
       </div>
-      <form>
+      <form  [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off" >
         <div class="form-group">
           <label for="exampleInputEmail1">{{"LOGIN.FORM.EMAIL" |translate}}</label>
-          <input type="emaild" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          <input type="text" class="form-control"
+                 formControlName="email"
+                 id="exampleInputEmail1" aria-describedby="emailHelp"
                  placeholder="Enter email">
           <small id="emailHelp" class="form-text text-muted">{{"LOGIN.FORM.EMAIL_PLACEHOLDER" |translate}}</small>
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">{{"LOGIN.FORM.PASSWORD" |translate}}</label>
-          <input type="passwordd" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          <input type="password"
+                 formControlName="password"
+                 class="form-control" id="exampleInputPassword1" placeholder="Password">
         </div>
 
         <button type="submit" class="btn btn-primary btn-radius btn-block">{{"LOGIN.FORM.SEND" |translate}}</button>

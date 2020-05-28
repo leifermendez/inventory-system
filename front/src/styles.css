@@ -16,6 +16,10 @@ body {
   flex-wrap: wrap;
 }
 
+.customToolTip {
+  z-index: 999 !important;
+}
+
 .customToolTip .tooltip-inner {
   background-color: #221ECD;
   color: #fff;
@@ -130,7 +134,7 @@ Style
  */
 .custom-card-style {
   background-color: white;
-  padding: 1rem 1rem;
+  padding: .5rem 1rem;
   border-radius: .75rem;
   font-weight: 600;
   font-size: .9rem;
@@ -172,11 +176,33 @@ Style
 }
 
 input.form-control.ng-invalid {
-  /*border: solid 1px transparent;*/
-  /*box-shadow: 2px 2px 0px red;*/
-  /*border-radius: 1rem;*/
-  /*background-color: #ffe5e9;*/
+  border: solid 1px transparent;
+  box-shadow: 2px 1px 0px #ffc0c0;
+  border-radius: 1rem;
+  background-color: #fff2f4;
 }
-.min-height-style{
+
+.min-height-style {
   min-height: 400px !important;
+}
+
+.custom-card-style-section {
+  padding-bottom: 1rem !important;
+  padding-top: 0 !important;
+}
+
+.custom-card-style-section .tabs {
+  /*background: red;*/
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-round {
+  cursor: pointer;
+  background-color: white;
+  bordeR: 0;
+  width: 45px;
+  height: 45px;
+  border-radius: 4rem;
+  text-align: center;
 }

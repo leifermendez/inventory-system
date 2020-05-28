@@ -11,6 +11,11 @@ export class DetailComponent implements OnInit {
   }
 
   public text: any;
+  public history: any = [
+    {
+      name:'Producto'
+    }
+  ]
 
   ngOnInit(): void {
     this.text = ` <p>

@@ -44,7 +44,7 @@
 }
 
 .items ul li:hover {
-  transform: scale(1.05);
+  transform: scale(1.01);
   z-index: 9;
   background-color: #221ECD;
   -webkit-transition: all 200ms;

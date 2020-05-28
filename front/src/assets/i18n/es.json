@@ -1,7 +1,12 @@
 {
   "GENERAL": {
     "CURRENCY": "MXN ",
-    "CURRENCY_SYMBOL": "$"
+    "CURRENCY_SYMBOL": "$",
+    "SAVE": "Guardar",
+    "LIST": "Lista",
+    "EMPTY": "Sin resultados",
+    "UPGRADE": "Proximamente",
+    "NOT_ALLOWED": "No tienes permisos"
   },
   "HOME": {
   },
@@ -23,6 +28,41 @@
     "DEPOSIT": "Deposito",
     "CATEGORIES": "Categorias",
     "PRICES": "Precios",
+    "TAG": "Etiquetas",
+    "ADD": "Agregar"
+  },
+  "PROVIDER": {
+    "NAME": "Nombre de empresa",
+    "ADDRESS": "Dirección de empresa",
+    "EMAIL": "Email de empresa",
+    "PHONE": "Teléfono de empresa",
+    "DESCRIPTION": "Observación",
+    "MANAGER": "Encargado",
+    "TAG": "Etiquetas",
+    "ADD": "Agregar"
+  },
+  "DEPOSITS": {
+    "NAME": "Nombre de deposito",
+    "ADDRESS": "Dirección de deposito",
+    "EMAIL": "Email de deposito",
+    "PHONE": "Teléfono de deposito",
+    "DESCRIPTION": "Observación",
+    "MANAGER": "Encargado",
+    "TAG": "Etiquetas",
+    "ADD": "Agregar"
+  },
+  "USER": {
+    "NAME": "Nombre",
+    "LAST_NAME": "Apellido",
+    "EMAIL": "Email",
+    "NIE": "Numero de identificacion",
+    "PHONE": "Teléfono",
+    "AVATAR": "Avatar",
+    "ADDRESS": "Direccion",
+    "ROL": "Rol",
+    "DESCRIPTION": "Observación",
+    "MANAGER": "Encargado",
+    "PASSWORD": "Contraseña",
     "TAG": "Etiquetas",
     "ADD": "Agregar"
   }

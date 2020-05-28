@@ -14,6 +14,12 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {Page404Component} from './components/page404/page404.component';
 import {ProductFormComponent} from './components/product-form/product-form.component';
 import {TagInputModule} from "ngx-chips";
+import {CookieService} from "ngx-cookie-service";
+import { ProviderFormComponent } from './components/provider-form/provider-form.component';
+import { DepositFormComponent } from './components/deposit-form/deposit-form.component';
+import { SectionBtnComponent } from './components/section-btn/section-btn.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
+import { ListGeneralComponent } from './components/list-general/list-general.component';
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
@@ -35,7 +41,8 @@ export function playerFactory() {
 @NgModule({
   declarations: [
     AppComponent,
-    Page404Component
+    Page404Component,
+    ListGeneralComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,8 +62,10 @@ export function playerFactory() {
     BsDropdownModule.forRoot(),
     BsDatepickerModule.forRoot()
   ],
-  providers: [{provide: BsDatepickerConfig, useFactory: getDatepickerConfig}],
-  exports: [],
+  providers: [{provide: BsDatepickerConfig, useFactory: getDatepickerConfig}, CookieService],
+  exports: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, NgZone, OnInit} from '@angular/core';
+import {AnimationOptions} from "ngx-lottie";
+import {AnimationItem} from "lottie-web";
 
 @Component({
   selector: 'app-box-empty',
@@ -7,9 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoxEmptyComponent implements OnInit {
 
-  constructor() { }
+  options: AnimationOptions = {
+    path: '/assets/images/void.json',
+  };
+  private animationItem: AnimationItem;
+
+  constructor(private ngZone: NgZone) {
+  }
+
 
   ngOnInit(): void {
   }
 
+  animationCreated(animationItem: AnimationItem): void {
+    this.animationItem = animationItem;
+    // this.animationItem.stop();
+  }
+
+  loopComplete(e): void {
+    // e.stop().then();
+    this.pause()
+  }
+
+  stop(): void {
+    this.ngZone.runOutsideAngular(() => this.animationItem.stop());
+  }
+
+  pause(): void {
+    this.ngZone.runOutsideAngular(() => this.animationItem.setSegment(43,44));
+  }
 }

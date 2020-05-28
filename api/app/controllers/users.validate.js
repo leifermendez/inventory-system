@@ -45,13 +45,7 @@ exports.createItem = [
     })
     .withMessage('PASSWORD_TOO_SHORT_MIN_5'),
   check('role')
-    .exists()
-    .withMessage('MISSING')
-    .not()
-    .isEmpty()
-    .withMessage('IS_EMPTY')
-    .isIn(['user', 'admin'])
-    .withMessage('USER_NOT_IN_KNOWN_ROLE'),
+    .optional(),
   check('phone')
     .exists()
     .withMessage('MISSING')

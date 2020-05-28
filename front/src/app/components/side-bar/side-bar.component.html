@@ -1,6 +1,6 @@
 <div class="d-flex flex-column h-100 justify-content-between">
   <div>
-    <div>
+    <div [routerLink]="['/']">
       <div class="logo">
         <fa-icon [icon]="faCrown" size="lg"></fa-icon>
       </div>
@@ -10,10 +10,12 @@
       <ul class="pt-4">
         <li class="pl-1 pr-1 pt-2 pb-1"
             placement="right"
-            [tooltip]="tolTemplate" containerClass="customToolTip"  [delay]="350" *ngFor="let a of menu">
+            [tooltip]="tolTemplate" containerClass="customToolTip"
+            [routerLink]="a.route"
+            [delay]="115" *ngFor="let a of menu">
           <ng-template #tolTemplate>{{a?.name}}</ng-template>
-          <div class="p-2 icon-wrapper">
-            <div class="p-1 sub-wrapper">
+          <div class="p-2  icon-wrapper">
+            <div class="p-1 sub-wrapper" [routerLinkActive]="['active']">
               <fa-icon class="icon" [icon]="a.icon"></fa-icon>
             </div>
           </div>
@@ -23,7 +25,9 @@
   </div>
   <div class="footer mb-3">
     <div class="text-center p-2 wrapper-avatar">
-      <img class="avatar" src="https://images.unsplash.com/photo-1506919258185-6078bba55d2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1030&q=80" alt="">
+      <img class="avatar"
+           src="https://images.unsplash.com/photo-1506919258185-6078bba55d2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1030&q=80"
+           alt="">
     </div>
     <div class="text-center pt-2">
       <a href="" class="btn btn-icon">

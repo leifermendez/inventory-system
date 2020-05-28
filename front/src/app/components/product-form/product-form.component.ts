@@ -1,12 +1,11 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Schema} from "prosemirror-model";
+import {faLifeRing, faSave, faCheckCircle} from '@fortawesome/free-regular-svg-icons';
 import {schema} from "ngx-editor";
-import {
-  faCheck
-}
-  from '@fortawesome/free-solid-svg-icons';
+
 import {CurrencyMaskInputMode} from "ngx-currency";
+import {RestService} from "../../rest.service";
 
 @Component({
   selector: 'app-product-form',
@@ -18,22 +17,26 @@ export class ProductFormComponent implements OnInit {
   @Input() content: string;
   public form: FormGroup;
   public prices: any = []
+  public optionsMenu: any = [
+    {
+      name: 'Save',
+      icon: faSave
+    }
+  ]
+  faSave = faSave
+  faCheckCircle = faCheckCircle
+  faLifeRing = faLifeRing
 
   priceTmp = 0;
 
-  faCheck = faCheck
   editorContent: object = {
     type: 'doc',
     content: []
   };
   itemsAsObjects = [];
-  cities = [
-    {id: 1, name: 'Vilnius'},
-    {id: 2, name: 'Kaunas'},
-    {id: 3, name: 'Pavilnys', disabled: true},
-    {id: 4, name: 'Pabradė'},
-    {id: 5, name: 'Klaipėda'}
-  ];
+  public deposits = [];
+  public providers = [];
+
   selectedCity: any;
 
   public ngxCurrencyOptions = {
@@ -63,6 +66,7 @@ export class ProductFormComponent implements OnInit {
   }
 
   constructor(
+    private rest: RestService,
     private formBuilder: FormBuilder
   ) {
   }
@@ -74,23 +78,35 @@ export class ProductFormComponent implements OnInit {
       name: ['', Validators.required],
       content: ['', Validators.required],
       categories: ['', Validators.required],
+      deposit: ['', Validators.required],
       provider: ['', Validators.required],
       sku: ['', Validators.required],
       tag: [''],
       gallery: [''],
       description: [''],
     });
+    this.loadDeposits();
+    this.loadProviders();
     // this.form.patchValue({content:'Ready!'})
 
   }
 
-  parseText = () => {
-    // const contentNode = schema.nodeFromJSON(jsonDoc);
-    this.editorContent = new Schema({
-      nodes: {
-        text: {},
-        doc: {content: "text*"}
-      }
+  loadProviders = () => {
+    this.rest.get(`providers?limit=1000`).subscribe(res => {
+      this.providers = this.parseData(res);
     })
   }
+
+  loadDeposits = () => {
+    this.rest.get(`deposits?limit=1000`).subscribe(res => {
+      this.deposits = this.parseData(res);
+    })
+  }
+
+  parseData = (data: any) => {
+    // const tmp = [];
+    // data.docs.map(a => tmp.push()
+    return data.docs;
+  }
+
 }

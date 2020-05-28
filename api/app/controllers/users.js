@@ -27,6 +27,7 @@ const createItem = async (req) => {
       verification: uuid.v4()
     })
     user.save((err, item) => {
+      // console.log(req)
       if (err) {
         reject(utils.buildErrObject(422, err.message))
       }

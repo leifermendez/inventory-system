@@ -1,12 +1,13 @@
-:host{
-  opacity: .6;
+.margin-auto {
+  margin: auto;
+  display: inline-table;
+}
+
+ng-lottie .div {
+  margin: auto;
+}
+
+:host {
   display: block;
-  margin-top: 1rem;
-  text-align: center;
-}
-.img-box{
-  width: 5rem;
-}
-.text-muted{
-  color: #7e8096 !important;
+  opacity: .7;
 }

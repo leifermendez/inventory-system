@@ -1,11 +1,23 @@
 <form class="form-product w-100 flex-wrap d-flex" [formGroup]="form">
-  <div class="custom-card-style col-12 ">
-    <div>
+  <div class="custom-card-style col-12 flex-wrap d-flex">
+    <div class="col-10 p-0">
       <div class="name">
         <div class="form-group">
           <label>{{"PRODUCT.NAME" |translate}}</label>
-          <input type="text" formControlName="name" class="form-control" aria-describedby="emailHelp"
+          <input type="text" formControlName="name"
+                 class="form-control" aria-describedby="emailHelp"
                  placeholder=""></div>
+      </div>
+    </div>
+    <div class="col-2 p-0 text-right">
+      <div class="list-menu-header">
+        <ul>
+          <li *ngFor="let a of optionsMenu">
+            <div class="icon-list-menu mr-1 ml-1">
+              <fa-icon size="2x" [icon]="a?.icon"></fa-icon>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
 
@@ -36,30 +48,30 @@
     <div class="custom-card-style col-12 mt-2">
       <div class="form-group">
         <label>{{"PRODUCT.CATEGORIES" |translate}}</label>
-        <ng-select formControlName="provider" [items]="cities"
+        <ng-select formControlName="categories" [items]="deposits"
                    bindLabel="name"
-                   placeholder="Select city"
-                   [(ngModel)]="selectedCity">
+                   placeholder="">
         </ng-select>
       </div>
     </div>
     <div class="custom-card-style col-12 mt-2">
       <div class="form-group">
         <label>{{"PRODUCT.PROVIDER" |translate}}</label>
-        <ng-select formControlName="provider" [items]="cities"
+        <ng-select formControlName="provider" [items]="providers"
                    bindLabel="name"
-                   placeholder="Select city"
-                   [(ngModel)]="selectedCity">
+                   [searchable]="true"
+                   [clearable]="false"
+                   placeholder="">
         </ng-select>
       </div>
     </div>
     <div class="custom-card-style col-12 mt-2">
       <div class="form-group">
         <label>{{"PRODUCT.DEPOSIT" |translate}}</label>
-        <ng-select formControlName="provider" [items]="cities"
+        <ng-select formControlName="deposit" [items]="deposits"
                    bindLabel="name"
-                   placeholder="Select city"
-                   [(ngModel)]="selectedCity">
+                   [clearable]="false"
+                   placeholder="">
         </ng-select>
       </div>
     </div>
@@ -68,6 +80,7 @@
         <label>{{"PRODUCT.TAG" |translate}}</label>
         <tag-input class="chip-price" [(ngModel)]="itemsAsObjects"
                    [identifyBy]="'id'"
+                   formControlName="tag"
                    [displayBy]="'name'"></tag-input>
       </div>
     </div>
@@ -95,7 +108,7 @@
 
         <div class="text-right pt-3 pb-3">
           <button type="button" (click)="addPrice($event)" class="btn btn-sm btn-primary btn-radius btn-block">
-            <fa-icon [icon]="faCheck"></fa-icon>
+            <fa-icon [icon]="faCheckCircle"></fa-icon>
             <span class="pl-1">{{"PRODUCT.ADD" |translate}}</span>
           </button>
         </div>

@@ -1,0 +1,10 @@
+.btn-round:hover{
+  transform: scale(1.1);
+  -webkit-transition: all 200ms;
+  -moz-transition: all 200ms;
+  -o-transition: all 200ms;
+  transition: all 200ms;
+}
+.btn-round:hover fa-icon{
+  color: #221ECE;
+}

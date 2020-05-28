@@ -80,7 +80,7 @@ const saveUserAccessAndReturnToken = async (req, user) => {
       const userInfo = setUserInfo(user)
       // Returns data with access token
       resolve({
-        token: generateToken(user._id),
+        session: generateToken(user._id),
         user: userInfo
       })
     })

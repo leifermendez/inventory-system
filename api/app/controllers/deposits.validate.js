@@ -22,7 +22,7 @@ exports.createItem = [
   check('tag')
     .exists(),
   check('trace')
-    .exists(),
+    .optional(),
   check('address')
     .exists()
     .withMessage('MISSING')

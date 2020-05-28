@@ -1,0 +1,113 @@
+<form (submit)="onSubmit()" class="form-product w-100 flex-wrap d-flex" [formGroup]="form">
+  <div class="col-12 p-0 flex-wrap d-flex">
+    <div class="text-right w-100">
+      <app-section-btn [valid]="form.valid"></app-section-btn>
+    </div>
+<!--  {{ findInvalidControls() | json}}-->
+    <div class="custom-card-style col-12 flex-wrap d-flex">
+      <div class="col-12 p-0">
+        <div class="name">
+          <div class="form-group">
+            <label>{{"USER.NAME" |translate}}</label>
+            <input type="text" formControlName="name"
+                   class="form-control"
+                   placeholder=""></div>
+        </div>
+      </div>
+    </div>
+    <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
+      <div class="col-12 p-0">
+        <div class="name">
+          <div class="form-group">
+            <label>{{"USER.LAST_NAME" |translate}}</label>
+            <input type="text" formControlName="lastName"
+                   class="form-control"
+                   placeholder=""></div>
+        </div>
+      </div>
+    </div>
+    <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
+      <div class="col-12 p-0">
+        <div class="name">
+          <div class="form-group">
+            <label>{{"USER.EMAIL" |translate}}</label>
+            <input type="text" formControlName="email"
+                   class="form-control"
+                   placeholder=""></div>
+        </div>
+      </div>
+    </div>
+    <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
+      <div class="col-12 p-0">
+        <div class="name">
+          <div class="form-group">
+            <label>{{"USER.PASSWORD" |translate}}</label>
+            <input type="text" formControlName="password"
+                   class="form-control"
+                   placeholder=""></div>
+        </div>
+      </div>
+    </div>
+    <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
+      <div class="col-12 p-0">
+        <div class="name">
+          <div class="form-group">
+            <label>{{"USER.ADDRESS" |translate}}</label>
+            <input type="text" formControlName="address"
+                   class="form-control"
+                   placeholder=""></div>
+        </div>
+      </div>
+    </div>
+    <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
+      <div class="col-12 p-0">
+        <div class="name">
+          <div class="form-group">
+            <label>{{"USER.NIE" |translate}}</label>
+            <input type="text" formControlName="nie"
+                   class="form-control"
+                   placeholder=""></div>
+        </div>
+      </div>
+    </div>
+    <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
+      <div class="col-12 p-0">
+        <div class="name">
+          <div class="form-group">
+            <label>{{"USER.PHONE" |translate}}</label>
+            <input type="text" formControlName="phone"
+                   class="form-control"
+                   placeholder=""></div>
+        </div>
+      </div>
+    </div>
+    <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
+      <div class="col-12 p-0">
+        <div class="name">
+          <div class="form-group">
+            <label>{{"USER.ROL" |translate}}</label>
+<!--            <input type="text" formControlName="role"-->
+<!--                   class="form-control" aria-describedby="emailHelp"-->
+<!--                   placeholder=""></div>-->
+          <ng-select formControlName="role" [items]="roles"
+                     bindLabel="name"
+                     bindValue="value"
+                     placeholder="">
+          </ng-select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
+      <div class="col-12 p-0">
+        <div class="name">
+          <div class="form-group">
+            <label>{{"USER.TAG" |translate}}</label>
+            <input type="text" formControlName="tag"
+                   class="form-control" aria-describedby="emailHelp"
+                   placeholder=""></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
