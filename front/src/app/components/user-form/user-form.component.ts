@@ -1,7 +1,9 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {RestService} from "../../rest.service";
 import {ShareService} from "../../share.service";
+import {BsModalService} from "ngx-bootstrap/modal";
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Component({
@@ -10,6 +12,7 @@ import {ShareService} from "../../share.service";
   styleUrls: ['./user-form.component.css']
 })
 export class UserFormComponent implements OnInit {
+  @Input() mode: string = 'list'
   public form: FormGroup;
   public roles: any = [
     {
@@ -25,9 +28,14 @@ export class UserFormComponent implements OnInit {
       value: 'customer'
     }
   ]
+  public id: any = null;
+  public data: any = []
 
   constructor(private formBuilder: FormBuilder,
+              private modalService: BsModalService,
+              private route: ActivatedRoute,
               private shared: ShareService,
+              public router: Router,
               private rest: RestService) {
   }
 
@@ -46,16 +54,37 @@ export class UserFormComponent implements OnInit {
       description: [''],
     });
 
+    this.route.params.subscribe(params => {
+      this.id = (params.id === 'add') ? '' : params.id;
+    });
+
+    this.loadProvider()
     this.form.patchValue({password})
   }
 
   onSubmit(): void {
-
-    this.rest.post(`users`, this.form.value)
+    console.log(this.mode)
+    const method = (this.id) ? 'patch' : 'post';
+    this.rest[method](`users${(method === 'patch') ? `/${this.id}` : ''}`, this.form.value)
       .subscribe(res => {
+        if (this.mode === 'list') {
+          this.cbList();
+        }
         this.shared.registerUser.emit(res)
       })
   }
 
+  cbList = () => {
+    this.router.navigate(['/', 'users'])
+  }
+
+  loadProvider = () => {
+    this.rest.get(`users/${this.id}`)
+      .subscribe(res => {
+        console.log(res)
+        this.form.patchValue(res)
+        // this.data = this.parseData(res);
+      })
+  }
 
 }

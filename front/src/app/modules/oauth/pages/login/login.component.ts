@@ -13,9 +13,10 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
   options: AnimationOptions = {
-    path: '/assets/images/play.json',
+    path: '/assets/images/dashboard.json',
   };
   public form: FormGroup;
+  loading: boolean;
 
   constructor(private rest: RestService,
               private router: Router,
@@ -38,10 +39,13 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit = () => {
-    console.log(this.form.value)
+    this.loading = true;
     this.auth.login(this.form.value).then(res => {
+      this.loading = false;
       this.router.navigate(['/']).then();
-    });
+    }).catch(() => {
+      this.loading = false
+    })
   };
 
 }

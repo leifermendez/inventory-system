@@ -13,7 +13,7 @@
 
 <!-- ***************** TEMPLATE ************** -->
 <ng-template #customTemplateSrc let-dat='dat'>
-  <ul *ngIf="dat?.length">
+  <ul [@listAnimation] *ngIf="dat?.length">
     <li *ngFor="let inside of dat" [routerLink]="['/','deposits',inside?._id]"
         class="d-flex item-list-single justify-content-between">
       <div class="d-flex">

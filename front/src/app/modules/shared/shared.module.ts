@@ -29,6 +29,7 @@ import {SectionBtnComponent} from "../../components/section-btn/section-btn.comp
 import {UserFormComponent} from "../../components/user-form/user-form.component";
 import {AvatarModule} from "ngx-avatar";
 import {ModalUserComponent} from "../../components/modal-user/modal-user.component";
+import {TimeagoModule} from "ngx-timeago";
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import {ModalUserComponent} from "../../components/modal-user/modal-user.compone
     TabsModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
+    TimeagoModule.forRoot(),
     NgxCurrencyModule,
     BsDropdownModule,
     BsDatepickerModule,

@@ -1,17 +1,18 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { OauthRoutingModule } from './oauth-routing.module';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
+import {OauthRoutingModule} from './oauth-routing.module';
+import {LoginComponent} from './pages/login/login.component';
+import {RegisterComponent} from './pages/register/register.component';
 import {SharedModule} from "../shared/shared.module";
 import {LottieModule} from "ngx-lottie";
 import {TranslateModule} from "@ngx-translate/core";
 import {ReactiveFormsModule} from "@angular/forms";
+import {LoadingBtnDirective} from "../../loading-btn.directive";
 
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent],
+  declarations: [LoginComponent, RegisterComponent, LoadingBtnDirective],
   imports: [
     CommonModule,
     OauthRoutingModule,
@@ -21,4 +22,5 @@ import {ReactiveFormsModule} from "@angular/forms";
     ReactiveFormsModule
   ]
 })
-export class OauthModule { }
+export class OauthModule {
+}

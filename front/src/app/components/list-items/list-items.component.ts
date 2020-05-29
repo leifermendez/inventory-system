@@ -10,11 +10,12 @@ import {
   ViewContainerRef
 } from '@angular/core';
 import {faPlus, faCalendarCheck, faCalendarAlt} from '@fortawesome/free-solid-svg-icons';
+import {animate, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-list-items',
   templateUrl: './list-items.component.html',
-  styleUrls: ['./list-items.component.css']
+  styleUrls: ['./list-items.component.css'],
 })
 export class ListItemsComponent implements OnInit, AfterViewInit {
 

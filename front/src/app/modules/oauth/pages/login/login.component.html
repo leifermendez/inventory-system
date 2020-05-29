@@ -20,8 +20,11 @@
                  formControlName="password"
                  class="form-control" id="exampleInputPassword1" placeholder="Password">
         </div>
-
-        <button type="submit" class="btn btn-primary btn-radius btn-block">{{"LOGIN.FORM.SEND" |translate}}</button>
+        <button appLoadingBtn loadingTextValue="Loading..."
+                [loadingTextWhen]="loading" type="submit"
+                class="btn btn-primary btn-radius btn-block"
+                (click)="onSubmit()">{{"LOGIN.FORM.SEND" |translate}}<</button>
+<!--        <button type="submit" class="btn btn-primary btn-radius btn-block">{{"LOGIN.FORM.SEND" |translate}}</button>-->
       </form>
     </div>
   </div>

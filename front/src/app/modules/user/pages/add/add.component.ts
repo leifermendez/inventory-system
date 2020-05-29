@@ -8,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class AddComponent implements OnInit {
   public history: any = [
     {
-      name: 'Usuario'
+      name: 'Usuario',
+      router: ['/', 'users']
+    },
+    {
+      name: 'Nuevo',
+      router: null
     }
   ]
   constructor() { }

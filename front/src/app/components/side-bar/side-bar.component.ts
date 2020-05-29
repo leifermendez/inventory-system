@@ -4,6 +4,8 @@ import {
   faCashRegister, faIndustry, faWarehouse
 }
   from '@fortawesome/free-solid-svg-icons';
+import {AuthService} from "../../auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-side-bar',
@@ -57,10 +59,15 @@ export class SideBarComponent implements OnInit {
     }
   ]
 
-  constructor() {
+  constructor(public auth: AuthService, private router: Router) {
   }
 
   ngOnInit(): void {
   }
 
+  logOut = () => {
+    this.auth.logout().then(() => {
+      this.router.navigate(['/', 'oauth'])
+    })
+  }
 }

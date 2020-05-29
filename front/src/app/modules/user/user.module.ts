@@ -7,6 +7,7 @@ import {SharedModule} from "../shared/shared.module";
 import { ListComponent } from './pages/list/list.component';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {AvatarModule} from "ngx-avatar";
+import {TimeagoModule} from "ngx-timeago";
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {AvatarModule} from "ngx-avatar";
     UserRoutingModule,
     SharedModule,
     FontAwesomeModule,
-    AvatarModule
+    AvatarModule,
+    TimeagoModule
   ]
 })
 export class UserModule { }

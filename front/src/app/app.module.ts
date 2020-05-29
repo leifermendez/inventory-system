@@ -21,6 +21,7 @@ import { SectionBtnComponent } from './components/section-btn/section-btn.compon
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { ListGeneralComponent } from './components/list-general/list-general.component';
 import { ModalUserComponent } from './components/modal-user/modal-user.component';
+import { LoadingBtnDirective } from './loading-btn.directive';
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
