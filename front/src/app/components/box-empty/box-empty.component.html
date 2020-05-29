@@ -2,7 +2,7 @@
   <ng-lottie
     class="margin-auto"
     width="100px"
-    (domLoaded)="loopComplete()"
+    (domLoaded)="loopComplete($event)"
     [options]="options" (animationCreated)="animationCreated($event)"></ng-lottie>
   <div class="text-center">
     <small><b>{{"GENERAL.EMPTY" |translate}}</b></small>

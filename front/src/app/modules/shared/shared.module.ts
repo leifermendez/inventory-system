@@ -29,21 +29,22 @@ import {SectionBtnComponent} from "../../components/section-btn/section-btn.comp
 import {UserFormComponent} from "../../components/user-form/user-form.component";
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    FooterComponent,
-    SideBarComponent,
-    ListItemsComponent,
-    DetailInvoiceComponent,
-    BoxEmptyComponent,
-    WorkingBoxComponent,
-    LockedBoxComponent,
-    ProductFormComponent,
-    ProviderFormComponent,
-    DepositFormComponent,
-    SectionBtnComponent,
-    UserFormComponent
-  ],
+    declarations: [
+        HeaderComponent,
+        FooterComponent,
+        SideBarComponent,
+        ListItemsComponent,
+        DetailInvoiceComponent,
+        BoxEmptyComponent,
+        WorkingBoxComponent,
+        LockedBoxComponent,
+        ProductFormComponent,
+        ProviderFormComponent,
+        DepositFormComponent,
+        SectionBtnComponent,
+        UserFormComponent,
+        ListItemsComponent
+    ],
   imports: [
     CommonModule,
     FontAwesomeModule,
@@ -61,12 +62,12 @@ import {UserFormComponent} from "../../components/user-form/user-form.component"
     TagInputModule,
     RouterModule,
   ],
-  exports: [HeaderComponent, SideBarComponent, WorkingBoxComponent,
-    ListItemsComponent, DetailInvoiceComponent, BoxEmptyComponent,
-    LockedBoxComponent, ProductFormComponent,
-    ProviderFormComponent, DepositFormComponent,
-    SectionBtnComponent,
-    UserFormComponent]
+    exports: [HeaderComponent, SideBarComponent, WorkingBoxComponent,
+        ListItemsComponent, DetailInvoiceComponent, BoxEmptyComponent,
+        LockedBoxComponent, ProductFormComponent,
+        ProviderFormComponent, DepositFormComponent,
+        SectionBtnComponent,
+        UserFormComponent, ListItemsComponent]
 })
 export class SharedModule {
 }

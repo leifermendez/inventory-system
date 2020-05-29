@@ -1,9 +1,3 @@
-.items ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
 .items .header {
   background-color: white;
   padding: 1rem 1rem;
@@ -14,58 +8,6 @@
   box-shadow: 1px 3px 0px #EEEFF6;
 }
 
-.items ul li {
-  cursor: pointer;
-  background-color: white;
-  padding: .5rem .5rem;
-  font-size: .8rem;
-  border-radius: .75rem;
-  margin-top: .8rem;
-  box-shadow: 1px 3px 0px #EEEFF6;
-}
-
-.items ul li .avatar {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  border-radius: 5rem;
-  border: solid 2px #EEEFF6;
-}
-
-.items ul li .item-list-single {
-  /*font-size: .8rem;*/
-}
-
-.items ul li .name {
-  font-size: .8rem !important;
-  font-weight: 600;
-  color: #505050;
-  margin-bottom: 0;
-}
-
-.items ul li:hover {
-  transform: scale(1.01);
-  z-index: 9;
-  background-color: #221ECD;
-  -webkit-transition: all 200ms;
-  -moz-transition: all 200ms;
-  -o-transition: all 200ms;
-  transition: all 200ms;
-}
-
-.items ul li:hover .name {
-  color: white;
-}
-
-.items ul li:hover .price-main,
-.items ul li:hover .text-muted,
-.items ul li:hover .badge-green {
-  color: rgba(255, 255, 255, .8) !important;
-}
-
-.items ul li .avatar {
-  border: solid 2px rgba(255, 255, 255, 0.42)
-}
 .input-date{
   padding: .25rem !important;
   font-size: .7rem;

@@ -18,10 +18,29 @@
       </button>
     </div>
   </div>
+
+  <ng-template #viewContainerCustom>
+  </ng-template>
+
+  <div *ngIf="!data?.length">
+    <div class="text-center" *ngIf="mode === 'working'">
+      <app-working-box></app-working-box>
+    </div>
+    <div class="text-center" *ngIf="!mode">
+      <app-box-empty></app-box-empty>
+    </div>
+    <div class="text-center" *ngIf="mode === 'blocked'">
+      <app-locked-box></app-locked-box>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- TEMPLATE -->
+<ng-template #defaultCustom>
   <ul *ngIf="data?.length">
-
-    <li *ngFor="let a of data" [routerLink]="a.router" class="d-flex item-list-single justify-content-between">
-
+    <li *ngFor="let inside of data" class="d-flex item-list-single justify-content-between">
       <div class="d-flex">
         <div>
           <img class="avatar"
@@ -29,31 +48,32 @@
                alt="">
         </div>
         <div class="pl-2 pr-2 pt-1 pb-1">
-          <h6 class="name">{{a?.name}}</h6>
+          <h6 class="name">{{inside?.name}}</h6>
           <div class="d-flex pt-1">
             <span
               [ngClass]="{
-              'badge-green':(a?.status === 'paid'),
-              'badge-blue':(a?.status === 'process'),
-              'badge-purple':(a?.status === 'exceptional'),
-              'badge-orange':(a?.status === 'hold')
+              'badge-green':(inside?.status === 'paid'),
+              'badge-blue':(inside?.status === 'process'),
+              'badge-purple':(inside?.status === 'exceptional'),
+              'badge-orange':(inside?.status === 'hold')
               }"
               class="badge text-uppercase mr-2">
-              {{a?.status}}
+              {{inside?.status}}
             </span>
             <span
               [ngClass]="{
-              'badge-red':(a?.delivery === 'today'),
-              'badge-red-1':(a?.delivery === 'tomorrow')
+              'badge-red':(inside?.delivery === 'today'),
+              'badge-red-1':(inside?.delivery === 'tomorrow')
               }"
               class="badge text-uppercase mr-2">
+
               <fa-icon
-                *ngIf="a?.delivery === 'today'"
+                *ngIf="inside?.delivery === 'today'"
                 [icon]="faCalendarCheck"></fa-icon>
                 <fa-icon
-                  *ngIf="a?.delivery === 'tomorrow'"
+                  *ngIf="inside?.delivery === 'tomorrow'"
                   [icon]="faCalendarAlt"></fa-icon>
-              {{a?.delivery}}
+              {{inside?.delivery}}
             </span>
           </div>
         </div>
@@ -68,15 +88,4 @@
       </div>
     </li>
   </ul>
-  <div *ngIf="!data?.length">
-    <div class="text-center" *ngIf="mode === 'working'">
-      <app-working-box></app-working-box>
-    </div>
-    <div class="text-center" *ngIf="!mode">
-      <app-box-empty></app-box-empty>
-    </div>
-    <div class="text-center" *ngIf="mode === 'blocked'">
-      <app-locked-box></app-locked-box>
-    </div>
-  </div>
-</div>
+</ng-template>

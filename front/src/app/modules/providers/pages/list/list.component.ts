@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RestService} from "../../../../rest.service";
 import {Router} from "@angular/router";
+import {faPhoneAlt} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-list',
@@ -13,14 +14,8 @@ export class ListComponent implements OnInit {
               private router: Router) {
   }
 
-  public data = [
-    {
-      name: 'Panaderia Juarez',
-      id: 1,
-      status: 'paid',
-      delivery: 'today'
-    }
-  ];
+  faPhoneAlt = faPhoneAlt
+  public data = [];
 
   public history: any = [
     {
@@ -47,7 +42,7 @@ export class ListComponent implements OnInit {
     const tmp = [];
     data.docs.map(a => tmp.push({
       ...a, ...{
-        router: ['/','providers',a._id]
+        router: ['/', 'providers', a._id]
       }
     }));
     return tmp;

@@ -3,7 +3,48 @@
 <div class="container-row d-flex">
   <!--  <app-provider-form class="col-12 row m-0 pl-2"></app-provider-form>-->
   <!--  <app-list-items [title]="'Pedidos'" class="col-3 row m-0 pl-2"></app-list-items>-->
-  <app-list-items (cbAdd)="goTo()" [data]="data" [title]="'Lista'" class="col-12 row m-0 pl-2 pr-4">
+  <app-list-items
+    (cbAdd)="goTo()"
+    [(data)]="data"
+    [customTemplate]="customTemplateSrc"
+    [title]="'Lista'"
+    class="col-12 row m-0 pl-2 pr-4">
   </app-list-items>
   <!--    <app-detail-invoice class="col-6 row m-0 pl-2"></app-detail-invoice>-->
 </div>
+<!--&ndash;&gt; {{data | json}}-->
+<ng-template #customTemplateSrc let-dat='dat'>
+  <!--  &ndash;&gt; {{dat | json}}-->
+  <ul *ngIf="dat?.length">
+    <li *ngFor="let inside of dat" class="d-flex item-list-single justify-content-between">
+      <div class="d-flex">
+        <div>
+          <img class="avatar"
+               src="https://images.unsplash.com/photo-1506919258185-6078bba55d2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
+               alt="">
+        </div>
+        <div class="pl-2 pr-2 pt-1 pb-1">
+          <h6 class="name">{{inside?.name}}</h6>
+          <div class="d-flex pt-1">
+            <span class="text-muted">
+              {{inside?.address}}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="text-right">
+        <div>
+          <b class="price-main">{{inside?.manager?.name}}</b>
+        </div>
+        <div>
+          <span class="text-muted">
+            <span class="pr-1">
+                <fa-icon [icon]="faPhoneAlt"></fa-icon>
+              </span>
+            {{inside?.phone}}
+          </span>
+        </div>
+      </div>
+    </li>
+  </ul>
+</ng-template>

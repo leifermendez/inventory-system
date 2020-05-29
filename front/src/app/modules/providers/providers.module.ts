@@ -5,6 +5,7 @@ import { ProvidersRoutingModule } from './providers-routing.module';
 import { AddComponent } from './pages/add/add.component';
 import {SharedModule} from "../shared/shared.module";
 import { ListComponent } from './pages/list/list.component';
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { ListComponent } from './pages/list/list.component';
     imports: [
         CommonModule,
         ProvidersRoutingModule,
-        SharedModule
+        SharedModule,
+        FontAwesomeModule
     ]
 })
 export class ProvidersModule { }
