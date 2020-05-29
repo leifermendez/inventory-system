@@ -29,4 +29,8 @@ export class ShareService {
     }
     return invalid;
   }
+
+  public menuHistory = () => {
+
+  }
 }
