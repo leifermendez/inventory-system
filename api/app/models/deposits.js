@@ -14,11 +14,14 @@ const DepositsSchema = new mongoose.Schema(
     trace: {
       type: Object
     },
+    phone: {
+      type: String
+    },
     tag: {
       type: Object
     },
     manager: {
-      type: mongoose.Types.ObjectId,
+      type: Object,
       required: true
     },
     description: {

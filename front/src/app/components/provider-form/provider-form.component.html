@@ -37,8 +37,10 @@
             <!--            <input type="text" formControlName="manager"-->
             <!--                   class="form-control" aria-describedby="emailHelp"-->
             <!--                   placeholder=""></div>-->
-            <ng-select formControlName="manager" [items]="data"
+            <ng-select formControlName="manager" [items]="users"
                        bindLabel="name"
+                       (change)="selectUser($event)"
+                       [required]="true"
                        placeholder="">
             </ng-select>
           </div>
@@ -83,14 +85,12 @@
     </div>
 
     <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
-      <div class="col-12 p-0">
-        <div class="name">
-          <div class="form-group">
-            <label>{{"PROVIDER.TAG" |translate}}</label>
-            <input type="text" formControlName="tag"
-                   class="form-control" aria-describedby="emailHelp"
-                   placeholder=""></div>
-        </div>
+      <div class="form-group w-100">
+        <label>{{"PROVIDER.TAG" |translate}}</label>
+        <tag-input class="chip-price" [(ngModel)]="itemsAsObjects"
+                   [identifyBy]="'id'"
+                   formControlName="tag"
+                   [displayBy]="'name'"></tag-input>
       </div>
     </div>
 

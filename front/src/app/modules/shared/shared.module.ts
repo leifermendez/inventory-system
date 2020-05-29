@@ -21,38 +21,43 @@ import {TranslateModule} from "@ngx-translate/core";
 import {TagInputModule} from "ngx-chips";
 import {NgSelectModule} from "@ng-select/ng-select";
 import {NgxCurrencyModule} from "ngx-currency";
-import {CookieService} from "ngx-cookie-service";
+import {ModalModule} from 'ngx-bootstrap/modal';
 import {RouterModule} from "@angular/router";
 import {ProviderFormComponent} from "../../components/provider-form/provider-form.component";
 import {DepositFormComponent} from "../../components/deposit-form/deposit-form.component";
 import {SectionBtnComponent} from "../../components/section-btn/section-btn.component";
 import {UserFormComponent} from "../../components/user-form/user-form.component";
+import {AvatarModule} from "ngx-avatar";
+import {ModalUserComponent} from "../../components/modal-user/modal-user.component";
 
 @NgModule({
-    declarations: [
-        HeaderComponent,
-        FooterComponent,
-        SideBarComponent,
-        ListItemsComponent,
-        DetailInvoiceComponent,
-        BoxEmptyComponent,
-        WorkingBoxComponent,
-        LockedBoxComponent,
-        ProductFormComponent,
-        ProviderFormComponent,
-        DepositFormComponent,
-        SectionBtnComponent,
-        UserFormComponent,
-        ListItemsComponent
-    ],
+  declarations: [
+    HeaderComponent,
+    FooterComponent,
+    SideBarComponent,
+    ListItemsComponent,
+    DetailInvoiceComponent,
+    BoxEmptyComponent,
+    WorkingBoxComponent,
+    LockedBoxComponent,
+    ProductFormComponent,
+    ProviderFormComponent,
+    DepositFormComponent,
+    SectionBtnComponent,
+    UserFormComponent,
+    ListItemsComponent,
+    ModalUserComponent
+  ],
   imports: [
     CommonModule,
     FontAwesomeModule,
     TabsModule.forRoot(),
     TooltipModule.forRoot(),
+    ModalModule.forRoot(),
     NgxCurrencyModule,
     BsDropdownModule,
     BsDatepickerModule,
+    AvatarModule,
     LottieModule,
     NgSelectModule,
     FormsModule,
@@ -62,12 +67,12 @@ import {UserFormComponent} from "../../components/user-form/user-form.component"
     TagInputModule,
     RouterModule,
   ],
-    exports: [HeaderComponent, SideBarComponent, WorkingBoxComponent,
-        ListItemsComponent, DetailInvoiceComponent, BoxEmptyComponent,
-        LockedBoxComponent, ProductFormComponent,
-        ProviderFormComponent, DepositFormComponent,
-        SectionBtnComponent,
-        UserFormComponent, ListItemsComponent]
+  exports: [HeaderComponent, SideBarComponent, WorkingBoxComponent,
+    ListItemsComponent, DetailInvoiceComponent, BoxEmptyComponent,
+    LockedBoxComponent, ProductFormComponent,
+    ProviderFormComponent, DepositFormComponent,
+    SectionBtnComponent,
+    UserFormComponent, ListItemsComponent, ModalUserComponent]
 })
 export class SharedModule {
 }

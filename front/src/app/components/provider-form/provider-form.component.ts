@@ -2,7 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ShareService} from "../../share.service";
 import {RestService} from "../../rest.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
+import {ModalUserComponent} from "../modal-user/modal-user.component";
 
 @Component({
   selector: 'app-provider-form',
@@ -12,9 +14,15 @@ import {Router} from "@angular/router";
 export class ProviderFormComponent implements OnInit {
   public form: FormGroup;
   public data: any = []
+  public users: any = []
+  public id: any = null
+  itemsAsObjects = [];
+  bsModalRef: BsModalRef;
 
   constructor(private formBuilder: FormBuilder,
-              public share: ShareService,
+              private modalService: BsModalService,
+              private route: ActivatedRoute,
+              private shared: ShareService,
               public router: Router,
               private rest: RestService) {
   }
@@ -24,27 +32,44 @@ export class ProviderFormComponent implements OnInit {
       name: ['', Validators.required],
       manager: ['', Validators.required],
       address: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
       trace: [''],
       description: [''],
       tag: ['']
     });
 
+    this.route.params.subscribe(params => {
+      this.id = (params.id === 'add') ? '' : params.id;
+    });
+
+    this.shared.registerUser.subscribe(res => {
+      this.users = [...[res],
+        ...this.users];
+    })
+
+    this.loadProvider()
     this.loadUser()
   }
 
-  loadUser = () => {
-    const q = [
-      'users?',
-      'filter=manager&',
-      'fields=role&',
-      'limit=10000&',
-      'sort=name&order=-1',
-    ];
-    this.rest.get(q.join(''))
+  loadProvider = () => {
+    this.rest.get(`providers/${this.id}`)
       .subscribe(res => {
-        this.data = this.parseData(res);
+        console.log(res)
+        this.form.patchValue(res)
+        // this.data = this.parseData(res);
+      })
+  }
+
+  loadUser = () => {
+    this.rest.get(`users?filter=manager&fields=role&limit=10000&sort=name&order=-1`)
+      .subscribe(res => {
+        this.users = [...[{
+          _id: 0,
+          name: 'New User',
+          value: 'new'
+        }],
+          ...this.parseData(res)];
       })
   }
 
@@ -53,10 +78,17 @@ export class ProviderFormComponent implements OnInit {
     // data.docs.map(a => tmp.push()
     return data.docs;
   }
+  selectUser = (e) => {
+    if (e.value === 'new') {
+      this.form.patchValue({manager: null})
+      this.open()
+    }
+  }
+
 
   onSubmit(): void {
-
-    this.rest.post(`providers`, this.form.value)
+    const method = (this.id) ? 'patch' : 'post';
+    this.rest[method](`providers${(method === 'patch') ? `/${this.id}` : ''}`, this.form.value)
       .subscribe(res => {
         this.cbList()
       })
@@ -66,5 +98,18 @@ export class ProviderFormComponent implements OnInit {
     this.router.navigate(['/', 'providers'])
   }
 
+  open(data: any = null) {
+    const initialState = {
+      section: data
+    };
+
+    this.bsModalRef = this.modalService.show(
+      ModalUserComponent,
+      Object.assign({initialState}, {
+        class: 'modal-light-plan',
+        ignoreBackdropClick: false
+      })
+    );
+  }
 
 }

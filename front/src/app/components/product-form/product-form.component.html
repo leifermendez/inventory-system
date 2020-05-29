@@ -1,6 +1,11 @@
 <form class="form-product w-100 flex-wrap d-flex" [formGroup]="form">
+  <div class="text-right w-100">
+    <app-section-btn [valid]="form.valid"></app-section-btn>
+  </div>
+
   <div class="custom-card-style col-12 flex-wrap d-flex">
-    <div class="col-10 p-0">
+
+    <div class="col-12 p-0">
       <div class="name">
         <div class="form-group">
           <label>{{"PRODUCT.NAME" |translate}}</label>
@@ -9,18 +14,6 @@
                  placeholder=""></div>
       </div>
     </div>
-    <div class="col-2 p-0 text-right">
-      <div class="list-menu-header">
-        <ul>
-          <li *ngFor="let a of optionsMenu">
-            <div class="icon-list-menu mr-1 ml-1">
-              <fa-icon size="2x" [icon]="a?.icon"></fa-icon>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-
   </div>
 
   <div class="col-md-6 col-lg-6 col-sm-12 pl-0 pr-2">

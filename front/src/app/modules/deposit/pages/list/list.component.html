@@ -15,11 +15,11 @@
 <!--&ndash;&gt; {{data | json}}-->
 <ng-template #customTemplateSrc let-dat='dat'>
   <ul *ngIf="dat?.length">
-    <li *ngFor="let inside of dat" [routerLink]="['/','providers',inside?._id]"
+    <li *ngFor="let inside of dat" [routerLink]="['/','deposits',inside?._id]"
         class="d-flex item-list-single justify-content-between">
       <div class="d-flex">
         <div>
-          <ngx-avatar [name]="inside?.name"></ngx-avatar>
+          <ngx-avatar *ngIf="inside?.name" [name]="inside.name"></ngx-avatar>
         </div>
         <div class="pl-2 pr-2 pt-1 pb-1">
           <div class="d-flex">
@@ -39,16 +39,10 @@
         <div>
           <b class="price-main">{{inside?.manager?.name}} {{inside?.manager?.lastName}}</b>
         </div>
-        <div class=" pt-1">
+        <div>
           <span class="text-muted">
             <span class="pr-1">
-                <fa-icon [icon]="faIndustry"></fa-icon>
-              </span>
-            {{inside?.phone}}
-          </span>
-          <span class="text-muted ml-2">
-            <span class="pr-1">
-                <fa-icon [icon]="faUser"></fa-icon>
+                <fa-icon [icon]="faPhoneAlt"></fa-icon>
               </span>
             {{inside?.phone}}
           </span>

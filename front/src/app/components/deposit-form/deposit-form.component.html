@@ -1,7 +1,7 @@
 <form (submit)="onSubmit()" class="form-product w-100 flex-wrap d-flex" [formGroup]="form">
   <div class="col-12 p-0 flex-wrap d-flex">
     <div class="text-right w-100">
-      <app-section-btn></app-section-btn>
+      <app-section-btn (cbList)="cbList()" [valid]="form.valid"></app-section-btn>
     </div>
 
     <div class="custom-card-style col-12 flex-wrap d-flex">
@@ -20,9 +20,16 @@
         <div class="name">
           <div class="form-group">
             <label>{{"DEPOSITS.MANAGER" |translate}}</label>
-            <input type="text" formControlName="manager"
-                   class="form-control"
-                   placeholder=""></div>
+            <!--            <input type="text" formControlName="manager"-->
+            <!--                   class="form-control"-->
+            <!--                   placeholder=""></div>-->
+            <ng-select formControlName="manager" [items]="users"
+                       bindLabel="name"
+                       (change)="selectUser($event)"
+                       [required]="true"
+                       placeholder="">
+            </ng-select>
+          </div>
         </div>
       </div>
     </div>
@@ -60,14 +67,12 @@
       </div>
     </div>
     <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
-      <div class="col-12 p-0">
-        <div class="name">
-          <div class="form-group">
-            <label>{{"DEPOSITS.TAG" |translate}}</label>
-            <input type="text" formControlName="tag"
-                   class="form-control" aria-describedby="emailHelp"
-                   placeholder=""></div>
-        </div>
+      <div class="form-group w-100">
+        <label>{{"DEPOSITS.TAG" |translate}}</label>
+        <tag-input class="chip-price" [(ngModel)]="itemsAsObjects"
+                   [identifyBy]="'id'"
+                   formControlName="tag"
+                   [displayBy]="'name'"></tag-input>
       </div>
     </div>
   </div>

@@ -13,7 +13,12 @@ export class AddComponent implements OnInit {
 
   public history: any = [
     {
-      name: 'Deposito'
+      name: 'Depositos',
+      router: ['/', 'deposits']
+    },
+    {
+      name: 'Nuevo',
+      router: null
     }
   ]
 

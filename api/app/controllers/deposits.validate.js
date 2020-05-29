@@ -13,13 +13,10 @@ exports.createItem = [
     .withMessage('IS_EMPTY')
     .trim(),
   check('manager')
-    .exists()
-    .withMessage('MISSING')
-    .not()
-    .isEmpty()
-    .withMessage('IS_EMPTY')
-    .trim(),
+    .exists(),
   check('tag')
+    .exists(),
+  check('phone')
     .exists(),
   check('trace')
     .optional(),
@@ -49,16 +46,13 @@ exports.updateItem = [
     .withMessage('IS_EMPTY')
     .trim(),
   check('manager')
-    .exists()
-    .withMessage('MISSING')
-    .not()
-    .isEmpty()
-    .withMessage('IS_EMPTY')
-    .trim(),
+    .exists(),
   check('tag')
     .exists(),
-  check('trace')
+  check('phone')
     .exists(),
+  check('trace')
+    .optional(),
   check('address')
     .exists()
     .withMessage('MISSING')

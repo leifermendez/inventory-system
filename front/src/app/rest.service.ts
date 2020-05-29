@@ -107,9 +107,9 @@ export class RestService {
     }
   }
 
-  put(path = '', body = {}, toast = true): Observable<any> {
+  patch(path = '', body = {}, toast = true): Observable<any> {
     try {
-      return this.http.put(`${this.url}/${path}`, body, {headers: this.parseHeader()})
+      return this.http.patch(`${this.url}/${path}`, body, {headers: this.parseHeader()})
         .pipe(
           catchError((e: any) => {
             if (toast) {

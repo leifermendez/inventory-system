@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RestService} from "../../../../rest.service";
 import {Router} from "@angular/router";
-import {faPhoneAlt, faIndustry, faUser} from '@fortawesome/free-solid-svg-icons';
+import {faPhoneAlt} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-list',
@@ -15,13 +15,11 @@ export class ListComponent implements OnInit {
   }
 
   faPhoneAlt = faPhoneAlt
-  faIndustry = faIndustry
-  faUser = faUser
   public data = [];
 
   public history: any = [
     {
-      name: 'Proveedores'
+      name: 'Depositos'
     }
   ]
 
@@ -30,24 +28,23 @@ export class ListComponent implements OnInit {
   }
 
   load = () => {
-    this.rest.get(`providers`)
+    this.rest.get(`deposits`)
       .subscribe(res => {
         this.data = this.parseData(res);
       })
   }
 
   goTo = () => {
-    this.router.navigate(['/', 'providers', 'add'])
+    this.router.navigate(['/', 'deposits', 'add'])
   }
 
   parseData = (data: any) => {
     const tmp = [];
     data.docs.map(a => tmp.push({
       ...a, ...{
-        router: ['/', 'providers', a._id]
+        router: ['/', 'deposits', a._id]
       }
     }));
     return tmp;
   }
-
 }

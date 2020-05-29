@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {RestService} from "../../rest.service";
 import {ShareService} from "../../share.service";
@@ -25,6 +25,7 @@ export class UserFormComponent implements OnInit {
       value: 'customer'
     }
   ]
+
   constructor(private formBuilder: FormBuilder,
               private shared: ShareService,
               private rest: RestService) {
@@ -52,10 +53,9 @@ export class UserFormComponent implements OnInit {
 
     this.rest.post(`users`, this.form.value)
       .subscribe(res => {
-        console.log(res)
+        this.shared.registerUser.emit(res)
       })
   }
-
 
 
 }

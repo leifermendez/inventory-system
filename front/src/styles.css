@@ -175,7 +175,8 @@ Style
   border: solid 0px #221ECE !important;
 }
 
-input.form-control.ng-invalid {
+input.form-control.ng-invalid,
+.ng-select.ng-invalid {
   border: solid 1px transparent;
   box-shadow: 2px 1px 0px #ffc0c0;
   border-radius: 1rem;
@@ -206,6 +207,7 @@ input.form-control.ng-invalid {
   border-radius: 4rem;
   text-align: center;
 }
+
 .items ul {
   list-style: none;
   margin: 0;
@@ -232,6 +234,12 @@ input.form-control.ng-invalid {
 
 .items ul li .item-list-single {
   /*font-size: .8rem;*/
+}
+
+.items .item-list-single:hover .badge-tag {
+  background-color: transparent;
+  color: white !important;
+  border-color: white !important;
 }
 
 .items ul li .name {
@@ -263,4 +271,42 @@ input.form-control.ng-invalid {
 
 .items ul li .avatar {
   border: solid 2px rgba(255, 255, 255, 0.42)
+}
+
+.ng2-tag-input.ng2-tag-input--focused {
+  border-bottom: 2px solid #ddd8ee !important;
+}
+
+.ng-select-container {
+  background-color: transparent !important;
+}
+
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.33)
+}
+
+.modal-backdrop.show {
+  opacity: .7;
+}
+
+.modal-light-plan {
+  max-width: 700px;
+}
+
+.modal-light-plan .modal-content {
+  border-radius: 1rem;
+  min-height: 10rem;
+  box-shadow: 1px 3px 17px rgba(110, 110, 110, 0.32);
+  padding: .5rem;
+  border: solid 1px #f6f6f6;
+}
+
+.badge-tag {
+  border: solid 1px #ffcdab;
+  border-radius: 1rem;
+  padding: .2rem .3rem;
+  background-color: rgba(255, 255, 255, .8);
+  font-weight: 600;
+  text-align: center;
+  color: #737373;
 }

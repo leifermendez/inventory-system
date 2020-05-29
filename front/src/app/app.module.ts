@@ -20,6 +20,7 @@ import { DepositFormComponent } from './components/deposit-form/deposit-form.com
 import { SectionBtnComponent } from './components/section-btn/section-btn.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { ListGeneralComponent } from './components/list-general/list-general.component';
+import { ModalUserComponent } from './components/modal-user/modal-user.component';
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
