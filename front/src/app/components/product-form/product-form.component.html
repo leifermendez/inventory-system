@@ -1,6 +1,6 @@
-<form class="form-product w-100 flex-wrap d-flex" [formGroup]="form">
+<form (ngSubmit)="onSubmit()" class="form-product w-100 flex-wrap d-flex" [formGroup]="form">
   <div class="text-right w-100">
-    <app-section-btn [valid]="form.valid"></app-section-btn>
+    <app-section-btn (cbList)="cbList()" [valid]="form.valid"></app-section-btn>
   </div>
 
   <div class="custom-card-style col-12 flex-wrap d-flex">
@@ -21,7 +21,7 @@
 
       <div class="description-text">
         <ngx-editor [ngModel]="editorContent"
-                    [contentEditable]="true"
+                    [contentEditable]="false"
                     formControlName="content"
                     (ngModelChange)="editorContentChange($event)">
         </ngx-editor>
@@ -41,10 +41,10 @@
     <div class="custom-card-style col-12 mt-2">
       <div class="form-group">
         <label>{{"PRODUCT.CATEGORIES" |translate}}</label>
-        <ng-select formControlName="categories" [items]="deposits"
-                   bindLabel="name"
-                   placeholder="">
-        </ng-select>
+        <tag-input class="chip-price" [(ngModel)]="itemsAsObjects"
+                   [identifyBy]="'id'"
+                   formControlName="tag"
+                   [displayBy]="'name'"></tag-input>
       </div>
     </div>
     <div class="custom-card-style col-12 mt-2">
@@ -96,6 +96,7 @@
 
         <label>{{"PRODUCT.PRICES" |translate}}</label>
         <input currencyMask (focus)="onFocus($event)" class="form-control"
+               [ngClass]="{'ng-invalid-red':!prices.length}"
                #valueInput [(ngModel)]="priceTmp" [ngModelOptions]="{standalone: true}"
                [options]="ngxCurrencyOptions"/>
 
@@ -117,7 +118,6 @@
     </div>
 
   </div>
-
 
 
 </form>

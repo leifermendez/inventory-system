@@ -5,7 +5,7 @@
     (cbAdd)="goTo()"
     [(data)]="data"
     [customTemplate]="customTemplateSrc"
-    [title]="'Lista'"
+    (cbSrc)="onSrc($event)"
     class="col-12 row m-0 pl-2 pr-4">
   </app-list-items>
 </div>
@@ -13,7 +13,7 @@
 <!-- ***************** TEMPLATE ************** -->
 <ng-template #customTemplateSrc let-dat='dat'>
   <ul *ngIf="dat?.length">
-    <li *ngFor="let inside of dat" [routerLink]="['/','providers',inside?._id]"
+    <li *ngFor="let inside of dat" [routerLink]="['/','products',inside?._id]"
         class="d-flex item-list-single justify-content-between">
       <div class="d-flex">
         <div>

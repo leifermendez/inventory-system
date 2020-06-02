@@ -176,11 +176,11 @@ Style
 }
 
 input.form-control.ng-invalid,
-.ng-select.ng-invalid {
-  border: solid 1px transparent;
-  box-shadow: 2px 1px 0px #ffc0c0;
-  border-radius: 1rem;
-  background-color: #fff2f4;
+.ng-select.ng-invalid, .ng-invalid-red {
+  border: solid 1px transparent !important;
+  box-shadow: 2px 1px 0px #ffc0c0 !important;
+  border-radius: 1rem !important;
+  background-color: #fff2f4 !important;
 }
 
 .min-height-style {

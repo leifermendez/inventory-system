@@ -8,7 +8,7 @@ const routes: Routes = [
   {path: '', component: ListComponent},
   {path: ':id', component: DetailComponent},
   {
-    path: 'new', component: DetailComponent,
+    path: 'add', component: DetailComponent,
     pathMatch: 'full'
   },
 ];

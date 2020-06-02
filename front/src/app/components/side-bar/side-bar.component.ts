@@ -30,7 +30,7 @@ export class SideBarComponent implements OnInit {
     {
       name: 'Productos',
       icon: faBox,
-      route: ['/', 'product']
+      route: ['/', 'products']
     },
     {
       name: 'Pedidos',

@@ -6,6 +6,7 @@ import {schema} from "ngx-editor";
 
 import {CurrencyMaskInputMode} from "ngx-currency";
 import {RestService} from "../../rest.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-product-form',
@@ -13,6 +14,7 @@ import {RestService} from "../../rest.service";
   styleUrls: ['./product-form.component.css']
 })
 export class ProductFormComponent implements OnInit {
+
   @ViewChild('valueInput', {static: true}) valueInput: ElementRef;
   @Input() content: string;
   public form: FormGroup;
@@ -33,6 +35,7 @@ export class ProductFormComponent implements OnInit {
     type: 'doc',
     content: []
   };
+  public id: any = null;
   itemsAsObjects = [];
   public deposits = [];
   public providers = [];
@@ -40,7 +43,7 @@ export class ProductFormComponent implements OnInit {
   selectedCity: any;
 
   public ngxCurrencyOptions = {
-    prefix: 'R$ ',
+    prefix: 'MXN ',
     thousands: '.',
     decimal: ',',
     allowNegative: false,
@@ -67,7 +70,8 @@ export class ProductFormComponent implements OnInit {
 
   constructor(
     private rest: RestService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public router: Router,
   ) {
   }
 
@@ -83,6 +87,8 @@ export class ProductFormComponent implements OnInit {
       sku: ['', Validators.required],
       tag: [''],
       gallery: [''],
+      prices: [''],
+      measures: [''],
       description: [''],
     });
     this.loadDeposits();
@@ -101,6 +107,19 @@ export class ProductFormComponent implements OnInit {
     this.rest.get(`deposits?limit=1000`).subscribe(res => {
       this.deposits = this.parseData(res);
     })
+  }
+
+  cbList = () => {
+    this.router.navigate(['/', 'products'])
+  }
+
+  onSubmit(): void {
+    const method = (this.id) ? 'patch' : 'post';
+    this.form.patchValue({prices: this.prices})
+    this.rest[method](`products${(method === 'patch') ? `/${this.id}` : ''}`, this.form.value)
+      .subscribe(res => {
+        this.cbList()
+      })
   }
 
   parseData = (data: any) => {

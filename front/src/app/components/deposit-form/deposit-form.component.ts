@@ -16,7 +16,7 @@ export class DepositFormComponent implements OnInit {
   public form: FormGroup;
   public data: any = []
   public users: any = []
-  public id: any = null
+  public id: any = null;
   itemsAsObjects = [];
   bsModalRef: BsModalRef;
 
