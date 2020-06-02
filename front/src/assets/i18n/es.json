@@ -66,5 +66,14 @@
     "PASSWORD": "Contraseña",
     "TAG": "Etiquetas",
     "ADD": "Agregar"
+  },
+  "INVENTORY": {
+    "PRODUCT": "Producto",
+    "PROVIDER": "Proveedor",
+    "QTY": "Cantidad",
+    "PRICE_BASE": "Precio costo",
+    "DEPOSIT": "Deposito",
+    "DESCRIPTION": "Observación",
+    "TAG": "Etiquetas"
   }
 }

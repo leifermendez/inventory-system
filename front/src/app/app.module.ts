@@ -22,6 +22,10 @@ import { UserFormComponent } from './components/user-form/user-form.component';
 import { ListGeneralComponent } from './components/list-general/list-general.component';
 import { ModalUserComponent } from './components/modal-user/modal-user.component';
 import { LoadingBtnDirective } from './loading-btn.directive';
+import { InventoryFormComponent } from './components/inventory-form/inventory-form.component';
+import {SharedModule} from "./modules/shared/shared.module";
+import {NgSelectModule} from "@ng-select/ng-select";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
@@ -62,7 +66,11 @@ export function playerFactory() {
     }),
     LottieModule.forRoot({player: playerFactory}),
     BsDropdownModule.forRoot(),
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    SharedModule,
+    NgSelectModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [{provide: BsDatepickerConfig, useFactory: getDatepickerConfig}, CookieService],
   exports: [

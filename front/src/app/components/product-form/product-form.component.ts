@@ -6,7 +6,8 @@ import {schema} from "ngx-editor";
 
 import {CurrencyMaskInputMode} from "ngx-currency";
 import {RestService} from "../../rest.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {ShareService} from "../../share.service";
 
 @Component({
   selector: 'app-product-form',
@@ -37,8 +38,10 @@ export class ProductFormComponent implements OnInit {
   };
   public id: any = null;
   itemsAsObjects = [];
+  itemsAsCategories = [];
   public deposits = [];
   public providers = [];
+  public data = [];
 
   selectedCity: any;
 
@@ -70,8 +73,10 @@ export class ProductFormComponent implements OnInit {
 
   constructor(
     private rest: RestService,
+    private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     public router: Router,
+    public share: ShareService
   ) {
   }
 
@@ -80,21 +85,32 @@ export class ProductFormComponent implements OnInit {
     // this.parseText()
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
-      content: ['', Validators.required],
+      description: ['', Validators.required],
       categories: ['', Validators.required],
-      deposit: ['', Validators.required],
-      provider: ['', Validators.required],
+      // deposit: ['', Validators.required],
+      // provider: ['', Validators.required],
       sku: ['', Validators.required],
       tag: [''],
       gallery: [''],
       prices: [''],
-      measures: [''],
-      description: [''],
+      measures: ['']
     });
+    this.route.params.subscribe(params => {
+      this.id = (params.id === 'add') ? '' : params.id;
+      this.loadItem();
+    });
+
     this.loadDeposits();
     this.loadProviders();
+
     // this.form.patchValue({content:'Ready!'})
 
+  }
+
+  loadItem = () => {
+    this.rest.get(`products/${this.id}`).subscribe(res => {
+      this.form.patchValue(res)
+    })
   }
 
   loadProviders = () => {

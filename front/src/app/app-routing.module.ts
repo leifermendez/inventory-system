@@ -8,6 +8,7 @@ import {ProductModule} from "./modules/product/product.module";
 import {ProvidersModule} from "./modules/providers/providers.module";
 import {DepositModule} from "./modules/deposit/deposit.module";
 import {UserModule} from "./modules/user/user.module";
+import {InventoryModule} from "./modules/inventory/inventory.module";
 
 
 const routes: Routes = [
@@ -33,6 +34,11 @@ const routes: Routes = [
   {
     path: 'deposits',
     loadChildren: () => DepositModule,
+    canActivate: [AuthGuardGuard]
+  },
+  {
+    path: 'inventory',
+    loadChildren: () => InventoryModule,
     canActivate: [AuthGuardGuard]
   },
   {

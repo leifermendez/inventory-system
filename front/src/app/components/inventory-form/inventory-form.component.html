@@ -1,0 +1,122 @@
+<form (submit)="onSubmit()" class="form-product w-100 flex-wrap d-flex" [formGroup]="form">
+  <div class="col-12 p-0 flex-wrap d-flex">
+    <div class="text-right w-100">
+      <app-section-btn (cbList)="cbList()" [valid]="form.valid"></app-section-btn>
+    </div>
+    <!--    {{shared.findInvalidControls(form) |json}}-->
+    <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
+      <div class="col-12 p-0">
+        <div class="name">
+          <div class="form-group">
+            <label>{{"INVENTORY.PRODUCT" |translate}}</label>
+            <!--            <input type="text" formControlName="manager"-->
+            <!--                   class="form-control"-->
+            <!--                   placeholder=""></div>-->
+            <ng-select formControlName="product" [items]="products"
+                       bindLabel="name"
+                       (change)="selectProduct($event)"
+                       [required]="true"
+                       placeholder="">
+              <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                <div class="card-list d-flex">
+                  <div class="p-1">
+                    <img class="img-product"
+                         src="https://cdn.dribbble.com/users/1334861/screenshots/6676523/sales_order.png" alt="">
+                  </div>
+                  <div class="p-1">
+                    <div>{{item?.name}}</div>
+                    <div class="font-weight-normal text-muted">
+
+                      <span *ngFor="let tag of item?.tag">
+                        <span class="badge badge-tag">{{tag?.name}}</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ng-select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
+      <div class="col-12 p-0">
+        <div class="name">
+          <div class="form-group">
+            <label>{{"INVENTORY.PROVIDER" |translate}}</label>
+            <!--            <input type="text" formControlName="manager"-->
+            <!--                   class="form-control"-->
+            <!--                   placeholder=""></div>-->
+            <ng-select formControlName="provider" [items]="providers"
+                       bindLabel="name"
+                       (change)="selectUser($event)"
+                       [required]="true"
+                       placeholder="">
+            </ng-select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
+      <div class="col-12 p-0">
+        <div class="name">
+          <div class="form-group">
+            <label>{{"INVENTORY.QTY" |translate}}</label>
+            <input type="number" formControlName="qty"
+                   class="form-control"
+                   placeholder=""></div>
+        </div>
+      </div>
+    </div>
+    <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
+      <div class="col-12 p-0">
+        <div class="name">
+          <div class="form-group">
+            <label>{{"INVENTORY.PRICE_BASE" |translate}}</label>
+            <input type="number" formControlName="priceBase"
+                   class="form-control"
+                   placeholder=""></div>
+        </div>
+      </div>
+    </div>
+    <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
+      <div class="col-12 p-0">
+        <div class="name">
+          <div class="form-group">
+            <label>{{"INVENTORY.DEPOSIT" |translate}}</label>
+            <!--            <input type="text" formControlName="manager"-->
+            <!--                   class="form-control"-->
+            <!--                   placeholder=""></div>-->
+            <ng-select formControlName="deposit" [items]="deposits"
+                       bindLabel="name"
+                       (change)="selectUser($event)"
+                       [required]="true"
+                       placeholder="">
+            </ng-select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
+      <div class="form-group w-100">
+        <label>{{"INVENTORY.TAG" |translate}}</label>
+        <tag-input class="chip-price" [(ngModel)]="itemsAsObjects"
+                   [identifyBy]="'id'"
+                   formControlName="tag"
+                   [displayBy]="'name'"></tag-input>
+      </div>
+    </div>
+  </div>
+  <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
+    <div class="col-12 p-0">
+      <div class="name">
+        <div class="form-group">
+          <label>{{"INVENTORY.DESCRIPTION" |translate}}</label>
+          <textarea formControlName="description"
+                    class="form-control"
+                    placeholder="">
+          </textarea></div>
+      </div>
+    </div>
+  </div>
+</form>

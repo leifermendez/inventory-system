@@ -106,14 +106,11 @@ exports.updateItem = async (req, res) => {
  */
 exports.createItem = async (req, res) => {
   try {
-    const author = await utils.getUserCurrent(req)
+    const author = await utils.getUserCurrent(req,true)
     req = matchedData(req)
     req = {
       ...req, ...{
-        author,
-        product: await utils.isIDGood(req.product),
-        deposit: await utils.isIDGood(req.deposit),
-        provider: await utils.isIDGood(req.provider)
+        author
       }
     }
     res.status(201).json(await db.createItem(req, model))

@@ -6,6 +6,7 @@ import {SharedModule} from "../shared/shared.module";
 import { ListComponent } from './pages/list/list.component';
 import {AvatarModule} from "ngx-avatar";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {QuillModule} from "ngx-quill";
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
     ProductRoutingModule,
     SharedModule,
     AvatarModule,
+    QuillModule.forRoot(),
     FontAwesomeModule
   ]
 })

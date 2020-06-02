@@ -30,6 +30,8 @@ import {UserFormComponent} from "../../components/user-form/user-form.component"
 import {AvatarModule} from "ngx-avatar";
 import {ModalUserComponent} from "../../components/modal-user/modal-user.component";
 import {TimeagoModule} from "ngx-timeago";
+import {QuillModule} from "ngx-quill";
+import {InventoryFormComponent} from "../../components/inventory-form/inventory-form.component";
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import {TimeagoModule} from "ngx-timeago";
     SectionBtnComponent,
     UserFormComponent,
     ListItemsComponent,
-    ModalUserComponent
+    ModalUserComponent,
+    InventoryFormComponent
   ],
   imports: [
     CommonModule,
@@ -68,12 +71,13 @@ import {TimeagoModule} from "ngx-timeago";
     TranslateModule,
     TagInputModule,
     RouterModule,
+    QuillModule,
   ],
   exports: [HeaderComponent, SideBarComponent, WorkingBoxComponent,
     ListItemsComponent, DetailInvoiceComponent, BoxEmptyComponent,
     LockedBoxComponent, ProductFormComponent,
     ProviderFormComponent, DepositFormComponent,
-    SectionBtnComponent,
+    SectionBtnComponent, InventoryFormComponent,
     UserFormComponent, ListItemsComponent, ModalUserComponent]
 })
 export class SharedModule {

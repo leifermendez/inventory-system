@@ -176,7 +176,8 @@ Style
 }
 
 input.form-control.ng-invalid,
-.ng-select.ng-invalid, .ng-invalid-red {
+.ng-select.ng-invalid, .ng-invalid-red,
+.ng-invalid .ql-container {
   border: solid 1px transparent !important;
   box-shadow: 2px 1px 0px #ffc0c0 !important;
   border-radius: 1rem !important;
@@ -265,7 +266,10 @@ input.form-control.ng-invalid,
 
 .items ul li:hover .price-main,
 .items ul li:hover .text-muted,
-.items ul li:hover .badge-green {
+.items ul li:hover .badge-green,
+.items ul li:hover .arrow-icon-colors-up,
+.items ul li:hover .arrow-icon-colors-down,
+.items ul li:hover .text-hover{
   color: rgba(255, 255, 255, .8) !important;
 }
 
@@ -309,4 +313,15 @@ input.form-control.ng-invalid,
   font-weight: 600;
   text-align: center;
   color: #737373;
+}
+
+.description-card .ql-snow {
+  border: solid 0px red !important;
+}
+
+.item-list-single .arrow-icon-colors-up {
+  color: #2CA42E;
+}
+.item-list-single .arrow-icon-colors-down {
+  color: #EC3552;
 }

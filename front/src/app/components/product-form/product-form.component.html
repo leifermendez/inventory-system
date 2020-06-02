@@ -18,13 +18,14 @@
 
   <div class="col-md-6 col-lg-6 col-sm-12 pl-0 pr-2">
     <div class="custom-card-style h-100 col-12 mt-3">
-
       <div class="description-text">
-        <ngx-editor [ngModel]="editorContent"
-                    [contentEditable]="false"
-                    formControlName="content"
-                    (ngModelChange)="editorContentChange($event)">
-        </ngx-editor>
+        <quill-editor class="description-card" formControlName="description"
+                      [styles]="{height: '400px'}"></quill-editor>
+        <!--        <ngx-editor [ngModel]="editorContent"-->
+        <!--                    [contentEditable]="false"-->
+        <!--                    formControlName="content"-->
+        <!--                    (ngModelChange)="editorContentChange($event)">-->
+        <!--        </ngx-editor>-->
       </div>
 
     </div>
@@ -41,33 +42,33 @@
     <div class="custom-card-style col-12 mt-2">
       <div class="form-group">
         <label>{{"PRODUCT.CATEGORIES" |translate}}</label>
-        <tag-input class="chip-price" [(ngModel)]="itemsAsObjects"
+        <tag-input class="chip-price" [(ngModel)]="itemsAsCategories"
                    [identifyBy]="'id'"
-                   formControlName="tag"
+                   formControlName="categories"
                    [displayBy]="'name'"></tag-input>
       </div>
     </div>
-    <div class="custom-card-style col-12 mt-2">
-      <div class="form-group">
-        <label>{{"PRODUCT.PROVIDER" |translate}}</label>
-        <ng-select formControlName="provider" [items]="providers"
-                   bindLabel="name"
-                   [searchable]="true"
-                   [clearable]="false"
-                   placeholder="">
-        </ng-select>
-      </div>
-    </div>
-    <div class="custom-card-style col-12 mt-2">
-      <div class="form-group">
-        <label>{{"PRODUCT.DEPOSIT" |translate}}</label>
-        <ng-select formControlName="deposit" [items]="deposits"
-                   bindLabel="name"
-                   [clearable]="false"
-                   placeholder="">
-        </ng-select>
-      </div>
-    </div>
+<!--    <div class="custom-card-style col-12 mt-2">-->
+<!--      <div class="form-group">-->
+<!--        <label>{{"PRODUCT.PROVIDER" |translate}}</label>-->
+<!--        <ng-select formControlName="provider" [items]="providers"-->
+<!--                   bindLabel="name"-->
+<!--                   [searchable]="true"-->
+<!--                   [clearable]="false"-->
+<!--                   placeholder="">-->
+<!--        </ng-select>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="custom-card-style col-12 mt-2">-->
+<!--      <div class="form-group">-->
+<!--        <label>{{"PRODUCT.DEPOSIT" |translate}}</label>-->
+<!--        <ng-select formControlName="deposit" [items]="deposits"-->
+<!--                   bindLabel="name"-->
+<!--                   [clearable]="false"-->
+<!--                   placeholder="">-->
+<!--        </ng-select>-->
+<!--      </div>-->
+<!--    </div>-->
     <div class="custom-card-style col-12 mt-2">
       <div class="form-group">
         <label>{{"PRODUCT.TAG" |translate}}</label>
