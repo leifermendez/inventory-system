@@ -4,13 +4,14 @@
   <app-list-items
     (cbAdd)="goTo()"
     [(data)]="data"
+    (cbSrc)="onSrc($event)"
     [customTemplate]="customTemplateSrc"
-    [title]="'Lista'"
     class="col-12 row m-0 pl-2 pr-4">
   </app-list-items>
 </div>
 
 <!-- ***************** TEMPLATE ************** -->
+
 <ng-template #customTemplateSrc let-dat='dat'>
   <ul [@listAnimation] *ngIf="dat?.length">
     <li *ngFor="let inside of dat" [routerLink]="['/','providers',inside?._id]"
@@ -22,7 +23,7 @@
         <div class="pl-2 pr-2 pt-1 pb-1">
           <div class="d-flex">
             <h6 class="name mr-2">{{inside?.name}}</h6>
-            <span class="badge-tag badge mr-1" *ngFor="let tag of inside?.tag">
+            <span class="badge-tag badge mr-1" *ngFor="let tag of inside?.tag ">
               {{tag?.name}}
             </span>
           </div>

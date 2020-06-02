@@ -1,14 +1,22 @@
 <div class="items w-100">
-  <div  class="header d-flex justify-content-between">
+  <div class="header d-flex justify-content-between">
     <div>
-      <div>
+      <div *ngIf="title" class="title">
         {{title}}
       </div>
+      <!--      <div>-->
+      <!--        <input type="text"-->
+      <!--               placeholder="Datepicker"-->
+      <!--               class="form-control input-date custom-date-picker"-->
+      <!--               bsDatepicker>-->
+      <!--        &lt;!&ndash;        <small class="text-muted">Mayo 20, 2020</small>&ndash;&gt;-->
+      <!--      </div>-->
       <div>
         <input type="text"
-               placeholder="Datepicker"
-               class="form-control input-date custom-date-picker"
-               bsDatepicker>
+               [(ngModel)]="src"
+               (ngModelChange)="onChange($event)"
+               placeholder="Buscar"
+               class="form-control input-date input-src">
         <!--        <small class="text-muted">Mayo 20, 2020</small>-->
       </div>
     </div>
@@ -19,8 +27,10 @@
     </div>
   </div>
 
-  <ng-template  #viewContainerCustom>
+  <!--- TEMPLATE ---->
+  <ng-template #viewContainerCustom>
   </ng-template>
+  <!--- END TEMPLATE ---->
 
   <div *ngIf="!data?.length">
     <div class="text-center" *ngIf="mode === 'working'">

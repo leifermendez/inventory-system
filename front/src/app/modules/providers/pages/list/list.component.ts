@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {RestService} from "../../../../rest.service";
 import {Router} from "@angular/router";
 import {faPhoneAlt, faIndustry, faUser} from '@fortawesome/free-solid-svg-icons';
 import {animate, query, stagger, style, transition, trigger} from "@angular/animations";
+import {ShareService} from "../../../../share.service";
 
 @Component({
   selector: 'app-list',
@@ -24,13 +25,14 @@ import {animate, query, stagger, style, transition, trigger} from "@angular/anim
 export class ListComponent implements OnInit {
 
   constructor(private rest: RestService,
-              private router: Router) {
+              private router: Router,
+              private share: ShareService) {
   }
 
-  faPhoneAlt = faPhoneAlt
   faIndustry = faIndustry
   faUser = faUser
   public data = [];
+  public source = 'providers';
 
   public history: any = [
     {
@@ -42,25 +44,17 @@ export class ListComponent implements OnInit {
     this.load()
   }
 
-  load = () => {
-    this.rest.get(`providers`)
+  load = (src: string = '') => {
+    const q = this.share.parseLoad(src, this.source);
+    this.rest.get(q.join(''))
       .subscribe(res => {
-        this.data = this.parseData(res);
+        this.data = this.share.parseData(res, this.source);
       })
   }
 
-  goTo = () => {
-    this.router.navigate(['/', 'providers', 'add'])
-  }
+  goTo = () => this.share.goTo(this.source)
 
-  parseData = (data: any) => {
-    const tmp = [];
-    data.docs.map(a => tmp.push({
-      ...a, ...{
-        router: ['/', 'providers', a._id]
-      }
-    }));
-    return tmp;
-  }
+  onSrc = (e) => this.load(e)
+
 
 }

@@ -34,10 +34,14 @@ export class AuthService {
       });
   });
 
+  public clear = () => {
+    this.cookieService.delete('session', '/');
+    this.cookieService.delete('user', '/');
+  }
+
   public logout = () => new Promise((resolve, reject) => {
     try {
-      this.cookieService.delete('session', '/');
-      this.cookieService.delete('user', '/');
+      this.clear();
       resolve(true);
     } catch (e) {
       reject(false);
@@ -47,14 +51,28 @@ export class AuthService {
   checkSession = (verify = false, redirect = true, extra: any = {}) => {
     return new Promise((resolve, reject) => {
         if (this.cookieService.check('session')) {
+          this.rest.get(`token`).subscribe(res => {
+            // console.log(res)
+            this.cookieService.set(
+              'session',
+              res.session,
+              environment.daysTokenExpire,
+              '/');
+            reject(false)
+          }, error => {
+            this.clear();
+            this.redirectLogin();
+          })
           resolve(true);
         } else {
-          if (redirect) {
-            this.router.navigate(['/', 'oauth', 'login']);
-          }
+          redirect ? this.redirectLogin() : null;
           reject(false);
         }
       }
     );
   };
+
+  redirectLogin = () => {
+    this.router.navigate(['/', 'oauth', 'login']);
+  }
 }

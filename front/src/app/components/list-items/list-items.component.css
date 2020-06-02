@@ -7,7 +7,9 @@
   letter-spacing: .6px;
   box-shadow: 1px 3px 0px #EEEFF6;
 }
-
+.title{
+  margin-bottom: .25rem;
+}
 .input-date{
   padding: .25rem !important;
   font-size: .7rem;
@@ -17,6 +19,17 @@
   border: solid 0px;
   cursor: pointer;
 }
+
+.input-src{
+  padding: .25rem 0!important;
+  font-size: .8rem;
+  font-weight: 500;
+  color: #52535e;
+  letter-spacing: 1px;
+  border: solid 0px;
+  cursor: pointer;
+}
+
 .badge-red {
   background-color: #E93751;
   color: #ffffff;

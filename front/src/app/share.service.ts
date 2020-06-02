@@ -1,11 +1,13 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShareService {
   @Output() registerUser = new EventEmitter<string>();
-  constructor() {
+
+  constructor(private router: Router) {
   }
 
   generate = (length) => {
@@ -18,6 +20,17 @@ export class ShareService {
     return result;
   }
 
+  public parseData = (data: any, source: string = '') => {
+    const tmp = [];
+    data.docs.map(a => tmp.push({
+      ...a, ...{
+        router: ['/', source, a._id]
+      }
+    }));
+    return tmp;
+  }
+
+  public goTo = (source: string = '') => this.router.navigate(['/', source, 'add'])
 
   public findInvalidControls(form: any) {
     const invalid = [];
@@ -29,6 +42,19 @@ export class ShareService {
     }
     return invalid;
   }
+
+  public parseLoad = (src: string = '', source: string = '') => {
+    let q = [
+      source,
+      `?fields=name`,
+      `&sort=name&order=-1`
+    ];
+
+    if (src && src.length > 2) {
+      q.push(`&filter=${src}`);
+    }
+    return q;
+  };
 
   public menuHistory = () => {
 

@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import {faPlus, faCalendarCheck, faCalendarAlt} from '@fortawesome/free-solid-svg-icons';
 import {animate, style, transition, trigger} from "@angular/animations";
+import {RestService} from "../../rest.service";
 
 @Component({
   selector: 'app-list-items',
@@ -38,18 +39,19 @@ export class ListItemsComponent implements OnInit, AfterViewInit {
   @ViewChild('viewContainerCustom', {static: false, read: ViewContainerRef})
   viewContainerCustom: ViewContainerRef;
   @ViewChild('defaultCustom') defaultCustom: TemplateRef<any>;
-  @Input() title: string;
+  @Input() title: any = false;
   @Input() mode: any = false;
+  @Output() cbSrc = new EventEmitter<any>();
   @Output() cbAdd = new EventEmitter<any>();
   faPlus = faPlus;
   faCalendarCheck = faCalendarCheck;
   faCalendarAlt = faCalendarAlt;
+  public src: any = null;
 
-  constructor() {
+  constructor(public rest: RestService) {
   }
 
   ngOnInit(): void {
-
 
   }
 
@@ -60,16 +62,20 @@ export class ListItemsComponent implements OnInit, AfterViewInit {
         const viewCustomTemplate = this.customTemplate.createEmbeddedView({
           dat: this.dataIn
         });
-        // console.log(viewCustomTemplate)
         this.viewContainerCustom.insert(viewCustomTemplate);
       } else {
-        console.log('0')
         const viewCustomTemplate = this.defaultCustom.createEmbeddedView(null);
         this.viewContainerCustom.insert(viewCustomTemplate);
       }
-    },0)
+    }, 0)
 
   }
+
+  onChange = (src: string = '') => {
+    this.viewContainerCustom.clear();
+    this.cbSrc.emit(src)
+  }
+
 
   callbackAdd = (a: any = {}) => this.cbAdd.emit(a)
 

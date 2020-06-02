@@ -3,6 +3,7 @@ import {RestService} from "../../../../rest.service";
 import {Router} from "@angular/router";
 import {faPhoneAlt} from '@fortawesome/free-solid-svg-icons';
 import {animate, query, stagger, style, transition, trigger} from "@angular/animations";
+import {ShareService} from "../../../../share.service";
 
 @Component({
   selector: 'app-list',
@@ -24,12 +25,13 @@ import {animate, query, stagger, style, transition, trigger} from "@angular/anim
 export class ListComponent implements OnInit {
 
   constructor(private rest: RestService,
-              private router: Router) {
+              private router: Router,
+              private share: ShareService) {
   }
 
   faPhoneAlt = faPhoneAlt
   public data = [];
-
+  public source = 'deposits';
   public history: any = [
     {
       name: 'Depositos'
@@ -40,24 +42,15 @@ export class ListComponent implements OnInit {
     this.load()
   }
 
-  load = () => {
-    this.rest.get(`deposits`)
+  load = (src: string = '') => {
+    const q = this.share.parseLoad(src, this.source);
+    this.rest.get(q.join(''))
       .subscribe(res => {
-        this.data = this.parseData(res);
+        this.data = this.share.parseData(res, this.source);
       })
   }
 
-  goTo = () => {
-    this.router.navigate(['/', 'deposits', 'add'])
-  }
+  goTo = () => this.share.goTo(this.source)
 
-  parseData = (data: any) => {
-    const tmp = [];
-    data.docs.map(a => tmp.push({
-      ...a, ...{
-        router: ['/', 'deposits', a._id]
-      }
-    }));
-    return tmp;
-  }
+  onSrc = (e) => this.load(e)
 }
