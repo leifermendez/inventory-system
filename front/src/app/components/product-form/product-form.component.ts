@@ -1,6 +1,6 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {faLifeRing, faSave, faCheckCircle} from '@fortawesome/free-regular-svg-icons';
+import {faLifeRing, faSave, faCheckCircle, faTrashAlt} from '@fortawesome/free-regular-svg-icons';
 
 import {CurrencyMaskInputMode} from "ngx-currency";
 import {RestService} from "../../rest.service";
@@ -24,6 +24,7 @@ export class ProductFormComponent implements OnInit {
       icon: faSave
     }
   ]
+  faTrashAlt = faTrashAlt
   faSave = faSave
   faCheckCircle = faCheckCircle
   faLifeRing = faLifeRing
@@ -64,6 +65,8 @@ export class ProductFormComponent implements OnInit {
   editorContentChange(doc: object) {
     this.editorContent = doc;
   }
+
+  deletePrice = (i) => this.prices.splice(i, 1)
 
   onFocus = (e) => {
     this.priceTmp = null

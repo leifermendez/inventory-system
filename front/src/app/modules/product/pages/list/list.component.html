@@ -29,8 +29,10 @@
             </span>
           </div>
           <div class="d-flex pt-1">
-            <span class="text-muted">
-              {{inside?.address}}
+            <span class="text-muted mt-1">
+              <span class="badge-tag-price badge mr-2" *ngFor="let price of inside?.prices">
+                {{'GENERAL.CURRENCY_SYMBOL' |translate}} {{price?.amount | number:'1.2-2'}} {{'GENERAL.CURRENCY' |translate}}
+              </span>
             </span>
           </div>
         </div>

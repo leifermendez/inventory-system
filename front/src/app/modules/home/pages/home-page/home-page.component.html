@@ -1,12 +1,19 @@
 <app-header></app-header>
 <app-side-bar></app-side-bar>
 <div class="container-row d-flex">
-  <app-list-items [title]="'Pedidos'" class="col-md-6 col-sm-12 col-lg-4 row m-0 pl-1"></app-list-items>
-  <app-list-items [title]="'Inventario'" mode="working"
-                  class="col-md-6 col-sm-12 col-lg-4 row m-0 pl-1"></app-list-items>
-  <app-list-items [title]="'Notificaciones'" mode="blocked"
-                  class="col-md-6 col-sm-12 col-lg-4 row m-0 pl-1"></app-list-items>
+  <app-list-inventory [title]="'Notificaciones'"
+                      [mode]="'home'"
+                      class="col-md-6 col-sm-12 col-lg-4 row m-0 pl-1">
+  </app-list-inventory>
+  <app-list-inventory [title]="'Notificaciones'"
+                      [mode]="'home'"
+                      class="col-md-6 col-sm-12 col-lg-4 row m-0 pl-1"></app-list-inventory>
+  <app-list-inventory [title]="'Notificaciones'"
+                      [mode]="'home'"
+                      class="col-md-6 col-sm-12 col-lg-4 row m-0 pl-1">
+  </app-list-inventory>
   <!--  <app-detail-invoice class="col-6 row m-0 pl-2"></app-detail-invoice>-->
   <!--  <app-list-items [title]="'Last products'" class="col-3 row m-0 pl-2"></app-list-items>-->
   <!--  <app-list-items [title]="'Upload and Download'" class="col-3 row m-0 pl-2"></app-list-items>-->
 </div>
+

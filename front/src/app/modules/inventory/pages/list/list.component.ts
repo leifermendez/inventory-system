@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {RestService} from "../../../../rest.service";
 import {Router} from "@angular/router";
 import {faPhoneAlt, faUser, faLongArrowAltUp, faLongArrowAltDown} from '@fortawesome/free-solid-svg-icons';
@@ -6,7 +6,7 @@ import {animate, query, stagger, style, transition, trigger} from "@angular/anim
 import {ShareService} from "../../../../share.service";
 
 @Component({
-  selector: 'app-list',
+  selector: 'app-list-inventory',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css'],
   animations: [
@@ -23,6 +23,7 @@ import {ShareService} from "../../../../share.service";
   ]
 })
 export class ListComponent implements OnInit {
+  @Input() mode: string = 'page'
 
   constructor(private rest: RestService,
               private router: Router,

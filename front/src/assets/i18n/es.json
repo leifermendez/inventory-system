@@ -5,6 +5,7 @@
     "SAVE": "Guardar",
     "LIST": "Lista",
     "ADD": "Agregar",
+    "DELETE": "Eliminar",
     "EMPTY": "Sin resultados",
     "UPGRADE": "Proximamente",
     "NOT_ALLOWED": "No tienes permisos"

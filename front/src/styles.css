@@ -269,7 +269,7 @@ input.form-control.ng-invalid,
 .items ul li:hover .badge-green,
 .items ul li:hover .arrow-icon-colors-up,
 .items ul li:hover .arrow-icon-colors-down,
-.items ul li:hover .text-hover{
+.items ul li:hover .text-hover {
   color: rgba(255, 255, 255, .8) !important;
 }
 
@@ -322,6 +322,13 @@ input.form-control.ng-invalid,
 .item-list-single .arrow-icon-colors-up {
   color: #2CA42E;
 }
+
 .item-list-single .arrow-icon-colors-down {
   color: #EC3552;
+}
+
+.badge-tag-price {
+  background: transparent;
+  padding: .25rem .4rem;
+  border: solid 1px #e8e8e8;
 }

@@ -47,8 +47,11 @@ export class ShareService {
 
     let q: (string | any[])[] = [source];
 
-    q = (fields.length) ? [...q, fields] : [...q, [`?fields=name`,
-      `&sort=name&order=-1`]]
+    q = (fields.length) ? [...q, ...fields] : [...q,
+      ...[`?fields=name`,
+        `&sort=name&order=-1`
+      ]
+    ]
 
     if (src && src.length > 2) {
       q.push(`&filter=${src}`);

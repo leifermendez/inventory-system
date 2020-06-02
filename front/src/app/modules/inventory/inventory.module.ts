@@ -13,16 +13,19 @@ import {TranslateModule} from "@ngx-translate/core";
 
 
 @NgModule({
-  declarations: [AddComponent, ListComponent],
-  imports: [
-    CommonModule,
-    InventoryRoutingModule,
-    SharedModule,
-    AvatarModule,
-    FontAwesomeModule,
-    TimeagoModule,
-    TooltipModule,
-    TranslateModule
-  ]
+    declarations: [AddComponent, ListComponent],
+    exports: [
+        ListComponent
+    ],
+    imports: [
+        CommonModule,
+        InventoryRoutingModule,
+        SharedModule,
+        AvatarModule,
+        FontAwesomeModule,
+        TimeagoModule,
+        TooltipModule,
+        TranslateModule
+    ]
 })
 export class InventoryModule { }

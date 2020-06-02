@@ -1,16 +1,19 @@
-<app-header [history]="history"></app-header>
-<app-side-bar></app-side-bar>
-<div class="container-row d-flex">
+<ng-container *ngIf="mode === 'page'">
+  <app-header [history]="history"></app-header>
+  <app-side-bar></app-side-bar>
+
+</ng-container>
+<div [ngClass]="{'container-row d-flex':(mode === 'page')}">
   <app-list-items
     (cbAdd)="goTo()"
     [(data)]="data"
     [customTemplate]="customTemplateSrc"
     (cbSrc)="onSrc($event)"
-    class="col-12 row m-0 pl-2 pr-4">
+    class="col-12 row m-0 pl-2" [ngClass]="{'pr-4':(mode === 'list'),
+    'pr-0':(mode === 'home')}">
   </app-list-items>
 
 </div>
-
 <!-- ***************** TEMPLATE ************** -->
 <ng-template #customTemplateSrc let-dat='dat'>
   <ul [@listAnimation] *ngIf="dat?.length">

@@ -50,8 +50,14 @@
         <app-box-empty *ngIf="!prices.length"></app-box-empty>
         <div class="list-prices" *ngIf="prices.length">
           <ul>
-            <li *ngFor="let price of prices">
+            <li *ngFor="let price of prices;let i = index">
               {{"GENERAL.CURRENCY_SYMBOL" |translate}} {{price?.amount | number :'1.2-2'}} {{"GENERAL.CURRENCY" |translate}}
+              <span class="ml-1 btn-light-trash"
+                    (click)="deletePrice(i)"
+                    containerClass="customToolTip"
+                    [tooltip]="'GENERAL.DELETE' | translate">
+                <fa-icon [icon]="faTrashAlt"></fa-icon>
+              </span>
             </li>
           </ul>
         </div>
