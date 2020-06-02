@@ -12,8 +12,10 @@
             <!--            <input type="text" formControlName="manager"-->
             <!--                   class="form-control"-->
             <!--                   placeholder=""></div>-->
-            <ng-select formControlName="product" [items]="products"
+<!--            {{products | json}}-->
+            <ng-select formControlName="product" #selectProductRef [items]="products"
                        bindLabel="name"
+                       (search)="srcProduct($event)"
                        (change)="selectProduct($event)"
                        [required]="true"
                        placeholder="">

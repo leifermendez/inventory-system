@@ -37,7 +37,7 @@ export class InventoryFormComponent implements OnInit {
       product: ['', Validators.required],
       provider: ['', Validators.required],
       qty: ['', Validators.required],
-      priceBase: ['', [Validators.required, Validators.min(0)]],
+      priceBase: [''],
       deposit: ['', Validators.required],
       tag: [''],
       description: [''],
@@ -52,7 +52,7 @@ export class InventoryFormComponent implements OnInit {
         ...this.users];
     })
 
-    this.loadProducts()
+    // this.loadProducts()
     this.loadProviders()
     this.loadDeposits()
     this.loadUser()
@@ -156,6 +156,24 @@ export class InventoryFormComponent implements OnInit {
         ignoreBackdropClick: false
       })
     );
+  }
+
+  srcProduct = (e) => {
+    const {term} = e;
+    const q = [
+      `products?`,
+      `filter=${term}`,
+      `&fields=name,description`,
+      `&page=1&limit=5`,
+      `&sort=name&order=-1`,
+    ];
+
+    this.rest.get(q.join(''))
+      .subscribe(res => {
+        this.products = [...this.parseData(res), {id: 1, name: 'New item'}];
+      })
+
+    console.log(this.products)
   }
 
 }

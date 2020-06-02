@@ -12,7 +12,7 @@ exports.createItem = [
   check('qty')
     .exists(),
   check('priceBase')
-    .exists(),
+    .optional(),
   check('deposit')
     .exists(),
   check('tag')

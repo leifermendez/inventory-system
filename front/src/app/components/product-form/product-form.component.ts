@@ -1,8 +1,6 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Schema} from "prosemirror-model";
 import {faLifeRing, faSave, faCheckCircle} from '@fortawesome/free-regular-svg-icons';
-import {schema} from "ngx-editor";
 
 import {CurrencyMaskInputMode} from "ngx-currency";
 import {RestService} from "../../rest.service";
@@ -109,6 +107,8 @@ export class ProductFormComponent implements OnInit {
 
   loadItem = () => {
     this.rest.get(`products/${this.id}`).subscribe(res => {
+      const {prices} = res;
+      this.prices = prices;
       this.form.patchValue(res)
     })
   }

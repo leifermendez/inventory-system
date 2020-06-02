@@ -46,7 +46,10 @@ export class ListComponent implements OnInit {
   }
 
   load = (src: string = '') => {
-    const q = this.share.parseLoad(src, this.source);
+    const q = this.share.parseLoad(src, this.source, [
+      `?fields=name`,
+      `&sort=createdAt&order=-1`
+    ]);
     this.rest.get(q.join(''))
       .subscribe(res => {
         this.data = this.share.parseData(res, this.source);

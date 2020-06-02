@@ -43,12 +43,12 @@ export class ShareService {
     return invalid;
   }
 
-  public parseLoad = (src: string = '', source: string = '') => {
-    let q = [
-      source,
-      `?fields=name`,
-      `&sort=name&order=-1`
-    ];
+  public parseLoad = (src: string = '', source: string = '', fields = []) => {
+
+    let q: (string | any[])[] = [source];
+
+    q = (fields.length) ? [...q, fields] : [...q, [`?fields=name`,
+      `&sort=name&order=-1`]]
 
     if (src && src.length > 2) {
       q.push(`&filter=${src}`);

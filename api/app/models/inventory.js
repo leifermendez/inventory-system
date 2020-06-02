@@ -17,7 +17,7 @@ const InventorySchema = new mongoose.Schema(
     },
     priceBase: {
       type: Number,
-      required: true
+      required: false
     },
     deposit: {
       type: Object,

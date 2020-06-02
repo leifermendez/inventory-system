@@ -17,10 +17,10 @@
   </div>
 
   <div class="col-md-6 col-lg-6 col-sm-12 pl-0 pr-2">
-    <div class="custom-card-style h-100 col-12 mt-3">
+    <div class="custom-card-style  col-12 mt-3">
       <div class="description-text">
         <quill-editor class="description-card" formControlName="description"
-                      [styles]="{height: '400px'}"></quill-editor>
+                      [styles]="{height: '430px'}"></quill-editor>
         <!--        <ngx-editor [ngModel]="editorContent"-->
         <!--                    [contentEditable]="false"-->
         <!--                    formControlName="content"-->
@@ -34,67 +34,7 @@
 
   <div class="col-md-6 col-lg-3 col-sm-12 pl-0 pr-2">
     <div class="custom-card-style col-12 mt-3">
-      <div class="form-group">
-        <label>{{"PRODUCT.SKU" |translate}}</label>
-        <input type="text" formControlName="sku" class="form-control" aria-describedby="emailHelp"
-               placeholder=""></div>
-    </div>
-    <div class="custom-card-style col-12 mt-2">
-      <div class="form-group">
-        <label>{{"PRODUCT.CATEGORIES" |translate}}</label>
-        <tag-input class="chip-price" [(ngModel)]="itemsAsCategories"
-                   [identifyBy]="'id'"
-                   formControlName="categories"
-                   [displayBy]="'name'"></tag-input>
-      </div>
-    </div>
-<!--    <div class="custom-card-style col-12 mt-2">-->
-<!--      <div class="form-group">-->
-<!--        <label>{{"PRODUCT.PROVIDER" |translate}}</label>-->
-<!--        <ng-select formControlName="provider" [items]="providers"-->
-<!--                   bindLabel="name"-->
-<!--                   [searchable]="true"-->
-<!--                   [clearable]="false"-->
-<!--                   placeholder="">-->
-<!--        </ng-select>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="custom-card-style col-12 mt-2">-->
-<!--      <div class="form-group">-->
-<!--        <label>{{"PRODUCT.DEPOSIT" |translate}}</label>-->
-<!--        <ng-select formControlName="deposit" [items]="deposits"-->
-<!--                   bindLabel="name"-->
-<!--                   [clearable]="false"-->
-<!--                   placeholder="">-->
-<!--        </ng-select>-->
-<!--      </div>-->
-<!--    </div>-->
-    <div class="custom-card-style col-12 mt-2">
-      <div class="form-group">
-        <label>{{"PRODUCT.TAG" |translate}}</label>
-        <tag-input class="chip-price" [(ngModel)]="itemsAsObjects"
-                   [identifyBy]="'id'"
-                   formControlName="tag"
-                   [displayBy]="'name'"></tag-input>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6 col-lg-3 col-sm-12 pl-0 pr-2">
-    <div class="custom-card-style col-12 mt-3">
-      <!--      <div class="form-group">-->
-      <!--        <label >{{"PRODUCT.PRICES" |translate}}</label>-->
-      <!--        <tag-input class="chip-price" [removable]="true" [(ngModel)]="itemsAsObjects" [identifyBy]="'id'"-->
-      <!--                   [displayBy]="'value'" #input>-->
-      <!--          <ng-template let-item="item" let-index="index">-->
-      <!--            {{ "GENERAL.CURRENCY_SYMBOL" |translate }} {{ item?.value | number: '1.2-2' }} {{ "GENERAL.CURRENCY" |translate }}-->
-      <!--            <delete-icon (click)="input.removeItem(item, index)"></delete-icon>-->
-      <!--          </ng-template>-->
-
-      <!--        </tag-input>-->
-      <!--      </div>-->
       <div class="form-group mb-0">
-
-
         <label>{{"PRODUCT.PRICES" |translate}}</label>
         <input currencyMask (focus)="onFocus($event)" class="form-control"
                [ngClass]="{'ng-invalid-red':!prices.length}"
@@ -102,7 +42,7 @@
                [options]="ngxCurrencyOptions"/>
 
         <div class="text-right pt-3 pb-3">
-          <button type="button" (click)="addPrice($event)" class="btn btn-sm btn-primary btn-radius btn-block">
+          <button type="button" (click)="addPrice($event)" class="btn btn-sm btn-primary btn-radius">
             <fa-icon [icon]="faCheckCircle"></fa-icon>
             <span class="pl-1">{{"PRODUCT.ADD" |translate}}</span>
           </button>
@@ -117,6 +57,37 @@
         </div>
       </div>
     </div>
+    <div class="custom-card-style col-12 mt-2">
+      <div class="form-group">
+        <label>{{"PRODUCT.SKU" |translate}}</label>
+        <input type="text" formControlName="sku" class="form-control" aria-describedby="emailHelp"
+               placeholder=""></div>
+    </div>
+    <div class="custom-card-style col-12 mt-2">
+      <div class="form-group">
+        <label>{{"PRODUCT.TAG" |translate}}</label>
+        <tag-input class="chip-price" [(ngModel)]="itemsAsObjects"
+                   [identifyBy]="'id'"
+                   formControlName="tag"
+                   [displayBy]="'name'"></tag-input>
+      </div>
+    </div>
+
+
+    <div class="custom-card-style col-12 mt-2">
+      <div class="form-group">
+        <label>{{"PRODUCT.CATEGORIES" |translate}}</label>
+        <tag-input class="chip-price" [(ngModel)]="itemsAsCategories"
+                   [identifyBy]="'id'"
+                   formControlName="categories"
+                   [displayBy]="'name'"></tag-input>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="col-md-6 col-lg-3 col-sm-12 pl-0 pr-2">
+
 
   </div>
 
