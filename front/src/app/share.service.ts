@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 })
 export class ShareService {
   @Output() registerUser = new EventEmitter<string>();
+  @Output() loading = new EventEmitter<string>();
 
   constructor(private router: Router) {
   }

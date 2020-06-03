@@ -24,6 +24,8 @@
     "@fortawesome/free-regular-svg-icons": "^5.13.0",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@ng-select/ng-select": "^4.0.0",
+    "@ngx-loading-bar/core": "^4.2.0",
+    "@ngx-loading-bar/http-client": "^4.2.0",
     "@ngx-translate/core": "^12.1.2",
     "@ngx-translate/http-loader": "^4.0.0",
     "install": "^0.13.0",

@@ -1,6 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
+import {LoadingBarHttpClientModule} from '@ngx-loading-bar/http-client';
+import {LoadingBarModule} from '@ngx-loading-bar/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BsDropdownModule} from "ngx-bootstrap/dropdown";
@@ -12,17 +13,9 @@ import {LottieModule} from 'ngx-lottie';
 import player from 'lottie-web';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {Page404Component} from './components/page404/page404.component';
-import {ProductFormComponent} from './components/product-form/product-form.component';
 import {TagInputModule} from "ngx-chips";
 import {CookieService} from "ngx-cookie-service";
-import { ProviderFormComponent } from './components/provider-form/provider-form.component';
-import { DepositFormComponent } from './components/deposit-form/deposit-form.component';
-import { SectionBtnComponent } from './components/section-btn/section-btn.component';
-import { UserFormComponent } from './components/user-form/user-form.component';
-import { ListGeneralComponent } from './components/list-general/list-general.component';
-import { ModalUserComponent } from './components/modal-user/modal-user.component';
-import { LoadingBtnDirective } from './loading-btn.directive';
-import { InventoryFormComponent } from './components/inventory-form/inventory-form.component';
+import {ListGeneralComponent} from './components/list-general/list-general.component';
 import {SharedModule} from "./modules/shared/shared.module";
 import {NgSelectModule} from "@ng-select/ng-select";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -55,6 +48,8 @@ export function playerFactory() {
     HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    LoadingBarModule,
+    LoadingBarHttpClientModule,
     TagInputModule,
     TranslateModule.forRoot({
       defaultLanguage: 'es',
@@ -73,9 +68,7 @@ export function playerFactory() {
     ReactiveFormsModule
   ],
   providers: [{provide: BsDatepickerConfig, useFactory: getDatepickerConfig}, CookieService],
-  exports: [
-
-  ],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
