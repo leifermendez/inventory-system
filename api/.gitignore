@@ -37,7 +37,8 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
-
+public/media/*
+!public/media/
 # TypeScript v1 declaration files
 typings/
 

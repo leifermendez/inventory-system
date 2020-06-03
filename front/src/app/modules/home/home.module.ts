@@ -11,6 +11,7 @@ import {TimeagoModule} from "ngx-timeago";
 import {TranslateModule} from "@ngx-translate/core";
 import {InventoryModule} from "../inventory/inventory.module";
 import {ProvidersModule} from "../providers/providers.module";
+import {ProductModule} from "../product/product.module";
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {ProvidersModule} from "../providers/providers.module";
         TimeagoModule,
         TranslateModule,
         InventoryModule,
-        ProvidersModule
+        ProvidersModule,
+        ProductModule
     ]
 })
 export class HomeModule { }

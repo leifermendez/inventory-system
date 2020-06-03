@@ -1,0 +1,15 @@
+<div [@swipe] *ngIf="progress" class="overlay-loading">
+  <div class="in">
+    <ng-lottie
+      class="margin-auto"
+      width="100px"
+      (domLoaded)="loopComplete($event)"
+      [options]="options" (animationCreated)="animationCreated($event)"></ng-lottie>
+    <div>
+      <small class="text-muted bg-white">
+        {{'GENERAL.LOADING' | translate}} {{progress | number: '1.0-0'}}%
+      </small>
+    </div>
+
+  </div>
+</div>

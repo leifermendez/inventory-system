@@ -9,10 +9,14 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {QuillModule} from "ngx-quill";
 import {TranslateModule} from "@ngx-translate/core";
 import {NgxDropzoneModule} from "ngx-dropzone";
+import {FirstImagePipe} from "../../first-image.pipe";
 
 
 @NgModule({
-  declarations: [DetailComponent, ListComponent],
+  declarations: [DetailComponent, ListComponent, FirstImagePipe],
+  exports: [
+    ListComponent
+  ],
   imports: [
     CommonModule,
     ProductRoutingModule,

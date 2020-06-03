@@ -19,6 +19,8 @@ import {ListGeneralComponent} from './components/list-general/list-general.compo
 import {SharedModule} from "./modules/shared/shared.module";
 import {NgSelectModule} from "@ng-select/ng-select";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { LoadingSvgComponent } from './components/loading-svg/loading-svg.component';
+import { FirstImagePipe } from './first-image.pipe';
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
@@ -42,6 +44,7 @@ export function playerFactory() {
     AppComponent,
     Page404Component,
     ListGeneralComponent,
+    LoadingSvgComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,9 @@ export function playerFactory() {
     ReactiveFormsModule
   ],
   providers: [{provide: BsDatepickerConfig, useFactory: getDatepickerConfig}, CookieService],
-  exports: [],
+  exports: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -5,13 +5,8 @@ const { check } = require('express-validator')
  * Validates create new item request
  */
 exports.createItem = [
-  check('name')
-    .exists()
-    .withMessage('MISSING')
-    .not()
-    .isEmpty()
-    .withMessage('IS_EMPTY')
-    .trim(),
+  check('file')
+    .exists(),
   (req, res, next) => {
     validationResult(req, res, next)
   }

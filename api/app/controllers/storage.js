@@ -1,11 +1,28 @@
-const model = require('../models/city')
-const { matchedData } = require('express-validator')
+const model = require('../models/storage')
+const {matchedData} = require('express-validator')
 const utils = require('../middleware/utils')
 const db = require('../middleware/db')
-
+const multer = require('multer')
+const managerStorage = require('../service/storage')
+const detect = require('detect-file-type');
 /*********************
  * Private functions *
  *********************/
+
+/**
+ *
+ */
+const textRandom = () => {
+  let result = ''
+  const characters =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+  const charactersLength = characters.length
+  for (let i = 0; i < 30; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength))
+  }
+  return result
+}
+
 
 /**
  * Checks if a city already exists excluding itself
@@ -27,6 +44,27 @@ const cityExistsExcludingItself = async (id, name) => {
       }
     )
   })
+}
+
+/**
+ *
+ */
+const getFile = (path = null) => new Promise((resolve, reject) => {
+  detect.fromFile(path, function (err, result) {
+    if (err) {
+      reject(err)
+    } else {
+      resolve(result)
+    }
+  });
+})
+
+/**
+ *
+ */
+
+const getUrlPath = (mode = '', name = '') => {
+  return `${process.env.APP_URL}/media/${mode}_${name}`
 }
 
 /**
@@ -70,10 +108,20 @@ const getAllItemsFromDB = async () => {
   })
 }
 
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, './public/media/')
+  },
+  filename(req, file, cb) {
+    cb(null, `original_${file.originalname}`)
+  }
+})
+
+
 /********************
  * Public functions *
  ********************/
-
+exports.upload = multer({storage})
 /**
  * Get all items function called by route
  * @param {Object} req - request object
@@ -141,11 +189,34 @@ exports.updateItem = async (req, res) => {
  */
 exports.createItem = async (req, res) => {
   try {
-    req = matchedData(req)
-    const doesCityExists = await cityExists(req.name)
-    if (!doesCityExists) {
-      res.status(201).json(await db.createItem(req, model))
-    }
+    const {files = []} = req;
+    console.log(files)
+    const list = files.map(async file => {
+      const {mime, ext} = await getFile(file.path)
+      const isImage = mime.includes('image');
+      const author = await utils.getUserCurrent(req, true)
+      if (!isImage) {
+        utils.handleError(res, {
+          code: 400,
+          message: 'not support'
+        })
+      }
+
+      const nameRandomFile = await textRandom();
+      const name = `${nameRandomFile}.${ext}`
+      await managerStorage.resizeFileOriginal(file.originalname, `${name}`)
+      const data = {
+        original: getUrlPath('original', name),
+        small: getUrlPath('small', name),
+        medium: getUrlPath('medium', name),
+        large: getUrlPath('large', name),
+        author
+      };
+      return await db.createItem(data, model)
+    })
+
+    const all = await Promise.all(list);
+    res.status(201).json({data: all})
   } catch (error) {
     utils.handleError(res, error)
   }

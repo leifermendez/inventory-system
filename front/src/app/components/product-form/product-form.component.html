@@ -113,9 +113,10 @@
           </div>
         </div>
       </ngx-dropzone-label>
-      <ngx-dropzone-preview [@swipe] [style.backgroundImage]="'url('+f?.base+')'"
+      <ngx-dropzone-preview [@swipe] [style.backgroundImage]="'url('+parseImage(f)+')'"
                             *ngFor="let f of files" [removable]="true"
                             (removed)="onRemove(f)">
+        <!--        <ngx-dropzone-label>{{ f?.large |json }}</ngx-dropzone-label>-->
       </ngx-dropzone-preview>
     </ngx-dropzone>
   </div>

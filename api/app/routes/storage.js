@@ -1,5 +1,5 @@
-const controller = require('../controllers/inventory')
-const validate = require('../controllers/inventory.validate')
+const controller = require('../controllers/storage')
+const validate = require('../controllers/storage.validate')
 const AuthController = require('../controllers/auth')
 const express = require('express')
 const router = express.Router()
@@ -38,7 +38,7 @@ router.post(
   requireAuth,
   AuthController.roleAuthorization(['admin']),
   trimRequest.all,
-  validate.createItem,
+  controller.upload.array('files[]'),
   controller.createItem
 )
 

@@ -1,49 +1,57 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {RestService} from "../../../../rest.service";
 import {Router} from "@angular/router";
 import {faPhoneAlt, faIndustry, faUser} from '@fortawesome/free-solid-svg-icons';
 import {ShareService} from "../../../../share.service";
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+    selector: 'app-list-products',
+    templateUrl: './list.component.html',
+    styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
+    @Input() mode: string = 'page'
+    @Input() title: any = false;
+    @Input() limit: any = 8;
 
-  constructor(private rest: RestService,
-              private share: ShareService,
-              private router: Router) {
-  }
-
-  faPhoneAlt = faPhoneAlt
-  faIndustry = faIndustry
-  faUser = faUser
-  public data = [];
-  public source = 'products';
-
-  public history: any = [
-    {
-      name: 'Productos'
+    constructor(private rest: RestService,
+                private share: ShareService,
+                private router: Router) {
     }
-  ]
 
-  ngOnInit(): void {
-    this.load()
-  }
+    faPhoneAlt = faPhoneAlt
+    faIndustry = faIndustry
+    faUser = faUser
+    public data = [];
+    public source = 'products';
 
-  load = (src: string = '') => {
-    const q = this.share.parseLoad(src, this.source,[
-      `?fields=name`,
-      `&sort=createdAt&order=-1`
-    ]);
-    this.rest.get(q.join(''))
-      .subscribe(res => {
-        this.data = this.share.parseData(res, this.source);
-      })
-  }
+    public history: any = [
+        {
+            name: 'Productos'
+        }
+    ]
 
-  goTo = () => this.share.goTo(this.source)
+    ngOnInit(): void {
+        this.load()
+    }
 
-  onSrc = (e) => this.load(e)
+    load = (src: string = '') => {
+        let fields = [
+            `?fields=name`,
+            `&sort=createdAt&order=-1`
+        ];
+        if (this.mode === 'home') {
+            console.log(this.limit)
+            fields.push(`&limit=${this.limit}`)
+        }
+        const q = this.share.parseLoad(src, this.source, fields);
+        this.rest.get(q.join(''))
+            .subscribe(res => {
+                this.data = this.share.parseData(res, this.source);
+            })
+    }
+
+    goTo = () => this.share.goTo(this.source)
+
+    onSrc = (e) => this.load(e)
 }

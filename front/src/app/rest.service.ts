@@ -30,19 +30,20 @@ export class RestService {
     this.router.navigate(['/', 'list']);
   };
 
-  parseHeader = () => {
+  parseHeader = (custom: any = null) => {
     const token = this.cookieService.get('session');
-    const header = {
+    let header = {
       Accept: 'application/json',
       'Content-Type': 'application/json'
     };
+    if (custom) {
+      header = custom
+    }
     if (token) {
       header['Authorization'] = `Bearer ${token}`;
     }
     return new HttpHeaders(header);
   };
-
-
 
 
   cookieCheck = () => {
@@ -86,9 +87,10 @@ export class RestService {
 
   };
 
-  post(path = '', body = {}, toast = true): Observable<any> {
+  post(path = '', body = {}, toast = true, header: any = null): Observable<any> {
     try {
-      return this.http.post(`${this.url}/${path}`, body, {headers: this.parseHeader()})
+      return this.http.post(`${this.url}/${path}`, body,
+        {headers: this.parseHeader(header)})
         .pipe(
           catchError((e: any) => {
             if (toast) {

@@ -1,4 +1,4 @@
 <ngx-loading-bar  height="3px" [color]="'#221ECE'"></ngx-loading-bar>
-<div>============================>>>>>>> {{progress}}</div>
-<button style="z-index: 999;margin-left: 10rem">aa</button>
+<app-loading-svg [progress]="progress"></app-loading-svg>
+<!--<button style="z-index: 999;margin-left: 10rem" (click)="loader.start()">aa</button>-->
 <router-outlet></router-outlet>

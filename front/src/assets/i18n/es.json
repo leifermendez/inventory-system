@@ -3,6 +3,7 @@
     "CURRENCY": "MXN ",
     "CURRENCY_SYMBOL": "$",
     "SAVE": "Guardar",
+    "LOADING": "Cargando información",
     "LIST": "Lista",
     "ADD": "Agregar",
     "DELETE": "Eliminar",

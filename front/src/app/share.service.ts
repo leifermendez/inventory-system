@@ -1,5 +1,6 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
 import {Router} from "@angular/router";
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -66,4 +67,15 @@ export class ShareService {
     reader.onload = () => resolve(reader.result);
     reader.onerror = error => reject(error);
   });
+
+  public alert = () => {
+    Swal.fire({
+      title: 'Sweet!',
+      text: 'Modal with a custom image.',
+      imageUrl: 'https://unsplash.it/400/200',
+      imageWidth: 400,
+      imageHeight: 200,
+      imageAlt: 'Custom image',
+    }).then();
+  }
 }

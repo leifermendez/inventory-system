@@ -162,8 +162,9 @@ export class ProductFormComponent implements OnInit {
 
   loadItem = () => {
     this.rest.get(`products/${this.id}`).subscribe(res => {
-      const {prices} = res;
+      const {prices, gallery} = res;
       this.prices = prices;
+      this.files = gallery;
       this.form.patchValue(res)
     })
   }
@@ -187,11 +188,35 @@ export class ProductFormComponent implements OnInit {
   onSubmit(): void {
     const method = (this.id) ? 'patch' : 'post';
     this.form.patchValue({prices: this.prices})
-    this.rest[method](`products${(method === 'patch') ? `/${this.id}` : ''}`, this.form.value)
+    if (method === 'post') {
+      this.loadImages().then(res => this.submitData({gallery: res['data']}))
+    }
+  }
+
+  submitData = (data: any = {}) => {
+    data = {...this.form.value, ...data};
+    const method = (this.id) ? 'patch' : 'post';
+    this.rest[method](`products${(method === 'patch') ? `/${this.id}` : ''}`,
+      data)
       .subscribe(res => {
         this.cbList()
       })
   }
+
+  loadImages = () => new Promise((resolve, reject) => {
+
+    const formData = new FormData();
+    for (let i = 0; i < this.files.length; i++) {
+      formData.append("files[]", this.files[i]);
+    }
+    this.rest.post(`storage`, formData, true, {})
+      .subscribe(res => {
+        resolve(res)
+      }, error => {
+        reject(error)
+      })
+  })
+
 
   parseData = (data: any) => {
     // const tmp = [];
@@ -199,4 +224,7 @@ export class ProductFormComponent implements OnInit {
     return data.docs;
   }
 
+  parseImage = (data: any = {}) => {
+    return (data.base) ? data.base : data.large;
+  }
 }
