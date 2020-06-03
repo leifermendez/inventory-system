@@ -3,7 +3,10 @@
   <app-side-bar></app-side-bar>
 
 </ng-container>
-<div [ngClass]="{'container-row d-flex':(mode === 'page')}">
+<div class="w-100" [ngClass]="{'container-row d-flex':(mode === 'page')}">
+  <div *ngIf="mode === 'home'" class="col-12 mb-2">
+    <b class="text-muted">{{title}}</b>
+  </div>
   <app-list-items
     (cbAdd)="goTo()"
     [(data)]="data"
@@ -12,7 +15,6 @@
     class="col-12 row m-0 pl-2" [ngClass]="{'pr-4':(mode === 'list'),
     'pr-0':(mode === 'home')}">
   </app-list-items>
-
 </div>
 <!-- ***************** TEMPLATE ************** -->
 <ng-template #customTemplateSrc let-dat='dat'>

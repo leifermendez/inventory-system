@@ -6,7 +6,7 @@ import {animate, query, stagger, style, transition, trigger} from "@angular/anim
 import {ShareService} from "../../../../share.service";
 
 @Component({
-  selector: 'app-list',
+  selector: 'app-list-providers',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css'],
   animations: [
@@ -23,7 +23,8 @@ import {ShareService} from "../../../../share.service";
   ]
 })
 export class ListComponent implements OnInit {
-
+  @Input() mode: string = 'page'
+  @Input() title: any = false;
   constructor(private rest: RestService,
               private router: Router,
               private share: ShareService) {

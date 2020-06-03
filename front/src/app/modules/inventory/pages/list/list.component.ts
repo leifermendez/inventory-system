@@ -24,7 +24,7 @@ import {ShareService} from "../../../../share.service";
 })
 export class ListComponent implements OnInit {
   @Input() mode: string = 'page'
-
+  @Input() title: any = false;
   constructor(private rest: RestService,
               private router: Router,
               private share: ShareService) {

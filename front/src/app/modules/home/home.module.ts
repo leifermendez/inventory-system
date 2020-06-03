@@ -10,20 +10,22 @@ import {TooltipModule} from "ngx-bootstrap/tooltip";
 import {TimeagoModule} from "ngx-timeago";
 import {TranslateModule} from "@ngx-translate/core";
 import {InventoryModule} from "../inventory/inventory.module";
+import {ProvidersModule} from "../providers/providers.module";
 
 
 @NgModule({
   declarations: [HomePageComponent],
-  imports: [
-    CommonModule,
-    SharedModule,
-    HomeRoutingModule,
-    AvatarModule,
-    FontAwesomeModule,
-    TooltipModule,
-    TimeagoModule,
-    TranslateModule,
-    InventoryModule
-  ]
+    imports: [
+        CommonModule,
+        SharedModule,
+        HomeRoutingModule,
+        AvatarModule,
+        FontAwesomeModule,
+        TooltipModule,
+        TimeagoModule,
+        TranslateModule,
+        InventoryModule,
+        ProvidersModule
+    ]
 })
 export class HomeModule { }

@@ -10,13 +10,16 @@ import {AvatarModule} from "ngx-avatar";
 
 
 @NgModule({
-  declarations: [AddComponent, ListComponent],
-  imports: [
-    CommonModule,
-    ProvidersRoutingModule,
-    SharedModule,
-    FontAwesomeModule,
-    AvatarModule
-  ]
+    declarations: [AddComponent, ListComponent],
+    exports: [
+        ListComponent
+    ],
+    imports: [
+        CommonModule,
+        ProvidersRoutingModule,
+        SharedModule,
+        FontAwesomeModule,
+        AvatarModule
+    ]
 })
 export class ProvidersModule { }
