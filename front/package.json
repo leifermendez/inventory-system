@@ -33,6 +33,7 @@
     "ngx-chips": "^2.1.0",
     "ngx-cookie-service": "^3.0.4",
     "ngx-currency": "^2.3.3",
+    "ngx-dropzone": "^2.2.2",
     "ngx-editor": "^5.0.0-alpha.5",
     "ngx-lottie": "^6.0.0",
     "ngx-quill": "^11.0.0",

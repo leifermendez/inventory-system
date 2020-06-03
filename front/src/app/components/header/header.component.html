@@ -2,7 +2,7 @@
   <div class="d-flex justify-content-between">
     <div [routerLink]="['/']">
       <ul class="history-menu">
-        <li>Distribuidora SAS</li>
+        <li>Logistica Smart</li>
         <li *ngFor="let a of history" [routerLink]="a.router">
           <fa-icon size="lg" [icon]="faAngleRight"></fa-icon>
           <span class="ml-1">{{a?.name}}</span>

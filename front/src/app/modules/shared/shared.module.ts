@@ -32,6 +32,7 @@ import {ModalUserComponent} from "../../components/modal-user/modal-user.compone
 import {TimeagoModule} from "ngx-timeago";
 import {QuillModule} from "ngx-quill";
 import {InventoryFormComponent} from "../../components/inventory-form/inventory-form.component";
+import {NgxDropzoneModule} from "ngx-dropzone";
 
 @NgModule({
   declarations: [
@@ -52,27 +53,28 @@ import {InventoryFormComponent} from "../../components/inventory-form/inventory-
     ModalUserComponent,
     InventoryFormComponent
   ],
-  imports: [
-    CommonModule,
-    FontAwesomeModule,
-    TabsModule.forRoot(),
-    TooltipModule.forRoot(),
-    ModalModule.forRoot(),
-    TimeagoModule.forRoot(),
-    NgxCurrencyModule,
-    BsDropdownModule,
-    BsDatepickerModule,
-    AvatarModule,
-    LottieModule,
-    NgSelectModule,
-    FormsModule,
-    NgxEditorModule,
-    ReactiveFormsModule,
-    TranslateModule,
-    TagInputModule,
-    RouterModule,
-    QuillModule,
-  ],
+    imports: [
+        CommonModule,
+        FontAwesomeModule,
+        TabsModule.forRoot(),
+        TooltipModule.forRoot(),
+        ModalModule.forRoot(),
+        TimeagoModule.forRoot(),
+        NgxCurrencyModule,
+        BsDropdownModule,
+        BsDatepickerModule,
+        AvatarModule,
+        LottieModule,
+        NgSelectModule,
+        FormsModule,
+        NgxEditorModule,
+        ReactiveFormsModule,
+        TranslateModule,
+        TagInputModule,
+        RouterModule,
+        QuillModule,
+        NgxDropzoneModule,
+    ],
   exports: [HeaderComponent, SideBarComponent, WorkingBoxComponent,
     ListItemsComponent, DetailInvoiceComponent, BoxEmptyComponent,
     LockedBoxComponent, ProductFormComponent,

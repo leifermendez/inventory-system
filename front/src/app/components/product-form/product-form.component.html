@@ -37,7 +37,7 @@
       <div class="form-group mb-0">
         <label>{{"PRODUCT.PRICES" |translate}}</label>
         <input currencyMask (focus)="onFocus($event)" class="form-control"
-               [ngClass]="{'ng-invalid-red':!prices.length}"
+               [ngClass]="{'ng-invalid-red':!prices?.length}"
                #valueInput [(ngModel)]="priceTmp" [ngModelOptions]="{standalone: true}"
                [options]="ngxCurrencyOptions"/>
 
@@ -47,8 +47,8 @@
             <span class="pl-1">{{"PRODUCT.ADD" |translate}}</span>
           </button>
         </div>
-        <app-box-empty *ngIf="!prices.length"></app-box-empty>
-        <div class="list-prices" *ngIf="prices.length">
+        <app-box-empty *ngIf="!prices?.length"></app-box-empty>
+        <div class="list-prices" *ngIf="prices?.length">
           <ul>
             <li *ngFor="let price of prices;let i = index">
               {{"GENERAL.CURRENCY_SYMBOL" |translate}} {{price?.amount | number :'1.2-2'}} {{"GENERAL.CURRENCY" |translate}}
@@ -92,9 +92,33 @@
 
 
   </div>
+
   <div class="col-md-6 col-lg-3 col-sm-12 pl-0 pr-2">
 
+    <ngx-dropzone class="drop-gallery mt-3"
 
+                  [accept]="'image/png,image/jpeg,image/jpg'"
+                  (change)="onSelect($event)">
+
+      <ngx-dropzone-label>
+        <div class="d-flex flex-column align-items-center">
+          <div class="label">{{'GENERAL.DROP' |translate}}</div>
+          <div class="label"><small>{{'GENERAL.FILES_ALLOW' | translate}}</small></div>
+          <div>
+            <ng-lottie
+              class="margin-auto"
+              width="200px"
+
+              [options]="options" (animationCreated)="animationCreated($event)">
+            </ng-lottie>
+          </div>
+        </div>
+      </ngx-dropzone-label>
+      <ngx-dropzone-preview [@swipe] [style.backgroundImage]="'url('+f?.base+')'"
+                            *ngFor="let f of files" [removable]="true"
+                            (removed)="onRemove(f)">
+      </ngx-dropzone-preview>
+    </ngx-dropzone>
   </div>
 
 

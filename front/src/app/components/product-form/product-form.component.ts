@@ -1,16 +1,26 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, NgZone, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {faLifeRing, faSave, faCheckCircle, faTrashAlt} from '@fortawesome/free-regular-svg-icons';
-
+import {faLifeRing, faSave, faCheckCircle, faTrashAlt, faTimesCircle} from '@fortawesome/free-regular-svg-icons';
+import {AnimationOptions} from "ngx-lottie";
 import {CurrencyMaskInputMode} from "ngx-currency";
 import {RestService} from "../../rest.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ShareService} from "../../share.service";
+import {AnimationItem} from "lottie-web";
+import {animate, query, stagger, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
-  styleUrls: ['./product-form.component.css']
+  styleUrls: ['./product-form.component.css'],
+  animations: [
+    trigger('swipe', [
+      transition(':enter', [
+        style({transform: 'translateY(-20%)', opacity: '.6'}),
+        animate('0.15s ease-in')
+      ])
+    ])
+  ]
 })
 export class ProductFormComponent implements OnInit {
 
@@ -18,6 +28,7 @@ export class ProductFormComponent implements OnInit {
   @Input() content: string;
   public form: FormGroup;
   public prices: any = []
+  files: File[] = [];
   public optionsMenu: any = [
     {
       name: 'Save',
@@ -25,10 +36,14 @@ export class ProductFormComponent implements OnInit {
     }
   ]
   faTrashAlt = faTrashAlt
+  faTimesCircle = faTimesCircle
   faSave = faSave
   faCheckCircle = faCheckCircle
   faLifeRing = faLifeRing
-
+  options: AnimationOptions = {
+    path: '/assets/images/drop.json',
+  };
+  private animationItem: AnimationItem;
   priceTmp = 0;
 
   editorContent: object = {
@@ -44,6 +59,16 @@ export class ProductFormComponent implements OnInit {
 
   selectedCity: any;
 
+  constructor(
+    private rest: RestService,
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    public router: Router,
+    public share: ShareService,
+    private ngZone: NgZone
+  ) {
+  }
+
   public ngxCurrencyOptions = {
     prefix: 'MXN ',
     thousands: '.',
@@ -54,13 +79,47 @@ export class ProductFormComponent implements OnInit {
     inputMode: CurrencyMaskInputMode.FINANCIAL,
   };
 
+  animationCreated(animationItem: AnimationItem): void {
+    this.animationItem = animationItem;
+    // this.animationItem.stop();
+  }
+
+  loopComplete(e): void {
+    // e.stop().then();
+    this.pause()
+  }
+
+  stop(): void {
+    this.ngZone.runOutsideAngular(() => this.animationItem.stop());
+  }
+
+  pause(): void {
+    this.ngZone.runOutsideAngular(() => this.animationItem.setSegment(43, 44));
+  }
+
+  onSelect(event) {
+
+    event.addedFiles.map(async i => {
+      i.base = await this.share.toBase64(i);
+    })
+    console.log(event.addedFiles);
+    this.files.push(...event.addedFiles);
+  }
+
+  onRemove(event) {
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
+  }
+
   addPrice = (e) => {
-    console.log('price', e)
+    console.log('price', this.prices)
     this.prices.push({
       amount: this.priceTmp
     });
     this.priceTmp = 0;
   }
+
+  test = async (f) => await this.share.toBase64(f);
 
   editorContentChange(doc: object) {
     this.editorContent = doc;
@@ -72,14 +131,6 @@ export class ProductFormComponent implements OnInit {
     this.priceTmp = null
   }
 
-  constructor(
-    private rest: RestService,
-    private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
-    public router: Router,
-    public share: ShareService
-  ) {
-  }
 
   ngOnInit(): void {
     // this.valueInput.nativeElement.focus();
@@ -98,12 +149,13 @@ export class ProductFormComponent implements OnInit {
     });
     this.route.params.subscribe(params => {
       this.id = (params.id === 'add') ? '' : params.id;
-      this.loadItem();
+      if (this.id.length && this.id !== 'add') {
+        this.loadItem();
+      }
     });
 
     this.loadDeposits();
     this.loadProviders();
-
     // this.form.patchValue({content:'Ready!'})
 
   }

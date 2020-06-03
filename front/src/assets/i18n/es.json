@@ -8,6 +8,8 @@
     "DELETE": "Eliminar",
     "EMPTY": "Sin resultados",
     "UPGRADE": "Proximamente",
+    "DROP": "Arrastra y suelta las imagenes",
+    "FILES_ALLOW": "Formatos permitidos .jpg .jpeg .png",
     "NOT_ALLOWED": "No tienes permisos"
   },
   "HOME": {
