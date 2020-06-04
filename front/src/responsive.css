@@ -1,0 +1,10 @@
+/* ----------- Galaxy S3 ----------- */
+
+/* Portrait and Landscape */
+@media screen
+and (min-width: 320px)
+and (max-width: 768px) {
+  .container-row {
+    padding: 4rem 0rem 1rem 4rem;
+  }
+}

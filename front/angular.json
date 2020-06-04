@@ -29,7 +29,8 @@
               "./node_modules/quill/dist/quill.snow.css",
               "./node_modules/quill-emoji/dist/quill-emoji.css",
               "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/responsive.css"
             ],
             "scripts": [
               "./node_modules/quill/dist/quill.min.js"

@@ -1,0 +1,5 @@
+:host app-list-inventory,
+:host app-list-products,
+:host app-list-providers {
+  padding-right: .5rem !important;
+}
