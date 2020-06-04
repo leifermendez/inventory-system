@@ -24,9 +24,13 @@
         class="d-flex item-list-single justify-content-between">
       <div class="d-flex">
         <div>
-          <ngx-avatar *ngIf="inside?.gallery | firstImage:'large'"
-                      [src]="inside?.gallery | firstImage:'large'">
-          </ngx-avatar>
+          <img class="img-50" onerror="this.style.display='none'"
+               [src]="inside?.gallery | firstImage:'large'" alt="">
+<!--          <ngx-avatar-->
+<!--            (error)="s($event)"-->
+<!--            *ngIf="inside?.gallery | firstImage:'large'"-->
+<!--                      [src]="inside?.gallery | firstImage:'large'">-->
+<!--          </ngx-avatar>-->
 
           <ngx-avatar [name]="inside?.name"
                       *ngIf="!(inside?.gallery | firstImage:'large')">

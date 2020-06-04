@@ -214,6 +214,10 @@ tag-input-form input {
   text-align: center;
 }
 
+.btn-shadow {
+  box-shadow: 0 0 15px rgba(179, 186, 204, 0.6);
+}
+
 .items ul {
   list-style: none;
   margin: 0;
@@ -370,6 +374,7 @@ tag-input-form input {
   background-repeat: no-repeat;
   width: 120px !important;
   min-width: 120px !important;
+  background-color: #eaeaea;
 }
 
 .img-background-gallery {
@@ -408,8 +413,15 @@ ngx-dropzone-label {
   transition: all 200ms;
 }
 
-.overlay-loading .in{
+.overlay-loading .in {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.img-50{
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4rem;
 }

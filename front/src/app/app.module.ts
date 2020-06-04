@@ -21,6 +21,8 @@ import {NgSelectModule} from "@ng-select/ng-select";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LoadingSvgComponent } from './components/loading-svg/loading-svg.component';
 import { FirstImagePipe } from './first-image.pipe';
+import { ErrorLayerComponent } from './components/error-layer/error-layer.component';
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
@@ -45,31 +47,33 @@ export function playerFactory() {
     Page404Component,
     ListGeneralComponent,
     LoadingSvgComponent,
+    ErrorLayerComponent,
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    LoadingBarModule,
-    LoadingBarHttpClientModule,
-    TagInputModule,
-    TranslateModule.forRoot({
-      defaultLanguage: 'es',
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
-    LottieModule.forRoot({player: playerFactory}),
-    BsDropdownModule.forRoot(),
-    BsDatepickerModule.forRoot(),
-    SharedModule,
-    NgSelectModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        LoadingBarModule,
+        LoadingBarHttpClientModule,
+        TagInputModule,
+        TranslateModule.forRoot({
+            defaultLanguage: 'es',
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
+        LottieModule.forRoot({player: playerFactory}),
+        BsDropdownModule.forRoot(),
+        BsDatepickerModule.forRoot(),
+        SharedModule,
+        NgSelectModule,
+        FormsModule,
+        ReactiveFormsModule,
+        FontAwesomeModule
+    ],
   providers: [{provide: BsDatepickerConfig, useFactory: getDatepickerConfig}, CookieService],
   exports: [
 

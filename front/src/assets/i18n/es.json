@@ -11,7 +11,9 @@
     "UPGRADE": "Proximamente",
     "DROP": "Arrastra y suelta las imagenes",
     "FILES_ALLOW": "Formatos permitidos .jpg .jpeg .png",
-    "NOT_ALLOWED": "No tienes permisos"
+    "NOT_ALLOWED": "No tienes permisos",
+    "ERROR_CODE": "Código",
+    "ERROR_MESSAGE": "Mensaje"
   },
   "HOME": {
   },

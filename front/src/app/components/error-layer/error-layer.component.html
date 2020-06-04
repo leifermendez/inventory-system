@@ -1,0 +1,31 @@
+<div [@swipe] *ngIf="error" class="overlay-loading">
+  <div (click)="close()" class="close-icon btn btn-round btn-shadow">
+    <fa-icon size="lg" [icon]="faTimes"></fa-icon>
+  </div>
+  <div class="in text-center bg-white">
+
+    <!-- ERROR 409 --->
+    <ng-lottie
+      *ngIf="error?.code === 409"
+      class="margin-auto"
+      width="100px"
+      [options]="error409">
+    </ng-lottie>
+    <!-- ERROR 404 --->
+    <ng-lottie
+      *ngIf="error?.code === 404"
+      class="margin-auto"
+      width="100px"
+      [options]="error404">
+    </ng-lottie>
+
+    <div>
+      <small class="text-muted bg-white text-center">
+        {{'GENERAL.ERROR_CODE' | translate}}: <b>{{error?.code}}</b> <br>
+        {{'GENERAL.ERROR_MESSAGE' | translate}}:
+        <b *ngIf="error?.e">{{error?.e?.errors?.msg}}</b>
+      </small>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,14 @@
+.close-icon {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  line-height: 2.1rem;
+}
+
+.close-icon:hover {
+  transform: scale(1.1);
+  -webkit-transition: all 200ms;
+  -moz-transition: all 200ms;
+  -o-transition: all 200ms;
+  transition: all 200ms;
+}

@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../environments/environment';
 import {catchError} from 'rxjs/operators';
@@ -12,7 +12,7 @@ import {TranslateService} from '@ngx-translate/core';
   providedIn: 'root'
 })
 export class RestService {
-
+  @Output() catchError = new EventEmitter<any>();
   public headers: HttpHeaders;
   public readonly url: string = environment.api;
 
@@ -74,11 +74,11 @@ export class RestService {
         parameterMissing = res;
       });
 
-      switch (code) {
-        default:
-
-          break;
-      }
+      this.catchError.emit({
+        code,
+        message,
+        e
+      })
     } catch (e) {
       this.cookieService.delete('session');
       this.cookieService.delete('user');
@@ -93,9 +93,6 @@ export class RestService {
         {headers: this.parseHeader(header)})
         .pipe(
           catchError((e: any) => {
-            if (toast) {
-              // this.sharedService.showError('Error', e.statusText);
-            }
             this.handleError(e.status, e.statusText, e.error);
             return throwError({
               status: e.status,

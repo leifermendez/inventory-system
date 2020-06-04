@@ -18,9 +18,11 @@ import {animate, style, transition, trigger} from "@angular/animations";
 })
 export class LoadingSvgComponent implements OnInit {
   @Input() progress = 0;
+  @Input() error: any = null;
   options: AnimationOptions = {
     path: '/assets/images/loading.json',
   };
+
   private animationItem: AnimationItem;
 
   constructor(private ngZone: NgZone) {

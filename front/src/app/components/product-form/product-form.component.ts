@@ -188,9 +188,9 @@ export class ProductFormComponent implements OnInit {
   onSubmit(): void {
     const method = (this.id) ? 'patch' : 'post';
     this.form.patchValue({prices: this.prices})
-    if (method === 'post') {
-      this.loadImages().then(res => this.submitData({gallery: res['data']}))
-    }
+    const checkNewImages = this.files.find((a: any) => (a.base));
+    const images = this.getImageUp(this.files)
+    this.loadImages().then(res => this.submitData({gallery: [...images, ...res['data']]}))
   }
 
   submitData = (data: any = {}) => {
@@ -222,6 +222,10 @@ export class ProductFormComponent implements OnInit {
     // const tmp = [];
     // data.docs.map(a => tmp.push()
     return data.docs;
+  }
+
+  getImageUp = (images: any[]) => {
+    return images.filter(a => (a._id));
   }
 
   parseImage = (data: any = {}) => {
