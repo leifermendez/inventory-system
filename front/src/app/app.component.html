@@ -1,5 +1,5 @@
 <ngx-loading-bar  height="3px" [color]="'#221ECE'"></ngx-loading-bar>
 <app-loading-svg [progress]="progress"></app-loading-svg>
-<app-error-layer [error]="error"></app-error-layer>
+<app-error-layer [(error)]="error"></app-error-layer>
 <!--<button style="z-index: 999;margin-left: 10rem" (click)="loader.start()">aa</button>-->
 <router-outlet></router-outlet>

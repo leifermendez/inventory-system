@@ -376,9 +376,11 @@ tag-input-form input {
   min-width: 120px !important;
   background-color: #eaeaea;
 }
-.drop-gallery ngx-dropzone-preview:hover ngx-dropzone-label .zoom-icon{
+
+.drop-gallery ngx-dropzone-preview:hover ngx-dropzone-label .zoom-icon {
   display: block;
 }
+
 .drop-gallery ngx-dropzone-preview:hover ngx-dropzone-label {
   background-color: rgba(203, 202, 210, 0.59);
   box-shadow: 0 0 9px rgba(100, 99, 138, 0.86);
@@ -392,10 +394,12 @@ tag-input-form input {
   background-repeat: no-repeat;
   border-radius: .75rem;
 }
-.zoom-icon{
+
+.zoom-icon {
   display: none;
   opacity: .7;
 }
+
 ngx-dropzone-remove-badge {
   background-color: rgb(34, 30, 205) !important
 }
@@ -411,6 +415,10 @@ ngx-dropzone-label {
   -moz-transition: all 200ms;
   -o-transition: all 200ms;
   transition: all 200ms;
+}
+
+.swal2-container.swal2-backdrop-show, .swal2-container.swal2-noanimation {
+  background: rgba(255, 255, 255, 0.7) !important;
 }
 
 .overlay-loading {
@@ -441,17 +449,34 @@ ngx-dropzone-label {
   object-fit: cover;
   border-radius: 4rem;
 }
-.modal-light-zoom .modal-content{
-  border:0!important;
+
+.modal-light-zoom .modal-content {
+  border: 0 !important;
   /*max-width: 100%;*/
   /*position: fixed;*/
   /*top: 0;*/
   /*width: 100%;*/
   /*height: 100%;*/
 }
-.modal-light-zoom .author{
+
+.modal-light-zoom .author {
   position: absolute;
   font-size: .7rem;
   padding: .25rem .2rem;
   opacity: .7;
+}
+
+.swal2-show {
+  box-shadow: 0 0 20px rgba(103, 103, 120, 0.45);
+  padding: 0 !important;
+}
+
+.swal2-content, .swal2-footer {
+  font-size: .8rem !important;
+}
+.swal2-footer{
+  padding: 1em !important;
+}
+.swal2-header{
+  padding: 1em 0em 0em !important;
 }

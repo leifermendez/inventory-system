@@ -1,13 +1,16 @@
 <div class="custom-card-style-section p-2 col-12 flex-wrap d-flex">
   <div class="col-12 p-0 text-right tabs">
     <ng-template #tolTemplate>{{"GENERAL.LIST" |translate}}</ng-template>
+    <ng-template #tolTemplateDelete>{{"GENERAL.DELETE" |translate}}</ng-template>
     <button type="button" class="btn-round" placement="left"
             (click)="callbackList()"
             [tooltip]="tolTemplate" containerClass="customToolTip">
       <fa-icon size="2x" [icon]="faList"></fa-icon>
     </button>
     <div>
-      <button [disabled]="!valid" class="btn-round mr-3" placement="left" [tooltip]="tolTemplate"
+      <button class="btn-round mr-3"
+              (click)="delete()"
+              type="button" placement="left" [tooltip]="tolTemplateDelete"
               containerClass="customToolTip">
         <fa-icon size="2x" [icon]="faTrashAlt"></fa-icon>
       </button>

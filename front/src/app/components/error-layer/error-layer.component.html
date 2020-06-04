@@ -1,8 +1,14 @@
-<div [@swipe] *ngIf="error" class="overlay-loading">
-  <div (click)="close()" class="close-icon btn btn-round btn-shadow">
-    <fa-icon size="lg" [icon]="faTimes"></fa-icon>
-  </div>
-  <div class="in text-center bg-white">
+<div [@swipe] *ngIf="error" #btnClose class="overlay-loading">
+<!--  <div (click)="close()" class="close-icon btn btn-round btn-shadow">-->
+<!--    <fa-icon size="lg" [icon]="faTimes"></fa-icon>-->
+<!--  </div>-->
+  <app-button-progress class="close-icon"
+
+                       (click)="close()"
+                       (cbClose)="test()"
+                       width="50px">
+  </app-button-progress>
+  <div class="in text-center">
 
     <!-- ERROR 409 --->
     <ng-lottie

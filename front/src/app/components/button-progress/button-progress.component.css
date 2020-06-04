@@ -1,0 +1,22 @@
+.icon-center{
+  background: white;
+  cursor: pointer;
+  top: 0;
+  display: flex;
+  width: 100%;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  /*box-shadow: 0 0 9px rgba(147, 153, 169, 0.53);*/
+}
+.hover-btn:hover{
+    transform: scale(1.1);
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -o-transition: all 200ms;
+    transition: all 200ms;
+}
+:host{
+  cursor: pointer;
+}

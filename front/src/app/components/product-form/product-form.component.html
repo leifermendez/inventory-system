@@ -1,6 +1,8 @@
 <form (ngSubmit)="onSubmit()" class="form-product w-100 flex-wrap d-flex" [formGroup]="form">
   <div class="text-right w-100">
-    <app-section-btn (cbList)="cbList()" [valid]="form.valid"></app-section-btn>
+    <app-section-btn (cbList)="cbList()"
+                     (cbTrash)="cbTrash()"
+                     [valid]="form.valid"></app-section-btn>
   </div>
 
   <div class="custom-card-style col-12 flex-wrap d-flex">
@@ -20,7 +22,7 @@
     <div class="custom-card-style  col-12 mt-3">
       <div class="description-text">
         <quill-editor class="description-card" formControlName="description"
-                      [styles]="{height: '430px'}"></quill-editor>
+                      [styles]="{height: '430px'}" [placeholder]="'PRODUCT.DESCRIPTION' | translate"></quill-editor>
         <!--        <ngx-editor [ngModel]="editorContent"-->
         <!--                    [contentEditable]="false"-->
         <!--                    formControlName="content"-->

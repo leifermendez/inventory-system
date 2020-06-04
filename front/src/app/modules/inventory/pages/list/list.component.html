@@ -19,12 +19,20 @@
 <!-- ***************** TEMPLATE ************** -->
 <ng-template #customTemplateSrc let-dat='dat'>
   <ul [@listAnimation] *ngIf="dat?.length">
-    <li *ngFor="let inside of dat" [routerLink]="['/','deposits',inside?._id]"
+    <li *ngFor="let inside of dat" [routerLink]="['/','inventory',inside?._id]"
         class="d-flex item-list-single justify-content-between">
       <div class="d-flex">
         <div>
-          <ngx-avatar
-            [src]="'https://images-na.ssl-images-amazon.com/images/I/81-6wr2WgfL._SS300_.jpg'">
+          <img class="img-50" onerror="this.style.display='none'"
+               [src]="inside?.product?.gallery | firstImage:'large'" alt="">
+          <!--          <ngx-avatar-->
+          <!--            (error)="s($event)"-->
+          <!--            *ngIf="inside?.gallery | firstImage:'large'"-->
+          <!--                      [src]="inside?.gallery | firstImage:'large'">-->
+          <!--          </ngx-avatar>-->
+
+          <ngx-avatar [name]="inside?.name"
+                      *ngIf="!(inside?.product?.gallery | firstImage:'large')">
           </ngx-avatar>
         </div>
         <div class="p-1 pt-2">

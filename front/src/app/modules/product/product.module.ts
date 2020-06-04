@@ -14,9 +14,10 @@ import {FirstImagePipe} from "../../first-image.pipe";
 
 @NgModule({
   declarations: [DetailComponent, ListComponent, FirstImagePipe],
-  exports: [
-    ListComponent
-  ],
+    exports: [
+        ListComponent,
+        FirstImagePipe
+    ],
   imports: [
     CommonModule,
     ProductRoutingModule,

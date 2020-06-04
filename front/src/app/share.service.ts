@@ -1,6 +1,7 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
 import {Router} from "@angular/router";
 import Swal from 'sweetalert2';
+import {TranslateService} from "@ngx-translate/core";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ export class ShareService {
   @Output() registerUser = new EventEmitter<string>();
   @Output() loading = new EventEmitter<string>();
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private translate: TranslateService) {
   }
 
   generate = (length) => {
@@ -68,14 +70,28 @@ export class ShareService {
     reader.onerror = error => reject(error);
   });
 
-  public alert = () => {
-    Swal.fire({
-      title: 'Sweet!',
-      text: 'Modal with a custom image.',
-      imageUrl: 'https://unsplash.it/400/200',
-      imageWidth: 400,
-      imageHeight: 200,
-      imageAlt: 'Custom image',
-    }).then();
-  }
+  public confirm = () => new Promise((resolve, reject) => {
+    this.translate.get("GENERAL").subscribe((res: string) => {
+      // @ts-ignore
+      const {ARE_YOU_SURE, ARE_YOU_SURE_SENTENCE, OK, ANY_ISSUE} = res;
+      // console.log(res)
+      Swal.fire({
+        title: ARE_YOU_SURE,
+        text: ARE_YOU_SURE_SENTENCE,
+        icon: null,
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: OK,
+        footer: '<a href>'+ANY_ISSUE+'</a>'
+      }).then((result) => {
+        if (result.value) {
+          resolve(true)
+        } else {
+          reject(false)
+        }
+      }).then()
+    });
+
+  })
 }

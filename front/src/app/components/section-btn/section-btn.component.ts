@@ -9,6 +9,7 @@ import {
   faList
 }
   from '@fortawesome/free-solid-svg-icons';
+import {ShareService} from "../../share.service";
 
 @Component({
   selector: 'app-section-btn',
@@ -19,15 +20,21 @@ export class SectionBtnComponent implements OnInit {
   @Input() valid: boolean;
   @Output() cbSave = new EventEmitter<any>();
   @Output() cbList = new EventEmitter<any>();
+  @Output() cbTrash = new EventEmitter<any>();
   faSave = faSave
   faList = faList
   faTrashAlt = faTrashAlt
   faExclamation = faExclamation
 
-  constructor() {
+  constructor(private shared: ShareService) {
   }
 
   ngOnInit(): void {
+  }
+
+  delete = () => {
+    this.shared.confirm()
+      .then(res => this.cbTrash.emit(res))
   }
 
   callbackList = (a: any = {}) => this.cbList.emit(a)

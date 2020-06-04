@@ -11,7 +11,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {BsDatepickerConfig, BsDatepickerModule} from "ngx-bootstrap/datepicker";
 import {LottieModule} from 'ngx-lottie';
 import player from 'lottie-web';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import {Page404Component} from './components/page404/page404.component';
 import {TagInputModule} from "ngx-chips";
 import {CookieService} from "ngx-cookie-service";
@@ -24,6 +24,8 @@ import { FirstImagePipe } from './first-image.pipe';
 import { ErrorLayerComponent } from './components/error-layer/error-layer.component';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { ModalImageComponent } from './components/modal-image/modal-image.component';
+import {DEFAULT_TIMEOUT, TimeoutInterceptor} from "./TimeOutInterceptor";
+import { ButtonProgressComponent } from './components/button-progress/button-progress.component';
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
@@ -50,6 +52,7 @@ export function playerFactory() {
     LoadingSvgComponent,
     ErrorLayerComponent,
     ModalImageComponent,
+    ButtonProgressComponent,
   ],
     imports: [
         BrowserModule,
@@ -76,7 +79,12 @@ export function playerFactory() {
         ReactiveFormsModule,
         FontAwesomeModule
     ],
-  providers: [{provide: BsDatepickerConfig, useFactory: getDatepickerConfig}, CookieService],
+  providers: [
+    {provide: BsDatepickerConfig, useFactory: getDatepickerConfig},
+    CookieService,
+    [{ provide: HTTP_INTERCEPTORS, useClass: TimeoutInterceptor, multi: true }],
+    [{ provide: DEFAULT_TIMEOUT, useValue: 30000 }]
+  ],
   exports: [
 
   ],

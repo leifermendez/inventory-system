@@ -1,9 +1,20 @@
-import {Component, Input, NgZone, OnInit} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  NgZone,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 import {AnimationOptions} from "ngx-lottie";
 import {AnimationItem} from "lottie-web";
 import {animate, style, transition, trigger} from "@angular/animations";
 import {faTimes}
   from '@fortawesome/free-solid-svg-icons';
+import {RestService} from "../../rest.service";
 
 @Component({
   selector: 'app-error-layer',
@@ -18,12 +29,27 @@ import {faTimes}
     ])
   ]
 })
-export class ErrorLayerComponent implements OnInit {
-  @Input() error: any = null;
+export class ErrorLayerComponent implements OnInit, AfterViewInit {
+  errorIn: any;
+  @ViewChild('btnClose') someInput: ElementRef;
+
+  @Input()
+  get error() {
+    return this.errorIn;
+  }
+
+  @Output() errorChange = new EventEmitter();
+
+  set error(val) {
+    this.errorIn = val;
+    this.errorChange.emit(this.errorIn);
+  }
+
   private animationItem: AnimationItem;
   faTimes = faTimes
 
-  constructor(private ngZone: NgZone) {
+  constructor(private ngZone: NgZone, public rest: RestService) {
+
   }
 
   error404: AnimationOptions = {
@@ -36,12 +62,21 @@ export class ErrorLayerComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
 
+  ngAfterViewInit(): void {
 
   }
 
-  close = () => this.error = null;
+  test = () => {
+    const btn = document.querySelector('.close-icon')
+    // @ts-ignore
+    btn.click();
+  }
 
+  close = () => {
+    this.error = null
+  }
 
 
 }

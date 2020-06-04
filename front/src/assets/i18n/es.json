@@ -13,7 +13,11 @@
     "FILES_ALLOW": "Formatos permitidos .jpg .jpeg .png",
     "NOT_ALLOWED": "No tienes permisos",
     "ERROR_CODE": "Código",
-    "ERROR_MESSAGE": "Mensaje"
+    "ERROR_MESSAGE": "Mensaje",
+    "ARE_YOU_SURE": "¿Estas seguro?",
+    "ARE_YOU_SURE_SENTENCE": "Los cambios no pueden revertirse",
+    "OK": "OK",
+    "ANY_ISSUE": "¿Algun problema? Contactanos"
   },
   "HOME": {
   },
@@ -37,7 +41,8 @@
     "PRICES": "Precios",
     "TAG": "Etiquetas",
     "ADD": "Agregar",
-    "AUTHOR": "Subida por"
+    "AUTHOR": "Subida por",
+    "DESCRIPTION": "Descripcion"
   },
   "PROVIDER": {
     "NAME": "Nombre de empresa",

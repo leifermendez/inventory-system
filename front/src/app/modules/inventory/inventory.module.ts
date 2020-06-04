@@ -10,6 +10,7 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {TimeagoModule} from "ngx-timeago";
 import {TooltipModule} from "ngx-bootstrap/tooltip";
 import {TranslateModule} from "@ngx-translate/core";
+import {ProductModule} from "../product/product.module";
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {TranslateModule} from "@ngx-translate/core";
         FontAwesomeModule,
         TimeagoModule,
         TooltipModule,
-        TranslateModule
+        TranslateModule,
+        ProductModule
     ]
 })
 export class InventoryModule { }

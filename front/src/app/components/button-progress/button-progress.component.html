@@ -1,0 +1,16 @@
+<div (mouseover)="pause()"
+     (mouseleave)="play()"
+     class="position-absolute hover-btn">
+  <div [style.height]="width" class="position-absolute icon-center">
+    <fa-icon [icon]="faTimes" size="lg"></fa-icon>
+  </div>
+  <ng-lottie
+    (enterFrame)="init()"
+    (loopComplete)="end()"
+    (animationCreated)="animationCreated($event)"
+    class="margin-auto"
+    [width]="width"
+    [options]="lottie">
+  </ng-lottie>
+
+</div>

@@ -202,6 +202,11 @@ export class ProductFormComponent implements OnInit {
     this.router.navigate(['/', 'products'])
   }
 
+  cbTrash = () => {
+    this.rest.delete(`products/${this.id}`)
+      .subscribe(res => this.cbList())
+  }
+
   onSubmit(): void {
     const method = (this.id) ? 'patch' : 'post';
     this.form.patchValue({prices: this.prices})
