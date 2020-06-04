@@ -118,12 +118,13 @@ exports.buildSuccObject = (message) => {
 /**
  * Checks if given ID is good for MongoDB
  * @param {string} id - id to check
+ * @param object
  */
-exports.isIDGood = async (id) => {
+exports.isIDGood = async (id, object = false) => {
   return new Promise((resolve, reject) => {
     const goodID = mongoose.Types.ObjectId.isValid(id)
     return goodID
-      ? resolve(id)
+      ? resolve((object) ? mongoose.Types.ObjectId(id) : id)
       : reject(this.buildErrObject(422, 'ID_MALFORMED'))
   })
 }
@@ -160,6 +161,13 @@ exports.itemAlreadyExists = (err, item, reject, message) => {
   }
 }
 
+/**
+ * Parse String to Object
+ */
+
+exports.parseIdObject = (id) => {
+  return mongoose.Types.ObjectId(id)
+}
 
 /**
  * Get user
@@ -170,5 +178,5 @@ exports.getUserCurrent = (req, value = null) => new Promise(async (resolve, reje
     .trim();
   let userId = await getUserIdFromToken(tokenEncrypted)
   const user = await findUserById(userId);
-  resolve((value) ? user : userId);
+  resolve((value) ? user : mongoose.Types.ObjectId(userId));
 })

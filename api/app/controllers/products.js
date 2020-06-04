@@ -30,6 +30,56 @@ const getAllItemsFromDB = async () => {
   })
 }
 
+/**
+ * Get with inventory
+ */
+
+const getProductInventory = (query = {}) => {
+  return model
+    .aggregate([{
+      $match: query,
+    },
+      {
+        $lookup: {
+          from: 'inventories',
+          let: {idProduct: "$_id"},
+          pipeline: [
+            {
+              $match:
+                {
+                  $expr:
+                    {
+                      $and:
+                        [
+                          {$eq: ["$$idProduct", "$product._id"]}
+                        ]
+                    }
+                }
+            }
+          ],
+          as: 'inventories'
+        }
+      },
+      {
+        "$project": {
+          "_id":1,
+          "gallery":1,
+          "name":1,
+          "prices":1,
+          "measures":1,
+          "categories":1,
+          "tag":1,
+          "sku":1,
+          "description":1,
+          "author":1,
+          "createdAt":1,
+          "updatedAt":1,
+          "qty": {"$sum": "$inventories.qty"}
+        }
+      },
+    ])
+}
+
 /********************
  * Public functions *
  ********************/
@@ -55,7 +105,10 @@ exports.getAllItems = async (req, res) => {
 exports.getItems = async (req, res) => {
   try {
     const query = await db.checkQueryString(req.query)
-    res.status(200).json(await db.getItems(req, model, query))
+    console.log(req.query)
+    const data = getProductInventory(query)
+    res.status(200).json(await db.getItemsAggregate(req, model, data))
+    // res.status(200).json(await db.getItems(req, model, query))
   } catch (error) {
     utils.handleError(res, error)
   }

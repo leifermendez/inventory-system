@@ -1,6 +1,7 @@
 <form (ngSubmit)="onSubmit()" class="form-product w-100 flex-wrap d-flex" [formGroup]="form">
   <div class="text-right w-100">
     <app-section-btn (cbList)="cbList()"
+                     [trash]="(id && id!=='add')"
                      (cbTrash)="cbTrash()"
                      [valid]="form.valid"></app-section-btn>
   </div>
@@ -118,7 +119,7 @@
                             *ngFor="let f of files" [removable]="true"
 
                             (removed)="onRemove(f)">
-        <ngx-dropzone-label (click)="viewImage($event, f)">
+        <ngx-dropzone-label *ngIf="f?.large" (click)="viewImage($event, f)">
           <div class="zoom-icon">
             <div>
               <fa-icon [style.color]="'white'" [icon]="faHandPointer" size="lg"></fa-icon>

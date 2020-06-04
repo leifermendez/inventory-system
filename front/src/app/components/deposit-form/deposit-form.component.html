@@ -1,7 +1,9 @@
 <form (submit)="onSubmit()" class="form-product w-100 flex-wrap d-flex" [formGroup]="form">
   <div class="col-12 p-0 flex-wrap d-flex">
     <div class="text-right w-100">
-      <app-section-btn (cbList)="cbList()" [valid]="form.valid"></app-section-btn>
+      <app-section-btn (cbList)="cbList()"
+                       [trash]="true"
+                       (cbTrash)="cbTrash()" [valid]="form.valid"></app-section-btn>
     </div>
 
     <div class="custom-card-style col-12 flex-wrap d-flex">

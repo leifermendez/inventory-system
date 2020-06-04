@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const mongoosePaginate = require('mongoose-paginate-v2')
-
+const softDelete = require('mongoose-softdelete');
 const PurchaseSchema = new mongoose.Schema(
   {
     customer: {
@@ -48,4 +48,5 @@ const PurchaseSchema = new mongoose.Schema(
 
 
 PurchaseSchema.plugin(mongoosePaginate)
+PurchaseSchema.plugin(softDelete)
 module.exports = mongoose.model('Purchase', PurchaseSchema)

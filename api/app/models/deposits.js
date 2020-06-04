@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const mongoosePaginate = require('mongoose-paginate-v2')
-
+const softDelete = require('mongoose-softdelete');
 const DepositsSchema = new mongoose.Schema(
   {
     name: {
@@ -36,4 +36,5 @@ const DepositsSchema = new mongoose.Schema(
 
 
 DepositsSchema.plugin(mongoosePaginate)
+DepositsSchema.plugin(softDelete)
 module.exports = mongoose.model('Deposits', DepositsSchema)

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const mongoosePaginate = require('mongoose-paginate-v2')
-
+const softDelete = require('mongoose-softdelete');
 const InventorySchema = new mongoose.Schema(
   {
     product: {
@@ -42,4 +42,5 @@ const InventorySchema = new mongoose.Schema(
 
 
 InventorySchema.plugin(mongoosePaginate)
+InventorySchema.plugin(softDelete)
 module.exports = mongoose.model('Inventory', InventorySchema)

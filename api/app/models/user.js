@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const validator = require('validator')
 const mongoosePaginate = require('mongoose-paginate-v2')
-
+const softDelete = require('mongoose-softdelete');
 const UserSchema = new mongoose.Schema(
   {
     name: {
@@ -112,4 +112,5 @@ UserSchema.methods.comparePassword = function (passwordAttempt, cb) {
   )
 }
 UserSchema.plugin(mongoosePaginate)
+UserSchema.plugin(softDelete)
 module.exports = mongoose.model('User', UserSchema)

@@ -155,7 +155,7 @@ export class ProductFormComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
-      categories: ['', Validators.required],
+      categories: [''],
       // deposit: ['', Validators.required],
       // provider: ['', Validators.required],
       sku: ['', Validators.required],

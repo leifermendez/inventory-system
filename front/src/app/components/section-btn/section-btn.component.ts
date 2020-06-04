@@ -18,6 +18,7 @@ import {ShareService} from "../../share.service";
 })
 export class SectionBtnComponent implements OnInit {
   @Input() valid: boolean;
+  @Input() trash: boolean;
   @Output() cbSave = new EventEmitter<any>();
   @Output() cbList = new EventEmitter<any>();
   @Output() cbTrash = new EventEmitter<any>();

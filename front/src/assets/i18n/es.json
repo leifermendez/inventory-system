@@ -13,6 +13,7 @@
     "FILES_ALLOW": "Formatos permitidos .jpg .jpeg .png",
     "NOT_ALLOWED": "No tienes permisos",
     "ERROR_CODE": "Código",
+    "ERROR": "¡Algo sucedio!",
     "ERROR_MESSAGE": "Mensaje",
     "ARE_YOU_SURE": "¿Estas seguro?",
     "ARE_YOU_SURE_SENTENCE": "Los cambios no pueden revertirse",

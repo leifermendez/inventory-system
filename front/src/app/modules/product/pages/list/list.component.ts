@@ -40,11 +40,9 @@ export class ListComponent implements OnInit {
   }
   load = (src: string = '') => {
     let fields = [
-      `?fields=name`,
-      `&sort=createdAt&order=-1`
+      `?fields=name`
     ];
     if (this.mode === 'home') {
-      console.log(this.limit)
       fields.push(`&limit=${this.limit}`)
     }
     const q = this.share.parseLoad(src, this.source, fields);

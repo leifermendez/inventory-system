@@ -9,6 +9,7 @@
     </button>
     <div>
       <button class="btn-round mr-3"
+              *ngIf="trash"
               (click)="delete()"
               type="button" placement="left" [tooltip]="tolTemplateDelete"
               containerClass="customToolTip">

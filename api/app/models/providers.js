@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const mongoosePaginate = require('mongoose-paginate-v2')
-
+const softDelete = require('mongoose-softdelete');
 const ProvidersSchema = new mongoose.Schema(
   {
     name: {
@@ -41,4 +41,5 @@ const ProvidersSchema = new mongoose.Schema(
 
 
 ProvidersSchema.plugin(mongoosePaginate)
+ProvidersSchema.plugin(softDelete)
 module.exports = mongoose.model('Providers', ProvidersSchema)

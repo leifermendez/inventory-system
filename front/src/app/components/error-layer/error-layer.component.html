@@ -9,7 +9,7 @@
                        width="50px">
   </app-button-progress>
   <div class="in text-center">
-
+    <b>{{'GENERAL.ERROR' |translate}}</b> <br>
     <!-- ERROR 409 --->
     <ng-lottie
       *ngIf="error?.code === 409"
@@ -24,9 +24,16 @@
       width="100px"
       [options]="error404">
     </ng-lottie>
-
+    <!-- ERROR 422 --->
+    <ng-lottie
+      *ngIf="error?.code === 422"
+      class="margin-auto"
+      width="100px"
+      [options]="error422">
+    </ng-lottie>
     <div>
       <small class="text-muted bg-white text-center">
+
         {{'GENERAL.ERROR_CODE' | translate}}: <b>{{error?.code}}</b> <br>
         {{'GENERAL.ERROR_MESSAGE' | translate}}:
         <b *ngIf="error?.e">{{error?.e?.errors?.msg}}</b>

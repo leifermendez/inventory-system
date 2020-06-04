@@ -25,6 +25,7 @@ import {ShareService} from "../../../../share.service";
 export class ListComponent implements OnInit {
   @Input() mode: string = 'page'
   @Input() title: any = false;
+  @Input() limit: any = 8;
   constructor(private rest: RestService,
               private router: Router,
               private share: ShareService) {
@@ -46,7 +47,14 @@ export class ListComponent implements OnInit {
   }
 
   load = (src: string = '') => {
-    const q = this.share.parseLoad(src, this.source);
+    let fields = [
+      `?fields=name`,
+      `&sort=createdAt&order=-1`
+    ];
+    if (this.mode === 'home') {
+      fields.push(`&limit=${this.limit}`)
+    }
+    const q = this.share.parseLoad(src, this.source, fields);
     this.rest.get(q.join(''))
       .subscribe(res => {
         this.data = this.share.parseData(res, this.source);

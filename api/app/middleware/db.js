@@ -164,5 +164,24 @@ module.exports = {
         resolve(buildSuccObject('DELETED'))
       })
     })
+  },
+
+  /**
+   * Gets items from database
+   * @param {Object} req - request object
+   * @param model
+   * @param aggregate
+   */
+  async getItemsAggregate(req, model, aggregate) {
+    const options = await listInitOptions(req)
+    console.log(options)
+    return new Promise((resolve, reject) => {
+      model.aggregatePaginate(aggregate, options, (err, items) => {
+        if (err) {
+          reject(buildErrObject(422, err.message))
+        }
+        resolve(cleanPaginationID(items))
+      })
+    })
   }
 }

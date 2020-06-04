@@ -98,6 +98,12 @@ export class ProviderFormComponent implements OnInit {
     this.router.navigate(['/', 'providers'])
   }
 
+  cbTrash = () => {
+    this.rest.delete(`providers/${this.id}`)
+      .subscribe(res => this.cbList())
+  }
+
+
   open(data: any = null) {
     const initialState = {
       section: data

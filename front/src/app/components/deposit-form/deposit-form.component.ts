@@ -102,6 +102,11 @@ export class DepositFormComponent implements OnInit {
     this.router.navigate(['/', 'deposits'])
   }
 
+  cbTrash = () => {
+    this.rest.delete(`deposits/${this.id}`)
+      .subscribe(res => this.cbList())
+  }
+
   open(data: any = null) {
     const initialState = {
       section: data

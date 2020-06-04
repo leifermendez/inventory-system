@@ -60,6 +60,11 @@ export class ErrorLayerComponent implements OnInit, AfterViewInit {
     path: '/assets/images/409.json',
   };
 
+  error422: AnimationOptions = {
+    path: '/assets/images/422.json',
+  };
+
+
   ngOnInit(): void {
 
   }
