@@ -31,6 +31,14 @@
       width="100px"
       [options]="error422">
     </ng-lottie>
+
+    <!-- ERROR 0 --->
+    <ng-lottie
+      *ngIf="error?.code === 0"
+      class="margin-auto"
+      width="100px"
+      [options]="error0">
+    </ng-lottie>
     <div>
       <small class="text-muted bg-white text-center">
 
