@@ -1,0 +1,7 @@
+<!--<div>{{section | json}}</div>-->
+<div>
+  <img class="photo" [src]="section?.original" alt="">
+  <div class="author">
+    <fa-icon [icon]="faUser"></fa-icon>
+    <b>{{'PRODUCT.AUTHOR' | translate}}:</b> {{section?.author?.name}}</div>
+</div>

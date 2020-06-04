@@ -36,7 +36,8 @@
     "CATEGORIES": "Categorias",
     "PRICES": "Precios",
     "TAG": "Etiquetas",
-    "ADD": "Agregar"
+    "ADD": "Agregar",
+    "AUTHOR": "Subida por"
   },
   "PROVIDER": {
     "NAME": "Nombre de empresa",

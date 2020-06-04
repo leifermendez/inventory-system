@@ -1,6 +1,14 @@
 import {Component, ElementRef, Input, NgZone, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {faLifeRing, faSave, faCheckCircle, faTrashAlt, faTimesCircle} from '@fortawesome/free-regular-svg-icons';
+import {
+  faLifeRing,
+  faSave,
+  faCheckCircle,
+  faTrashAlt,
+  faTimesCircle,
+  faHandPointer
+} from '@fortawesome/free-regular-svg-icons';
+import {faSearchPlus} from '@fortawesome/free-solid-svg-icons';
 import {AnimationOptions} from "ngx-lottie";
 import {CurrencyMaskInputMode} from "ngx-currency";
 import {RestService} from "../../rest.service";
@@ -8,6 +16,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ShareService} from "../../share.service";
 import {AnimationItem} from "lottie-web";
 import {animate, query, stagger, style, transition, trigger} from "@angular/animations";
+import {ModalUserComponent} from "../modal-user/modal-user.component";
+import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
+import {ModalImageComponent} from "../modal-image/modal-image.component";
 
 @Component({
   selector: 'app-product-form',
@@ -29,6 +40,7 @@ export class ProductFormComponent implements OnInit {
   public form: FormGroup;
   public prices: any = []
   files: File[] = [];
+  bsModalRef: BsModalRef;
   public optionsMenu: any = [
     {
       name: 'Save',
@@ -37,6 +49,7 @@ export class ProductFormComponent implements OnInit {
   ]
   faTrashAlt = faTrashAlt
   faTimesCircle = faTimesCircle
+  faHandPointer = faHandPointer
   faSave = faSave
   faCheckCircle = faCheckCircle
   faLifeRing = faLifeRing
@@ -65,6 +78,7 @@ export class ProductFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     public router: Router,
     public share: ShareService,
+    private modalService: BsModalService,
     private ngZone: NgZone
   ) {
   }
@@ -119,7 +133,10 @@ export class ProductFormComponent implements OnInit {
     this.priceTmp = 0;
   }
 
-  test = async (f) => await this.share.toBase64(f);
+  viewImage = (e, data: any = {}) => {
+    e.stopPropagation();
+    this.open(data)
+  }
 
   editorContentChange(doc: object) {
     this.editorContent = doc;
@@ -216,6 +233,20 @@ export class ProductFormComponent implements OnInit {
         reject(error)
       })
   })
+
+  open(data: any = null) {
+    const initialState = {
+      section: data
+    };
+
+    this.bsModalRef = this.modalService.show(
+      ModalImageComponent,
+      Object.assign({initialState}, {
+        class: 'modal-light-zoom',
+        ignoreBackdropClick: false
+      })
+    );
+  }
 
 
   parseData = (data: any) => {

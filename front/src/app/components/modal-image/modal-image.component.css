@@ -1,0 +1,9 @@
+.photo {
+  width: 100%;
+  box-shadow: 0 0 15px rgba(63, 63, 63, 0.31);
+  border-radius: .3rem;
+}
+
+.photo img, .modal-content {
+  border-right: .3rem;
+}

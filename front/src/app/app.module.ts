@@ -23,6 +23,7 @@ import { LoadingSvgComponent } from './components/loading-svg/loading-svg.compon
 import { FirstImagePipe } from './first-image.pipe';
 import { ErrorLayerComponent } from './components/error-layer/error-layer.component';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import { ModalImageComponent } from './components/modal-image/modal-image.component';
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
@@ -48,6 +49,7 @@ export function playerFactory() {
     ListGeneralComponent,
     LoadingSvgComponent,
     ErrorLayerComponent,
+    ModalImageComponent,
   ],
     imports: [
         BrowserModule,
