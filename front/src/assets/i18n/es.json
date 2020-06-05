@@ -26,12 +26,12 @@
   },
   "LOGIN": {
     "WELCOME": "Bienvenido",
-    "SUB_TITLE": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    "SUB_TITLE": "Lleva tu inventario de forma inteligente y ágil.",
     "FORM": {
-      "EMAIL": "Email address",
-      "EMAIL_PLACEHOLDER": "Lorem ipsum dolor sit amet, consectetur adipisicing el",
-      "PASSWORD": "Password",
-      "PASSWORD_PLACEHOLDER": "Lorem ipsum dolor sit amet, consectetur adipisicing el",
+      "EMAIL": "Email",
+      "EMAIL_PLACEHOLDER": "Ingresa el email que tienes registrado",
+      "PASSWORD": "Contraseña",
+      "PASSWORD_PLACEHOLDER": "Ingresa tu contraseña, mantén en un lugar seguro tus accesos",
       "SEND": "Ingresar"
     }
   },

@@ -174,7 +174,6 @@ module.exports = {
    */
   async getItemsAggregate(req, model, aggregate) {
     const options = await listInitOptions(req)
-    console.log(options)
     return new Promise((resolve, reject) => {
       model.aggregatePaginate(aggregate, options, (err, items) => {
         if (err) {
