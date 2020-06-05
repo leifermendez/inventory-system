@@ -8,6 +8,7 @@ import {TranslateService} from "@ngx-translate/core";
 })
 export class ShareService {
   @Output() registerUser = new EventEmitter<string>();
+  @Output() common = new EventEmitter<any>();
   @Output() loading = new EventEmitter<string>();
 
   constructor(private router: Router,

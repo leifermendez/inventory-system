@@ -26,6 +26,12 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { ModalImageComponent } from './components/modal-image/modal-image.component';
 import {DEFAULT_TIMEOUT, TimeoutInterceptor} from "./TimeOutInterceptor";
 import { ButtonProgressComponent } from './components/button-progress/button-progress.component';
+import { PurchaseFormComponent } from './components/purchase-form/purchase-form.component';
+import { ModalProductComponent } from './components/modal-product/modal-product.component';
+import {ProductModule} from "./modules/product/product.module";
+import {AvatarModule} from "ngx-avatar";
+import {TooltipModule} from "ngx-bootstrap/tooltip";
+import { FirstValuePipe } from './first-value.pipe';
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
@@ -53,32 +59,35 @@ export function playerFactory() {
     ErrorLayerComponent,
     ModalImageComponent,
     ButtonProgressComponent,
+    ModalProductComponent  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    LoadingBarModule,
+    LoadingBarHttpClientModule,
+    TagInputModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'es',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+    LottieModule.forRoot({player: playerFactory}),
+    BsDropdownModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    SharedModule,
+    NgSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FontAwesomeModule,
+    ProductModule,
+    AvatarModule,
+    TooltipModule
   ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        LoadingBarModule,
-        LoadingBarHttpClientModule,
-        TagInputModule,
-        TranslateModule.forRoot({
-            defaultLanguage: 'es',
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            }
-        }),
-        LottieModule.forRoot({player: playerFactory}),
-        BsDropdownModule.forRoot(),
-        BsDatepickerModule.forRoot(),
-        SharedModule,
-        NgSelectModule,
-        FormsModule,
-        ReactiveFormsModule,
-        FontAwesomeModule
-    ],
   providers: [
     {provide: BsDatepickerConfig, useFactory: getDatepickerConfig},
     CookieService,
@@ -86,6 +95,7 @@ export function playerFactory() {
     [{ provide: DEFAULT_TIMEOUT, useValue: 30000 }]
   ],
   exports: [
+
 
   ],
   bootstrap: [AppComponent]

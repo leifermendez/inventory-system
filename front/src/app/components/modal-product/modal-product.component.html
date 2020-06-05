@@ -1,0 +1,90 @@
+<app-list-products [title]="'Productos'"
+                   [mode]="'modal'"
+                   [limit]="5"
+                   *ngIf="!select"
+                   (cbClick)="getClick($event)"
+                   class="col-12 col-sm-12 p-0 row m-0">
+</app-list-products>
+
+<div *ngIf="select" class="col-12 row m-0 pl-0 pr-0 pt-2 pb-2" [@swipe]>
+  <div class="d-flex item-row w-100">
+    <div>
+      <ngx-avatar [src]="select?.gallery | firstImage:'large'"></ngx-avatar>
+    </div>
+    <div class="pt-1 pb-1 pr-2 pl-2">
+      <div>
+        <b>{{select?.name}}</b>
+      </div>
+      <div>
+           <span class="text-muted mt-1">
+              <span class="badge-tag-price badge mr-2" *ngFor="let price of select?.prices">
+                {{'GENERAL.CURRENCY_SYMBOL' |translate}} {{price?.amount | number:'1.2-2'}} {{'GENERAL.CURRENCY' |translate}}
+              </span>
+            </span>
+      </div>
+    </div>
+    <div>
+
+    </div>
+    <!--    <img class="item-img" [src]="select?.gallery | firstImage:'large'" alt="">-->
+  </div>
+  <form (submit)="onSubmit()" class="form-product w-100 flex-wrap d-flex mt-3" [formGroup]="form">
+    <div class="col-12 p-0 flex-wrap d-flex">
+
+      <div class="custom-card-style col-12 flex-wrap d-flex">
+        <div class="col-12 p-0">
+          <div class="name">
+            <div class="form-group">
+              <label>{{"GENERAL.QTY"|translate}}</label>
+              <input type="text" formControlName="qty"
+                     class="form-control" aria-describedby="emailHelp"
+                     placeholder=""></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
+        <div class="col-12 p-0">
+          <div class="name">
+            <div class="form-group">
+              <label>{{"GENERAL.PRICES" |translate}}</label>
+              <!--            <input type="text" formControlName="role"-->
+              <!--                   class="form-control" aria-describedby="emailHelp"-->
+              <!--                   placeholder=""></div>-->
+              <ng-select formControlName="price" [items]="prices"
+                         bindLabel="amount"
+                         [clearable]="false"
+                         [searchable]="false"
+                         (change)="selectPrice($event)"
+                         placeholder="">
+                <ng-template ng-label-tmp let-item="item">
+                  {{'GENERAL.CURRENCY_SYMBOL' |translate}}
+                  {{item?.amount |  number:'1.2-2'}}
+                  {{'GENERAL.CURRENCY' |translate}}
+                </ng-template>
+
+
+                <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                  {{'GENERAL.CURRENCY_SYMBOL' |translate}}
+                  {{item?.amount |  number:'1.2-2'}}
+                  {{'GENERAL.CURRENCY' |translate}}
+                </ng-template>
+
+              </ng-select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="text-center col-12 m-0 pt-4 pr-0 pl-0 pb-2">
+      <button class="btn btn-primary" [disabled]="!form.valid">
+        {{'PURCHASE.ADD' | translate}}
+      </button>
+
+
+    </div>
+  </form>
+
+</div>

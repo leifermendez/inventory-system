@@ -48,11 +48,8 @@ export class ProductFormComponent implements OnInit {
     }
   ]
   faTrashAlt = faTrashAlt
-  faTimesCircle = faTimesCircle
   faHandPointer = faHandPointer
-  faSave = faSave
   faCheckCircle = faCheckCircle
-  faLifeRing = faLifeRing
   options: AnimationOptions = {
     path: '/assets/images/drop.json',
   };

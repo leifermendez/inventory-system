@@ -1,0 +1,9 @@
+<app-header [history]="history"></app-header>
+<app-side-bar></app-side-bar>
+<div class="container-row d-flex">
+  <app-purchase-form *ngIf="!id" class="col-12 row m-0 pl-2"></app-purchase-form>
+  <div *ngIf="id && id!=='add'" class="w-100 pr-3 container-wrapper">
+    <app-detail-invoice class="col-12 pl-2 "></app-detail-invoice>
+  </div>
+</div>
+

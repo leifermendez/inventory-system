@@ -1,8 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {
-  faTimes
-}
-  from '@fortawesome/free-solid-svg-icons';
+import {faTimes} from '@fortawesome/free-solid-svg-icons';
 import {BsModalRef} from "ngx-bootstrap/modal";
 import {ShareService} from "../../share.service";
 

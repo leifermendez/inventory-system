@@ -20,7 +20,7 @@
 <!-- ***************** TEMPLATE ************** -->
 <ng-template #customTemplateSrc let-dat='dat'>
   <ul *ngIf="dat?.length">
-    <li *ngFor="let inside of dat" [routerLink]="['/','products',inside?._id]">
+    <li *ngFor="let inside of dat" (click)="emitCbClick(inside)">
       <div class="pl-2 pr-2 d-block d-sm-none">
         <span class="badge-tag badge mr-1 " *ngFor="let tag of inside?.tag">
               {{tag?.name}}

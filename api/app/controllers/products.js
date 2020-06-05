@@ -30,11 +30,12 @@ const getAllItemsFromDB = async () => {
   })
 }
 
+
 /**
  * Get with inventory
  */
 
-const getProductInventory = (query = {}) => {
+const getLookList = (query = {}) => {
   return model
     .aggregate([{
       $match: query,
@@ -105,8 +106,7 @@ exports.getAllItems = async (req, res) => {
 exports.getItems = async (req, res) => {
   try {
     const query = await db.checkQueryString(req.query)
-    console.log(req.query)
-    const data = getProductInventory(query)
+    const data = getLookList(query)
     res.status(200).json(await db.getItemsAggregate(req, model, data))
     // res.status(200).json(await db.getItems(req, model, query))
   } catch (error) {

@@ -33,6 +33,9 @@ import {TimeagoModule} from "ngx-timeago";
 import {QuillModule} from "ngx-quill";
 import {InventoryFormComponent} from "../../components/inventory-form/inventory-form.component";
 import {NgxDropzoneModule} from "ngx-dropzone";
+import {PurchaseFormComponent} from "../../components/purchase-form/purchase-form.component";
+import {FirstImagePipe} from "../../first-image.pipe";
+import {FirstValuePipe} from "../../first-value.pipe";
 
 @NgModule({
   declarations: [
@@ -51,35 +54,38 @@ import {NgxDropzoneModule} from "ngx-dropzone";
     UserFormComponent,
     ListItemsComponent,
     ModalUserComponent,
-    InventoryFormComponent
+    InventoryFormComponent,
+    PurchaseFormComponent,
+    FirstImagePipe,
+    FirstValuePipe
   ],
-    imports: [
-        CommonModule,
-        FontAwesomeModule,
-        TabsModule.forRoot(),
-        TooltipModule.forRoot(),
-        ModalModule.forRoot(),
-        TimeagoModule.forRoot(),
-        NgxCurrencyModule,
-        BsDropdownModule,
-        BsDatepickerModule,
-        AvatarModule,
-        LottieModule,
-        NgSelectModule,
-        FormsModule,
-        NgxEditorModule,
-        ReactiveFormsModule,
-        TranslateModule,
-        TagInputModule,
-        RouterModule,
-        QuillModule,
-        NgxDropzoneModule,
-    ],
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    TabsModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot(),
+    TimeagoModule.forRoot(),
+    NgxCurrencyModule,
+    BsDropdownModule,
+    BsDatepickerModule,
+    AvatarModule,
+    LottieModule,
+    NgSelectModule,
+    FormsModule,
+    NgxEditorModule,
+    ReactiveFormsModule,
+    TranslateModule,
+    TagInputModule,
+    RouterModule,
+    QuillModule,
+    NgxDropzoneModule,
+  ],
   exports: [HeaderComponent, SideBarComponent, WorkingBoxComponent,
     ListItemsComponent, DetailInvoiceComponent, BoxEmptyComponent,
-    LockedBoxComponent, ProductFormComponent,
-    ProviderFormComponent, DepositFormComponent,
-    SectionBtnComponent, InventoryFormComponent,
+    LockedBoxComponent, ProductFormComponent, FirstValuePipe,
+    ProviderFormComponent, DepositFormComponent, PurchaseFormComponent,
+    SectionBtnComponent, InventoryFormComponent, FirstImagePipe,
     UserFormComponent, ListItemsComponent, ModalUserComponent]
 })
 export class SharedModule {

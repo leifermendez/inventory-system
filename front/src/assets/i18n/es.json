@@ -14,6 +14,8 @@
     "NOT_ALLOWED": "No tienes permisos",
     "ERROR_CODE": "Código",
     "ERROR": "¡Algo sucedio!",
+    "QTY": "Cantidad",
+    "PRICES": "Precio",
     "ERROR_MESSAGE": "Mensaje",
     "ARE_YOU_SURE": "¿Estas seguro?",
     "ARE_YOU_SURE_SENTENCE": "Los cambios no pueden revertirse",
@@ -44,6 +46,24 @@
     "ADD": "Agregar",
     "AUTHOR": "Subida por",
     "DESCRIPTION": "Descripcion"
+  },
+  "PURCHASE": {
+    "CUSTOMER": "Cliente",
+    "ADDRESS": "Dirección de envio",
+    "DELIVERY_TYPE": "Envio",
+    "STATUS": "Estatus",
+    "TAG": "Etiquetas",
+    "ADD": "Agregar",
+    "AUTHOR": "Subida por",
+    "DESCRIPTION": "Descripcion",
+    "TITLE": "Pedido",
+    "TAB": "Detalles",
+    "DATE": "Fecha",
+    "ITEM": "Articulo",
+    "PRICE": "Precio",
+    "QTY": "Cantidad",
+    "ADD_PRODUCT": "Agregar producto",
+    "ADD_PRODUCT_PLACEHOLDER": "Haz clik para comenzar agregar articulos al pedido"
   },
   "PROVIDER": {
     "NAME": "Nombre de empresa",
@@ -83,7 +103,7 @@
   "INVENTORY": {
     "PRODUCT": "Producto",
     "PROVIDER": "Proveedor",
-    "QTY": "Cantidad",
+    "QTY": "Inventario",
     "PRICE_BASE": "Precio costo",
     "DEPOSIT": "Deposito",
     "DESCRIPTION": "Observación",

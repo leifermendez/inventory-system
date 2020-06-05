@@ -7,4 +7,26 @@ and (max-width: 768px) {
   .container-row {
     padding: 4rem 0rem 1rem 4rem;
   }
+
+  .container-wrapper {
+    padding-left: .25rem !important;
+    padding-right: .25rem !important;
+  }
+
+  .container-wrapper .col-12 {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .container-row .items-wrapper {
+    padding-left: .25rem !important;
+    padding-right: .25rem !important;
+  }
+
+  .btn-default-trash{
+    position: absolute !important;
+    right: 0 !important;
+    margin-top: 30px !important;
+  }
+
 }

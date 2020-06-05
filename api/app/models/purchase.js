@@ -1,15 +1,24 @@
 const mongoose = require('mongoose')
-const mongoosePaginate = require('mongoose-paginate-v2')
+// const mongoosePaginate = require('mongoose-paginate-v2')
+const aggregatePaginate = require('mongoose-aggregate-paginate-v2');
 const softDelete = require('mongoose-softdelete');
+const invNum = require('invoice-number')
+const moment = require('moment'); // require
+
 const PurchaseSchema = new mongoose.Schema(
   {
+    controlNumber: {
+      type: String,
+      required: false,
+      default: null
+    },
     customer: {
       type: Object,
       required: true
     },
     items: {
       type: Object,
-      required: true
+      required: false
     },
     author: {
       type: Object,
@@ -46,7 +55,17 @@ const PurchaseSchema = new mongoose.Schema(
   }
 )
 
+PurchaseSchema.post('save', (obj) => {
+  const prefix = process.env.PREFIX_INVOICE;
+  const day = moment().format('dd');
+  const nextControl = moment().unix();
+  obj.set('controlNumber', `${prefix}-${nextControl}${day}`, {strict: false})
+  obj.save();
 
-PurchaseSchema.plugin(mongoosePaginate)
+
+})
+
+
+PurchaseSchema.plugin(aggregatePaginate)
 PurchaseSchema.plugin(softDelete)
 module.exports = mongoose.model('Purchase', PurchaseSchema)

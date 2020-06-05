@@ -30,6 +30,7 @@
     "@ngx-translate/http-loader": "^4.0.0",
     "install": "^0.13.0",
     "lottie-web": "^5.6.10",
+    "moment": "^2.26.0",
     "ngx-avatar": "^3.7.0",
     "ngx-bootstrap": "^5.6.1",
     "ngx-chips": "^2.1.0",

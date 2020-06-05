@@ -1,34 +1,44 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {RestService} from "../../../../rest.service";
 import {Router} from "@angular/router";
 import {faPhoneAlt, faIndustry, faUser} from '@fortawesome/free-solid-svg-icons';
+import {animate, query, stagger, style, transition, trigger} from "@angular/animations";
 import {ShareService} from "../../../../share.service";
 
 @Component({
-  selector: 'app-list-products',
+  selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  styleUrls: ['./list.component.css'],
+  animations: [
+    trigger('listAnimation', [
+      transition('* => *', [
+        query(':enter', [
+          style({opacity: 0}),
+          stagger(30, [
+            animate(100, style({opacity: 1}))
+          ])
+        ], {optional: true})
+      ])
+    ])
+  ]
 })
 export class ListComponent implements OnInit {
   @Input() mode: string = 'page'
   @Input() title: any = false;
   @Input() limit: any = 8;
-  @Output() cbClick = new EventEmitter<any>();
-
   constructor(private rest: RestService,
-              private share: ShareService,
-              private router: Router) {
+              private router: Router,
+              private share: ShareService) {
   }
 
-  faPhoneAlt = faPhoneAlt
   faIndustry = faIndustry
   faUser = faUser
   public data = [];
-  public source = 'products';
+  public source = 'purchase';
 
   public history: any = [
     {
-      name: 'Productos'
+      name: 'Pedidos'
     }
   ]
 
@@ -36,18 +46,10 @@ export class ListComponent implements OnInit {
     this.load()
   }
 
-  emitCbClick = (inside: any = {}) => {
-    if (this.mode === 'modal') {
-      this.cbClick.emit(inside);
-    } else {
-      this.router.navigate(['/', 'products', inside?._id])
-    }
-
-  }
-
   load = (src: string = '') => {
     let fields = [
-      `?fields=name`
+      `?fields=name`,
+      `&sort=createdAt&order=-1`
     ];
     if (this.mode === 'home') {
       fields.push(`&limit=${this.limit}`)
@@ -62,4 +64,5 @@ export class ListComponent implements OnInit {
   goTo = () => this.share.goTo(this.source)
 
   onSrc = (e) => this.load(e)
+
 }

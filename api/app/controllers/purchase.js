@@ -29,6 +29,82 @@ const getAllItemsFromDB = async () => {
   })
 }
 
+/**
+ * Get with inventory
+ */
+/**
+ * Get with inventory
+ */
+
+const getLookList = (query = {}) => {
+  return model
+    .aggregate([{
+      $match: query,
+    },
+      {
+        $lookup: {
+          from: 'users',
+          let: {idUser: "$customer"},
+          pipeline: [
+            {
+              $match:
+                {
+                  $expr:
+                    {
+                      $and:
+                        [
+                          {$eq: ["$$idUser", "$_id"]}
+                        ]
+                    }
+                }
+            }
+          ],
+          as: 'customer'
+        }
+      },
+      {
+        $lookup: {
+          from: 'users',
+          let: {idUser: "$author"},
+          pipeline: [
+            {
+              $match:
+                {
+                  $expr:
+                    {
+                      $and:
+                        [
+                          {$eq: ["$$idUser", "$_id"]}
+                        ]
+                    }
+                }
+            }
+          ],
+          as: 'author'
+        }
+      },
+      {$unwind: '$customer'},
+      {$unwind: '$author'},
+      {
+        "$project": {
+          "_id": 1,
+          "customer": 1,
+          "items": 1,
+          "author": 1,
+          "status": 1,
+          "deliveryAddress": 1,
+          "deliveryType": 1,
+          "total": 1,
+          "tag": 1,
+          "controlNumber": 1,
+          "description": 1,
+          "createdAt": 1,
+          "updatedAt": 1,
+        }
+      },
+    ])
+}
+
 /********************
  * Public functions *
  ********************/
@@ -54,7 +130,8 @@ exports.getAllItems = async (req, res) => {
 exports.getItems = async (req, res) => {
   try {
     const query = await db.checkQueryString(req.query)
-    res.status(200).json(await db.getItems(req, model, query))
+    const data = getLookList(query)
+    res.status(200).json(await db.getItemsAggregate(req, model, data))
   } catch (error) {
     utils.handleError(res, error)
   }
@@ -68,8 +145,9 @@ exports.getItems = async (req, res) => {
 exports.getItem = async (req, res) => {
   try {
     req = matchedData(req)
-    const id = await utils.isIDGood(req.id)
-    res.status(200).json(await db.getItem(id, model))
+    const id = await utils.isIDGood(req.id, true)
+    const data = await getLookList({_id: id}).exec();
+    res.status(200).json(data.find(a => true))
   } catch (error) {
     utils.handleError(res, error)
   }
@@ -87,7 +165,7 @@ exports.updateItem = async (req, res) => {
     req = {
       ...req, ...{
         author,
-        customer: await utils.isIDGood(req.customer)
+        customer: await utils.isIDGood(req.customer._id, true)
       }
     }
     const id = await utils.isIDGood(req.id)
@@ -109,7 +187,7 @@ exports.createItem = async (req, res) => {
     req = {
       ...req, ...{
         author,
-        customer: await utils.isIDGood(req.customer)
+        customer: await utils.isIDGood(req.customer._id, true)
       }
     }
     res.status(201).json(await db.createItem(req, model))

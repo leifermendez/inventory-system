@@ -1,0 +1,146 @@
+<form (submit)="onSubmit()" class="form-product w-100 flex-wrap d-flex" [formGroup]="form">
+  <div class="col-12 p-0 flex-wrap d-flex">
+    <!--    {{share.findInvalidControls(form) | json}}-->
+    <div class="text-right w-100">
+      <app-section-btn (cbList)="cbList()" [trash]="true"
+                       (cbTrash)="cbTrash()" [valid]="form.valid"></app-section-btn>
+    </div>
+
+<!--    <div class="custom-card-style col-12 flex-wrap d-flex">-->
+<!--      <div class="col-12 p-0">-->
+<!--        <div class="name">-->
+<!--          <div class="form-group">-->
+<!--            <label>{{"PURCHASE.CUSTOMER" |translate}}</label>-->
+<!--            <input type="text" formControlName="customer"-->
+<!--                   class="form-control" aria-describedby="emailHelp"-->
+<!--                   placeholder=""></div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">-->
+<!--      <div class="col-12 p-0">-->
+<!--        <div class="name">-->
+<!--          <div class="form-group">-->
+<!--            <label>{{"PURCHASE.EMAIL" |translate}}</label>-->
+<!--            <input type="text" formControlName="email"-->
+<!--                   class="form-control" aria-describedby="emailHelp"-->
+<!--                   placeholder=""></div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+    <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
+      <div class="col-12 p-0">
+        <div class="name">
+          <div class="form-group">
+            <label>{{"PURCHASE.CUSTOMER" |translate}}</label>
+            <!--            <input type="text" formControlName="manager"-->
+            <!--                   class="form-control"-->
+            <!--                   placeholder=""></div>-->
+            <!--            {{products | json}}-->
+            <ng-select formControlName="customer" #selectProductRef [items]="products"
+                       bindLabel="name"
+                       (search)="srcCustomer($event)"
+                       (change)="selectCustomer($event)"
+                       [required]="true"
+                       placeholder="">
+              <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                <div class="card-list d-flex">
+                  <div class="p-1">
+                    <img class="img-product"
+                         src="https://cdn.dribbble.com/users/1334861/screenshots/6676523/sales_order.png" alt="">
+                  </div>
+                  <div class="p-1">
+                    <div>{{item?.name}}</div>
+                    <div class="font-weight-normal text-muted">
+
+                      <span *ngFor="let tag of item?.tag">
+                        <span class="badge badge-tag">{{tag?.name}}</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ng-select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
+      <div class="col-12 p-0">
+        <div class="name">
+          <div class="form-group">
+            <label>{{"PURCHASE.ADDRESS" |translate}}</label>
+            <input type="text" formControlName="deliveryAddress"
+                   class="form-control" aria-describedby="emailHelp"
+                   placeholder=""></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
+      <div class="col-12 p-0">
+        <div class="name">
+          <div class="form-group">
+            <label>{{"PURCHASE.DELIVERY_TYPE" |translate}}</label>
+            <!--            <input type="text" formControlName="manager"-->
+            <!--                   class="form-control" aria-describedby="emailHelp"-->
+            <!--                   placeholder=""></div>-->
+            <ng-select formControlName="deliveryType" [items]="deliveryType"
+                       bindLabel="name"
+                       bindValue="value"
+                       (change)="selectUser($event)"
+                       [required]="true"
+                       placeholder="">
+            </ng-select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
+      <div class="col-12 p-0">
+        <div class="name">
+          <div class="form-group">
+            <label>{{"PURCHASE.STATUS" |translate}}</label>
+            <!--            <input type="text" formControlName="manager"-->
+            <!--                   class="form-control" aria-describedby="emailHelp"-->
+            <!--                   placeholder=""></div>-->
+            <ng-select formControlName="status" [items]="status"
+                       bindLabel="name"
+                       bindValue="value"
+                       (change)="selectUser($event)"
+                       [required]="true"
+                       placeholder="">
+            </ng-select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
+      <div class="col-12 p-0">
+        <div class="name">
+          <div class="form-group">
+            <label>{{"PURCHASE.DESCRIPTION" |translate}}</label>
+            <input type="text" formControlName="description"
+                   class="form-control" aria-describedby="emailHelp"
+                   placeholder=""></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
+      <div class="form-group w-100">
+        <label>{{"PURCHASE.TAG" |translate}}</label>
+        <tag-input class="chip-price" [(ngModel)]="itemsAsObjects"
+                   [identifyBy]="'id'"
+                   formControlName="tag"
+                   [displayBy]="'name'"></tag-input>
+      </div>
+    </div>
+  </div>
+</form>

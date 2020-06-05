@@ -8,7 +8,7 @@ exports.createItem = [
   check('customer')
     .exists(),
   check('items')
-    .exists(),
+    .optional(),
   check('status')
     .optional(),
   check('deliveryAddress')
@@ -34,7 +34,7 @@ exports.updateItem = [
   check('customer')
     .exists(),
   check('items')
-    .exists(),
+    .optional(),
   check('status')
     .optional(),
   check('deliveryAddress')

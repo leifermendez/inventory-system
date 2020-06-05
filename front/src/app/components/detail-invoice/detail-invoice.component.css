@@ -116,3 +116,25 @@
   color: #222222;
   font-size: .8rem;
 }
+
+.btn-default-trash {
+  box-shadow: 0 0 10px rgba(188, 186, 195, 0.35);
+  padding: .3rem 1rem;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.btn-primary:hover, .btn-default-trash:hover,
+.btn-success:hover {
+  transform: scale(1.1);
+  -webkit-transition: all 200ms;
+  -moz-transition: all 200ms;
+  -o-transition: all 200ms;
+  transition: all 200ms;
+}
+
+.btn-success {
+  background-color: #2CA42E;
+}
