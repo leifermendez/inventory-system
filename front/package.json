@@ -47,6 +47,7 @@
     "quill-emoji": "^0.1.7",
     "rxjs": "~6.5.4",
     "sweetalert2": "^9.14.0",
+    "swipe-angular-list": "^0.1.8",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },

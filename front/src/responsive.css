@@ -23,10 +23,10 @@ and (max-width: 768px) {
     padding-right: .25rem !important;
   }
 
-  .btn-default-trash{
-    position: absolute !important;
-    right: 0 !important;
-    margin-top: 30px !important;
+
+  .left-swipe {
+    transform: translate(-22vw, 0) !important;
   }
+
 
 }

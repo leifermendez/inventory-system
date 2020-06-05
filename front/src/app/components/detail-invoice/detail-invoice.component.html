@@ -65,37 +65,21 @@
               <h6 class="title-in-items col-lg-3 col-md-6 col-sm-6 p-0 text-center">
                 {{'PURCHASE.PRICE' |translate}}</h6>
             </div>
-            <div class="d-flex item-self" [@swipe] *ngFor="let a of items">
-              <div class="col-lg-6 col-md-6 col-sm-6 d-flex">
-                <div class="p-1  d-none d-md-block">
-                  <span class="number-item">{{a?.qty}}</span>
-                  <img class="image"
-                       [src]="a?.gallery | firstImage:'large'"
-                       alt="">
-                </div>
-                <div class="p-1">
-                  <div><b class="mt-1 item-name">{{a?.name}}</b></div>
-                  <div>
-                    <small class="text-muted mt-1">SKU: {{a?.sku}}</small>
-                  </div>
-                  <!--                {{a | json}}-->
-                </div>
-              </div>
-              <div class="col-lg-3 d-none d-md-block text-center">
-                <b>{{a?.qty}}</b>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-6 text-center">
 
-                <b>{{'GENERAL.CURRENCY_SYMBOL' |translate}}
-                  {{a?.prices | firstValue:'amount'|number:'1.2-2'}}
-                  {{'GENERAL.CURRENCY' |translate}}</b>
-              </div>
-              <button type="button" class="btn btn-default btn-round btn-default-trash"
-                      (click)="onRemove(a)">
-                <fa-icon [icon]="faTrashAlt"></fa-icon>
-              </button>
-            </div>
+
+            <sw-item-list *ngFor="let item of items"
+                          [inside]="item"
+                          [editTemplate]="null"
+                          (callback)="cbSwipe($event)"
+                          [trashTemplate]="trashTemplate"
+                          [customTemplate]="customTemplateSrc"
+                          [item-class]="'list-custom'">
+
+            </sw-item-list>
+
           </div>
+
+
           <div *ngIf="!items?.length" class="text-center cursor-pointer" (click)="open()">
             <b>{{'PURCHASE.ADD_PRODUCT' | translate}}</b>
             <div class="d-flex justify-content-center">
@@ -118,3 +102,58 @@
   </tabset>
 
 </div>
+
+
+<!--- **************** TEMPLATE CUSTOM *************** ------->
+<ng-template #customTemplateSrc let-item='item' let-id='id'>
+  <div class="custom-inside" data-id="{{id}}">
+    <div>
+      <div class="d-flex item-self">
+        <div class="col-lg-6 col-md-6 col-sm-6 d-flex">
+          <div class="p-1  d-none d-md-block">
+            <span class="number-item">{{item?.qty}}</span>
+            <img class="image"
+                 [src]="item?.gallery | firstImage:'large'"
+                 alt="">
+          </div>
+          <div class="p-1">
+            <div><b class="mt-1 item-name">{{item?.name}}</b></div>
+            <div>
+              <small class="text-muted mt-1">SKU: {{item?.sku}}</small>
+            </div>
+            <!--                {{a | json}}-->
+          </div>
+        </div>
+        <div class="col-lg-3 d-none d-md-block text-center">
+          <b>{{item?.qty}}</b>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 text-center">
+
+          <b>{{'GENERAL.CURRENCY_SYMBOL' |translate}}
+            {{item?.prices | firstValue:'amount'|number:'1.2-2'}}
+            {{'GENERAL.CURRENCY' |translate}}</b>
+        </div>
+        <button type="button"
+                class="btn btn-default btn-round btn-default-trash d-none d-lg-block"
+                (click)="onRemove(null)">
+          <fa-icon [icon]="faTrashAlt"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<!--- **************** FIN CUSTOM *************** ------->
+<!--Defined yout template for icon button (edit)-->
+<ng-template #editTemplate>
+  EDIT
+</ng-template>
+
+<!--Defined yout template for icon button (trash)-->
+<ng-template #trashTemplate>
+  <div class="text-center">
+    <button type="button"
+            class="btn btn-default btn-round btn-default-trash">
+      <fa-icon [icon]="faTrashAlt"></fa-icon>
+    </button>
+  </div>
+</ng-template>

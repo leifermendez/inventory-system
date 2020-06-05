@@ -65,7 +65,8 @@ export class DetailInvoiceComponent implements OnInit {
       .subscribe(res => {
         const {items} = res
         this.data = res;
-        this.items = items;
+        this.items = this.parseData(items);
+        console.log(this.items)
       })
   }
 
@@ -76,6 +77,12 @@ export class DetailInvoiceComponent implements OnInit {
   onRemove(event) {
     console.log(event);
     this.items.splice(this.items.indexOf(event), 1);
+  }
+
+  parseData = (data: any = {}) => {
+    return data.map(a => {
+      return {...a, ...{id: a._id}}
+    })
   }
 
   open(data: any = null) {
@@ -122,5 +129,14 @@ export class DetailInvoiceComponent implements OnInit {
     this.rest.patch(`purchase/${this.id}`,
       body)
       .subscribe(res => this.loadData())
+  }
+
+  cbSwipe($event: any) {
+    const {action, value} = $event;
+    if (action === 'trash') {
+      this.items = this.items.filter(a => {
+        return (a.id !== value);
+      })
+    }
   }
 }

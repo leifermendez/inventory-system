@@ -7,12 +7,14 @@ import { ListComponent } from './pages/list/list.component';
 import {SharedModule} from "../shared/shared.module";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {AvatarModule} from "ngx-avatar";
+import {SwipeAngularListModule} from "swipe-angular-list";
 
 
 @NgModule({
   declarations: [AddComponent, ListComponent],
   imports: [
     CommonModule,
+    SwipeAngularListModule,
     PurchasesRoutingModule,
     SharedModule,
     FontAwesomeModule,

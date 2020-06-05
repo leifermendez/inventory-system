@@ -474,9 +474,42 @@ ngx-dropzone-label {
 .swal2-content, .swal2-footer {
   font-size: .8rem !important;
 }
-.swal2-footer{
+
+.swal2-footer {
   padding: 1em !important;
 }
-.swal2-header{
+
+.swal2-header {
   padding: 1em 0em 0em !important;
+}
+
+.list-swipe {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 400;
+  background-color: #F6F5FA;
+  font-size: .85rem;
+  text-rendering: optimizeLegibility;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-shadow: 0 0 0 !important;
+}
+
+.list-swipe .mark {
+  border: 0 !important;
+}
+
+/*.left-swipe {*/
+/*  transform: translate(0, 0)!important;*/
+/*}*/
+
+sw-item-list .options-btn.active {
+  transform: translate(50vw, 0) !important;
+}
+
+sw-item-list .list-swipe .mark {
+  display: none;
+}
+
+sw-item-list .left-swipe {
+  transform: translate(0, 0)
 }

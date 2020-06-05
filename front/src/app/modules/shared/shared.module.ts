@@ -36,6 +36,7 @@ import {NgxDropzoneModule} from "ngx-dropzone";
 import {PurchaseFormComponent} from "../../components/purchase-form/purchase-form.component";
 import {FirstImagePipe} from "../../first-image.pipe";
 import {FirstValuePipe} from "../../first-value.pipe";
+import {SwipeAngularListModule} from "swipe-angular-list";
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import {FirstValuePipe} from "../../first-value.pipe";
     RouterModule,
     QuillModule,
     NgxDropzoneModule,
+    SwipeAngularListModule,
   ],
   exports: [HeaderComponent, SideBarComponent, WorkingBoxComponent,
     ListItemsComponent, DetailInvoiceComponent, BoxEmptyComponent,
