@@ -1,0 +1,21 @@
+{
+  "name": "inventory-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-front" : "heroku git:remote -a inventory-agile-tool &&git subtree push --prefix front heroku master",
+    "heroku-api" : "heroku git:remote -a inventory-agile-tool-api && git subtree push --prefix api heroku master"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leifermendez/inventory-system.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leifermendez/inventory-system/issues"
+  },
+  "homepage": "https://github.com/leifermendez/inventory-system#readme"
+}

@@ -1,6 +1,5 @@
 const psl = require('psl');
-const extractDomain = require('extract-domain');
-
+const global = require('../../config/global')
 /**
  *
  */
@@ -14,6 +13,7 @@ const parseDomain = (data = []) => {
 
 exports.checkDomain = async (req, res, next) => {
   try {
+    global.getVariable(null);
     const origin = req.get('origin');
     const re = /^(?:https?:)?(?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+)/ig;
     const result = re.exec(origin);

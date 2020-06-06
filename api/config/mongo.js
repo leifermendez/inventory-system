@@ -1,13 +1,15 @@
 const mongoose = require('mongoose')
 const DB_URL = process.env.MONGO_URI
+const MAIN_DB = process.env.MONGO_PARENT
 const loadModels = require('../app/models')
 
-module.exports = () => {
+module.exports = (app = {}) => {
+
   const connect = () => {
     mongoose.Promise = global.Promise
 
     mongoose.connect(
-      DB_URL,
+      `${DB_URL}/${MAIN_DB}`,
       {
         keepAlive: true,
         useNewUrlParser: true,
