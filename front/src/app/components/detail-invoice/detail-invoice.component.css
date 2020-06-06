@@ -120,6 +120,8 @@
 .btn-default-trash {
   box-shadow: 0 0 10px rgba(188, 186, 195, 0.35);
   padding: .3rem 1rem;
+  position: absolute;
+  right: -30px;
 }
 
 .cursor-pointer {

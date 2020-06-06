@@ -32,6 +32,7 @@ import {ProductModule} from "./modules/product/product.module";
 import {AvatarModule} from "ngx-avatar";
 import {TooltipModule} from "ngx-bootstrap/tooltip";
 import { FirstValuePipe } from './first-value.pipe';
+import { TotalPurchasePipe } from './total-purchase.pipe';
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
@@ -59,7 +60,8 @@ export function playerFactory() {
     ErrorLayerComponent,
     ModalImageComponent,
     ButtonProgressComponent,
-    ModalProductComponent  ],
+    ModalProductComponent,
+     ],
   imports: [
     BrowserModule,
     HttpClientModule,

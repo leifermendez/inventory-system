@@ -324,6 +324,16 @@ tag-input-form input {
   color: #737373;
 }
 
+.badge-prices {
+  border: solid 1px #eaeaea;
+  border-radius: 1rem;
+  padding: .2rem .3rem;
+  background-color: rgba(255, 255, 255, .8);
+  font-weight: 600;
+  text-align: center;
+  color: #737373;
+}
+
 .description-card .ql-snow {
   border: solid 0px red !important;
 }

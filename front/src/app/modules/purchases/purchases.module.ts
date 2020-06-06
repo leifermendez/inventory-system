@@ -10,8 +10,12 @@ import {AvatarModule} from "ngx-avatar";
 import {SwipeAngularListModule} from "swipe-angular-list";
 
 
+
 @NgModule({
   declarations: [AddComponent, ListComponent],
+  exports: [
+
+  ],
   imports: [
     CommonModule,
     SwipeAngularListModule,

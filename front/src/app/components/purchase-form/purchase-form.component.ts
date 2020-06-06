@@ -151,7 +151,7 @@ export class PurchaseFormComponent implements OnInit {
     const method = (this.id) ? 'patch' : 'post';
     this.rest[method](`purchase${(method === 'patch') ? `/${this.id}` : ''}`, this.form.value)
       .subscribe(res => {
-        this.cbList()
+       this.router.navigate(['/','purchase',res._id])
       })
   }
 

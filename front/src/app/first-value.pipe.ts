@@ -11,7 +11,8 @@ export class FirstValuePipe implements PipeTransform {
       // @ts-ignore
       const first = value.find((img: any) => img);
       // @ts-ignore
-      return (args.length) ? first[args]: first;
+      const n =  (args.length) ? first[args]: first;
+      return parseFloat(n);
     } catch (e) {
       return null;
     }

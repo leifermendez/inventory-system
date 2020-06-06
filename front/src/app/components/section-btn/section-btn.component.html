@@ -9,13 +9,20 @@
     </button>
     <div>
       <button class="btn-round mr-3"
+              *ngIf="add"
+              (click)="callbackAdd()"
+              type="button" placement="left" [tooltip]="tolTemplateDelete"
+              containerClass="customToolTip">
+        <fa-icon size="2x" [icon]="faPlus"></fa-icon>
+      </button>
+      <button class="btn-round mr-3"
               *ngIf="trash"
               (click)="delete()"
               type="button" placement="left" [tooltip]="tolTemplateDelete"
               containerClass="customToolTip">
         <fa-icon size="2x" [icon]="faTrashAlt"></fa-icon>
       </button>
-      <button [disabled]="!valid" class="btn-round" placement="left" [tooltip]="tolTemplate"
+      <button [disabled]="!valid" (click)="callbackSave()" class="btn-round" placement="left" [tooltip]="tolTemplate"
               containerClass="customToolTip">
         <fa-icon *ngIf="valid" size="2x" [icon]="faSave"></fa-icon>
         <fa-icon class="text-danger" *ngIf="!valid" size="2x" [icon]="faExclamation"></fa-icon>

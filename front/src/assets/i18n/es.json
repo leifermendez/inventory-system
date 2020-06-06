@@ -58,6 +58,7 @@
     "DESCRIPTION": "Descripcion",
     "TITLE": "Pedido",
     "TAB": "Detalles",
+    "TOTAL": "TOTAL",
     "DATE": "Fecha",
     "ITEM": "Articulo",
     "PRICE": "Precio",

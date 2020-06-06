@@ -1,4 +1,4 @@
-import {Component, NgZone, OnInit, ViewChild} from '@angular/core';
+import {AfterViewChecked, AfterViewInit, Component, DoCheck, NgZone, OnInit, ViewChild} from '@angular/core';
 import {TabsetComponent} from "ngx-bootstrap/tabs";
 import {
   faTrashAlt, faFileAlt, faBox, faFolderOpen, faCrown, faChartPie, faUsers, faAngleRight,
@@ -28,12 +28,13 @@ import {AnimationItem} from "lottie-web";
   ]
 
 })
-export class DetailInvoiceComponent implements OnInit {
+export class DetailInvoiceComponent implements OnInit, AfterViewInit {
   @ViewChild('staticTabs', {static: false}) staticTabs: TabsetComponent;
   faFileAlt = faFileAlt;
   faPlus = faPlus;
   faTrashAlt = faTrashAlt;
   faSave = faSave;
+  public total = 0;
   public id: any = null;
   public data: any = {};
   public items: any = [];
@@ -57,7 +58,24 @@ export class DetailInvoiceComponent implements OnInit {
       this.loadData()
     });
 
-    this.share.common.subscribe(data => this.items.push(data))
+    this.share.common.subscribe(data => {
+      this.items.push(data);
+      this.parseData()
+    })
+
+    this.share.addPurchase.subscribe(data => {
+      this.open()
+    })
+
+    this.share.savePurchase.subscribe(data => {
+      console.log('savee')
+      this.submitData()
+    })
+  }
+
+  ngAfterViewInit() {
+
+
   }
 
   loadData = () => {
@@ -65,8 +83,9 @@ export class DetailInvoiceComponent implements OnInit {
       .subscribe(res => {
         const {items} = res
         this.data = res;
-        this.items = this.parseData(items);
-        console.log(this.items)
+        this.items = items;
+        this.parseData();
+        // this.parseTotal();
       })
   }
 
@@ -74,15 +93,34 @@ export class DetailInvoiceComponent implements OnInit {
     path: '/assets/images/click.json',
   };
 
-  onRemove(event) {
-    console.log(event);
-    this.items.splice(this.items.indexOf(event), 1);
+  parseNumber = (n: any = 0) => {
+    return parseFloat(n);
   }
 
-  parseData = (data: any = {}) => {
-    return data.map(a => {
+  onRemove(event) {
+    console.log({action: 'trash', value: event._id})
+    this.cbSwipe({action: 'trash', value: event._id})
+  }
+
+  parseTotal = () => {
+    let total = 0;
+    this.items.forEach(i => {
+      const prices = i.prices.find(a => a.amount)
+      total += parseFloat(String(i.qty * prices.amount))
+    })
+    this.total = total;
+  }
+
+  parseData = (data: any = null) => {
+
+    if (!data) {
+      data = this.items;
+    }
+    this.parseTotal();
+    this.items = data.map(a => {
       return {...a, ...{id: a._id}}
     })
+
   }
 
   open(data: any = null) {
@@ -124,6 +162,10 @@ export class DetailInvoiceComponent implements OnInit {
 
   }
 
+  getTotal = () => {
+    console.log(this.items)
+  }
+
   submitData = () => {
     const body = {...this.data, ...{items: this.items}}
     this.rest.patch(`purchase/${this.id}`,
@@ -133,10 +175,14 @@ export class DetailInvoiceComponent implements OnInit {
 
   cbSwipe($event: any) {
     const {action, value} = $event;
+    console.log(value)
     if (action === 'trash') {
       this.items = this.items.filter(a => {
-        return (a.id !== value);
+        console.log(Object.values(a))
+        return (!Object.values(a).includes(value));
       })
+      this.parseData();
     }
+
   }
 }

@@ -28,5 +28,25 @@ and (max-width: 768px) {
     transform: translate(-22vw, 0) !important;
   }
 
+  .detail-invoice tabset ul {
+    display: none !important;
+  }
+
+  .detail-invoice .tab-content {
+    padding-top: 0 !important;
+  }
+
+  .price-amount {
+    font-size: 80% !important;
+  }
+
+  app-detail-invoice{
+    padding: 0 !important;
+  }
+
+  .btn-default-trash{
+    right: auto !important;
+    position: relative !important;
+  }
 
 }

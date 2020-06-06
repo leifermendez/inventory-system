@@ -3,6 +3,14 @@
 <div class="container-row d-flex">
   <app-purchase-form *ngIf="!id" class="col-12 row m-0 pl-2"></app-purchase-form>
   <div *ngIf="id && id!=='add'" class="w-100 pr-3 container-wrapper">
+    <div class="text-right w-100">
+      <app-section-btn (cbList)="cbList()"
+                       [trash]="false"
+                       [add]="true"
+                       (cbAdd)="cbAdd()"
+                       (cbSave)="save()"
+                       [valid]="true"></app-section-btn>
+    </div>
     <app-detail-invoice class="col-12 pl-2 "></app-detail-invoice>
   </div>
 </div>

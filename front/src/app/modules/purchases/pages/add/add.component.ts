@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {ShareService} from "../../../../share.service";
 
 @Component({
   selector: 'app-add',
@@ -9,7 +10,9 @@ import {ActivatedRoute} from "@angular/router";
 export class AddComponent implements OnInit {
   public id: any = false;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute,
+              private share: ShareService,
+              public router: Router) {
   }
 
   public history: any = [
@@ -29,4 +32,16 @@ export class AddComponent implements OnInit {
     });
   }
 
+  save = () => {
+    this.share.savePurchase.emit(true)
+  }
+
+  cbList() {
+    this.router.navigate(['/', 'purchase'])
+  }
+
+  cbAdd() {
+    this.share.addPurchase.emit(true)
+    console.log('addd Purchase')
+  }
 }

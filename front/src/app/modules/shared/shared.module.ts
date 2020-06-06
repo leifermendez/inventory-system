@@ -37,6 +37,7 @@ import {PurchaseFormComponent} from "../../components/purchase-form/purchase-for
 import {FirstImagePipe} from "../../first-image.pipe";
 import {FirstValuePipe} from "../../first-value.pipe";
 import {SwipeAngularListModule} from "swipe-angular-list";
+import {TotalPurchasePipe} from "../../total-purchase.pipe";
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import {SwipeAngularListModule} from "swipe-angular-list";
     InventoryFormComponent,
     PurchaseFormComponent,
     FirstImagePipe,
-    FirstValuePipe
+    FirstValuePipe,
+    TotalPurchasePipe
   ],
   imports: [
     CommonModule,
@@ -88,6 +90,7 @@ import {SwipeAngularListModule} from "swipe-angular-list";
     LockedBoxComponent, ProductFormComponent, FirstValuePipe,
     ProviderFormComponent, DepositFormComponent, PurchaseFormComponent,
     SectionBtnComponent, InventoryFormComponent, FirstImagePipe,
+    TotalPurchasePipe,
     UserFormComponent, ListItemsComponent, ModalUserComponent]
 })
 export class SharedModule {
