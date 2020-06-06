@@ -103,23 +103,32 @@ export class DetailInvoiceComponent implements OnInit, AfterViewInit {
   }
 
   parseTotal = () => {
-    let total = 0;
-    this.items.forEach(i => {
-      const prices = i.prices.find(a => a.amount)
-      total += parseFloat(String(i.qty * prices.amount))
-    })
-    this.total = total;
+
+    try {
+      let total = 0;
+      this.items.forEach(i => {
+        const prices = i.prices.find(a => a.amount)
+        total += parseFloat(String(i.qty * prices.amount))
+      })
+      this.total = total;
+    } catch (e) {
+      this.total = 0;
+    }
   }
 
   parseData = (data: any = null) => {
 
-    if (!data) {
-      data = this.items;
+    try {
+      if (!data) {
+        data = this.items;
+      }
+      this.parseTotal();
+      this.items = data.map(a => {
+        return {...a, ...{id: a._id}}
+      })
+    } catch (e) {
+      this.items = []
     }
-    this.parseTotal();
-    this.items = data.map(a => {
-      return {...a, ...{id: a._id}}
-    })
 
   }
 
