@@ -8,6 +8,7 @@ import {SharedModule} from "../shared/shared.module";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {AvatarModule} from "ngx-avatar";
 import {SwipeAngularListModule} from "swipe-angular-list";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 
@@ -22,7 +23,8 @@ import {SwipeAngularListModule} from "swipe-angular-list";
     PurchasesRoutingModule,
     SharedModule,
     FontAwesomeModule,
-    AvatarModule
+    AvatarModule,
+    TranslateModule
   ]
 })
 export class PurchasesModule { }

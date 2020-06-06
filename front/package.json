@@ -1,6 +1,6 @@
 {
   "name": "front-inventory",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~9.1.7",
     "@angular/platform-browser-dynamic": "~9.1.7",
     "@angular/router": "~9.1.7",
+    "@angular/service-worker": "~9.1.7",
     "@fortawesome/angular-fontawesome": "^0.6.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
     "@fortawesome/free-regular-svg-icons": "^5.13.0",
@@ -36,6 +37,7 @@
     "ngx-chips": "^2.1.0",
     "ngx-cookie-service": "^3.0.4",
     "ngx-currency": "^2.3.3",
+    "ngx-device-detector": "^1.4.4",
     "ngx-dropzone": "^2.2.2",
     "ngx-editor": "^5.0.0-alpha.5",
     "ngx-lottie": "^6.0.0",

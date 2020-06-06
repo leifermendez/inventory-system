@@ -70,7 +70,7 @@
                           (callback)="cbSwipe($event)"
                           [trashTemplate]="trashTemplate"
                           [customTemplate]="customTemplateSrc"
-                          [item-class]="'list-custom'">
+                          [item-class]="'list-custom copilot'">
 
             </sw-item-list>
 
@@ -110,7 +110,7 @@
 
 <!--- **************** TEMPLATE CUSTOM *************** ------->
 <ng-template #customTemplateSrc let-item='item' let-id='id'>
-  <div class="custom-inside" data-id="{{id}}">
+  <div class="custom-inside" data-copilot="'dadad'" data-id="{{id}}">
     <div>
       <div class="col-12 row mr-0 ml-0 item-self">
         <div class="col-lg-6 col-md-6 col-sm-12 d-flex">

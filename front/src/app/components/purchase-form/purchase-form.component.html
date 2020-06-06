@@ -41,6 +41,7 @@
             <!--            {{products | json}}-->
             <ng-select formControlName="customer" #selectProductRef [items]="products"
                        bindLabel="name"
+                       [clearable]="false"
                        (search)="srcCustomer($event)"
                        (change)="selectCustomer($event)"
                        [required]="true"

@@ -33,6 +33,10 @@ import {AvatarModule} from "ngx-avatar";
 import {TooltipModule} from "ngx-bootstrap/tooltip";
 import { FirstValuePipe } from './first-value.pipe';
 import { TotalPurchasePipe } from './total-purchase.pipe';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { CopilotComponent } from './components/copilot/copilot.component';
+import {DeviceDetectorModule} from "ngx-device-detector";
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
@@ -61,6 +65,7 @@ export function playerFactory() {
     ModalImageComponent,
     ButtonProgressComponent,
     ModalProductComponent,
+    CopilotComponent,
      ],
   imports: [
     BrowserModule,
@@ -68,6 +73,7 @@ export function playerFactory() {
     BrowserAnimationsModule,
     AppRoutingModule,
     LoadingBarModule,
+    DeviceDetectorModule.forRoot(),
     LoadingBarHttpClientModule,
     TagInputModule,
     TranslateModule.forRoot({
@@ -88,7 +94,8 @@ export function playerFactory() {
     FontAwesomeModule,
     ProductModule,
     AvatarModule,
-    TooltipModule
+    TooltipModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     {provide: BsDatepickerConfig, useFactory: getDatepickerConfig},

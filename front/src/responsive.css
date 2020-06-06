@@ -49,4 +49,8 @@ and (max-width: 768px) {
     position: relative !important;
   }
 
+  .wrapper{
+    width: 80vw !important;
+  }
+
 }

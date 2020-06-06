@@ -10,7 +10,11 @@ body {
   font-size: .85rem;
   text-rendering: optimizeLegibility;
 }
-
+::-webkit-scrollbar {
+  width: 5px;     /* Tamaño del scroll en vertical */
+  height: 8px;    /* Tamaño del scroll en horizontal */
+  display: none;  /* Ocultar scroll */
+}
 .container-row {
   padding: 5rem 0rem 1rem 5rem;
   flex-wrap: wrap;

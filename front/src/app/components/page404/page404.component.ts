@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, NgZone, OnInit} from '@angular/core';
+import {AnimationOptions} from "ngx-lottie";
+import {AnimationItem} from "lottie-web";
 
 @Component({
   selector: 'app-page404',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Page404Component implements OnInit {
 
-  constructor() { }
+  options: AnimationOptions = {
+    path: '/assets/images/404.json',
+  };
+  private animationItem: AnimationItem;
+
+  constructor(private ngZone: NgZone) {
+  }
 
   ngOnInit(): void {
   }

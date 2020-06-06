@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {
-  faTruck, faFileAlt, faBox, faClipboardList, faCrown, faChartPie, faUsers, faAngleRight,
+  faTruck, faFileAlt, faBox, faClipboardList, faCrown,faCartPlus, faChartPie, faUsers, faAngleRight,
   faCashRegister, faIndustry, faWarehouse
 }
   from '@fortawesome/free-solid-svg-icons';
@@ -15,6 +15,7 @@ import {Router} from "@angular/router";
 export class SideBarComponent implements OnInit {
   faCrown = faCrown
   faChartPie = faChartPie
+  faCartPlus = faCartPlus
   faUsers = faUsers
   faTruck = faTruck
   faIndustry = faIndustry
@@ -28,14 +29,14 @@ export class SideBarComponent implements OnInit {
       route: ['/', 'home']
     },
     {
+      name: 'Pedidos',
+      icon: faCartPlus,
+      route: ['/', 'purchase']
+    },
+    {
       name: 'Productos',
       icon: faBox,
       route: ['/', 'products']
-    },
-    {
-      name: 'Pedidos',
-      icon: faFileAlt,
-      route: ['/', 'purchase']
     },
     {
       name: 'Pagos',

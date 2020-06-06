@@ -1,0 +1,21 @@
+:host {
+  background: rgba(255, 255, 255, 0.75);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  height: 200px;
+
+}
+
+.wrapper {
+  width: 35vw;
+  border-radius: .75rem;
+  box-shadow: 0 0 30px #ececec;
+  background-color: white;
+}

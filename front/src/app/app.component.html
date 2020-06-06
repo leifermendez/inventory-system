@@ -1,5 +1,6 @@
 <ngx-loading-bar  height="3px" [color]="'#221ECE'"></ngx-loading-bar>
-<app-loading-svg [progress]="progress"></app-loading-svg>
+<app-loading-svg [@swipe] [progress]="progress"></app-loading-svg>
 <app-error-layer [(error)]="error"></app-error-layer>
+<app-copilot [@swipe] *ngIf="copilot" [inside]="copilot"></app-copilot>
 <!--<button style="z-index: 999;margin-left: 10rem" (click)="loader.start()">aa</button>-->
 <router-outlet></router-outlet>

@@ -1,0 +1,20 @@
+<div *ngIf="inside" class="d-flex flex-column justify-content-center w-100 h-100 align-items-center">
+  <!-- ERROR 409 --->
+  <div class="bg-white wrapper justify-content-center align-items-center">
+    <div class="center">
+      <ng-lottie
+        class="margin-auto"
+        width="200px"
+        [options]="copilot">
+      </ng-lottie>
+    </div>
+    <div class="mt-2 p-4 text-center">
+      <span class="font-weight-bold">{{'COPILOT.SWIPE_LEFT_LIST_ITEM' | translate}}</span>
+      <div (click)="skip()" class="btn btn-default btn-link d-block">
+        <small class="text-muted font-weight-bold">{{'COPILOT.SKIP' | translate}}</small>
+      </div>
+    </div>
+
+  </div>
+  <!-- ERROR 404 --->
+</div>

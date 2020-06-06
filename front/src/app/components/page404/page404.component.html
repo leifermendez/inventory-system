@@ -1,1 +1,12 @@
-<p>page404 works!</p>
+<app-header></app-header>
+<app-side-bar></app-side-bar>
+<div class="container-row d-flex justify-content-center flex-column align-items-center center-404">
+  <ng-lottie
+    class="margin-auto"
+    width="150px"
+    [options]="options">
+  </ng-lottie>
+  <div class="p-2">
+    <small class="font-weight-bold">{{'GENERAL.ERROR_404' | translate}}</small>
+  </div>
+</div>

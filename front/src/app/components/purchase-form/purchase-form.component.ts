@@ -71,6 +71,7 @@ export class PurchaseFormComponent implements OnInit {
       deliveryType: ['', Validators.required],
       status: [''],
       description: [''],
+      total: [''],
       tag: ['']
     });
 
@@ -142,8 +143,6 @@ export class PurchaseFormComponent implements OnInit {
       .subscribe(res => {
         this.products = [...this.parseData(res), {id: 1, name: 'New item'}];
       })
-
-    console.log(this.products)
   }
 
 

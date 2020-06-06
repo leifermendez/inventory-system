@@ -176,7 +176,12 @@ export class DetailInvoiceComponent implements OnInit, AfterViewInit {
   }
 
   submitData = () => {
-    const body = {...this.data, ...{items: this.items}}
+    const body = {...this.data,
+      ...{
+      items: this.items,
+      total: this.total,
+    }
+    }
     this.rest.patch(`purchase/${this.id}`,
       body)
       .subscribe(res => this.loadData())

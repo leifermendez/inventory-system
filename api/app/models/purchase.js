@@ -39,8 +39,9 @@ const PurchaseSchema = new mongoose.Schema(
       default: 'to_send'
     },
     total: {
-      type: Object,
-      required: false
+      type: Number,
+      required: false,
+      default: 0
     },
     tag: {
       type: Object

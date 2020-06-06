@@ -1,5 +1,6 @@
 {
   "GENERAL": {
+    "ERROR_404": "Lo sentimos esta pagina no existe, o estamos trabajando en ella",
     "CURRENCY": "MXN ",
     "CURRENCY_SYMBOL": "$",
     "SAVE": "Guardar",
@@ -109,5 +110,9 @@
     "DEPOSIT": "Deposito",
     "DESCRIPTION": "Observación",
     "TAG": "Etiquetas"
+  },
+  "COPILOT": {
+    "SKIP": "Saltar",
+    "SWIPE_LEFT_LIST_ITEM": "Desliza hacia la izquierda los elementos de la lista, para acceder a más opciones"
   }
 }

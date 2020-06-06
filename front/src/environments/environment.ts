@@ -5,7 +5,8 @@
 export const environment = {
   api: 'http://192.168.1.100:3000',
   production: false,
-  daysTokenExpire: 4
+  daysTokenExpire: 4,
+  copilotDelay: 2000
 };
 
 /*

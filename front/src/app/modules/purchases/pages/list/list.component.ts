@@ -32,6 +32,7 @@ export class ListComponent implements OnInit {
   }
 
   faIndustry = faIndustry
+  faPhoneAlt = faPhoneAlt
   faUser = faUser
   public data = [];
   public source = 'purchase';

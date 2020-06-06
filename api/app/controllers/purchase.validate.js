@@ -13,6 +13,8 @@ exports.createItem = [
     .optional(),
   check('deliveryAddress')
     .exists(),
+  check('total')
+    .optional(),
   check('deliveryType')
     .exists()
     .withMessage('MISSING')
@@ -39,6 +41,8 @@ exports.updateItem = [
     .optional(),
   check('deliveryAddress')
     .exists(),
+  check('total')
+    .optional(),
   check('deliveryType')
     .exists()
     .withMessage('MISSING')
