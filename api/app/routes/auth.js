@@ -1,6 +1,7 @@
 const controller = require('../controllers/auth')
 const validate = require('../controllers/auth.validate')
 const AuthController = require('../controllers/auth')
+const origin = require('../middleware/origin')
 const express = require('express')
 const router = express.Router()
 require('../../config/passport')
@@ -63,6 +64,10 @@ router.get(
 /*
  * Login route
  */
-router.post('/login', trimRequest.all, validate.login, controller.login)
+router.post('/login',
+  origin.checkDomain,
+  trimRequest.all,
+  validate.login,
+  controller.login)
 
 module.exports = router
