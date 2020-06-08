@@ -93,8 +93,9 @@ module.exports = {
    */
   async getItems(req, model, query) {
     const options = await listInitOptions(req)
+    const tenant = req.clientAccount;
     return new Promise((resolve, reject) => {
-      model.byTenant('some-tenant-id').paginate(query, options, (err, items) => {
+      model.byTenant(tenant).paginate(query, options, (err, items) => {
         if (err) {
           reject(buildErrObject(422, err.message))
         }
@@ -106,10 +107,12 @@ module.exports = {
   /**
    * Gets item from database by id
    * @param {string} id - item id
+   * @param model
+   * @param tenant
    */
-  async getItem(id, model) {
+  async getItem(id, model, tenant = null) {
     return new Promise((resolve, reject) => {
-      model.findById(id, (err, item) => {
+      model.byTenant(tenant).findById(id, (err, item) => {
         itemNotFound(err, item, reject, 'NOT_FOUND')
         resolve(item)
       })
@@ -119,15 +122,18 @@ module.exports = {
   /**
    * Creates a new item in database
    * @param {Object} req - request object
+   * @param model
+   * @param tenant
    */
-  async createItem(req, model) {
+  async createItem(req, model, tenant = null) {
     return new Promise((resolve, reject) => {
-      model.create(req, (err, item) => {
-        if (err) {
-          reject(buildErrObject(422, err.message))
-        }
-        resolve(item)
-      })
+      model.byTenant(tenant)
+        .create(req, (err, item) => {
+          if (err) {
+            reject(buildErrObject(422, err.message))
+          }
+          resolve(item)
+        })
     })
   },
 
@@ -136,33 +142,39 @@ module.exports = {
    * @param {string} id - item id
    * @param {Object} req - request object
    */
-  async updateItem(id, model, req) {
+  async updateItem(id, model, req, tenant = null) {
     return new Promise((resolve, reject) => {
-      model.findByIdAndUpdate(
-        id,
-        req,
-        {
-          new: true,
-          runValidators: true
-        },
-        (err, item) => {
-          itemNotFound(err, item, reject, 'NOT_FOUND')
-          resolve(item)
-        }
-      )
+      model
+        .byTenant(tenant)
+        .findByIdAndUpdate(
+          id,
+          req,
+          {
+            new: true,
+            runValidators: true
+          },
+          (err, item) => {
+            itemNotFound(err, item, reject, 'NOT_FOUND')
+            resolve(item)
+          }
+        )
     })
   },
 
   /**
    * Deletes an item from database by id
    * @param {string} id - id of item
+   * @param model
+   * @param tenant
    */
-  async deleteItem(id, model) {
+  async deleteItem(id, model, tenant = null) {
     return new Promise((resolve, reject) => {
-      model.findByIdAndRemove(id, (err, item) => {
-        itemNotFound(err, item, reject, 'NOT_FOUND')
-        resolve(buildSuccObject('DELETED'))
-      })
+      model
+        .byTenant(tenant)
+        .findByIdAndRemove(id, (err, item) => {
+          itemNotFound(err, item, reject, 'NOT_FOUND')
+          resolve(buildSuccObject('DELETED'))
+        })
     })
   },
 
