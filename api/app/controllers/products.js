@@ -10,9 +10,11 @@ const db = require('../middleware/db')
 /**
  * Gets all items from database
  */
-const getAllItemsFromDB = async () => {
+const getAllItemsFromDB = async (tenant = null) => {
   return new Promise((resolve, reject) => {
-    model.find(
+    model
+      .byTenant(tenant)
+      .find(
       {},
       '-updatedAt -createdAt',
       {
@@ -63,18 +65,18 @@ const getLookList = (query = {}) => {
       },
       {
         "$project": {
-          "_id":1,
-          "gallery":1,
-          "name":1,
-          "prices":1,
-          "measures":1,
-          "categories":1,
-          "tag":1,
-          "sku":1,
-          "description":1,
-          "author":1,
-          "createdAt":1,
-          "updatedAt":1,
+          "_id": 1,
+          "gallery": 1,
+          "name": 1,
+          "prices": 1,
+          "measures": 1,
+          "categories": 1,
+          "tag": 1,
+          "sku": 1,
+          "description": 1,
+          "author": 1,
+          "createdAt": 1,
+          "updatedAt": 1,
           "qty": {"$sum": "$inventories.qty"}
         }
       },
@@ -105,9 +107,10 @@ exports.getAllItems = async (req, res) => {
  */
 exports.getItems = async (req, res) => {
   try {
+    const tenant = req.clientAccount;
     const query = await db.checkQueryString(req.query)
     const data = getLookList(query)
-    res.status(200).json(await db.getItemsAggregate(req, model, data))
+    res.status(200).json(await db.getItemsAggregate(req, model, data, tenant))
     // res.status(200).json(await db.getItems(req, model, query))
   } catch (error) {
     utils.handleError(res, error)
@@ -121,9 +124,10 @@ exports.getItems = async (req, res) => {
  */
 exports.getItem = async (req, res) => {
   try {
+    const tenant = req.clientAccount;
     req = matchedData(req)
     const id = await utils.isIDGood(req.id)
-    res.status(200).json(await db.getItem(id, model))
+    res.status(200).json(await db.getItem(id, model, tenant))
   } catch (error) {
     utils.handleError(res, error)
   }
@@ -136,9 +140,10 @@ exports.getItem = async (req, res) => {
  */
 exports.updateItem = async (req, res) => {
   try {
+    const tenant = req.clientAccount;
     req = matchedData(req)
     const id = await utils.isIDGood(req.id)
-    res.status(200).json(await db.updateItem(id, model, req))
+    res.status(200).json(await db.updateItem(id, model, req, tenant))
   } catch (error) {
     utils.handleError(res, error)
   }
@@ -151,6 +156,7 @@ exports.updateItem = async (req, res) => {
  */
 exports.createItem = async (req, res) => {
   try {
+    const tenant = req.clientAccount;
     const author = await utils.getUserCurrent(req)
     req = matchedData(req)
     req = {
@@ -158,7 +164,7 @@ exports.createItem = async (req, res) => {
         author
       }
     }
-    res.status(201).json(await db.createItem(req, model))
+    res.status(201).json(await db.createItem(req, model, tenant))
   } catch (error) {
     utils.handleError(res, error)
   }
@@ -171,9 +177,10 @@ exports.createItem = async (req, res) => {
  */
 exports.deleteItem = async (req, res) => {
   try {
+    const tenant = req.clientAccount;
     req = matchedData(req)
     const id = await utils.isIDGood(req.id)
-    res.status(200).json(await db.deleteItem(id, model))
+    res.status(200).json(await db.deleteItem(id, model, tenant))
   } catch (error) {
     utils.handleError(res, error)
   }

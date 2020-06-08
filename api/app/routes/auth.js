@@ -62,7 +62,7 @@ router.get(
   '/token',
   origin.checkDomain,
   requireAuth,
-  AuthController.roleAuthorization(['user', 'admin']),
+  AuthController.roleAuthorization(['customer', 'admin', 'manager','user']),
   trimRequest.all,
   controller.getRefreshToken
 )

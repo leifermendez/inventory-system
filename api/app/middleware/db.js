@@ -183,11 +183,12 @@ module.exports = {
    * @param {Object} req - request object
    * @param model
    * @param aggregate
+   * @param tenant
    */
-  async getItemsAggregate(req, model, aggregate) {
+  async getItemsAggregate(req, model, aggregate, tenant = null) {
     const options = await listInitOptions(req)
     return new Promise((resolve, reject) => {
-      model.aggregatePaginate(aggregate, options, (err, items) => {
+      model.byTenant(tenant).aggregatePaginate(aggregate, options, (err, items) => {
         if (err) {
           reject(buildErrObject(422, err.message))
         }

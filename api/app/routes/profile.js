@@ -2,6 +2,7 @@ const controller = require('../controllers/profile')
 const validate = require('../controllers/profile.validate')
 const AuthController = require('../controllers/auth')
 const express = require('express')
+const origin = require('../middleware/origin')
 const router = express.Router()
 require('../../config/passport')
 const passport = require('passport')
@@ -19,8 +20,9 @@ const trimRequest = require('trim-request')
  */
 router.get(
   '/',
+  origin.checkDomain,
   requireAuth,
-  AuthController.roleAuthorization(['user', 'admin']),
+  AuthController.roleAuthorization(['customer', 'admin', 'manager','user']),
   trimRequest.all,
   controller.getProfile
 )
@@ -30,8 +32,9 @@ router.get(
  */
 router.patch(
   '/',
+  origin.checkDomain,
   requireAuth,
-  AuthController.roleAuthorization(['user', 'admin']),
+  AuthController.roleAuthorization(['customer', 'admin', 'manager','user']),
   trimRequest.all,
   validate.updateProfile,
   controller.updateProfile
@@ -42,8 +45,9 @@ router.patch(
  */
 router.post(
   '/changePassword',
+  origin.checkDomain,
   requireAuth,
-  AuthController.roleAuthorization(['user', 'admin']),
+  AuthController.roleAuthorization(['customer', 'admin', 'manager','user']),
   trimRequest.all,
   validate.changePassword,
   controller.changePassword

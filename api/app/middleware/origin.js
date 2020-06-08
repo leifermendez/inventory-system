@@ -20,7 +20,7 @@ exports.checkDomain = async (req, res, next) => {
     const rawDomain = parseDomain(result);
     const clean = psl.parse(rawDomain);
     req.clientAccount = clean.subdomain;
-    console.log('--->',req.clientAccount)
+    console.log('USER: ---> ',req.clientAccount)
     next();
   } catch (e) {
     req.clientAccount = null;
