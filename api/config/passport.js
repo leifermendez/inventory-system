@@ -12,6 +12,7 @@ const jwtExtractor = (req) => {
   let token = null
   if (req.headers.authorization) {
     token = req.headers.authorization.replace('Bearer ', '').trim()
+
   } else if (req.body.token) {
     token = req.body.token.trim()
   } else if (req.query.token) {

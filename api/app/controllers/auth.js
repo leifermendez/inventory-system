@@ -169,6 +169,7 @@ const userIsBlocked = async (user) => {
 /**
  * Finds user by email
  * @param {string} email - user´s email
+ * @param tenant
  */
 const findUser = async (email, tenant = null) => {
   return new Promise((resolve, reject) => {
@@ -189,9 +190,9 @@ const findUser = async (email, tenant = null) => {
  * Finds user by ID
  * @param {string} id - user´s id
  */
-const findUserById = async (userId) => {
+const findUserById = async (userId, tenant = null) => {
   return new Promise((resolve, reject) => {
-    User.findById(userId, (err, item) => {
+    User.byTenant(tenant).findById(userId, (err, item) => {
       utils.itemNotFound(err, item, reject, 'USER_DOES_NOT_EXIST')
       resolve(item)
     })
@@ -256,10 +257,13 @@ const returnRegisterToken = (item, userInfo) => {
 /**
  * Checks if verification id exists for user
  * @param {string} id - verification id
+ * @param tenant
  */
-const verificationExists = async (id) => {
+const verificationExists = async (id, tenant = null) => {
   return new Promise((resolve, reject) => {
-    User.findOne(
+    User
+      .byTenant(tenant)
+      .findOne(
       {
         verification: id,
         verified: false
@@ -328,9 +332,9 @@ const updatePassword = async (password, user) => {
  * Finds user by email to reset password
  * @param {string} email - user email
  */
-const findUserToResetPassword = async (email) => {
+const findUserToResetPassword = async (email, tenant = null) => {
   return new Promise((resolve, reject) => {
-    User.findOne(
+    User.byTenant(tenant).findOne(
       {
         email
       },
@@ -346,9 +350,9 @@ const findUserToResetPassword = async (email) => {
  * Checks if a forgot password verification exists
  * @param {string} id - verification id
  */
-const findForgotPassword = async (id) => {
+const findForgotPassword = async (id, tenant = null) => {
   return new Promise((resolve, reject) => {
-    ForgotPassword.findOne(
+    ForgotPassword.byTenant(tenant).findOne(
       {
         verification: id,
         used: false
@@ -364,10 +368,12 @@ const findForgotPassword = async (id) => {
 /**
  * Creates a new password forgot
  * @param {Object} req - request object
+ * @param tenant
  */
-const saveForgotPassword = async (req) => {
+const saveForgotPassword = async (req, tenant = null) => {
   return new Promise((resolve, reject) => {
-    const forgot = new ForgotPassword({
+    const model = ForgotPassword.byTenant(tenant);
+    const forgot = new model({
       email: req.body.email,
       verification: uuid.v4(),
       ipRequest: utils.getIP(req),
@@ -408,9 +414,9 @@ const forgotPasswordResponse = (item) => {
  */
 const checkPermissions = async (data, next) => {
   return new Promise((resolve, reject) => {
-    User.findById(data.id, (err, result) => {
+    User.byTenant(data.tenant).findById(data.id, (err, result) => {
       utils.itemNotFound(err, result, reject, 'NOT_FOUND')
-      if (data.roles.indexOf(result.role) > -1) {
+      if ((result) && data.roles.indexOf(result.role) > -1) {
         return resolve(next())
       }
       return reject(utils.buildErrObject(401, 'UNAUTHORIZED'))
@@ -496,8 +502,9 @@ exports.register = async (req, res) => {
  */
 exports.verify = async (req, res) => {
   try {
+    const tenant = req.clientAccount;
     req = matchedData(req)
-    const user = await verificationExists(req.id)
+    const user = await verificationExists(req.id, tenant)
     res.status(200).json(await verifyUser(user))
   } catch (error) {
     utils.handleError(res, error)
@@ -512,10 +519,11 @@ exports.verify = async (req, res) => {
 exports.forgotPassword = async (req, res) => {
   try {
     // Gets locale from header 'Accept-Language'
+    const tenant = req.clientAccount;
     const locale = req.getLocale()
     const data = matchedData(req)
-    await findUser(data.email)
-    const item = await saveForgotPassword(req)
+    await findUser(data.email, tenant)
+    const item = await saveForgotPassword(req, tenant)
     emailer.sendResetPasswordEmailMessage(locale, item)
     res.status(200).json(forgotPasswordResponse(item))
   } catch (error) {
@@ -530,9 +538,10 @@ exports.forgotPassword = async (req, res) => {
  */
 exports.resetPassword = async (req, res) => {
   try {
+    const tenant = req.clientAccount;
     const data = matchedData(req)
-    const forgotPassword = await findForgotPassword(data.id)
-    const user = await findUserToResetPassword(forgotPassword.email)
+    const forgotPassword = await findForgotPassword(data.id, tenant)
+    const user = await findUserToResetPassword(forgotPassword.email, tenant)
     await updatePassword(data.password, user)
     const result = await markResetPasswordAsUsed(req, forgotPassword)
     res.status(200).json(result)
@@ -548,12 +557,13 @@ exports.resetPassword = async (req, res) => {
  */
 exports.getRefreshToken = async (req, res) => {
   try {
+    const tenant = req.clientAccount;
     const tokenEncrypted = req.headers.authorization
       .replace('Bearer ', '')
-      .trim()
+      .trim();
     let userId = await getUserIdFromToken(tokenEncrypted)
     userId = await utils.isIDGood(userId)
-    const user = await findUserById(userId)
+    const user = await findUserById(userId, tenant)
     const token = await saveUserAccessAndReturnToken(req, user)
     // Removes user info from response
     delete token.user
@@ -571,7 +581,8 @@ exports.roleAuthorization = (roles) => async (req, res, next) => {
   try {
     const data = {
       id: req.user._id,
-      roles
+      roles,
+      tenant: req.clientAccount
     }
     await checkPermissions(data, next)
   } catch (error) {
