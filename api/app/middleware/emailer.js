@@ -84,20 +84,22 @@ module.exports = {
    * @param {string} id - user id
    * @param {string} email - user email
    */
-  async emailExistsExcludingMyself(id, email) {
+  async emailExistsExcludingMyself(id, email, tenant = null) {
     return new Promise((resolve, reject) => {
-      User.findOne(
-        {
-          email,
-          _id: {
-            $ne: id
+      User
+        .byTenant(tenant)
+        .findOne(
+          {
+            email,
+            _id: {
+              $ne: id
+            }
+          },
+          (err, item) => {
+            itemAlreadyExists(err, item, reject, 'EMAIL_ALREADY_EXISTS')
+            resolve(false)
           }
-        },
-        (err, item) => {
-          itemAlreadyExists(err, item, reject, 'EMAIL_ALREADY_EXISTS')
-          resolve(false)
-        }
-      )
+        )
     })
   },
 

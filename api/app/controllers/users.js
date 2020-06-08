@@ -1,6 +1,6 @@
 const model = require('../models/user')
 const uuid = require('uuid')
-const { matchedData } = require('express-validator')
+const {matchedData} = require('express-validator')
 const utils = require('../middleware/utils')
 const db = require('../middleware/db')
 const emailer = require('../middleware/emailer')
@@ -13,10 +13,10 @@ const emailer = require('../middleware/emailer')
  * Creates a new item in database
  * @param {Object} req - request object
  */
-const createItem = async (req) => {
+const createItem = async (req, tenant = null) => {
   return new Promise((resolve, reject) => {
     let use = model.byTenant('some-tenant-id');
-     const user = new use({
+    const user = new use({
       name: req.name,
       lastName: req.lastName,
       nie: req.nie,
@@ -34,14 +34,14 @@ const createItem = async (req) => {
       }
       // Removes properties with rest operator
       const removeProperties = ({
-        // eslint-disable-next-line no-unused-vars
-        password,
-        // eslint-disable-next-line no-unused-vars
-        blockExpires,
-        // eslint-disable-next-line no-unused-vars
-        loginAttempts,
-        ...rest
-      }) => rest
+                                  // eslint-disable-next-line no-unused-vars
+                                  password,
+                                  // eslint-disable-next-line no-unused-vars
+                                  blockExpires,
+                                  // eslint-disable-next-line no-unused-vars
+                                  loginAttempts,
+                                  ...rest
+                                }) => rest
       resolve(removeProperties(item.toObject()))
     })
   })
@@ -72,9 +72,10 @@ exports.getItems = async (req, res) => {
  */
 exports.getItem = async (req, res) => {
   try {
+    const tenant = req.clientAccount;
     req = matchedData(req)
     const id = await utils.isIDGood(req.id)
-    res.status(200).json(await db.getItem(id, model))
+    res.status(200).json(await db.getItem(id, model, tenant))
   } catch (error) {
     utils.handleError(res, error)
   }
@@ -87,14 +88,16 @@ exports.getItem = async (req, res) => {
  */
 exports.updateItem = async (req, res) => {
   try {
+    const tenant = req.clientAccount;
     req = matchedData(req)
     const id = await utils.isIDGood(req.id)
     const doesEmailExists = await emailer.emailExistsExcludingMyself(
       id,
-      req.email
+      req.email,
+      tenant
     )
     if (!doesEmailExists) {
-      res.status(200).json(await db.updateItem(id, model, req))
+      res.status(200).json(await db.updateItem(id, model, req, tenant))
     }
   } catch (error) {
     utils.handleError(res, error)
@@ -109,11 +112,12 @@ exports.updateItem = async (req, res) => {
 exports.createItem = async (req, res) => {
   try {
     // Gets locale from header 'Accept-Language'
+    const tenant = req.clientAccount;
     const locale = req.getLocale()
     req = matchedData(req)
-    const doesEmailExists = await emailer.emailExists(req.email)
+    const doesEmailExists = await emailer.emailExists(req.email, tenant)
     if (!doesEmailExists) {
-      const item = await createItem(req)
+      const item = await createItem(req, tenant)
       emailer.sendRegistrationEmailMessage(locale, item)
       res.status(201).json(item)
     }
@@ -129,9 +133,10 @@ exports.createItem = async (req, res) => {
  */
 exports.deleteItem = async (req, res) => {
   try {
+    const tenant = req.clientAccount;
     req = matchedData(req)
     const id = await utils.isIDGood(req.id)
-    res.status(200).json(await db.deleteItem(id, model))
+    res.status(200).json(await db.deleteItem(id, model, tenant))
   } catch (error) {
     utils.handleError(res, error)
   }

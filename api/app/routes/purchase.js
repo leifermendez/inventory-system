@@ -1,6 +1,7 @@
 const controller = require('../controllers/purchase')
 const validate = require('../controllers/purchase.validate')
 const AuthController = require('../controllers/auth')
+const origin = require('../middleware/origin')
 const express = require('express')
 const router = express.Router()
 require('../../config/passport')
@@ -17,15 +18,16 @@ const trimRequest = require('trim-request')
 /*
  * Get all items route
  */
-router.get('/all', controller.getAllItems)
+// router.get('/all', controller.getAllItems)
 
 /*
  * Get items route
  */
 router.get(
   '/',
+  origin.checkDomain,
   requireAuth,
-  AuthController.roleAuthorization(['admin']),
+  AuthController.roleAuthorization(['customer', 'admin', 'manager', 'seller']),
   trimRequest.all,
   controller.getItems
 )
@@ -35,8 +37,9 @@ router.get(
  */
 router.post(
   '/',
+  origin.checkDomain,
   requireAuth,
-  AuthController.roleAuthorization(['admin']),
+  AuthController.roleAuthorization(['admin', 'manager', 'seller']),
   trimRequest.all,
   validate.createItem,
   controller.createItem
@@ -47,8 +50,9 @@ router.post(
  */
 router.get(
   '/:id',
+  origin.checkDomain,
   requireAuth,
-  AuthController.roleAuthorization(['admin']),
+  AuthController.roleAuthorization(['admin', 'manager', 'seller']),
   trimRequest.all,
   validate.getItem,
   controller.getItem
@@ -59,8 +63,9 @@ router.get(
  */
 router.patch(
   '/:id',
+  origin.checkDomain,
   requireAuth,
-  AuthController.roleAuthorization(['admin']),
+  AuthController.roleAuthorization(['admin', 'manager', 'seller']),
   trimRequest.all,
   validate.updateItem,
   controller.updateItem
@@ -71,8 +76,9 @@ router.patch(
  */
 router.delete(
   '/:id',
+  origin.checkDomain,
   requireAuth,
-  AuthController.roleAuthorization(['admin']),
+  AuthController.roleAuthorization(['admin', 'manager', 'seller']),
   trimRequest.all,
   validate.deleteItem,
   controller.deleteItem

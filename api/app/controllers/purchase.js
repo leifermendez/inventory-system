@@ -36,8 +36,9 @@ const getAllItemsFromDB = async () => {
  * Get with inventory
  */
 
-const getLookList = (query = {}) => {
+const getLookList = (query = {}, tenant = null) => {
   return model
+    .byTenant(tenant)
     .aggregate([{
       $match: query,
     },
@@ -144,9 +145,10 @@ exports.getItems = async (req, res) => {
  */
 exports.getItem = async (req, res) => {
   try {
+    const tenant = req.clientAccount;
     req = matchedData(req)
     const id = await utils.isIDGood(req.id, true)
-    const data = await getLookList({_id: id}).exec();
+    const data = await getLookList({_id: id}, tenant).exec();
     res.status(200).json(data.find(a => true))
   } catch (error) {
     utils.handleError(res, error)
@@ -160,6 +162,7 @@ exports.getItem = async (req, res) => {
  */
 exports.updateItem = async (req, res) => {
   try {
+    const tenant = req.clientAccount;
     const author = await utils.getUserCurrent(req)
     req = matchedData(req)
     req = {
@@ -169,7 +172,7 @@ exports.updateItem = async (req, res) => {
       }
     }
     const id = await utils.isIDGood(req.id)
-    res.status(200).json(await db.updateItem(id, model, req))
+    res.status(200).json(await db.updateItem(id, model, req, tenant))
   } catch (error) {
     utils.handleError(res, error)
   }
@@ -182,6 +185,7 @@ exports.updateItem = async (req, res) => {
  */
 exports.createItem = async (req, res) => {
   try {
+    const tenant = req.clientAccount;
     const author = await utils.getUserCurrent(req)
     req = matchedData(req)
     req = {
@@ -190,7 +194,7 @@ exports.createItem = async (req, res) => {
         customer: await utils.isIDGood(req.customer._id, true)
       }
     }
-    res.status(201).json(await db.createItem(req, model))
+    res.status(201).json(await db.createItem(req, model, tenant))
   } catch (error) {
     utils.handleError(res, error)
   }
@@ -203,9 +207,10 @@ exports.createItem = async (req, res) => {
  */
 exports.deleteItem = async (req, res) => {
   try {
+    const tenant = req.clientAccount;
     req = matchedData(req)
     const id = await utils.isIDGood(req.id)
-    res.status(200).json(await db.deleteItem(id, model))
+    res.status(200).json(await db.deleteItem(id, model, tenant))
   } catch (error) {
     utils.handleError(res, error)
   }
