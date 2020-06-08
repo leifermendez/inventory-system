@@ -2,6 +2,7 @@ const controller = require('../controllers/storage')
 const validate = require('../controllers/storage.validate')
 const AuthController = require('../controllers/auth')
 const express = require('express')
+const origin = require('../middleware/origin')
 const router = express.Router()
 require('../../config/passport')
 const passport = require('passport')
@@ -17,13 +18,14 @@ const trimRequest = require('trim-request')
 /*
  * Get all items route
  */
-router.get('/all', controller.getAllItems)
+// router.get('/all', controller.getAllItems)
 
 /*
  * Get items route
  */
 router.get(
   '/',
+  origin.checkDomain,
   requireAuth,
   AuthController.roleAuthorization(['admin']),
   trimRequest.all,
@@ -35,6 +37,7 @@ router.get(
  */
 router.post(
   '/',
+  origin.checkDomain,
   requireAuth,
   AuthController.roleAuthorization(['admin']),
   trimRequest.all,
@@ -47,6 +50,7 @@ router.post(
  */
 router.get(
   '/:id',
+  origin.checkDomain,
   requireAuth,
   AuthController.roleAuthorization(['admin']),
   trimRequest.all,
@@ -59,6 +63,7 @@ router.get(
  */
 router.patch(
   '/:id',
+  origin.checkDomain,
   requireAuth,
   AuthController.roleAuthorization(['admin']),
   trimRequest.all,
@@ -71,6 +76,7 @@ router.patch(
  */
 router.delete(
   '/:id',
+  origin.checkDomain,
   requireAuth,
   AuthController.roleAuthorization(['admin']),
   trimRequest.all,

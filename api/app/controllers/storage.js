@@ -142,6 +142,7 @@ exports.getAllItems = async (req, res) => {
  */
 exports.getItems = async (req, res) => {
   try {
+
     const query = await db.checkQueryString(req.query)
     res.status(200).json(await db.getItems(req, model, query))
   } catch (error) {
@@ -156,9 +157,10 @@ exports.getItems = async (req, res) => {
  */
 exports.getItem = async (req, res) => {
   try {
+    const tenant = req.clientAccount;
     req = matchedData(req)
     const id = await utils.isIDGood(req.id)
-    res.status(200).json(await db.getItem(id, model))
+    res.status(200).json(await db.getItem(id, model, tenant))
   } catch (error) {
     utils.handleError(res, error)
   }
@@ -171,11 +173,12 @@ exports.getItem = async (req, res) => {
  */
 exports.updateItem = async (req, res) => {
   try {
+    const tenant = req.clientAccount;
     req = matchedData(req)
     const id = await utils.isIDGood(req.id)
     const doesCityExists = await cityExistsExcludingItself(id, req.name)
     if (!doesCityExists) {
-      res.status(200).json(await db.updateItem(id, model, req))
+      res.status(200).json(await db.updateItem(id, model, req, tenant))
     }
   } catch (error) {
     utils.handleError(res, error)
@@ -189,8 +192,8 @@ exports.updateItem = async (req, res) => {
  */
 exports.createItem = async (req, res) => {
   try {
+    const tenant = req.clientAccount;
     const {files = []} = req;
-    console.log(files)
     const list = files.map(async file => {
       const {mime, ext} = await getFile(file.path)
       const isImage = mime.includes('image');
@@ -212,7 +215,7 @@ exports.createItem = async (req, res) => {
         large: getUrlPath('large', name),
         author
       };
-      return await db.createItem(data, model)
+      return await db.createItem(data, model, tenant)
     })
 
     const all = await Promise.all(list);
@@ -229,9 +232,10 @@ exports.createItem = async (req, res) => {
  */
 exports.deleteItem = async (req, res) => {
   try {
+    const tenant = req.clientAccount;
     req = matchedData(req)
     const id = await utils.isIDGood(req.id)
-    res.status(200).json(await db.deleteItem(id, model))
+    res.status(200).json(await db.deleteItem(id, model, tenant))
   } catch (error) {
     utils.handleError(res, error)
   }
