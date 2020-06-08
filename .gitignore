@@ -64,8 +64,12 @@ typings/
 
 # don't ignore keep files
 !.gitkeep
-api/public/media/.*
-!api/public/media/
+
+# exclude everything
+api/public/media/*
+# exception to the rule
+!api/public/media/.gitkeep
+
 # ignore production configuration
 .env.production
 

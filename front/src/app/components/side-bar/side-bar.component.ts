@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {
-  faTruck, faFileAlt, faBox, faClipboardList, faCrown,faCartPlus, faChartPie, faUsers, faAngleRight,
+  faTruck, faBox, faClipboardList, faCrown,faCartPlus, faChartPie, faUsers, faAngleRight,
   faCashRegister, faIndustry, faWarehouse
 }
   from '@fortawesome/free-solid-svg-icons';
+
 import {AuthService} from "../../auth.service";
 import {Router} from "@angular/router";
 
