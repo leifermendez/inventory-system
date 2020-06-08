@@ -170,9 +170,9 @@ const userIsBlocked = async (user) => {
  * Finds user by email
  * @param {string} email - user´s email
  */
-const findUser = async (email) => {
+const findUser = async (email, tenant = null) => {
   return new Promise((resolve, reject) => {
-    User.findOne(
+    User.byTenant(tenant).findOne(
       {
         email
       },
@@ -445,8 +445,10 @@ const getUserIdFromToken = async (token) => {
  */
 exports.login = async (req, res) => {
   try {
+    const tenant = req.clientAccount;
     const data = matchedData(req)
-    const user = await findUser(data.email)
+    console.log(tenant)
+    const user = await findUser(data.email, tenant)
     await userIsBlocked(user)
     await checkLoginAttemptsAndBlockExpires(user)
     const isPasswordMatch = await auth.checkPassword(data.password, user)
