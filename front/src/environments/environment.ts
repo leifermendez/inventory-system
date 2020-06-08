@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  api: 'http://192.168.1.100:3000',
+  api: 'http://192.168.1.100:3000/api/1.0',
   production: false,
   daysTokenExpire: 4,
   copilotDelay: 2000

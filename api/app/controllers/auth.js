@@ -219,9 +219,10 @@ const passwordsDoNotMatch = async (user) => {
  * Registers a new user in database
  * @param {Object} req - request object
  */
-const registerUser = async (req) => {
+const registerUser = async (req, tenant = null) => {
   return new Promise((resolve, reject) => {
-    const user = new User({
+    const model = User.byTenant(tenant);
+    const user = new model({
       name: req.name,
       email: req.email,
       password: req.password,
@@ -470,11 +471,12 @@ exports.login = async (req, res) => {
 exports.register = async (req, res) => {
   try {
     // Gets locale from header 'Accept-Language'
+    const tenant = req.clientAccount;
     const locale = req.getLocale()
     req = matchedData(req)
-    const doesEmailExists = await emailer.emailExists(req.email)
+    const doesEmailExists = await emailer.emailExists(req.email, tenant)
     if (!doesEmailExists) {
-      const item = await registerUser(req)
+      const item = await registerUser(req, tenant)
       const userInfo = setUserInfo(item)
       const response = returnRegisterToken(item, userInfo)
       emailer.sendRegistrationEmailMessage(locale, item)

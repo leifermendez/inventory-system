@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 // const mongoosePaginate = require('mongoose-paginate-v2')
 const aggregatePaginate = require('mongoose-aggregate-paginate-v2');
 const softDelete = require('mongoose-softdelete');
-const invNum = require('invoice-number')
 const moment = require('moment'); // require
+const mongoTenant = require('mongo-tenant');
 
 const PurchaseSchema = new mongoose.Schema(
   {
@@ -68,5 +68,6 @@ PurchaseSchema.post('save', (obj) => {
 
 
 PurchaseSchema.plugin(aggregatePaginate)
+PurchaseSchema.plugin(mongoTenant)
 PurchaseSchema.plugin(softDelete)
 module.exports = mongoose.model('Purchase', PurchaseSchema)

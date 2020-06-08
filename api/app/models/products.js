@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 // const mongoosePaginate = require('mongoose-paginate-v2')
 const aggregatePaginate = require('mongoose-aggregate-paginate-v2');
 const softDelete = require('mongoose-softdelete');
+const mongoTenant = require('mongo-tenant');
 const ProductsSchema = new mongoose.Schema(
   {
     name: {
@@ -45,5 +46,6 @@ const ProductsSchema = new mongoose.Schema(
 
 
 ProductsSchema.plugin(aggregatePaginate)
+ProductsSchema.plugin(mongoTenant)
 ProductsSchema.plugin(softDelete)
 module.exports = mongoose.model('Products', ProductsSchema)

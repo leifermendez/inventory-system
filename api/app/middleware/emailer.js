@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer')
 const mg = require('nodemailer-mailgun-transport')
 const i18n = require('i18n')
 const User = require('../models/user')
-const { itemAlreadyExists } = require('../middleware/utils')
+const {itemAlreadyExists} = require('../middleware/utils')
 
 /**
  * Sends email
@@ -65,9 +65,9 @@ module.exports = {
    * Checks User model if user with an specific email exists
    * @param {string} email - user email
    */
-  async emailExists(email) {
+  async emailExists(email, tenant = null) {
     return new Promise((resolve, reject) => {
-      User.findOne(
+      User.byTenant(tenant).findOne(
         {
           email
         },

@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const validator = require('validator')
 const mongoosePaginate = require('mongoose-paginate-v2')
+const mongoTenant = require('mongo-tenant');
 const softDelete = require('mongoose-softdelete');
 const UserSchema = new mongoose.Schema(
   {
@@ -11,11 +12,11 @@ const UserSchema = new mongoose.Schema(
     },
     lastName: {
       type: String,
-      required: true
+      required: false
     },
     nie: {
       type: String,
-      required: true
+      required: false
     },
     email: {
       type: String,
@@ -55,11 +56,11 @@ const UserSchema = new mongoose.Schema(
     },
     phone: {
       type: String,
-      required: true
+      required: false
     },
     address: {
       type: Object,
-      required: true
+      required: false
     },
     loginAttempts: {
       type: Number,
@@ -111,6 +112,8 @@ UserSchema.methods.comparePassword = function (passwordAttempt, cb) {
     err ? cb(err) : cb(null, isMatch)
   )
 }
+
 UserSchema.plugin(mongoosePaginate)
+UserSchema.plugin(mongoTenant)
 UserSchema.plugin(softDelete)
 module.exports = mongoose.model('User', UserSchema)

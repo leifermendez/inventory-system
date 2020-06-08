@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
-
+const mongoTenant = require('mongo-tenant');
 const UserAccessSchema = new mongoose.Schema(
   {
     email: {
@@ -30,4 +30,5 @@ const UserAccessSchema = new mongoose.Schema(
     timestamps: true
   }
 )
+UserAccessSchema.plugin(mongoTenant)
 module.exports = mongoose.model('UserAccess', UserAccessSchema)

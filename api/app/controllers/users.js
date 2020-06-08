@@ -15,7 +15,8 @@ const emailer = require('../middleware/emailer')
  */
 const createItem = async (req) => {
   return new Promise((resolve, reject) => {
-    const user = new model({
+    let use = model.byTenant('some-tenant-id');
+     const user = new use({
       name: req.name,
       lastName: req.lastName,
       nie: req.nie,

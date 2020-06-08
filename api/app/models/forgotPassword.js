@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
-
+const mongoTenant = require('mongo-tenant');
 const ForgotPasswordSchema = new mongoose.Schema(
   {
     email: {
@@ -43,4 +43,5 @@ const ForgotPasswordSchema = new mongoose.Schema(
     timestamps: true
   }
 )
+ForgotPasswordSchema.plugin(mongoTenant)
 module.exports = mongoose.model('ForgotPassword', ForgotPasswordSchema)

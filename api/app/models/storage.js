@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const mongoosePaginate = require('mongoose-paginate-v2')
 const softDelete = require('mongoose-softdelete');
+const mongoTenant = require('mongo-tenant');
 const StorageSchema = new mongoose.Schema(
   {
     original: {
@@ -31,4 +32,5 @@ const StorageSchema = new mongoose.Schema(
 )
 StorageSchema.plugin(mongoosePaginate)
 StorageSchema.plugin(softDelete)
+StorageSchema.plugin(mongoTenant)
 module.exports = mongoose.model('Storage', StorageSchema)

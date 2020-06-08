@@ -94,7 +94,7 @@ module.exports = {
   async getItems(req, model, query) {
     const options = await listInitOptions(req)
     return new Promise((resolve, reject) => {
-      model.paginate(query, options, (err, items) => {
+      model.byTenant('some-tenant-id').paginate(query, options, (err, items) => {
         if (err) {
           reject(buildErrObject(422, err.message))
         }
