@@ -51,6 +51,10 @@ export class ShareService {
     return invalid;
   }
 
+  public nextPage = (data: any) => {
+    return data.nextPage;
+  }
+
   public parseLoad = (src: string = '', source: string = '', fields = []) => {
 
     let q: (string | any[])[] = [source];
@@ -87,7 +91,7 @@ export class ShareService {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: OK,
-        footer: '<a href>'+ANY_ISSUE+'</a>'
+        footer: '<a href>' + ANY_ISSUE + '</a>'
       }).then((result) => {
         if (result.value) {
           resolve(true)

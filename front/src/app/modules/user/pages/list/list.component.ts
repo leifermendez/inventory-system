@@ -23,7 +23,7 @@ import {ShareService} from "../../../../share.service";
   ]
 })
 export class ListComponent implements OnInit {
-  private cbMode: any = null;
+  public cbMode: any = null;
 
   constructor(private rest: RestService,
               private router: Router,

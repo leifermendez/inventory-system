@@ -26,7 +26,7 @@ export class ListComponent implements OnInit {
   @Input() mode: string = 'page'
   @Input() title: any = false;
   @Input() limit: any = 8;
-  private cbMode: any = false;
+  public cbMode: any = false;
 
   constructor(private rest: RestService,
               private router: Router,

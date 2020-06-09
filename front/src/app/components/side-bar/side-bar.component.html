@@ -9,8 +9,8 @@
     <div class="menu-list text-center">
       <ul class="pt-4">
         <li class="pl-1 pr-1 pt-2 pb-1"
-            placement="right"
-            [tooltip]="tolTemplate" containerClass="customToolTip"
+            placement="top"
+            [tooltip]="tolTemplate"  containerClass="customToolTip"
             [routerLink]="a.route"
             [delay]="115" *ngFor="let a of menu">
           <ng-template #tolTemplate>{{a?.name}}</ng-template>

@@ -9,7 +9,10 @@ import {
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import {faPlus, faCalendarCheck, faCalendarAlt} from '@fortawesome/free-solid-svg-icons';
+import {
+  faPlus, faCalendarCheck, faCalendarAlt,
+  faArrowLeft, faArrowRight
+} from '@fortawesome/free-solid-svg-icons';
 import {animate, style, transition, trigger} from "@angular/animations";
 import {RestService} from "../../rest.service";
 
@@ -19,7 +22,8 @@ import {RestService} from "../../rest.service";
   styleUrls: ['./list-items.component.css'],
 })
 export class ListItemsComponent implements OnInit, AfterViewInit {
-
+  faArrowLeft = faArrowLeft;
+  faArrowRight = faArrowRight;
   dataIn = [];
 
   @Input()
@@ -43,6 +47,7 @@ export class ListItemsComponent implements OnInit, AfterViewInit {
   @Input() mode: any = false;
   @Output() cbSrc = new EventEmitter<any>();
   @Output() cbAdd = new EventEmitter<any>();
+  @Output() pagination = new EventEmitter<any>();
   faPlus = faPlus;
   faCalendarCheck = faCalendarCheck;
   faCalendarAlt = faCalendarAlt;

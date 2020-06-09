@@ -1,5 +1,8 @@
 {
   "GENERAL": {
+    "VIEW_MORE": "Ver más",
+    "NEXT_PAGINATE": "Siguiente",
+    "PREV_PAGINATE": "Anterior",
     "ERROR_404": "Lo sentimos esta pagina no existe, o estamos trabajando en ella",
     "CURRENCY": "MXN ",
     "CURRENCY_SYMBOL": "$",

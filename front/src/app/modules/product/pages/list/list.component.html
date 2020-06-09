@@ -18,6 +18,17 @@
   </app-list-items>
 </div>
 
+
+<!-- ************ PAGINATE BUTTON ************  -->
+
+<div *ngIf="viewMore">
+  <div (click)="paginate()" class="col-12 text-center p-4 d-flex justify-content-center">
+    <button type="button" class="btn btn-paginate btn-view-more">{{'GENERAL.VIEW_MORE'|translate}}</button>
+  </div>
+</div>
+
+<!-- ************ PAGINATE BUTTON ************  -->
+
 <!-- ***************** TEMPLATE ************** -->
 <ng-template #customTemplateSrc let-dat='dat'>
   <ul *ngIf="dat?.length">

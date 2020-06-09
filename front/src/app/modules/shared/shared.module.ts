@@ -38,6 +38,7 @@ import {FirstImagePipe} from "../../first-image.pipe";
 import {FirstValuePipe} from "../../first-value.pipe";
 import {SwipeAngularListModule} from "swipe-angular-list";
 import {TotalPurchasePipe} from "../../total-purchase.pipe";
+import {PaginationModule} from 'ngx-bootstrap/pagination';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import {TotalPurchasePipe} from "../../total-purchase.pipe";
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     TimeagoModule.forRoot(),
+    PaginationModule.forRoot(),
     NgxCurrencyModule,
     BsDropdownModule,
     BsDatepickerModule,

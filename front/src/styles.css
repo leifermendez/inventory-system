@@ -10,11 +10,13 @@ body {
   font-size: .85rem;
   text-rendering: optimizeLegibility;
 }
+
 ::-webkit-scrollbar {
-  width: 5px;     /* Tamaño del scroll en vertical */
-  height: 8px;    /* Tamaño del scroll en horizontal */
-  display: none;  /* Ocultar scroll */
+  width: 5px; /* Tamaño del scroll en vertical */
+  height: 8px; /* Tamaño del scroll en horizontal */
+  display: none; /* Ocultar scroll */
 }
+
 .container-row {
   padding: 5rem 0rem 1rem 5rem;
   flex-wrap: wrap;
@@ -28,18 +30,24 @@ body {
   background-color: #221ECD;
   color: #fff;
   font-weight: 400;
+  padding: .1rem .2rem;
   letter-spacing: .5px;
-  font-size: .75rem;
+  font-size: .65rem;
   box-shadow: 0 0 5px rgba(55, 51, 209, 0.56);
 }
 
-.customToolTip .tooltip.top .tooltip-arrow:before,
-.customToolTip .tooltip.top .tooltip-arrow {
-  border-top-color: #221ECD;
+.customToolTip.bs-tooltip-top .arrow::before{
+  border-top-color: #221ECD !important;
 }
 
-.customToolTip .arrow::before, .customToolTip .arrow::before {
-  border-right-color: #221ECD;
+.customToolTip.bs-tooltip-top .arrow::before{
+  border-top-color: #221ECD !important;
+
+}
+
+.customToolTip.bs-tooltip-left .arrow::before{
+  border-left-color: #221ECD !important;
+
 }
 
 ::-webkit-input-placeholder { /* Edge */
@@ -526,4 +534,37 @@ sw-item-list .list-swipe .mark {
 
 sw-item-list .left-swipe {
   transform: translate(0, 0)
+}
+
+/*.paginate-list ul li {*/
+/*  margin: 0 .2rem;*/
+/*}*/
+/*.paginate-list .pagination li .page-link{*/
+/*  border: 0 !important;*/
+/*  border-radius: 5rem;*/
+/*  background-color: transparent;*/
+/*  font-weight: 600;*/
+/*  color: #221ecd;*/
+/*}*/
+/*.paginate-list .pagination li:active .page-link,*/
+/*.paginate-list .pagination li:hover .page-link{*/
+/*  color: white !important;*/
+/*  opacity: .8;*/
+
+/*}*/
+.btn-paginate {
+  background-color: white;
+  box-shadow: 0px 0px 8px rgba(188, 186, 202, 0.39);
+  font-size: .8rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  color: #7b789d;
+}
+
+.btn-paginate:hover {
+  box-shadow: 0 0 10px rgba(211, 211, 214, 0.61);
+  transform: scale(1.05);
+  background-color: #E9E5FD !important;
+  transition: all 200ms;
+  color: #3634a8;
 }

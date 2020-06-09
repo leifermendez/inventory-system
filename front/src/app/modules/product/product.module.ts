@@ -11,11 +11,12 @@ import {TranslateModule} from "@ngx-translate/core";
 import {NgxDropzoneModule} from "ngx-dropzone";
 
 
+
 @NgModule({
   declarations: [DetailComponent, ListComponent],
-    exports: [
-        ListComponent
-    ],
+  exports: [
+    ListComponent
+  ],
   imports: [
     CommonModule,
     ProductRoutingModule,

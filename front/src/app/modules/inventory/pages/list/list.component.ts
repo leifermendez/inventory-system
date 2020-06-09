@@ -26,7 +26,7 @@ export class ListComponent implements OnInit {
   @Input() mode: string = 'page'
   @Input() title: any = false;
   @Input() limit: any = 8;
-
+  public page: number = 1;
   constructor(private rest: RestService,
               private router: Router,
               private share: ShareService) {
@@ -38,6 +38,7 @@ export class ListComponent implements OnInit {
   faUser = faUser
   public data = [];
   public cbMode: any = false;
+  public viewMore: any;
   public source = 'inventory';
   public history: any = [
     {
@@ -52,14 +53,14 @@ export class ListComponent implements OnInit {
   load = (src: string = '') => {
     let fields = [
       `?fields=name`,
-      `&sort=createdAt&order=-1`
+      `&sort=createdAt&order=-1`,
+      `&page=${this.page}`
     ];
-    if (this.mode === 'home') {
-      fields.push(`&limit=${this.limit}`)
-    }
+    fields.push(`&limit=${this.limit}`)
     const q = this.share.parseLoad(src, this.source, fields);
     this.rest.get(q.join(''))
       .subscribe(res => {
+        this.viewMore = this.share.nextPage(res);
         this.data = this.share.parseData(res, this.source);
       }, error => {
         (error.status === 401) ? this.cbMode = 'blocked' : null
@@ -69,4 +70,9 @@ export class ListComponent implements OnInit {
   goTo = () => this.share.goTo(this.source)
 
   onSrc = (e) => this.load(e)
+
+  paginate = () => {
+    this.page = this.page+1;
+    this.load();
+  }
 }

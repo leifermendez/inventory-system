@@ -14,7 +14,7 @@ export class ListComponent implements OnInit {
   @Input() title: any = false;
   @Input() limit: any = 8;
   @Output() cbClick = new EventEmitter<any>();
-  private cbMode: any = null;
+  public cbMode: any = null;
 
   constructor(private rest: RestService,
               private share: ShareService,
@@ -24,8 +24,10 @@ export class ListComponent implements OnInit {
   faPhoneAlt = faPhoneAlt
   faIndustry = faIndustry
   faUser = faUser
+  public page: number = 1;
   public data = [];
   public source = 'products';
+  public viewMore: any;
 
   public history: any = [
     {
@@ -46,16 +48,17 @@ export class ListComponent implements OnInit {
 
   }
 
+
   load = (src: string = '') => {
     let fields = [
-      `?fields=name`
+      `?fields=name`,
+      `&page=${this.page}`
     ];
-    if (this.mode === 'home') {
-      fields.push(`&limit=${this.limit}`)
-    }
+    fields.push(`&limit=${this.limit}`)
     const q = this.share.parseLoad(src, this.source, fields);
     this.rest.get(q.join(''))
       .subscribe(res => {
+        this.viewMore = this.share.nextPage(res);
         this.data = this.share.parseData(res, this.source);
       }, error => {
         (error.status === 401) ? this.cbMode = 'blocked' : null
@@ -64,5 +67,11 @@ export class ListComponent implements OnInit {
 
   goTo = () => this.share.goTo(this.source)
 
-  onSrc = (e) => this.load(e)
+  onSrc = (e) => this.load(e);
+
+  paginate = () => {
+    this.page = this.page+1;
+    this.load();
+  }
+
 }
