@@ -8,17 +8,19 @@ import {SharedModule} from "../shared/shared.module";
 import { ListComponent } from './pages/list/list.component';
 import {AvatarModule} from "ngx-avatar";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 @NgModule({
   declarations: [AddComponent, ListComponent],
-  imports: [
-    CommonModule,
-    DepositRoutingModule,
-    ReactiveFormsModule,
-    SharedModule,
-    AvatarModule,
-    FontAwesomeModule
-  ]
+    imports: [
+        CommonModule,
+        DepositRoutingModule,
+        ReactiveFormsModule,
+        SharedModule,
+        AvatarModule,
+        FontAwesomeModule,
+        TranslateModule
+    ]
 })
 export class DepositModule { }

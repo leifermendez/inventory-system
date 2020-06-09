@@ -7,6 +7,7 @@ import {SharedModule} from "../shared/shared.module";
 import { ListComponent } from './pages/list/list.component';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {AvatarModule} from "ngx-avatar";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 @NgModule({
@@ -14,12 +15,13 @@ import {AvatarModule} from "ngx-avatar";
     exports: [
         ListComponent
     ],
-    imports: [
-        CommonModule,
-        ProvidersRoutingModule,
-        SharedModule,
-        FontAwesomeModule,
-        AvatarModule
-    ]
+  imports: [
+    CommonModule,
+    ProvidersRoutingModule,
+    SharedModule,
+    FontAwesomeModule,
+    AvatarModule,
+    TranslateModule
+  ]
 })
 export class ProvidersModule { }

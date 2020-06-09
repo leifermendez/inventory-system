@@ -123,6 +123,7 @@ exports.getAllItems = async (req, res) => {
   }
 }
 
+
 /**
  * Get items function called by route
  * @param {Object} req - request object
@@ -130,9 +131,10 @@ exports.getAllItems = async (req, res) => {
  */
 exports.getItems = async (req, res) => {
   try {
+    const tenant = req.clientAccount;
     const query = await db.checkQueryString(req.query)
-    const data = getLookList(query)
-    res.status(200).json(await db.getItemsAggregate(req, model, data))
+    const data = getLookList(query, tenant)
+    res.status(200).json(await db.getItemsAggregate(req, model, data, tenant))
   } catch (error) {
     utils.handleError(res, error)
   }
