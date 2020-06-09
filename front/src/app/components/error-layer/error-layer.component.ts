@@ -15,6 +15,7 @@ import {animate, style, transition, trigger} from "@angular/animations";
 import {faTimes}
   from '@fortawesome/free-solid-svg-icons';
 import {RestService} from "../../rest.service";
+import {ShareService} from "../../share.service";
 
 @Component({
   selector: 'app-error-layer',
@@ -45,11 +46,16 @@ export class ErrorLayerComponent implements OnInit, AfterViewInit {
     this.errorChange.emit(this.errorIn);
   }
 
+  private codes = []
   private animationItem: AnimationItem;
   faTimes = faTimes
 
-  constructor(private ngZone: NgZone, public rest: RestService) {
-
+  constructor(private ngZone: NgZone, public rest: RestService, private share: ShareService) {
+    this.rest.catchError.subscribe(err => {
+      if (this.codes.includes(err.code)) {
+        this.error = null;
+      }
+    })
   }
 
   error404: AnimationOptions = {
@@ -64,6 +70,10 @@ export class ErrorLayerComponent implements OnInit, AfterViewInit {
     path: '/assets/images/422.json',
   };
 
+  error401: AnimationOptions = {
+    path: '/assets/images/warning.json',
+  };
+
   error0: AnimationOptions = {
     path: '/assets/images/0.json',
   };
@@ -74,7 +84,7 @@ export class ErrorLayerComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-
+    console.log('--->', this.error)
   }
 
   test = () => {

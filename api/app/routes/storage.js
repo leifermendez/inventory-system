@@ -27,7 +27,7 @@ router.get(
   '/',
   origin.checkDomain,
   requireAuth,
-  AuthController.roleAuthorization(['admin']),
+  AuthController.roleAuthorization(['customer', 'admin', 'manager', 'user', 'seller']),
   trimRequest.all,
   controller.getItems
 )
@@ -39,7 +39,7 @@ router.post(
   '/',
   origin.checkDomain,
   requireAuth,
-  AuthController.roleAuthorization(['admin']),
+  AuthController.roleAuthorization(['customer', 'admin', 'manager', 'user', 'seller']),
   trimRequest.all,
   controller.upload.array('files[]'),
   controller.createItem
@@ -52,7 +52,7 @@ router.get(
   '/:id',
   origin.checkDomain,
   requireAuth,
-  AuthController.roleAuthorization(['admin']),
+  AuthController.roleAuthorization(['customer', 'admin', 'manager', 'user', 'seller']),
   trimRequest.all,
   validate.getItem,
   controller.getItem
@@ -65,7 +65,7 @@ router.patch(
   '/:id',
   origin.checkDomain,
   requireAuth,
-  AuthController.roleAuthorization(['admin']),
+  AuthController.roleAuthorization(['customer', 'admin', 'manager', 'user', 'seller']),
   trimRequest.all,
   validate.updateItem,
   controller.updateItem
@@ -78,7 +78,7 @@ router.delete(
   '/:id',
   origin.checkDomain,
   requireAuth,
-  AuthController.roleAuthorization(['admin']),
+  AuthController.roleAuthorization(['customer', 'admin', 'manager', 'user', 'seller']),
   trimRequest.all,
   validate.deleteItem,
   controller.deleteItem

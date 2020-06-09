@@ -22,7 +22,7 @@ router.get(
   '/',
   origin.checkDomain,
   requireAuth,
-  AuthController.roleAuthorization(['customer', 'admin', 'manager', 'user', 'seller']),
+  AuthController.roleAuthorization(['admin', 'manager', 'seller']),
   trimRequest.all,
   controller.getItems
 )
@@ -47,7 +47,7 @@ router.get(
   '/:id',
   origin.checkDomain,
   requireAuth,
-  AuthController.roleAuthorization(['customer', 'admin', 'manager', 'user', 'seller']),
+  AuthController.roleAuthorization(['admin', 'manager', 'seller']),
   trimRequest.all,
   validate.getItem,
   controller.getItem

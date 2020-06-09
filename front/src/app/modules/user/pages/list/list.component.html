@@ -4,6 +4,7 @@
   <app-list-items
     (cbAdd)="goTo()"
     [(data)]="data"
+    [mode]="cbMode"
     [customTemplate]="customTemplateSrc"
     (cbSrc)="onSrc($event)"
     class="col-12 row m-0 pl-2 pr-4">

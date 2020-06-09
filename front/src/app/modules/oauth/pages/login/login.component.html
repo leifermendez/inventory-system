@@ -22,10 +22,10 @@
           <small class="form-text text-muted">{{"LOGIN.FORM.PASSWORD_PLACEHOLDER" |translate}}</small>
 
         </div>
-        <button appLoadingBtn loadingTextValue="Loading..."
+        <button appLoadingBtn [loadingTextValue]="'GENERAL.LOADING_SINGLE' | translate"
                 [loadingTextWhen]="loading" type="submit"
                 class="btn btn-primary btn-radius btn-block"
-                (click)="onSubmit()">{{"LOGIN.FORM.SEND" |translate}}<
+                (click)="onSubmit()">{{"LOGIN.FORM.SEND" |translate}}
         </button>
         <!--        <button type="submit" class="btn btn-primary btn-radius btn-block">{{"LOGIN.FORM.SEND" |translate}}</button>-->
       </form>

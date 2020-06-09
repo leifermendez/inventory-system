@@ -168,8 +168,8 @@ export class ProductFormComponent implements OnInit {
       }
     });
 
-    this.loadDeposits();
-    this.loadProviders();
+    // this.loadDeposits();
+    // this.loadProviders();
     // this.form.patchValue({content:'Ready!'})
 
   }

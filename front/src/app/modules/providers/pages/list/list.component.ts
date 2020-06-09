@@ -26,6 +26,8 @@ export class ListComponent implements OnInit {
   @Input() mode: string = 'page'
   @Input() title: any = false;
   @Input() limit: any = 8;
+  private cbMode: any = null;
+
   constructor(private rest: RestService,
               private router: Router,
               private share: ShareService) {
@@ -58,6 +60,8 @@ export class ListComponent implements OnInit {
     this.rest.get(q.join(''))
       .subscribe(res => {
         this.data = this.share.parseData(res, this.source);
+      }, error => {
+        (error.status === 401) ? this.cbMode = 'blocked' : null
       })
   }
 
