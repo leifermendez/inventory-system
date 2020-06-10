@@ -13,6 +13,7 @@ export class ShareService {
   @Output() savePurchase = new EventEmitter<any>();
   @Output() loading = new EventEmitter<string>();
   @Output() copilot = new EventEmitter<any>();
+  @Output() limitAccount = new EventEmitter<any>();
 
   constructor(private router: Router,
               private translate: TranslateService) {

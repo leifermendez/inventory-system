@@ -21,6 +21,7 @@ const trimRequest = require('trim-request')
 router.post(
   '/register',
   origin.checkDomain,
+  origin.checkTenant,
   trimRequest.all,
   validate.register,
   controller.register
@@ -31,6 +32,7 @@ router.post(
  */
 router.post('/verify',
   origin.checkDomain,
+  origin.checkTenant,
   trimRequest.all, validate.verify, controller.verify)
 
 /*
@@ -39,6 +41,7 @@ router.post('/verify',
 router.post(
   '/forgot',
   origin.checkDomain,
+  origin.checkTenant,
   trimRequest.all,
   validate.forgotPassword,
   controller.forgotPassword
@@ -50,6 +53,7 @@ router.post(
 router.post(
   '/reset',
   origin.checkDomain,
+  origin.checkTenant,
   trimRequest.all,
   validate.resetPassword,
   controller.resetPassword
@@ -61,6 +65,7 @@ router.post(
 router.get(
   '/token',
   origin.checkDomain,
+  origin.checkTenant,
   requireAuth,
   AuthController.roleAuthorization(['customer', 'admin', 'manager','user']),
   trimRequest.all,
@@ -72,6 +77,7 @@ router.get(
  */
 router.post('/login',
   origin.checkDomain,
+  // origin.checkTenant,
   trimRequest.all,
   validate.login,
   controller.login)

@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {environment} from "../environments/environment";
 import {CookieService} from "ngx-cookie-service";
 import {RestService} from "./rest.service";
+import {ShareService} from "./share.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import {RestService} from "./rest.service";
 export class AuthService {
   constructor(private rest: RestService,
               private router: Router,
+              private share: ShareService,
               private cookieService: CookieService) {
   }
 
@@ -53,6 +55,9 @@ export class AuthService {
         if (this.cookieService.check('session')) {
           this.rest.get(`token`).subscribe(res => {
             // console.log(res)
+            if (res.parentAccount && res.parentAccount.status) {
+              this.share.limitAccount.emit(res.parentAccount)
+            }
             this.cookieService.set(
               'session',
               res.session,

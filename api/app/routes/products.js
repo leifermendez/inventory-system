@@ -26,6 +26,7 @@ const trimRequest = require('trim-request')
 router.get(
   '/',
   origin.checkDomain,
+  origin.checkTenant,
   requireAuth,
   AuthController.roleAuthorization(['customer', 'admin', 'manager', 'seller', 'user']),
   trimRequest.all,
@@ -38,6 +39,7 @@ router.get(
 router.post(
   '/',
   origin.checkDomain,
+  origin.checkTenant,
   requireAuth,
   AuthController.roleAuthorization(['admin']),
   trimRequest.all,
@@ -51,6 +53,7 @@ router.post(
 router.get(
   '/:id',
   origin.checkDomain,
+  origin.checkTenant,
   requireAuth,
   AuthController.roleAuthorization(['customer', 'admin', 'manager', 'seller', 'user']),
   trimRequest.all,
@@ -64,6 +67,7 @@ router.get(
 router.patch(
   '/:id',
   origin.checkDomain,
+  origin.checkTenant,
   requireAuth,
   AuthController.roleAuthorization(['admin']),
   trimRequest.all,
@@ -77,6 +81,7 @@ router.patch(
 router.delete(
   '/:id',
   origin.checkDomain,
+  origin.checkTenant,
   requireAuth,
   AuthController.roleAuthorization(['admin']),
   trimRequest.all,

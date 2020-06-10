@@ -264,15 +264,15 @@ const verificationExists = async (id, tenant = null) => {
     User
       .byTenant(tenant)
       .findOne(
-      {
-        verification: id,
-        verified: false
-      },
-      (err, user) => {
-        utils.itemNotFound(err, user, reject, 'NOT_FOUND_OR_ALREADY_VERIFIED')
-        resolve(user)
-      }
-    )
+        {
+          verification: id,
+          verified: false
+        },
+        (err, user) => {
+          utils.itemNotFound(err, user, reject, 'NOT_FOUND_OR_ALREADY_VERIFIED')
+          resolve(user)
+        }
+      )
   })
 }
 
@@ -566,6 +566,9 @@ exports.getRefreshToken = async (req, res) => {
     const user = await findUserById(userId, tenant)
     const token = await saveUserAccessAndReturnToken(req, user)
     // Removes user info from response
+    if (req.parentAccount) {
+      token.parentAccount = req.parentAccount;
+    }
     delete token.user
     res.status(200).json(token)
   } catch (error) {

@@ -24,8 +24,11 @@ import {ShareService} from "../../share.service";
   animations: [
     trigger('swipe', [
       transition(':enter', [
-        style({opacity: '.6'}),
-        animate('0.05s ease-in')
+        style({transform: 'translateY(-20%)', opacity: '0'}),
+        animate('0.1s ease-in')
+      ]),
+      transition(':leave', [
+        animate('0.1s ease-out', style({transform: 'translateY(20%)', opacity: '1'}))
       ])
     ])
   ]
@@ -72,6 +75,20 @@ export class ErrorLayerComponent implements OnInit, AfterViewInit {
 
   error401: AnimationOptions = {
     path: '/assets/images/warning.json',
+  };
+
+  error406: AnimationOptions = {
+    path: '/assets/images/security.json',
+  };
+
+
+  error402: AnimationOptions = {
+    path: '/assets/images/402.json',
+  };
+
+
+  error400: AnimationOptions = {
+    path: '/assets/images/400.json',
   };
 
   error0: AnimationOptions = {

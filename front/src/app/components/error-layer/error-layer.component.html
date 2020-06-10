@@ -1,4 +1,4 @@
-<div [@swipe] *ngIf="error" #btnClose class="overlay-loading">
+<div *ngIf="error" #btnClose class="overlay-loading">
   <!--  <div (click)="close()" class="close-icon btn btn-round btn-shadow">-->
   <!--    <fa-icon size="lg" [icon]="faTimes"></fa-icon>-->
   <!--  </div>-->
@@ -44,6 +44,31 @@
       [options]="error401">
     </ng-lottie>
 
+    <!-- *************** ERROR 402 ************** --->
+    <ng-lottie
+      *ngIf="error?.code === 402"
+      class="margin-auto"
+      width="100px"
+      [options]="error402">
+    </ng-lottie>
+
+    <!-- *************** ERROR 406 ************** --->
+    <ng-lottie
+      *ngIf="error?.code === 406"
+      class="margin-auto"
+      width="180px"
+      [options]="error406">
+    </ng-lottie>
+
+
+    <!-- *************** ERROR 400 ************** --->
+    <ng-lottie
+      *ngIf="error?.code === 400"
+      class="margin-auto"
+      width="100px"
+      [options]="error400">
+    </ng-lottie>
+
 
     <!-- *************** ERROR 0 ************** --->
     <ng-lottie
@@ -58,8 +83,9 @@
 
         {{'GENERAL.ERROR_CODE' | translate}}: <b>{{error?.code}}</b> <br>
         {{'GENERAL.ERROR_MESSAGE' | translate}}:
+
         <b *ngIf="error?.e">{{error?.e?.errors?.msg}}</b>
-        <b *ngIf="error?.message">{{error?.message}}</b>
+        <b *ngIf="!error?.e && error?.message">{{error?.message}}</b>
       </small>
     </div>
 

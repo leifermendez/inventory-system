@@ -8,6 +8,7 @@
     "heroku-front" : "heroku git:remote -a inventory-agile-tool &&git subtree push --prefix front heroku master",
     "heroku-api" : "heroku git:remote -a inventory-agile-tool-api && git subtree push --prefix api heroku master",
     "front-dev": "cd front && ng serve --host=test.agiletool.test",
+    "back-dev": "cd back-api && npm run dev",
     "api-dev": "cd api && npm run dev"
   },
   "repository": {

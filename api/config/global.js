@@ -1,5 +1,10 @@
-const app = require('../server');
+const parentConnect = require('./parent.db')
 
-exports.getVariable = (key = null) => {
-
-}
+exports.getParentConnection = (req) => new Promise(async (resolve, reject) => {
+  try {
+    const product = await parentConnect.checkTenant(req);
+    resolve(product)
+  } catch (e) {
+    reject(e)
+  }
+})

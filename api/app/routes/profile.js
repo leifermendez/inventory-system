@@ -21,6 +21,7 @@ const trimRequest = require('trim-request')
 router.get(
   '/',
   origin.checkDomain,
+  origin.checkTenant,
   requireAuth,
   AuthController.roleAuthorization(['customer', 'admin', 'manager','user']),
   trimRequest.all,
@@ -33,6 +34,7 @@ router.get(
 router.patch(
   '/',
   origin.checkDomain,
+  origin.checkTenant,
   requireAuth,
   AuthController.roleAuthorization(['customer', 'admin', 'manager','user']),
   trimRequest.all,
@@ -46,6 +48,7 @@ router.patch(
 router.post(
   '/changePassword',
   origin.checkDomain,
+  origin.checkTenant,
   requireAuth,
   AuthController.roleAuthorization(['customer', 'admin', 'manager','user']),
   trimRequest.all,

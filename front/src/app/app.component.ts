@@ -14,8 +14,11 @@ import {filter} from 'rxjs/operators';
   animations: [
     trigger('swipe', [
       transition(':enter', [
-        style({opacity: '.6'}),
-        animate('0.05s ease-in')
+        style({transform: 'translateY(-20%)', opacity: '0'}),
+        animate('0.2s ease-in')
+      ]),
+      transition(':leave', [
+        animate('0.2s ease-out', style({transform: 'translateY(20%)', opacity: '1'}))
       ])
     ])
   ]

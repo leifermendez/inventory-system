@@ -1,13 +1,16 @@
 <div class="pt-2 pb-2 header-wrapper">
   <div class="d-flex justify-content-between">
-    <div [routerLink]="['/']">
-      <ul class="history-menu">
+    <div class="w-100" [routerLink]="['/']">
+      <ul class="history-menu" *ngIf="!limitAccount">
         <li>Inventario</li>
         <li *ngFor="let a of history" [routerLink]="a.router">
           <fa-icon size="lg" [icon]="faAngleRight"></fa-icon>
           <span class="ml-1">{{a?.name}}</span>
         </li>
       </ul>
+      <div class="notice-account" *ngIf="limitAccount">
+        {{'GENERAL.LIMIT_ACCOUNT' | translate}}
+      </div>
     </div>
     <div class="d-none d-sm-block">
       <div class="d-flex justify-content-around section-search col-md-12 col-lg-12 col-sm-12">
@@ -46,7 +49,5 @@
     </div>
 
   </div>
-
-
 </div>
 

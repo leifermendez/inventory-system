@@ -1,7 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {faLifeRing, faBell} from '@fortawesome/free-regular-svg-icons';
 import {faAngleRight} from '@fortawesome/free-solid-svg-icons';
+import {faTired} from '@fortawesome/free-solid-svg-icons';
 import {BsDropdownConfig} from "ngx-bootstrap/dropdown";
+import {ShareService} from "../../share.service";
 
 @Component({
   selector: 'app-header',
@@ -12,6 +14,8 @@ import {BsDropdownConfig} from "ngx-bootstrap/dropdown";
 export class HeaderComponent implements OnInit {
   @Input() label: string;
   @Input() history: any = [];
+  public limitAccount: any = null;
+  faTired = faTired
   faLifeRing = faLifeRing
   faAngleRight = faAngleRight
   faBell = faBell
@@ -27,10 +31,15 @@ export class HeaderComponent implements OnInit {
     }
   ]
 
-  constructor() {
+  constructor(private share: ShareService) {
   }
 
   ngOnInit(): void {
+    this.share.limitAccount.subscribe(res => {
+      if (res) {
+        this.limitAccount = res;
+      }
+    })
   }
 
 }

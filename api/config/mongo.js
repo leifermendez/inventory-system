@@ -9,7 +9,7 @@ module.exports = (app = {}) => {
     mongoose.Promise = global.Promise
 
     mongoose.connect(
-      `${DB_URL}/${MAIN_DB}`,
+      DB_URL,
       {
         keepAlive: true,
         useNewUrlParser: true,

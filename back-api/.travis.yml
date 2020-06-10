@@ -1,0 +1,21 @@
+dist: xenial
+language: node_js
+node_js:
+  - '12'
+cache:
+  npm: true
+services:
+  - mongodb
+before_script:
+  - cp .env.example .env
+env:
+  - NODE_ENV=test
+if: tag IS present
+deploy:
+  provider: npm
+  email: $NPM_EMAIL
+  api_key: $NPM_DEPLOY_TOKEN
+  on:
+    branch: master
+    tags: true
+    repo: davellanedam/node-express-mongodb-jwt-rest-api-skeleton
