@@ -36,6 +36,7 @@ import { environment } from '../environments/environment';
 import { CopilotComponent } from './components/copilot/copilot.component';
 import {DeviceDetectorModule} from "ngx-device-detector";
 import { ModalUpdateComponent } from './components/modal-update/modal-update.component';
+import { ListAddonsComponent } from './components/list-addons/list-addons.component';
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
