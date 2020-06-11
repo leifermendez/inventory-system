@@ -1,6 +1,6 @@
 <div class="pt-2 pb-2 header-wrapper">
   <div class="d-flex justify-content-between">
-    <div class="w-100" [routerLink]="['/']">
+    <div class="w-50" [routerLink]="['/']">
       <ul class="history-menu" *ngIf="!limitAccount">
         <li>Inventario</li>
         <li *ngFor="let a of history" [routerLink]="a.router">
@@ -12,7 +12,7 @@
         {{'GENERAL.LIMIT_ACCOUNT' | translate}}
       </div>
     </div>
-    <div class="d-none d-sm-block">
+    <div class="d-none w-50 d-sm-block">
       <div class="d-flex justify-content-around section-search col-md-12 col-lg-12 col-sm-12">
         <div class="input-group src-input">
           <input type="text" placeholder="Buscar" class="form-control" aria-label="Default"

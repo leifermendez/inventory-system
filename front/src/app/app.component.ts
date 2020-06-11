@@ -50,7 +50,7 @@ export class AppComponent {
       this.progress = res;
     })
 
-
+    this.shared.openUpdateModal()
 
     this.rest.catchError.subscribe(res => {
       this.error = res;

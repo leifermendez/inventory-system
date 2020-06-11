@@ -35,6 +35,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { CopilotComponent } from './components/copilot/copilot.component';
 import {DeviceDetectorModule} from "ngx-device-detector";
+import { ModalUpdateComponent } from './components/modal-update/modal-update.component';
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
@@ -64,6 +65,7 @@ export function playerFactory() {
     ButtonProgressComponent,
     ModalProductComponent,
     CopilotComponent,
+    ModalUpdateComponent,
      ],
   imports: [
     BrowserModule,

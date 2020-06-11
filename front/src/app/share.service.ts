@@ -3,6 +3,9 @@ import {Router} from "@angular/router";
 import Swal from 'sweetalert2';
 import {TranslateService} from "@ngx-translate/core";
 import {CookieService} from "ngx-cookie-service";
+import {ModalUserComponent} from "./components/modal-user/modal-user.component";
+import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
+import {ModalUpdateComponent} from "./components/modal-update/modal-update.component";
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +18,10 @@ export class ShareService {
   @Output() loading = new EventEmitter<string>();
   @Output() copilot = new EventEmitter<any>();
   @Output() limitAccount = new EventEmitter<any>();
+  bsModalRef: BsModalRef;
 
   constructor(private router: Router,
+              private modalService: BsModalService,
               private cookie: CookieService,
               private translate: TranslateService) {
   }
@@ -129,4 +134,17 @@ export class ShareService {
     });
 
   })
+
+  public openUpdateModal = (data:any = {}) => {
+    const initialState = {
+      section: data
+    };
+    this.bsModalRef = this.modalService.show(
+      ModalUpdateComponent,
+      Object.assign({initialState}, {
+        class: 'modal-light-plan',
+        ignoreBackdropClick: false
+      })
+    );
+  }
 }
