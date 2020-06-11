@@ -60,7 +60,7 @@
 
     <!--*********** END TEMPLATE TOOLTIP ZONE ***********---->
 
-    <button type="button" class="btn-round"
+    <button type="button" class="pulse-one btn-round"
             [ngClass]="{'pulse overlay-copilot-focus':copilot}"
             [triggers]="(copilot) ? 'mouseenter:click' : 'hover'"
             #btnList="bs-tooltip"
@@ -71,7 +71,7 @@
     </button>
 
     <div class="overlay-copilot-focus">
-      <button class="btn-round mr-3"
+      <button class="pulse-one btn-round mr-3"
               *ngIf="add"
               (click)="callbackAdd()"
               [ngClass]="{'pulse overlay-copilot-focus':copilot}"
@@ -83,7 +83,7 @@
         <fa-icon size="2x" [icon]="faPlus"></fa-icon>
       </button>
 
-      <button class="btn-round mr-3"
+      <button class="pulse-one btn-round mr-3"
               *ngIf="trash"
               (click)="delete()"
               [ngClass]="{'pulse overlay-copilot-focus':copilot}"
@@ -95,7 +95,7 @@
         <fa-icon size="2x" [icon]="faTrashAlt"></fa-icon>
       </button>
 
-      <button [disabled]="!valid" (click)="callbackSave()" class="btn-round"
+      <button [disabled]="!valid" (click)="callbackSave()" class="pulse-one btn-round"
               [ngClass]="{'pulse overlay-copilot-focus':copilot}"
               [triggers]="(copilot) ? 'mouseenter:click' : 'hover'"
               #btnSave="bs-tooltip"
