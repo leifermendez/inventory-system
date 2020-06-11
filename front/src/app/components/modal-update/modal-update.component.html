@@ -1,1 +1,23 @@
-<p>modal-update works!</p>
+<div class="d-flex justify-content-center flex-column align-items-center">
+  <div class="text-center w-100">
+    <h6 class="font-weight-bold p-2">
+      {{'UPGRADE.TITLE'| translate}}
+    </h6>
+  </div>
+  <div class="p-3">
+    <ng-lottie
+      class="margin-auto"
+      height="100px"
+      [options]="options">
+    </ng-lottie>
+  </div>
+  <div class="p-2 text-content">
+    <hr>
+    <div [innerHTML]="'UPGRADE.CONTENT' | translate"></div>
+    <div class="text-center">
+      <button (click)="update()" type="button" class="btn btn-primary btn-radius">
+        {{'UPGRADE.UPGRADE_OK' | translate}}
+      </button>
+    </div>
+  </div>
+</div>

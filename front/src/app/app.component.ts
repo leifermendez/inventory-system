@@ -6,6 +6,7 @@ import {DeviceDetectorService} from "ngx-device-detector";
 import {animate, style, transition, trigger} from "@angular/animations";
 import {NavigationEnd, Router} from "@angular/router";
 import {filter} from 'rxjs/operators';
+import {SwPush, SwUpdate} from "@angular/service-worker";
 
 @Component({
   selector: 'app-root',
@@ -32,6 +33,8 @@ export class AppComponent {
 
   constructor(public loader: LoadingBarService, public shared: ShareService,
               public rest: RestService,
+              private swUpdate: SwUpdate,
+              private swPush: SwPush,
               private router: Router,
               private deviceService: DeviceDetectorService) {
     router.events.pipe(
@@ -41,16 +44,14 @@ export class AppComponent {
        * AQUI DEMOS INJECTAR UNA CLASE O ALGO PARA EL COPILOT
        */
       // @ts-ignore
-      if(event.url.includes('purchase')){
+      if (event.url.includes('purchase')) {
         // shared.copilot.subscribe(a => this.copilot = a)
       }
-      console.log();
     });
     this.loader.progress$.subscribe(res => {
       this.progress = res;
     })
 
-    this.shared.openUpdateModal()
 
     this.rest.catchError.subscribe(res => {
       this.error = res;
@@ -63,5 +64,12 @@ export class AppComponent {
     }
   }
 
+  ngOnInit() {
+    if (this.swUpdate.isEnabled) {
+      this.swUpdate.available.subscribe(() => {
+        this.shared.openUpdateModal()
+      });
+    }
+  }
 
 }

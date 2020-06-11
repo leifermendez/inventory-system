@@ -142,8 +142,8 @@ export class ShareService {
     this.bsModalRef = this.modalService.show(
       ModalUpdateComponent,
       Object.assign({initialState}, {
-        class: 'modal-light-plan',
-        ignoreBackdropClick: false
+        class: 'modal-light-upgrade',
+        ignoreBackdropClick: true
       })
     );
   }

@@ -127,5 +127,10 @@
       "TRASH": "Borra facilmente, desde aquí",
       "SAVE": "¡No olvides guardar! El icono en <span class='badge badge-danger'>rojo</span> indica que falta algun campo requerido."
     }
+  },
+  "UPGRADE": {
+    "TITLE": "Actualización disponible",
+    "UPGRADE_OK": "Actualizar",
+    "CONTENT": " <p>Actualizaciones disponibles las cuales mejoraran tu experiencia de usuario y performance de la app. Para aplicar estas actualizaciones solo debes hacer click o esperar unos segundos.</p><p>Si tienes algún problema puedes enviarnos un <a href='#'>ticket</a> en el apartado</p>"
   }
 }

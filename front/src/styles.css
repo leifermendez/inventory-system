@@ -339,6 +339,19 @@ tag-input-form input {
   max-width: 700px;
 }
 
+.modal-light-upgrade{
+  max-width: 600px;
+}
+
+.modal-light-upgrade .modal-content {
+  border-radius: 1rem;
+  min-height: 10rem;
+  box-shadow: 1px 3px 17px rgba(110, 110, 110, 0.32);
+  padding: .5rem;
+  border: solid 1px #f6f6f6;
+}
+
+
 .modal-light-plan .modal-content {
   border-radius: 1rem;
   min-height: 10rem;
