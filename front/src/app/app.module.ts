@@ -31,8 +31,6 @@ import { ModalProductComponent } from './components/modal-product/modal-product.
 import {ProductModule} from "./modules/product/product.module";
 import {AvatarModule} from "ngx-avatar";
 import {TooltipModule} from "ngx-bootstrap/tooltip";
-import { FirstValuePipe } from './first-value.pipe';
-import { TotalPurchasePipe } from './total-purchase.pipe';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { CopilotComponent } from './components/copilot/copilot.component';

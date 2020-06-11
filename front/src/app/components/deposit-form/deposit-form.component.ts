@@ -60,12 +60,14 @@ export class DepositFormComponent implements OnInit {
   }
 
   loadProvider = () => {
-    this.rest.get(`deposits/${this.id}`)
-      .subscribe(res => {
-        console.log(res)
-        this.form.patchValue(res)
-        // this.data = this.parseData(res);
-      })
+    if (this.id && (this.id.length)) {
+      this.rest.get(`deposits/${this.id}`)
+        .subscribe(res => {
+          console.log(res)
+          this.form.patchValue(res)
+          // this.data = this.parseData(res);
+        })
+    }
   }
 
   selectUser = (e) => {

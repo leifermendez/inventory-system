@@ -79,12 +79,14 @@ export class UserFormComponent implements OnInit {
   }
 
   loadProvider = () => {
-    this.rest.get(`users/${this.id}`)
-      .subscribe(res => {
-        console.log(res)
-        this.form.patchValue(res)
-        // this.data = this.parseData(res);
-      })
+    if (this.id && (this.id.length)) {
+      this.rest.get(`users/${this.id}`)
+        .subscribe(res => {
+          console.log(res)
+          this.form.patchValue(res)
+          // this.data = this.parseData(res);
+        })
+    }
   }
 
 }

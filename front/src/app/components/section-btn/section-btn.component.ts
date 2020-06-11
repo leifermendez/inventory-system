@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {
   faSave,
   faTrashAlt,
@@ -18,6 +18,10 @@ import {ShareService} from "../../share.service";
   styleUrls: ['./section-btn.component.css']
 })
 export class SectionBtnComponent implements OnInit {
+  @ViewChild('btnList') btnList: any;
+  @ViewChild('btnAdd') btnAdd: any;
+  @ViewChild('btnTrash') btnTrash: any;
+  @ViewChild('btnSave') btnSave: any;
   @Input() valid: boolean;
   @Input() trash: boolean;
   @Input() add: boolean;
@@ -30,11 +34,58 @@ export class SectionBtnComponent implements OnInit {
   faTrashAlt = faTrashAlt
   faPlus = faPlus
   faExclamation = faExclamation
+  copilot: any;
 
   constructor(private shared: ShareService) {
   }
 
   ngOnInit(): void {
+    this.startCopilot()
+
+  }
+
+  private startCopilot = () => {
+    this.copilot = false;
+    this.shared.openCopilot('btnList')
+      .then(res => {
+        if (!res && (this.btnList)) {
+          this.copilot = true;
+          setTimeout(() => {
+            this.btnList.show();
+          }, 100)
+
+        }
+      })
+
+    this.shared.openCopilot('btnAdd')
+      .then(res => {
+        if (!res && (this.btnAdd)) {
+          this.copilot = true;
+          setTimeout(() => {
+            this.btnAdd.show();
+          }, 100)
+        }
+      })
+
+    this.shared.openCopilot('btnSave')
+      .then(res => {
+        if (!res && (this.btnSave)) {
+          this.copilot = true;
+          setTimeout(() => {
+            this.btnSave.show();
+          }, 100)
+        }
+      })
+
+    this.shared.openCopilot('btnTrash')
+      .then(res => {
+        if (!res && (this.btnTrash)) {
+          this.copilot = true;
+          setTimeout(() => {
+            this.btnTrash.show();
+          }, 100)
+        }
+      })
   }
 
   delete = () => {
@@ -47,4 +98,16 @@ export class SectionBtnComponent implements OnInit {
   callbackList = (a: any = {}) => this.cbList.emit(a)
 
   callbackSave = (a: any = {}) => this.cbSave.emit(a)
+
+  closeCopilot = (section = null, model: any) => {
+    try {
+      this.shared.saveCopilot(section)
+        .then(() => {
+          model.hide();
+          this.startCopilot()
+        })
+    } catch (e) {
+      return null
+    }
+  }
 }

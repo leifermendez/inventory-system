@@ -90,6 +90,29 @@ export class ProductFormComponent implements OnInit {
     inputMode: CurrencyMaskInputMode.FINANCIAL,
   };
 
+  ngOnInit(): void {
+
+    this.form = this.formBuilder.group({
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      categories: [''],
+      // deposit: ['', Validators.required],
+      // provider: ['', Validators.required],
+      sku: ['', Validators.required],
+      tag: [''],
+      gallery: [''],
+      prices: [''],
+      measures: ['']
+    });
+    this.route.params.subscribe(params => {
+      this.id = (params.id === 'add') ? '' : params.id;
+      if (this.id.length && this.id !== 'add') {
+        this.loadItem();
+      }
+    });
+
+  }
+
   animationCreated(animationItem: AnimationItem): void {
     this.animationItem = animationItem;
     // this.animationItem.stop();
@@ -113,12 +136,10 @@ export class ProductFormComponent implements OnInit {
     event.addedFiles.map(async i => {
       i.base = await this.share.toBase64(i);
     })
-    console.log(event.addedFiles);
     this.files.push(...event.addedFiles);
   }
 
   onRemove(event) {
-    console.log(event);
     this.files.splice(this.files.indexOf(event), 1);
   }
 
@@ -145,34 +166,6 @@ export class ProductFormComponent implements OnInit {
     this.priceTmp = null
   }
 
-
-  ngOnInit(): void {
-    // this.valueInput.nativeElement.focus();
-    // this.parseText()
-    this.form = this.formBuilder.group({
-      name: ['', Validators.required],
-      description: ['', Validators.required],
-      categories: [''],
-      // deposit: ['', Validators.required],
-      // provider: ['', Validators.required],
-      sku: ['', Validators.required],
-      tag: [''],
-      gallery: [''],
-      prices: [''],
-      measures: ['']
-    });
-    this.route.params.subscribe(params => {
-      this.id = (params.id === 'add') ? '' : params.id;
-      if (this.id.length && this.id !== 'add') {
-        this.loadItem();
-      }
-    });
-
-    // this.loadDeposits();
-    // this.loadProviders();
-    // this.form.patchValue({content:'Ready!'})
-
-  }
 
   loadItem = () => {
     this.rest.get(`products/${this.id}`).subscribe(res => {

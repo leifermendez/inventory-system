@@ -23,11 +23,13 @@ export class HeaderComponent implements OnInit {
   public menu: any = [
     {
       name: 'Ayuda',
-      icon: faLifeRing
+      icon: faLifeRing,
+      route: ['/', 'help']
     },
     {
       name: 'Notificaciones',
-      icon: faBell
+      icon: faBell,
+      route: ['/', 'notification']
     }
   ]
 

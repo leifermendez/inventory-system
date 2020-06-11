@@ -38,7 +38,7 @@
 
         <div class="list-menu-header">
           <ul>
-            <li *ngFor="let a of menu">
+            <li [routerLink]="a?.route" *ngFor="let a of menu">
               <div class="icon-list-menu mr-1 ml-1">
                 <fa-icon [icon]="a.icon"></fa-icon>
               </div>

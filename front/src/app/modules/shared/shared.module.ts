@@ -39,6 +39,7 @@ import {FirstValuePipe} from "../../first-value.pipe";
 import {SwipeAngularListModule} from "swipe-angular-list";
 import {TotalPurchasePipe} from "../../total-purchase.pipe";
 import {PaginationModule} from 'ngx-bootstrap/pagination';
+import {RandomAvatarPipe} from "../../random-avatar.pipe";
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import {PaginationModule} from 'ngx-bootstrap/pagination';
     PurchaseFormComponent,
     FirstImagePipe,
     FirstValuePipe,
+    RandomAvatarPipe,
     TotalPurchasePipe
   ],
   imports: [
@@ -92,7 +94,7 @@ import {PaginationModule} from 'ngx-bootstrap/pagination';
     LockedBoxComponent, ProductFormComponent, FirstValuePipe,
     ProviderFormComponent, DepositFormComponent, PurchaseFormComponent,
     SectionBtnComponent, InventoryFormComponent, FirstImagePipe,
-    TotalPurchasePipe,
+    TotalPurchasePipe, RandomAvatarPipe,
     UserFormComponent, ListItemsComponent, ModalUserComponent]
 })
 export class SharedModule {

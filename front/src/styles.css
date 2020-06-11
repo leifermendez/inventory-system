@@ -35,19 +35,40 @@ body {
   font-size: .65rem;
   box-shadow: 0 0 5px rgba(55, 51, 209, 0.56);
 }
+bs-tooltip-container{
+  pointer-events: auto !important;
+}
+.btn-copilot{
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.42);
+  border: 0;
+  border-radius: .25rem;
+  color: white;
+}
+.btn-copilot:hover{
+  transform: scale(1.05);
+}
 
-.customToolTip.bs-tooltip-top .arrow::before{
+.customToolTip.bs-tooltip-top .arrow::before {
   border-top-color: #221ECD !important;
 }
 
-.customToolTip.bs-tooltip-top .arrow::before{
+.customToolTip.bs-tooltip-top .arrow::before {
   border-top-color: #221ECD !important;
 
 }
 
-.customToolTip.bs-tooltip-left .arrow::before{
+.customToolTip.bs-tooltip-left .arrow::before {
   border-left-color: #221ECD !important;
 
+}
+
+.customToolTip.bs-tooltip-bottom .arrow::before {
+  border-bottom-color: #221ECD !important;
+}
+
+.customToolTip.bs-tooltip-right .arrow::before {
+  border-right-color: #221ECD !important;
 }
 
 ::-webkit-input-placeholder { /* Edge */
@@ -189,8 +210,8 @@ Style
 
 input.form-control.ng-invalid,
 .ng-select.ng-invalid, .ng-invalid-red,
-.ng-invalid .ql-container,
-.ng-invalid tag-input-form {
+.ng-invalid > .ql-container,
+.ng-invalid > tag-input-form {
   border: solid 1px transparent !important;
   box-shadow: 2px 1px 0px #ffc0c0 !important;
   border-radius: 1rem !important;
@@ -567,4 +588,18 @@ sw-item-list .left-swipe {
   background-color: #E9E5FD !important;
   transition: all 200ms;
   color: #3634a8;
+}
+
+.overlay-copilot {
+  background: rgba(150, 158, 195, 0.57);
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay-copilot-focus {
+  z-index: 99;
 }

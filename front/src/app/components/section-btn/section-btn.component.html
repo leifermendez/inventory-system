@@ -1,32 +1,111 @@
+<div *ngIf="copilot" class="overlay-copilot"></div>
 <div class="custom-card-style-section p-2 col-12 flex-wrap d-flex">
   <div class="col-12 p-0 text-right tabs">
-    <ng-template #tolTemplate>{{"GENERAL.LIST" |translate}}</ng-template>
-    <ng-template #tolTemplateDelete>{{"GENERAL.DELETE" |translate}}</ng-template>
-    <button type="button" class="btn-round" placement="left"
+
+    <!--*********** TEMPLATE TOOLTIP ZONE ***********---->
+    <ng-template #tolList>{{"GENERAL.LIST" |translate}}</ng-template>
+    <ng-template #tolListCopilot>
+      <div class="text-left p-1">
+        <div>
+          {{'COPILOT.SECTION_BTN.LIST' |translate}}
+        </div>
+        <div class="text-right">
+          <button class="btn-copilot" type="button"
+                  (click)="closeCopilot('btnList',btnList)">
+            {{'COPILOT.OK' | translate}}
+          </button>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template #tolSave>{{"GENERAL.SAVE" |translate}}</ng-template>
+    <ng-template #tolSaveCopilot>
+      <div class="text-left p-1">
+        <div [innerHTML]="'COPILOT.SECTION_BTN.SAVE' |translate">
+        </div>
+        <div class="text-right">
+          <button class="btn-copilot" type="button" (click)="closeCopilot('btnSave',btnSave)">
+            {{'COPILOT.OK' | translate}}
+          </button>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template #tolAdd>{{"GENERAL.ADD" |translate}}</ng-template>
+    <ng-template #tolAddCopilot>
+      <div class="text-left p-1">
+        <div [innerHTML]="'COPILOT.SECTION_BTN.ADD' |translate">
+        </div>
+        <div class="text-right">
+          <button class="btn-copilot" type="button"
+                  (click)="closeCopilot('btnAdd',btnAdd)">
+            {{'COPILOT.OK' | translate}}
+          </button>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template #tolDelete>{{"GENERAL.DELETE" |translate}}</ng-template>
+    <ng-template #tolDeleteCopilot>
+      <div class="text-left p-1">
+        <div [innerHTML]="'COPILOT.SECTION_BTN.TRASH' |translate">
+        </div>
+        <div class="text-right">
+          <button class="btn-copilot" type="button" (click)="closeCopilot('btnTrash',btnTrash)">
+            {{'COPILOT.OK' | translate}}
+          </button>
+        </div>
+      </div>
+    </ng-template>
+
+    <!--*********** END TEMPLATE TOOLTIP ZONE ***********---->
+
+    <button type="button" class="btn-round"
+            [ngClass]="{'pulse overlay-copilot-focus':copilot}"
+            [triggers]="(copilot) ? 'mouseenter:click' : 'hover'"
+            #btnList="bs-tooltip"
+            placement="left"
             (click)="callbackList()"
-            [tooltip]="tolTemplate" containerClass="customToolTip">
+            [tooltipHtml]="(copilot) ? tolListCopilot :tolList" containerClass="customToolTip">
       <fa-icon size="2x" [icon]="faList"></fa-icon>
     </button>
-    <div>
+
+    <div class="overlay-copilot-focus">
       <button class="btn-round mr-3"
               *ngIf="add"
               (click)="callbackAdd()"
-              type="button" placement="left" [tooltip]="tolTemplateDelete"
+              [ngClass]="{'pulse overlay-copilot-focus':copilot}"
+              [triggers]="(copilot) ? 'mouseenter:click' : 'hover'"
+              #btnAdd="bs-tooltip"
+              type="button" placement="left"
+              [tooltipHtml]="(copilot) ? tolAddCopilot  : tolAdd"
               containerClass="customToolTip">
         <fa-icon size="2x" [icon]="faPlus"></fa-icon>
       </button>
+
       <button class="btn-round mr-3"
               *ngIf="trash"
               (click)="delete()"
-              type="button" placement="left" [tooltip]="tolTemplateDelete"
+              [ngClass]="{'pulse overlay-copilot-focus':copilot}"
+              [triggers]="(copilot) ? 'mouseenter:click' : 'hover'"
+              #btnTrash="bs-tooltip"
+              type="button" placement="left"
+              [tooltipHtml]="(copilot) ? tolDeleteCopilot  : tolDelete"
               containerClass="customToolTip">
         <fa-icon size="2x" [icon]="faTrashAlt"></fa-icon>
       </button>
-      <button [disabled]="!valid" (click)="callbackSave()" class="btn-round" placement="left" [tooltip]="tolTemplate"
+
+      <button [disabled]="!valid" (click)="callbackSave()" class="btn-round"
+              [ngClass]="{'pulse overlay-copilot-focus':copilot}"
+              [triggers]="(copilot) ? 'mouseenter:click' : 'hover'"
+              #btnSave="bs-tooltip"
+              placement="bottom"
+              [tooltipHtml]="(copilot) ? tolSaveCopilot  : tolSave"
               containerClass="customToolTip">
         <fa-icon *ngIf="valid" size="2x" [icon]="faSave"></fa-icon>
         <fa-icon class="text-danger" *ngIf="!valid" size="2x" [icon]="faExclamation"></fa-icon>
       </button>
     </div>
+
   </div>
 </div>

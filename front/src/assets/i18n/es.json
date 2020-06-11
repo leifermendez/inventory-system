@@ -7,6 +7,7 @@
     "ERROR_404": "Lo sentimos esta pagina no existe, o estamos trabajando en ella",
     "CURRENCY": "MXN ",
     "CURRENCY_SYMBOL": "$",
+    "GO_HOME": "Volver a inicio",
     "SAVE": "Guardar",
     "LOADING": "Cargando información",
     "LOADING_SINGLE": "Cargando",
@@ -78,7 +79,7 @@
     "EMAIL": "Email de empresa",
     "PHONE": "Teléfono de empresa",
     "DESCRIPTION": "Observación",
-    "MANAGER": "Encargado",
+    "MANAGER": "Persona de contacto",
     "TAG": "Etiquetas",
     "ADD": "Agregar"
   },
@@ -118,6 +119,13 @@
   },
   "COPILOT": {
     "SKIP": "Saltar",
-    "SWIPE_LEFT_LIST_ITEM": "Desliza hacia la izquierda los elementos de la lista, para acceder a más opciones"
+    "OK": "Entendido",
+    "SWIPE_LEFT_LIST_ITEM": "Desliza hacia la izquierda los elementos de la lista, para acceder a más opciones",
+    "SECTION_BTN": {
+      "ADD": "Agregar un nuevo registro",
+      "LIST": "Pudes ver todos los registros guardados haciendo click en el boton de 'Lista'",
+      "TRASH": "Borra facilmente, desde aquí",
+      "SAVE": "¡No olvides guardar! El icono en <span class='badge badge-danger'>rojo</span> indica que falta algun campo requerido."
+    }
   }
 }

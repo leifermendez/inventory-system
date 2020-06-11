@@ -2,6 +2,7 @@ import {EventEmitter, Injectable, Output} from '@angular/core';
 import {Router} from "@angular/router";
 import Swal from 'sweetalert2';
 import {TranslateService} from "@ngx-translate/core";
+import {CookieService} from "ngx-cookie-service";
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class ShareService {
   @Output() limitAccount = new EventEmitter<any>();
 
   constructor(private router: Router,
+              private cookie: CookieService,
               private translate: TranslateService) {
   }
 
@@ -78,6 +80,30 @@ export class ShareService {
     reader.onload = () => resolve(reader.result);
     reader.onerror = error => reject(error);
   });
+
+  public openCopilot = (section = null) => new Promise((resolve, reject) => {
+    try {
+      if (section) {
+        const copilot = (this.cookie.get(section)) ? this.cookie.get(section) : null;
+        if (copilot) {
+          resolve(copilot)
+        } else {
+          resolve(null)
+        }
+      }
+    } catch (e) {
+      reject(null);
+    }
+  })
+
+  public saveCopilot = (section = null) => new Promise((resolve, reject) => {
+    try {
+      this.cookie.set(section, '1', 365, '/')
+      resolve(true)
+    } catch (e) {
+      reject(null);
+    }
+  })
 
   public confirm = () => new Promise((resolve, reject) => {
     this.translate.get("GENERAL").subscribe((res: string) => {

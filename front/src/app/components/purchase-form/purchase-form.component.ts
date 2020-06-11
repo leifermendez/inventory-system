@@ -89,12 +89,15 @@ export class PurchaseFormComponent implements OnInit {
   }
 
   loadProvider = () => {
-    this.rest.get(`purchase/${this.id}`)
-      .subscribe(res => {
-        console.log(res)
-        this.form.patchValue(res)
-        // this.data = this.parseData(res);
-      })
+    if (this.id && (this.id.length)) {
+      this.rest.get(`purchase/${this.id}`)
+        .subscribe(res => {
+          console.log(res)
+          this.form.patchValue(res)
+          // this.data = this.parseData(res);
+        })
+    }
+
   }
 
   loadUser = () => {

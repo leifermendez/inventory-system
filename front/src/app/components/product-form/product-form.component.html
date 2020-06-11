@@ -23,12 +23,8 @@
     <div class="custom-card-style  col-12 mt-3">
       <div class="description-text">
         <quill-editor class="description-card" formControlName="description"
-                      [styles]="{height: '430px'}" [placeholder]="'PRODUCT.DESCRIPTION' | translate"></quill-editor>
-        <!--        <ngx-editor [ngModel]="editorContent"-->
-        <!--                    [contentEditable]="false"-->
-        <!--                    formControlName="content"-->
-        <!--                    (ngModelChange)="editorContentChange($event)">-->
-        <!--        </ngx-editor>-->
+                      [styles]="{height: '430px'}" [placeholder]="'PRODUCT.DESCRIPTION' | translate">
+        </quill-editor>
       </div>
 
     </div>
@@ -69,7 +65,8 @@
     <div class="custom-card-style col-12 mt-2">
       <div class="form-group">
         <label>{{"PRODUCT.SKU" |translate}}</label>
-        <input type="text" formControlName="sku" class="form-control" aria-describedby="emailHelp"
+        <input type="text" formControlName="sku"
+               class="form-control" aria-describedby="emailHelp"
                placeholder=""></div>
     </div>
     <div class="custom-card-style col-12 mt-2">
