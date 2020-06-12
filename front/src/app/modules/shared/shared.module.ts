@@ -41,6 +41,7 @@ import {TotalPurchasePipe} from "../../total-purchase.pipe";
 import {PaginationModule} from 'ngx-bootstrap/pagination';
 import {RandomAvatarPipe} from "../../random-avatar.pipe";
 import {ListAddonsComponent} from "../../components/list-addons/list-addons.component";
+import {CountSearchDataPipe} from "../../count-search-data.pipe";
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import {ListAddonsComponent} from "../../components/list-addons/list-addons.comp
     FirstValuePipe,
     RandomAvatarPipe,
     TotalPurchasePipe,
-    ListAddonsComponent
+    ListAddonsComponent,
+    CountSearchDataPipe
   ],
   imports: [
     CommonModule,
@@ -97,6 +99,7 @@ import {ListAddonsComponent} from "../../components/list-addons/list-addons.comp
     ProviderFormComponent, DepositFormComponent, PurchaseFormComponent,
     SectionBtnComponent, InventoryFormComponent, FirstImagePipe,
     TotalPurchasePipe, RandomAvatarPipe, ListAddonsComponent,
+    CountSearchDataPipe,
     UserFormComponent, ListItemsComponent, ModalUserComponent]
 })
 export class SharedModule {

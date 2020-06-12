@@ -59,7 +59,9 @@ export class ListComponent implements OnInit {
     this.rest.get(q.join(''))
       .subscribe(res => {
         this.viewMore = this.share.nextPage(res);
-        this.data = [...this.data, ...this.share.parseData(res, this.source)];
+        this.data = (!src.length) ?
+          [...this.data, ...this.share.parseData(res, this.source)] :
+          [...this.share.parseData(res, this.source)];
       }, error => {
         (error.status === 401) ? this.cbMode = 'blocked' : null
       })

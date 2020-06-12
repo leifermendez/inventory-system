@@ -37,6 +37,7 @@ import { CopilotComponent } from './components/copilot/copilot.component';
 import {DeviceDetectorModule} from "ngx-device-detector";
 import { ModalUpdateComponent } from './components/modal-update/modal-update.component';
 import { ListAddonsComponent } from './components/list-addons/list-addons.component';
+import { CountSearchDataPipe } from './count-search-data.pipe';
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {

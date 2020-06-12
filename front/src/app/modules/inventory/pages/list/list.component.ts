@@ -27,6 +27,7 @@ export class ListComponent implements OnInit {
   @Input() title: any = false;
   @Input() limit: any = 8;
   public page: number = 1;
+
   constructor(private rest: RestService,
               private router: Router,
               private share: ShareService) {
@@ -61,7 +62,10 @@ export class ListComponent implements OnInit {
     this.rest.get(q.join(''))
       .subscribe(res => {
         this.viewMore = this.share.nextPage(res);
-        this.data = [...this.data, ...this.share.parseData(res, this.source)];
+        this.data = (!src.length) ?
+          [...this.data, ...this.share.parseData(res, this.source)] :
+          [...this.share.parseData(res, this.source)];
+
       }, error => {
         (error.status === 401) ? this.cbMode = 'blocked' : null
       })
@@ -72,7 +76,7 @@ export class ListComponent implements OnInit {
   onSrc = (e) => this.load(e)
 
   paginate = () => {
-    this.page = this.page+1;
+    this.page = this.page + 1;
     this.load();
   }
 }
