@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {
+  faAngleRight,
+  faEllipsisV,
+  faPlug
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-list-addons',
@@ -6,8 +11,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-addons.component.css']
 })
 export class ListAddonsComponent implements OnInit {
+  faPlug = faPlug
+  faEllipsisV = faEllipsisV
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

@@ -1,12 +1,21 @@
 <div class="col-12 row m-0 p-0">
   <ul class="item-list col-12 d-flex">
-    <li class="col-lg-2 pl-0 col-md-3 col-sm-12" *ngFor="let item of [1,1,1,1,1,1,1,1,1]">
+    <li class="col-lg-2 pl-0 col-md-3 col-sm-12" *ngFor="let item of [1]">
       <div class="item-add-on">
-        <div>
-          <img class="cover" src="https://image.flaticon.com/icons/svg/2937/2937015.svg" alt="">
+        <div class="d-flex justify-content-between">
+          <div class="icon-addons">
+            <fa-icon [icon]="faPlug" size="2x"></fa-icon>
+          </div>
+          <div class="p-2">
+            <fa-icon class="text-muted" [icon]="faEllipsisV" size="lg"></fa-icon>
+          </div>
+        </div>
+        <div class="pt-3 pr-1 pb-1 pl-1">
+          <h6><b>Generar reportes PDF y Excel</b></h6>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum necessitatibus quasi voluptates!</p>
         </div>
         <div>
-          <h6><b>Lorem ipsum.</b></h6>
+          <small>Pruebalo gratis 3 días</small>
         </div>
       </div>
     </li>
