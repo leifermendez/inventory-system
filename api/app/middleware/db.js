@@ -105,6 +105,131 @@ module.exports = {
   },
 
   /**
+   * Get with inventory
+   */
+  /**
+   * Get with inventory
+   */
+
+  getLookListPurchases(model, query = {}, tenant = null) {
+    return model
+      .byTenant(tenant)
+      .aggregate([{
+        $match: query,
+      },
+        {
+          $lookup: {
+            from: 'users',
+            let: {idUser: "$customer"},
+            pipeline: [
+              {
+                $match:
+                  {
+                    $expr:
+                      {
+                        $and:
+                          [
+                            {$eq: ["$$idUser", "$_id"]}
+                          ]
+                      }
+                  }
+              }
+            ],
+            as: 'customer'
+          }
+        },
+        {
+          $lookup: {
+            from: 'users',
+            let: {idUser: "$author"},
+            pipeline: [
+              {
+                $match:
+                  {
+                    $expr:
+                      {
+                        $and:
+                          [
+                            {$eq: ["$$idUser", "$_id"]}
+                          ]
+                      }
+                  }
+              }
+            ],
+            as: 'author'
+          }
+        },
+        {$unwind: '$customer'},
+        {$unwind: '$author'},
+        {
+          "$project": {
+            "_id": 1,
+            "customer": 1,
+            "items": 1,
+            "author": 1,
+            "status": 1,
+            "deliveryAddress": 1,
+            "deliveryType": 1,
+            "total": 1,
+            "tag": 1,
+            "controlNumber": 1,
+            "description": 1,
+            "createdAt": 1,
+            "updatedAt": 1,
+          }
+        },
+      ])
+  },
+
+  getLookListProducts(model, query = {}, tenant = null) {
+    return model
+      .byTenant(tenant)
+      .aggregate([{
+        $match: query,
+      },
+        {
+          $lookup: {
+            from: 'inventories',
+            let: {idProduct: "$_id"},
+            pipeline: [
+              {
+                $match:
+                  {
+                    $expr:
+                      {
+                        $and:
+                          [
+                            {$eq: ["$$idProduct", "$product._id"]}
+                          ]
+                      }
+                  }
+              }
+            ],
+            as: 'inventories'
+          }
+        },
+        {
+          "$project": {
+            "_id": 1,
+            "gallery": 1,
+            "name": 1,
+            "prices": 1,
+            "measures": 1,
+            "categories": 1,
+            "tag": 1,
+            "sku": 1,
+            "description": 1,
+            "author": 1,
+            "createdAt": 1,
+            "updatedAt": 1,
+            "qty": {"$sum": "$inventories.qty"}
+          }
+        },
+      ])
+  },
+
+
+  /**
    * Gets item from database by id
    * @param {string} id - item id
    * @param model

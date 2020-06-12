@@ -14,27 +14,30 @@
     </div>
     <div class="d-none w-50 d-sm-block">
       <div class="d-flex justify-content-around section-search col-md-12 col-lg-12 col-sm-12">
-        <div class="input-group src-input">
-          <input type="text" placeholder="Buscar" class="form-control" aria-label="Default"
-                 aria-describedby="inputGroup-sizing-default">
+        <form [formGroup]="form" (submit)="search()"  class="w-100">
+          <div class="input-group src-input">
+            <input type="text" formControlName="q" placeholder="Buscar" class="form-control" aria-label="Default"
+                   aria-describedby="inputGroup-sizing-default">
 
-          <div class="btn-group input-group-prepend" dropdown>
-            <div class="radius-btn">
+            <div class="btn-group input-group-prepend" dropdown>
+              <div class="radius-btn">
                   <span class="input-group-text btn-icon dropdown-toggle input-src-button-group" dropdownToggle
                         id="inputGroup-sizing-default">Todo</span>
-            </div>
+              </div>
 
-            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu menu-options-header"
-                role="menu" aria-labelledby="button-basic">
-              <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
-              <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
-              <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
-              <li class="divider dropdown-divider"></li>
-              <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
-              </li>
-            </ul>
+<!--              <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu menu-options-header"-->
+<!--                  role="menu" aria-labelledby="button-basic">-->
+<!--                <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>-->
+<!--                <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>-->
+<!--                <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>-->
+<!--                <li class="divider dropdown-divider"></li>-->
+<!--                <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>-->
+<!--                </li>-->
+<!--              </ul>-->
+            </div>
           </div>
-        </div>
+        </form>
+
 
         <div class="list-menu-header">
           <ul>

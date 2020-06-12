@@ -32,7 +32,6 @@ export class SideBarComponent implements OnInit {
   faAngleRight = faAngleRight
   faWarehouse = faWarehouse
   faCashRegister = faCashRegister
-  faPlug = faPlug
   public menu: any = [
     {
       name: 'Inicio',
@@ -52,6 +51,7 @@ export class SideBarComponent implements OnInit {
     {
       name: 'Pagos',
       icon: faCashRegister,
+      disable: true,
       route: ['/', 'payments']
     },
     {
@@ -77,6 +77,7 @@ export class SideBarComponent implements OnInit {
     {
       name: 'Complementos',
       icon: faPlug,
+      disable: true,
       route: ['/', 'add-ons']
     }
   ]

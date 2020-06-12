@@ -1,0 +1,262 @@
+<app-header></app-header>
+<app-side-bar></app-side-bar>
+
+<div class="w-100 container-row d-flex">
+
+  <app-list-items
+    [search]="false"
+    [(data)]="data"
+    [showIcon]="false"
+    [customTemplate]="customTemplateSrc"
+    class="col-12 row m-0 pl-2">
+  </app-list-items>
+</div>
+
+
+<!-- ***************** TEMPLATE ************** -->
+<ng-template #customTemplateSrc let-dat='dat'>
+
+  <!-- ************ PURCHASES ************* -->
+  <div class="label-search">{{'SEARCH.PURCHASES.TITLE' | translate}}</div>
+  <ul *ngIf="data?.purchases?.length">
+    <li *ngFor="let inside of data?.purchases">
+
+      <div class="d-flex item-list-single">
+        <!--Blocked 1-->
+        <div class="pl-2 pr-2 pt-1 pb-1 col-3">
+          <div class="d-flex">
+            <div>
+              <small class="text-muted">{{inside?.createdAt | date}}</small>
+              <h6 class="name mr-2">{{inside?.controlNumber}}</h6>
+            </div>
+          </div>
+        </div>
+        <!--Blocked-->
+        <!--Blocked 1-->
+        <div class="pl-2 pr-2 pt-1 pb-1 col-3">
+          <div class="d-flex">
+            <div>
+              <small class="text-muted">
+                <fa-icon [icon]="faPhoneAlt"></fa-icon>
+                {{inside?.customer?.phone}}</small>
+              <h6 class="name mr-2">{{inside?.customer?.name}} {{inside?.customer?.lastName}}</h6>
+            </div>
+          </div>
+        </div>
+        <!--Blocked-->
+        <!--Blocked 1-->
+        <div class="pl-2 pr-2 pt-1 pb-1 col-3">
+          <div class="d-flex">
+            <div>
+              <h6 class="name mr-2">
+                {{'GENERAL.CURRENCY_SYMBOL' |translate}}
+                {{inside?.total | number:'1.2-2'}}
+                {{'GENERAL.CURRENCY' |translate}}
+              </h6>
+            </div>
+          </div>
+        </div>
+        <!--Blocked-->
+        <!--Blocked 1-->
+        <div class="pl-2 pr-2 pt-1 pb-1 col-3">
+          <div class="d-flex justify-content-end ">
+            <div [ngClass]="{
+            'purchase-status-badge-paid':(inside.status === 'paid'),
+            'purchase-status-badge-hold':(inside.status === 'hold'),
+            'purchase-status-badge-process':(inside.status === 'process'),
+            'purchase-status-badge-exceptional':(inside.status === 'exceptional')
+            }">{{inside?.status}}</div>
+          </div>
+        </div>
+
+      </div>
+
+    </li>
+  </ul>
+  <!-- ************ PURCHASES ************* -->
+
+  <!-- ************ PRODUCTS ************* -->
+  <div class="mt-4 label-search">{{'SEARCH.PRODUCTS' | translate}}</div>
+
+  <ul *ngIf="data?.products?.length">
+    <li *ngFor="let inside of data?.products">
+      <div class="pl-2 pr-2 d-block d-sm-none">
+        <span class="badge-tag badge mr-1 " *ngFor="let tag of inside?.tag">
+              {{tag?.name}}
+            </span>
+      </div>
+      <div class="d-flex item-list-single justify-content-between">
+
+        <div class="d-flex">
+          <div class="pl-2 pr-2 pt-1 pb-1">
+            <div class="d-flex">
+              <h6 class="name mr-2">{{inside?.name}}</h6>
+              <span class="badge-tag badge mr-1 d-none d-md-block" *ngFor="let tag of inside?.tag">
+              {{tag?.name}}
+            </span>
+            </div>
+            <div class="d-flex pt-1">
+            <span class="text-muted mt-1">
+              <span class="badge-tag-price badge mr-2" *ngFor="let price of inside?.prices">
+                {{'GENERAL.CURRENCY_SYMBOL' |translate}} {{price?.amount | number:'1.2-2'}} {{'GENERAL.CURRENCY' |translate}}
+              </span>
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="text-right d-none d-md-block">
+          <div>
+            <b class="price-main">{{inside?.manager?.name}} {{inside?.manager?.lastName}}</b>
+          </div>
+          <div class="m-2">
+            <h6 class="m-0 text-hover font-weight-bold" [ngClass]="{
+          'text-danger':(inside?.qty<=0)
+          }">{{inside?.qty}}</h6>
+            <small class="text-muted">{{"INVENTORY.QTY" |translate}}</small>
+          </div>
+        </div>
+      </div>
+
+    </li>
+  </ul>
+  <!-- ************ PRODUCTS ************* -->
+
+  <!-- ************ PROVIDERS ************* -->
+  <div class="mt-4 label-search">{{'SEARCH.PROVIDERS' | translate}}</div>
+  <ul *ngIf="data?.providers?.length">
+    <li *ngFor="let inside of data?.providers">
+      <div class="pl-2 pr-2 d-block d-sm-none">
+        <span class="badge-tag badge mr-1 " *ngFor="let tag of inside?.tag">
+              {{tag?.name}}
+            </span>
+      </div>
+      <div class="d-flex item-list-single justify-content-between">
+
+        <div class="d-flex">
+          <div class="pl-2 pr-2 pt-1 pb-1">
+            <div class="d-flex">
+              <h6 class="name mr-2">{{inside?.name}}</h6>
+              <span class="badge-tag badge mr-1 d-none d-md-block" *ngFor="let tag of inside?.tag">
+              {{tag?.name}}
+            </span>
+            </div>
+            <div class="d-flex pt-1">
+            <span class="text-muted mt-1">
+              <span class="badge-tag-price badge mr-2" *ngFor="let price of inside?.prices">
+                {{'GENERAL.CURRENCY_SYMBOL' |translate}} {{price?.amount | number:'1.2-2'}} {{'GENERAL.CURRENCY' |translate}}
+              </span>
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="text-right d-none d-md-block">
+          <div>
+            <b class="price-main">{{inside?.manager?.name}} {{inside?.manager?.lastName}}</b>
+          </div>
+          <div class="m-2">
+            <h6 class="m-0 text-hover font-weight-bold" [ngClass]="{
+          'text-danger':(inside?.qty<=0)
+          }">{{inside?.qty}}</h6>
+            <small class="text-muted">{{"INVENTORY.QTY" |translate}}</small>
+          </div>
+        </div>
+      </div>
+
+    </li>
+  </ul>
+  <!-- ************ PROVIDERS ************* -->
+
+  <!-- ************ DEPOSITS ************* -->
+  <div class="mt-4 label-search">{{'SEARCH.DEPOSITS' | translate}}</div>
+  <ul *ngIf="data?.deposits?.length">
+    <li *ngFor="let inside of data?.deposits">
+      <div class="pl-2 pr-2 d-block d-sm-none">
+        <span class="badge-tag badge mr-1 " *ngFor="let tag of inside?.tag">
+              {{tag?.name}}
+            </span>
+      </div>
+      <div class="d-flex item-list-single justify-content-between">
+
+        <div class="d-flex">
+          <div class="pl-2 pr-2 pt-1 pb-1">
+            <div class="d-flex">
+              <h6 class="name mr-2">{{inside?.name}}</h6>
+              <span class="badge-tag badge mr-1 d-none d-md-block" *ngFor="let tag of inside?.tag">
+              {{tag?.name}}
+            </span>
+            </div>
+            <div class="d-flex pt-1">
+            <span class="text-muted mt-1">
+              <span class="badge-tag-price badge mr-2" *ngFor="let price of inside?.prices">
+                {{'GENERAL.CURRENCY_SYMBOL' |translate}} {{price?.amount | number:'1.2-2'}} {{'GENERAL.CURRENCY' |translate}}
+              </span>
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="text-right d-none d-md-block">
+          <div>
+            <b class="price-main">{{inside?.manager?.name}} {{inside?.manager?.lastName}}</b>
+          </div>
+          <div class="m-2">
+            <h6 class="m-0 text-hover font-weight-bold" [ngClass]="{
+          'text-danger':(inside?.qty<=0)
+          }">{{inside?.qty}}</h6>
+            <small class="text-muted">{{"INVENTORY.QTY" |translate}}</small>
+          </div>
+        </div>
+      </div>
+
+    </li>
+  </ul>
+  <!-- ************ DEPOSITS ************* -->
+
+  <!-- ************ USER ************* -->
+  <div class="mt-4 label-search">{{'SEARCH.USERS' | translate}}</div>
+  <ul *ngIf="data?.users?.length">
+    <li *ngFor="let inside of data?.users">
+      <div class="pl-2 pr-2 d-block d-sm-none">
+        <span class="badge-tag badge mr-1 " *ngFor="let tag of inside?.tag">
+              {{tag?.name}}
+            </span>
+      </div>
+      <div class="d-flex item-list-single justify-content-between">
+
+        <div class="d-flex">
+
+          <div class="pl-2 pr-2 pt-1 pb-1">
+            <div class="d-flex">
+              <h6 class="name mr-2">{{inside?.name}}</h6>
+              <span class="badge-tag badge mr-1 d-none d-md-block" *ngFor="let tag of inside?.tag">
+              {{tag?.name}}
+            </span>
+            </div>
+            <div class="d-flex pt-1">
+            <span class="text-muted mt-1">
+              <span class="badge-tag-price badge mr-2" *ngFor="let price of inside?.prices">
+                {{'GENERAL.CURRENCY_SYMBOL' |translate}} {{price?.amount | number:'1.2-2'}} {{'GENERAL.CURRENCY' |translate}}
+              </span>
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="text-right d-none d-md-block">
+          <div>
+            <b class="price-main">{{inside?.manager?.name}} {{inside?.manager?.lastName}}</b>
+          </div>
+          <div class="m-2">
+            <h6 class="m-0 text-hover font-weight-bold" [ngClass]="{
+          'text-danger':(inside?.qty<=0)
+          }">{{inside?.qty}}</h6>
+            <small class="text-muted">{{"INVENTORY.QTY" |translate}}</small>
+          </div>
+        </div>
+      </div>
+
+    </li>
+  </ul>
+  <!-- ************ USER ************* -->
+
+
+</ng-template>
+<!-- ***************** FIN TEMPLATE ************** -->

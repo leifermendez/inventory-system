@@ -8,18 +8,20 @@
 
     <div class="menu-list text-center">
       <ul class="pt-4">
-        <li class="pl-1 pr-1 pt-2 pb-1"
-            placement="top"
-            [tooltip]="tolTemplate"  containerClass="customToolTip"
-            [routerLink]="a.route"
-            [delay]="115" *ngFor="let a of menu">
-          <ng-template #tolTemplate>{{a?.name}}</ng-template>
-          <div class="p-2  icon-wrapper">
-            <div class="p-1 sub-wrapper" [routerLinkActive]="['active']">
-              <fa-icon class="icon" [icon]="a.icon"></fa-icon>
+        <ng-container *ngFor="let a of menu">
+          <li *ngIf="!a?.disable" class="pl-1 pr-1 pt-2 pb-1"
+              placement="top"
+              [tooltip]="tolTemplate" containerClass="customToolTip"
+              [routerLink]="a.route"
+              [delay]="115">
+            <ng-template #tolTemplate>{{a?.name}}</ng-template>
+            <div class="p-2  icon-wrapper">
+              <div class="p-1 sub-wrapper" [routerLinkActive]="['active']">
+                <fa-icon class="icon" [icon]="a.icon"></fa-icon>
+              </div>
             </div>
-          </div>
-        </li>
+          </li>
+        </ng-container>
       </ul>
     </div>
   </div>

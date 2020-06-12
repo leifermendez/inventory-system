@@ -11,6 +11,7 @@ import {UserModule} from "./modules/user/user.module";
 import {InventoryModule} from "./modules/inventory/inventory.module";
 import {PurchasesModule} from "./modules/purchases/purchases.module";
 import {AddOnsModule} from "./modules/add-ons/add-ons.module";
+import {SearchModule} from "./modules/search/search.module";
 
 
 const routes: Routes = [
@@ -51,6 +52,11 @@ const routes: Routes = [
   {
     path: 'users',
     loadChildren: () => UserModule,
+    canActivate: [AuthGuardGuard]
+  },
+  {
+    path: 'search',
+    loadChildren: () => SearchModule,
     canActivate: [AuthGuardGuard]
   },
   {

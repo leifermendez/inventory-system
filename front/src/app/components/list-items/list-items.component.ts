@@ -34,9 +34,12 @@ export class ListItemsComponent implements OnInit, AfterViewInit {
   @Output() dataChange = new EventEmitter();
 
   set data(val) {
-    this.dataIn = val;
-    this.dataChange.emit(this.dataIn);
-    this.ngAfterViewInit()
+
+    if (val !== this.dataIn) {
+      this.dataIn = val;
+      this.dataChange.emit(this.dataIn);
+      this.renderList()
+    }
   }
 
   @Input('customTemplate') customTemplate: TemplateRef<any>;
@@ -45,6 +48,8 @@ export class ListItemsComponent implements OnInit, AfterViewInit {
   @ViewChild('defaultCustom') defaultCustom: TemplateRef<any>;
   @Input() title: any = false;
   @Input() mode: any = false;
+  @Input() search: any = true;
+  @Input() showIcon: any = true;
   @Output() cbSrc = new EventEmitter<any>();
   @Output() cbAdd = new EventEmitter<any>();
   @Output() pagination = new EventEmitter<any>();
@@ -60,19 +65,24 @@ export class ListItemsComponent implements OnInit, AfterViewInit {
 
   }
 
-  ngAfterViewInit(): void {
+  renderList = () => {
     setTimeout(() => {
       if (this.customTemplate) {
-        // console.log('1', this.dataIn)
+        console.log('1', this.dataIn)
         const viewCustomTemplate = this.customTemplate.createEmbeddedView({
           dat: this.dataIn
         });
         this.viewContainerCustom.insert(viewCustomTemplate);
       } else {
+
         const viewCustomTemplate = this.defaultCustom.createEmbeddedView(null);
         this.viewContainerCustom.insert(viewCustomTemplate);
       }
     }, 0)
+  }
+
+  ngAfterViewInit(): void {
+
 
   }
 

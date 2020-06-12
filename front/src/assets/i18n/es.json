@@ -128,6 +128,17 @@
       "SAVE": "¡No olvides guardar! El icono en <span class='badge badge-danger'>rojo</span> indica que falta algun campo requerido."
     }
   },
+  "SEARCH": {
+    "USERS": "Usuarios",
+    "PRODUCTS": "Productos",
+    "DEPOSITS": "Depositos",
+    "PURCHASES": {
+      "TITLE": "Pedidos",
+      "DATE": "Fecha",
+      "CONTROL": "Número de pedido"
+    },
+    "PROVIDERS": "Proveedores"
+  },
   "UPGRADE": {
     "TITLE": "Actualización disponible",
     "UPGRADE_OK": "Actualizar",

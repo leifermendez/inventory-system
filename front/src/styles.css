@@ -629,3 +629,31 @@ sw-item-list .left-swipe {
     box-shadow: 0 0 0 20px rgba(34, 30, 205, 0)
   }
 }
+.purchase-status-badge-paid{
+  background-color: rgba(44, 164, 46, 0.84);
+  padding: .5rem;
+  border-radius: 1rem;
+  color: white;
+}
+
+.purchase-status-badge-hold{
+  background-color: rgba(251, 175, 148, 0.91);
+  padding: .5rem;
+  border-radius: 1rem;
+  color: white;
+}
+
+.purchase-status-badge-process{
+  background-color: rgba(145, 140, 231, 0.9);
+  padding: .5rem;
+  border-radius: 1rem;
+  color: white;
+}
+
+
+.purchase-status-badge-exceptional{
+  background-color: rgba(1, 177, 255, 0.9);
+  padding: .5rem;
+  border-radius: 1rem;
+  color: white;
+}

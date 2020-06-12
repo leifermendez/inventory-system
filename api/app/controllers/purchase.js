@@ -29,82 +29,6 @@ const getAllItemsFromDB = async () => {
   })
 }
 
-/**
- * Get with inventory
- */
-/**
- * Get with inventory
- */
-
-const getLookList = (query = {}, tenant = null) => {
-  return model
-    .byTenant(tenant)
-    .aggregate([{
-      $match: query,
-    },
-      {
-        $lookup: {
-          from: 'users',
-          let: {idUser: "$customer"},
-          pipeline: [
-            {
-              $match:
-                {
-                  $expr:
-                    {
-                      $and:
-                        [
-                          {$eq: ["$$idUser", "$_id"]}
-                        ]
-                    }
-                }
-            }
-          ],
-          as: 'customer'
-        }
-      },
-      {
-        $lookup: {
-          from: 'users',
-          let: {idUser: "$author"},
-          pipeline: [
-            {
-              $match:
-                {
-                  $expr:
-                    {
-                      $and:
-                        [
-                          {$eq: ["$$idUser", "$_id"]}
-                        ]
-                    }
-                }
-            }
-          ],
-          as: 'author'
-        }
-      },
-      {$unwind: '$customer'},
-      {$unwind: '$author'},
-      {
-        "$project": {
-          "_id": 1,
-          "customer": 1,
-          "items": 1,
-          "author": 1,
-          "status": 1,
-          "deliveryAddress": 1,
-          "deliveryType": 1,
-          "total": 1,
-          "tag": 1,
-          "controlNumber": 1,
-          "description": 1,
-          "createdAt": 1,
-          "updatedAt": 1,
-        }
-      },
-    ])
-}
 
 /********************
  * Public functions *
@@ -133,7 +57,7 @@ exports.getItems = async (req, res) => {
   try {
     const tenant = req.clientAccount;
     const query = await db.checkQueryString(req.query)
-    const data = getLookList(query, tenant)
+    const data = db.getLookListPurchases(model, query, tenant)
     res.status(200).json(await db.getItemsAggregate(req, model, data, tenant))
   } catch (error) {
     utils.handleError(res, error)
@@ -150,7 +74,7 @@ exports.getItem = async (req, res) => {
     const tenant = req.clientAccount;
     req = matchedData(req)
     const id = await utils.isIDGood(req.id, true)
-    const data = await getLookList({_id: id}, tenant).exec();
+    const data = await db.getLookListPurchases(model, {_id: id}, tenant).exec();
     res.status(200).json(data.find(a => true))
   } catch (error) {
     utils.handleError(res, error)

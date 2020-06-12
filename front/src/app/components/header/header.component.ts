@@ -4,6 +4,8 @@ import {faAngleRight} from '@fortawesome/free-solid-svg-icons';
 import {faTired} from '@fortawesome/free-solid-svg-icons';
 import {BsDropdownConfig} from "ngx-bootstrap/dropdown";
 import {ShareService} from "../../share.service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -19,7 +21,7 @@ export class HeaderComponent implements OnInit {
   faLifeRing = faLifeRing
   faAngleRight = faAngleRight
   faBell = faBell
-
+  public form: FormGroup;
   public menu: any = [
     {
       name: 'Ayuda',
@@ -33,10 +35,16 @@ export class HeaderComponent implements OnInit {
     }
   ]
 
-  constructor(private share: ShareService) {
+  constructor(private share: ShareService,
+              private router: Router,
+              private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      q: ['']
+    });
+
     this.share.limitAccount.subscribe(res => {
       if (res) {
         this.limitAccount = res;
@@ -44,4 +52,8 @@ export class HeaderComponent implements OnInit {
     })
   }
 
+  search = () => {
+    this.router.navigate(['/', 'search'], {queryParams: this.form.value})
+    console.log(this.form.value)
+  }
 }

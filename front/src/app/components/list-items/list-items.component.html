@@ -1,5 +1,5 @@
 <div class="items w-100">
-  <div class="header d-flex justify-content-between">
+  <div *ngIf="search" class="header d-flex justify-content-between">
     <div>
       <div *ngIf="title" class="title">
         {{title}}
@@ -25,7 +25,7 @@
   </ng-template>
   <!--- END TEMPLATE ---->
 
-  <div *ngIf="!data?.length">
+  <div *ngIf="!data?.length  && (showIcon)">
     <div class="text-center" *ngIf="mode === 'working'">
       <app-working-box></app-working-box>
     </div>
