@@ -77,7 +77,7 @@ export class SideBarComponent implements OnInit {
     {
       name: 'Complementos',
       icon: faPlug,
-      disable: true,
+      // disable: true,
       route: ['/', 'add-ons']
     }
   ]
