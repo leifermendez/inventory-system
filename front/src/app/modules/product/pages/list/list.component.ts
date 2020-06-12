@@ -59,7 +59,7 @@ export class ListComponent implements OnInit {
     this.rest.get(q.join(''))
       .subscribe(res => {
         this.viewMore = this.share.nextPage(res);
-        this.data = this.share.parseData(res, this.source);
+        this.data = [...this.data, ...this.share.parseData(res, this.source)];
       }, error => {
         (error.status === 401) ? this.cbMode = 'blocked' : null
       })
@@ -70,7 +70,7 @@ export class ListComponent implements OnInit {
   onSrc = (e) => this.load(e);
 
   paginate = () => {
-    this.page = this.page+1;
+    this.page = this.page + 1;
     this.load();
   }
 

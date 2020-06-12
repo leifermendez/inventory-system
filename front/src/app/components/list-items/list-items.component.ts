@@ -24,7 +24,7 @@ import {RestService} from "../../rest.service";
 export class ListItemsComponent implements OnInit, AfterViewInit {
   faArrowLeft = faArrowLeft;
   faArrowRight = faArrowRight;
-  dataIn = [];
+  dataIn: any = [];
 
   @Input()
   get data() {
@@ -34,12 +34,10 @@ export class ListItemsComponent implements OnInit, AfterViewInit {
   @Output() dataChange = new EventEmitter();
 
   set data(val) {
-
-    if (val !== this.dataIn) {
-      this.dataIn = val;
-      this.dataChange.emit(this.dataIn);
-      this.renderList()
-    }
+    console.log(val)
+    this.dataIn = val;
+    this.dataChange.emit(this.dataIn);
+    this.ngAfterViewInit()
   }
 
   @Input('customTemplate') customTemplate: TemplateRef<any>;
@@ -65,24 +63,14 @@ export class ListItemsComponent implements OnInit, AfterViewInit {
 
   }
 
-  renderList = () => {
-    setTimeout(() => {
-      if (this.customTemplate) {
-        console.log('1', this.dataIn)
-        const viewCustomTemplate = this.customTemplate.createEmbeddedView({
-          dat: this.dataIn
-        });
-        this.viewContainerCustom.insert(viewCustomTemplate);
-      } else {
-
-        const viewCustomTemplate = this.defaultCustom.createEmbeddedView(null);
-        this.viewContainerCustom.insert(viewCustomTemplate);
-      }
-    }, 0)
-  }
-
   ngAfterViewInit(): void {
-
+    setTimeout(() => {
+      this.viewContainerCustom.clear();
+      const viewCustomTemplate = this.customTemplate.createEmbeddedView({
+        dat: this.dataIn
+      });
+      this.viewContainerCustom.insert(viewCustomTemplate);
+    }, 0)
 
   }
 

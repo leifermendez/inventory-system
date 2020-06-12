@@ -37,13 +37,17 @@ export class ShareService {
   }
 
   public parseData = (data: any, source: string = '') => {
-    const tmp = [];
-    data.docs.map(a => tmp.push({
-      ...a, ...{
-        router: ['/', source, a._id]
-      }
-    }));
-    return tmp;
+    try {
+      const tmp = [];
+      data.docs.map(a => tmp.push({
+        ...a, ...{
+          router: ['/', source, a._id]
+        }
+      }));
+      return tmp;
+    } catch (e) {
+      return null;
+    }
   }
 
   public goTo = (source: string = '') => this.router.navigate(['/', source, 'add'])
@@ -135,7 +139,7 @@ export class ShareService {
 
   })
 
-  public openUpdateModal = (data:any = {}) => {
+  public openUpdateModal = (data: any = {}) => {
     const initialState = {
       section: data
     };
