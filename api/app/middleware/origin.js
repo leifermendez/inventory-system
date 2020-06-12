@@ -28,7 +28,6 @@ exports.checkDomain = async (req, res, next) => {
     const rawDomain = parseDomain(result);
     const clean = psl.parse(rawDomain);
     req.clientAccount = clean.subdomain;
-    console.log('USER: ---> ', req.clientAccount)
     next();
   } catch (e) {
     req.clientAccount = null;
@@ -38,20 +37,5 @@ exports.checkDomain = async (req, res, next) => {
 
 
 exports.checkTenant = async (req, res, next) => {
-  try {
-
-    global.getParentConnection(req)
-      .then(db => {
-        if (db) {
-          req.parentAccount = db;
-          next()
-        } else {
-          handleErrorParent(res, 'NOT_ACTIVE_ACCOUNT', 406)
-        }
-      }).catch(error => {
-      handleErrorParent(res, 'NOT_ACTIVE_ACCOUNT', 406)
-    })
-  } catch (e) {
-    handleErrorParent(res, 'ERROR_CONNECTION_PARENT', 400)
-  }
+  next();
 }
