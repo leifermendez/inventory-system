@@ -11,7 +11,8 @@ const ProductsSchema = new mongoose.Schema(
     },
     prices: {
       type: Object,
-      required: true
+      required: true,
+      default: []
     },
     author: {
       type: mongoose.Types.ObjectId,

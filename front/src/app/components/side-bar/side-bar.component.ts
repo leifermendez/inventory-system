@@ -11,6 +11,7 @@ import {
   faTruck,
   faUsers,
   faPlug,
+  faTruckPickup,
   faWarehouse
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -39,6 +40,7 @@ export class SideBarComponent implements OnInit {
   faAngleRight = faAngleRight
   faWarehouse = faWarehouse
   faCashRegister = faCashRegister
+  faTruckPickup = faTruckPickup
   public menu: any = [
     {
       name: 'Inicio',
@@ -73,12 +75,13 @@ export class SideBarComponent implements OnInit {
     },
     {
       name: 'Depositos',
+      // disable: true,
       icon: faWarehouse,
       route: ['/', 'deposits']
     },
     {
       name: 'Proveedores',
-      icon: faIndustry,
+      icon: faTruckPickup,
       route: ['/', 'providers']
     },
     {

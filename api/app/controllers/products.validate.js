@@ -13,9 +13,7 @@ exports.createItem = [
     .withMessage('IS_EMPTY')
     .trim(),
   check('prices')
-    .exists()
-    .not()
-    .isEmpty(),
+    .exists(),
   check('measures')
     .exists(),
   check('categories')
