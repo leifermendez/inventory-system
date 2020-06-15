@@ -1,18 +1,24 @@
-<div>
-  <div class="text-center">
-    <div class="d-flex justify-content-center p-3">
-      <ng-lottie
-        class="margin-auto"
-        width="230px"
-        [options]="options" (animationCreated)="animationCreated($event)"></ng-lottie>
+<div class="d-flex justify-content-center flex-column align-items-center">
+  <div class="text-center w-100">
+    <h6 class="font-weight-bold p-2">
+      {{'GENERAL.BETA_TITLE'| translate}}
+    </h6>
+  </div>
+  <div class="p-2">
+    <ng-lottie
+      class="margin-auto"
+      height="300px"
+      [options]="options">
+    </ng-lottie>
+  </div>
+  <div class="p-2 text-content">
+    <hr>
+    <p [innerHTML]="'GENERAL.NOTICE_BETA' | translate"></p>
+    <small class="text-muted">{{'GENERAL.SUB_NOTICE_BETA' | translate}}</small>
+    <div class="text-center pt-3">
+      <button (click)="bsModalRef.hide()" type="button" class="btn btn-primary btn-radius">
+        {{'GENERAL.ACCEPT' | translate}}
+      </button>
     </div>
   </div>
-  <div>
-    <p class="pr-4 pl-4 pb-4 pt-2" [innerHTML]="'GENERAL.NOTICE_BETA' | translate">
-    </p>
-  </div>
-  <div class="text-center">
-    <button class="btn btn-primary">Close</button>
-  </div>
-
 </div>

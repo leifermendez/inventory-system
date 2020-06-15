@@ -4,3 +4,6 @@
   border-radius: 8rem;
   object-fit: cover;
 }
+.text-content {
+  font-size: .8rem;
+}

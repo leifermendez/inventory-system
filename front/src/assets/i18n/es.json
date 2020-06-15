@@ -28,7 +28,14 @@
     "ARE_YOU_SURE_SENTENCE": "Los cambios no pueden revertirse",
     "OK": "OK",
     "ANY_ISSUE": "¿Algun problema? Contactanos",
-    "NOTICE_BETA": "Actualmente estás participando en versión Beta, sin costo alguno te notificaremos acabo el periodo de prueba."
+    "BETA_TITLE": "Versión Beta",
+    "NOTICE_BETA": "Actualmente estás participando en una versión de prueba sin costo. Te notificaremos cuando acabe el periodo de gracia.",
+    "SUB_NOTICE_BETA": "Gracias por participar",
+    "ACCEPT": "Entendido"
+  },
+  "WIZARD": {
+    "TITLE": "Configuración rápida",
+    "CONTENT": "Nuestro asistente te guiará para la configuración rápida de tu panel. Solo tomará 1 minuto"
   },
   "HOME": {
   },

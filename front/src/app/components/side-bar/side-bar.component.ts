@@ -81,13 +81,12 @@ export class SideBarComponent implements OnInit {
     },
     {
       name: 'Proveedores',
-      icon: faTruckPickup,
+      icon: faIndustry,
       route: ['/', 'providers']
     },
     {
       name: 'Complementos',
       icon: faPlug,
-      disable: true,
       route: ['/', 'add-ons']
     }
   ]

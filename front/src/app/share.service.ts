@@ -6,6 +6,7 @@ import {CookieService} from "ngx-cookie-service";
 import {ModalUserComponent} from "./components/modal-user/modal-user.component";
 import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
 import {ModalUpdateComponent} from "./components/modal-update/modal-update.component";
+import {ModalWizardComponent} from "./components/modal-wizard/modal-wizard.component";
 
 @Injectable({
   providedIn: 'root'
@@ -148,6 +149,19 @@ export class ShareService {
       Object.assign({initialState}, {
         class: 'modal-light-upgrade',
         ignoreBackdropClick: true
+      })
+    );
+  }
+
+  public openWizard = (data: any = {}) => {
+    const initialState = {
+      section: data
+    };
+    this.bsModalRef = this.modalService.show(
+      ModalWizardComponent,
+      Object.assign({initialState}, {
+        class: 'modal-profile-small',
+        ignoreBackdropClick: false
       })
     );
   }

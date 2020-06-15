@@ -39,6 +39,7 @@ import { ModalUpdateComponent } from './components/modal-update/modal-update.com
 import { ListAddonsComponent } from './components/list-addons/list-addons.component';
 import { CountSearchDataPipe } from './count-search-data.pipe';
 import { ModalProfileComponent } from './components/modal-profile/modal-profile.component';
+import { ModalWizardComponent } from './components/modal-wizard/modal-wizard.component';
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
@@ -70,6 +71,7 @@ export function playerFactory() {
     CopilotComponent,
     ModalUpdateComponent,
     ModalProfileComponent,
+    ModalWizardComponent,
      ],
   imports: [
     BrowserModule,

@@ -1,16 +1,16 @@
 import {Component, NgZone, OnInit} from '@angular/core';
-import {AnimationItem} from "lottie-web";
 import {AnimationOptions} from "ngx-lottie";
+import {AnimationItem} from "lottie-web";
 import {BsModalRef} from "ngx-bootstrap/modal";
 
 @Component({
-  selector: 'app-modal-profile',
-  templateUrl: './modal-profile.component.html',
-  styleUrls: ['./modal-profile.component.css']
+  selector: 'app-modal-wizard',
+  templateUrl: './modal-wizard.component.html',
+  styleUrls: ['./modal-wizard.component.css']
 })
-export class ModalProfileComponent implements OnInit {
+export class ModalWizardComponent implements OnInit {
   options: AnimationOptions = {
-    path: '/assets/images/testers.json',
+    path: '/assets/images/wizard.json',
   };
   private animationItem: AnimationItem;
 

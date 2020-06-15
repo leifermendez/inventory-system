@@ -90,7 +90,13 @@ bs-tooltip-container{
 .btn-primary {
   background-color: #221ECD !important;
 }
-
+.btn-primary:hover{
+  transform: scale(1.1);
+  -webkit-transition: all 200ms;
+  -moz-transition: all 200ms;
+  -o-transition: all 200ms;
+  transition: all 200ms;
+}
 .detail-invoice .nav-tabs {
   border-bottom: solid 1px #f2f3fd;
   padding-bottom: .75rem;
@@ -338,6 +344,7 @@ tag-input-form input {
 .modal-light-plan {
   max-width: 700px;
 }
+
 
 .modal-profile-small{
   max-width: 500px;
