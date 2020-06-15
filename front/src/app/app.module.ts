@@ -38,6 +38,7 @@ import {DeviceDetectorModule} from "ngx-device-detector";
 import { ModalUpdateComponent } from './components/modal-update/modal-update.component';
 import { ListAddonsComponent } from './components/list-addons/list-addons.component';
 import { CountSearchDataPipe } from './count-search-data.pipe';
+import { ModalProfileComponent } from './components/modal-profile/modal-profile.component';
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
@@ -68,6 +69,7 @@ export function playerFactory() {
     ModalProductComponent,
     CopilotComponent,
     ModalUpdateComponent,
+    ModalProfileComponent,
      ],
   imports: [
     BrowserModule,

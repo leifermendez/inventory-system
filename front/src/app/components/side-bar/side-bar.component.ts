@@ -17,6 +17,9 @@ import {
 import {AuthService} from "../../auth.service";
 import {Router} from "@angular/router";
 import {ShareService} from "../../share.service";
+import {ModalImageComponent} from "../modal-image/modal-image.component";
+import {ModalProfileComponent} from "../modal-profile/modal-profile.component";
+import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
 
 @Component({
   selector: 'app-side-bar',
@@ -25,6 +28,7 @@ import {ShareService} from "../../share.service";
 })
 export class SideBarComponent implements OnInit {
   public logo: null;
+  bsModalRef: BsModalRef;
   name: any;
   faCrown = faCrown
   faChartPie = faChartPie
@@ -85,7 +89,8 @@ export class SideBarComponent implements OnInit {
     }
   ]
 
-  constructor(public auth: AuthService, private router: Router, private share: ShareService) {
+  constructor(public auth: AuthService, private router: Router, private share: ShareService,
+              private modalService: BsModalService) {
   }
 
   ngOnInit(): void {
@@ -93,6 +98,21 @@ export class SideBarComponent implements OnInit {
     this.logo = settings.logo;
     this.name = settings.name;
   }
+
+  open(data: any = null) {
+    const initialState = {
+      section: data
+    };
+
+    this.bsModalRef = this.modalService.show(
+      ModalProfileComponent,
+      Object.assign({initialState}, {
+        class: 'modal-profile-small',
+        ignoreBackdropClick: false
+      })
+    );
+  }
+
 
   logOut = () => {
     this.auth.logout().then(() => {

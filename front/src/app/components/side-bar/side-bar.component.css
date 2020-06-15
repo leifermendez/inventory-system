@@ -87,6 +87,10 @@
   object-fit: cover;
 }
 
+.footer .wrapper-avatar{
+  cursor: pointer;
+}
+
 .footer .wrapper-avatar:before {
   content: "";
   position: absolute;
