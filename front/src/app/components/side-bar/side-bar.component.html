@@ -2,7 +2,8 @@
   <div>
     <div [routerLink]="['/']">
       <div class="logo">
-        <fa-icon [icon]="faCrown" [style.color]="'orange'" size="lg"></fa-icon>
+        <fa-icon *ngIf="!logo" [icon]="faCrown" [style.color]="'orange'" size="lg"></fa-icon>
+        <span><img class="w-100" [src]="logo" *ngIf="logo" [alt]="name"></span>
       </div>
     </div>
 

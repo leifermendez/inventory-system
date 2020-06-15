@@ -35,7 +35,7 @@ const UserSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ['customer', 'admin', 'manager','user','seller'],
+      enum: ['customer', 'admin', 'manager', 'user', 'seller'],
       default: 'customer'
     },
     verification: {
@@ -66,6 +66,15 @@ const UserSchema = new mongoose.Schema(
       type: Number,
       default: 0,
       select: false
+    },
+    settings: {
+      type: Object,
+      default: {
+        currency: null,
+        name: null,
+        logo: null
+      },
+      select: true
     },
     blockExpires: {
       type: Date,

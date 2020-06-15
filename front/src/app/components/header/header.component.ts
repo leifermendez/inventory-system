@@ -6,6 +6,7 @@ import {BsDropdownConfig} from "ngx-bootstrap/dropdown";
 import {ShareService} from "../../share.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import set = Reflect.set;
 
 @Component({
   selector: 'app-header',
@@ -16,6 +17,7 @@ import {Router} from "@angular/router";
 export class HeaderComponent implements OnInit {
   @Input() label: string;
   @Input() history: any = [];
+  public title: null;
   public limitAccount: any = null;
   faTired = faTired
   faLifeRing = faLifeRing
@@ -41,6 +43,8 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const {settings} = this.share.getUserInfo();
+    this.title = settings.name;
     this.form = this.formBuilder.group({
       q: ['']
     });

@@ -151,4 +151,12 @@ export class ShareService {
       })
     );
   }
+
+  public getUserInfo = () => {
+    try {
+      return JSON.parse(this.cookie.get('user'))
+    } catch (e) {
+      return null
+    }
+  }
 }

@@ -48,7 +48,8 @@ const setUserInfo = (req) => {
     name: req.name,
     email: req.email,
     role: req.role,
-    verified: req.verified
+    verified: req.verified,
+    settings: req.settings
   }
   // Adds verification for testing purposes
   if (process.env.NODE_ENV !== 'production') {
@@ -565,11 +566,12 @@ exports.getRefreshToken = async (req, res) => {
     userId = await utils.isIDGood(userId)
     const user = await findUserById(userId, tenant)
     const token = await saveUserAccessAndReturnToken(req, user)
+
     // Removes user info from response
     if (req.parentAccount) {
       token.parentAccount = req.parentAccount;
     }
-    delete token.user
+    // delete token.user
     res.status(200).json(token)
   } catch (error) {
     utils.handleError(res, error)

@@ -16,6 +16,7 @@ import {
 
 import {AuthService} from "../../auth.service";
 import {Router} from "@angular/router";
+import {ShareService} from "../../share.service";
 
 @Component({
   selector: 'app-side-bar',
@@ -23,6 +24,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./side-bar.component.css']
 })
 export class SideBarComponent implements OnInit {
+  public logo: null;
+  name: any;
   faCrown = faCrown
   faChartPie = faChartPie
   faCartPlus = faCartPlus
@@ -82,10 +85,13 @@ export class SideBarComponent implements OnInit {
     }
   ]
 
-  constructor(public auth: AuthService, private router: Router) {
+  constructor(public auth: AuthService, private router: Router, private share: ShareService) {
   }
 
   ngOnInit(): void {
+    const {settings} = this.share.getUserInfo();
+    this.logo = settings.logo;
+    this.name = settings.name;
   }
 
   logOut = () => {
@@ -93,4 +99,5 @@ export class SideBarComponent implements OnInit {
       this.router.navigate(['/', 'oauth'])
     })
   }
+
 }
