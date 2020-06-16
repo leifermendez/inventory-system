@@ -1,6 +1,6 @@
 <div class="col-12 row m-0 p-0">
   <ul class="item-list col-12 d-flex">
-    <li class="col-lg-2 pl-0 col-md-3 col-sm-12" *ngFor="let item of [1]">
+    <li class="col-lg-2 pl-0 col-md-3 col-sm-12" (click)="open(item)" *ngFor="let item of [1]">
       <div class="item-add-on">
         <div class="d-flex justify-content-between">
           <div class="icon-addons">

@@ -9,6 +9,11 @@ const SettingsSchema = new mongoose.Schema(
       required: false,
       default: null
     },
+    currencySymbol: {
+      type: String,
+      required: false,
+      default: null
+    },
     currency: {
       type: String,
       required: false,

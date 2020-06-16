@@ -41,7 +41,6 @@
       <form class="form-product" [formGroup]="form" (ngSubmit)="update()">
 
         <div class="form-group">
-
           <label>{{'WIZARD.FORM.COMPANY' |translate}}</label>
           <input type="text" class="form-control"
                  placeholder="LeangaSoftware" formControlName="name">
@@ -51,6 +50,12 @@
           <label>{{'WIZARD.FORM.CURRENCY' |translate}}</label>
           <input type="text" class="form-control" formControlName="currency" placeholder="EUR">
           <small class="form-text text-muted">{{'WIZARD.FORM.CURRENCY_PLACEHOLDER' | translate}}</small>
+        </div>
+
+        <div class="form-group">
+          <label>{{'WIZARD.FORM.CURRENCY_SYMBOL' |translate}}</label>
+          <input type="text" class="form-control" formControlName="currencySymbol" placeholder="$">
+          <small class="form-text text-muted">{{'WIZARD.FORM.CURRENCY_SYMBOL_PLACEHOLDER' | translate}}</small>
         </div>
 
         <div class="text-center mt-4 mb-2">

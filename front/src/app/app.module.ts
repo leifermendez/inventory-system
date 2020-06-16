@@ -41,6 +41,7 @@ import { CountSearchDataPipe } from './count-search-data.pipe';
 import { ModalProfileComponent } from './components/modal-profile/modal-profile.component';
 import { ModalWizardComponent } from './components/modal-wizard/modal-wizard.component';
 import {FilePickerModule} from "ngx-awesome-uploader";
+import { ModalViewAddComponent } from './components/modal-view-add/modal-view-add.component';
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
@@ -73,6 +74,7 @@ export function playerFactory() {
     ModalUpdateComponent,
     ModalProfileComponent,
     ModalWizardComponent,
+    ModalViewAddComponent,
      ],
   imports: [
     BrowserModule,

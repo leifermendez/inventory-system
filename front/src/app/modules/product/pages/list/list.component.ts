@@ -15,6 +15,8 @@ export class ListComponent implements OnInit {
   @Input() limit: any = 8;
   @Output() cbClick = new EventEmitter<any>();
   public cbMode: any = null;
+  public currency: any = null;
+  public currencySymbol: any = null;
 
   constructor(private rest: RestService,
               private share: ShareService,
@@ -36,6 +38,9 @@ export class ListComponent implements OnInit {
   ]
 
   ngOnInit(): void {
+    const {currency, currencySymbol} = this.share.getSettings();
+    this.currencySymbol = currencySymbol;
+    this.currency = currency
     this.load()
   }
 

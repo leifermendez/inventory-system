@@ -78,9 +78,9 @@
           <div class="text-right pt-3 d-none d-md-block" *ngIf="total">
             <small class="text-muted font-weight-bold">{{'PURCHASE.TOTAL' |translate}}</small>
             <h5 class="m-0">
-              <b>{{'GENERAL.CURRENCY_SYMBOL' |translate}}
+              <b>{{currencySymbol}}
                 {{total |number:'1.2-2'}}
-                {{'GENERAL.CURRENCY' |translate}}
+                {{currency}}
               </b>
             </h5>
           </div>
@@ -135,14 +135,14 @@
           <div class="mb-1 d-none d-md-block ">
             <small class="text-muted text-weight-bold p-1 badge badge-prices">
               <span>{{item?.qty}}x</span>
-              {{'GENERAL.CURRENCY_SYMBOL' |translate}}
+              {{currencySymbol}}
               {{item?.prices | firstValue:'amount' |number:'1.2-2'}}
-              {{'GENERAL.CURRENCY' |translate}}
+              {{currency}}
             </small>
           </div>
-          <b class="price-amount">{{'GENERAL.CURRENCY_SYMBOL' |translate}}
+          <b class="price-amount">{{currencySymbol}}
             {{parseNumber(item?.prices | firstValue:'amount') * item?.qty |number:'1.2-2'}}
-            {{'GENERAL.CURRENCY' |translate}}</b>
+            {{currency}}</b>
         </div>
         <button type="button"
                 class="btn btn-default btn-round btn-default-trash d-none d-md-block"

@@ -18,7 +18,7 @@
       <div>
            <span class="text-muted mt-1">
               <span class="badge-tag-price badge mr-2" *ngFor="let price of select?.prices">
-                {{'GENERAL.CURRENCY_SYMBOL' |translate}} {{price?.amount | number:'1.2-2'}} {{'GENERAL.CURRENCY' |translate}}
+                {{currencySymbol}} {{price?.amount | number:'1.2-2'}} {{currency}}
               </span>
             </span>
       </div>
@@ -58,16 +58,16 @@
                          (change)="selectPrice($event)"
                          placeholder="">
                 <ng-template ng-label-tmp let-item="item">
-                  {{'GENERAL.CURRENCY_SYMBOL' |translate}}
+                  {{currencySymbol}}
                   {{item?.amount |  number:'1.2-2'}}
-                  {{'GENERAL.CURRENCY' |translate}}
+                  {{currency}}
                 </ng-template>
 
 
                 <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
-                  {{'GENERAL.CURRENCY_SYMBOL' |translate}}
+                  {{currencySymbol}}
                   {{item?.amount |  number:'1.2-2'}}
-                  {{'GENERAL.CURRENCY' |translate}}
+                  {{currency}}
                 </ng-template>
 
               </ng-select>

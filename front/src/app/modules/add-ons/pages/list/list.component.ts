@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AnimationOptions} from "ngx-lottie";
 import {AnimationItem} from "lottie-web";
+import {ModalViewAddComponent} from "../../../../components/modal-view-add/modal-view-add.component";
+import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
 
 @Component({
   selector: 'app-list',
@@ -8,7 +10,8 @@ import {AnimationItem} from "lottie-web";
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  public source = 'deposits';
+  public source = '';
+  bsModalRef: BsModalRef;
   public history: any = [
     {
       name: 'Complementos'
@@ -19,9 +22,12 @@ export class ListComponent implements OnInit {
     path: '/assets/images/add-ons.json',
   };
   private animationItem: AnimationItem;
-  constructor() { }
+
+  constructor(private modalService: BsModalService) {
+  }
 
   ngOnInit(): void {
   }
+
 
 }

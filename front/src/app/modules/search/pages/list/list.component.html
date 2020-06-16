@@ -51,9 +51,9 @@
             <div class="d-flex">
               <div>
                 <h6 class="name mr-2">
-                  {{'GENERAL.CURRENCY_SYMBOL' |translate}}
+                  {{currencySymbol}}
                   {{inside?.total | number:'1.2-2'}}
-                  {{'GENERAL.CURRENCY' |translate}}
+                  {{currency}}
                 </h6>
               </div>
             </div>
@@ -117,7 +117,7 @@
               <div class="d-flex pt-1">
             <span class="text-muted mt-1">
               <span class="badge-tag-price badge mr-2" *ngFor="let price of inside?.prices">
-                {{'GENERAL.CURRENCY_SYMBOL' |translate}} {{price?.amount | number:'1.2-2'}} {{'GENERAL.CURRENCY' |translate}}
+                {{currencySymbol}} {{price?.amount | number:'1.2-2'}} {{currency}}
               </span>
             </span>
               </div>

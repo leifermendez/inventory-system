@@ -92,7 +92,7 @@ exports.updateItem = async (req, res) => {
     const tenant = req.clientAccount;
     const {file = {}} = req;
     const {id} = req.params
-    const {name, currency} = req.body
+    const {name, currency, currencySymbol} = req.body
     await utils.isIDGood(id)
     const {mime, ext} = await getFile(file.path)
     const isImage = mime.includes('image');
@@ -109,6 +109,7 @@ exports.updateItem = async (req, res) => {
     const data = {
       logo: getUrlPath('medium', imageName),
       name,
+      currencySymbol,
       currency
     };
 

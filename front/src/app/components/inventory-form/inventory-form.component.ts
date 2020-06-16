@@ -55,9 +55,9 @@ export class InventoryFormComponent implements OnInit {
     })
 
     // this.loadProducts()
-    this.loadProviders()
-    this.loadDeposits()
-    this.loadUser()
+    // this.loadProviders()
+    // this.loadDeposits()
+    // this.loadUser()
   }
 
   onSubmit(): void {
@@ -167,6 +167,32 @@ export class InventoryFormComponent implements OnInit {
         ignoreBackdropClick: false
       })
     );
+  }
+
+  src = (e, source: string, model: string) => {
+    const {term} = e;
+    const q = [
+      `${source}?`,
+      `filter=${term}`,
+      `&fields=name,email`,
+      `&page=1&limit=5`,
+      `&sort=name&order=-1`,
+    ];
+
+    this.rest.get(q.join(''))
+      .subscribe(res => {
+        let name = null;
+        this.translate.get('PROVIDER.NEW_PROVIDER').subscribe((res: string) => {
+          name = res;
+        });
+        console.log('---',model)
+        this[model] = [...[{
+          _id: 0,
+          name,
+          value: 'new'
+        }],
+          ...this.parseData(res)];
+      })
   }
 
   srcProduct = (e) => {

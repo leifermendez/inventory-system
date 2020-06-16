@@ -81,7 +81,7 @@ export class AuthService {
 
             if (res.user &&
               (res.user.role === 'admin') &&
-              (!res.settings.currency || !res.settings.logo || !res.settings.name)) {
+              (!res.settings.currency || !res.settings.logo || !res.settings.currencySymbol || !res.settings.name)) {
               this.openWizard()
             }
             if (res.parentAccount && res.parentAccount.status) {

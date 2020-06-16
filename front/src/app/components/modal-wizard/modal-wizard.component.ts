@@ -45,6 +45,7 @@ export class ModalWizardComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
       currency: ['', Validators.required],
+      currencySymbol: [''],
       logo: [''],
     });
   }
@@ -61,12 +62,13 @@ export class ModalWizardComponent implements OnInit {
   }
 
   update = () => {
-    const {name, currency} = this.form.value;
+    const {name, currency, currencySymbol} = this.form.value;
     const {_id} = this.share.getSettings()
     const formData = new FormData();
     formData.append('logo', this.preview.blob)
     formData.append('name', name)
     formData.append('currency', currency)
+    formData.append('currencySymbol', currencySymbol)
 
     this.saveRest(`settings/${_id}`, formData).subscribe(res => {
         this.share.changeSetting.emit(res);

@@ -11,6 +11,12 @@ exports.updateItem = [
     .not()
     .isEmpty()
     .withMessage('IS_EMPTY'),
+  check('currencySymbol')
+    .exists()
+    .withMessage('MISSING')
+    .not()
+    .isEmpty()
+    .withMessage('IS_EMPTY'),
   check('currency')
     .exists()
     .withMessage('MISSING')

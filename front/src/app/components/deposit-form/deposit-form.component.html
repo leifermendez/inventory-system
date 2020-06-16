@@ -27,6 +27,8 @@
             <!--                   placeholder=""></div>-->
             <ng-select formControlName="manager" [items]="users"
                        bindLabel="name"
+                       (search)="src($event)"
+                       [notFoundText]="'DEPOSITS.SEARCH_PRODUCT' |translate"
                        (change)="selectUser($event)"
                        [required]="true"
                        placeholder="">

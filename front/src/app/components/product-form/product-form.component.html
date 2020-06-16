@@ -32,36 +32,36 @@
   </div>
 
   <div class="col-md-6 col-lg-3 col-sm-12 pl-0 pr-2">
-<!--    <div class="custom-card-style col-12 mt-3">-->
-<!--      <div class="form-group mb-0">-->
-<!--        <label>{{"PRODUCT.PRICES" |translate}}</label>-->
-<!--        <input currencyMask (focus)="onFocus($event)" class="form-control"-->
-<!--               [ngClass]="{'ng-invalid-red':!prices?.length}"-->
-<!--               #valueInput [(ngModel)]="priceTmp" [ngModelOptions]="{standalone: true}"-->
-<!--               [options]="ngxCurrencyOptions"/>-->
+    <div class="custom-card-style col-12 mt-3">
+      <div class="form-group mb-0">
+        <label>{{"PRODUCT.PRICES" |translate}}</label>
+        <input currencyMask (focus)="onFocus($event)" class="form-control"
+               [ngClass]="{'ng-invalid-red':!prices?.length}"
+               #valueInput [(ngModel)]="priceTmp" [ngModelOptions]="{standalone: true}"
+               [options]="ngxCurrencyOptions"/>
 
-<!--        <div class="text-right pt-3 pb-3">-->
-<!--          <button type="button" (click)="addPrice($event)" class="btn btn-sm btn-primary btn-radius">-->
-<!--            <fa-icon [icon]="faCheckCircle"></fa-icon>-->
-<!--            <span class="pl-1">{{"PRODUCT.ADD" |translate}}</span>-->
-<!--          </button>-->
-<!--        </div>-->
-<!--        <app-box-empty *ngIf="!prices?.length"></app-box-empty>-->
-<!--        <div class="list-prices" *ngIf="prices?.length">-->
-<!--          <ul>-->
-<!--            <li *ngFor="let price of prices;let i = index">-->
-<!--              {{"GENERAL.CURRENCY_SYMBOL" |translate}} {{price?.amount | number :'1.2-2'}} {{"GENERAL.CURRENCY" |translate}}-->
-<!--              <span class="ml-1 btn-light-trash"-->
-<!--                    (click)="deletePrice(i)"-->
-<!--                    containerClass="customToolTip"-->
-<!--                    [tooltip]="'GENERAL.DELETE' | translate">-->
-<!--                <fa-icon [icon]="faTrashAlt"></fa-icon>-->
-<!--              </span>-->
-<!--            </li>-->
-<!--          </ul>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
+        <div class="text-right pt-3 pb-3">
+          <button type="button" (click)="addPrice($event)" class="btn btn-sm btn-primary btn-radius">
+            <fa-icon [icon]="faCheckCircle"></fa-icon>
+            <span class="pl-1">{{"PRODUCT.ADD" |translate}}</span>
+          </button>
+        </div>
+        <app-box-empty *ngIf="!prices?.length"></app-box-empty>
+        <div class="list-prices" *ngIf="prices?.length">
+          <ul>
+            <li *ngFor="let price of prices;let i = index">
+              {{currencySymbol}} {{price?.amount | number :'1.2-2'}} {{currency}}
+              <span class="ml-1 btn-light-trash"
+                    (click)="deletePrice(i)"
+                    containerClass="customToolTip"
+                    [tooltip]="'GENERAL.DELETE' | translate">
+                <fa-icon [icon]="faTrashAlt"></fa-icon>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <div class="custom-card-style col-12 mt-2">
       <div class="form-group">
         <label>{{"PRODUCT.SKU" |translate}}</label>

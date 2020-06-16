@@ -66,7 +66,8 @@ export class ProductFormComponent implements OnInit {
   public deposits = [];
   public providers = [];
   public data = [];
-
+  public currency: any = null;
+  public currencySymbol: any = null;
   selectedCity: any;
 
   constructor(
@@ -78,10 +79,11 @@ export class ProductFormComponent implements OnInit {
     private modalService: BsModalService,
     private ngZone: NgZone
   ) {
+
   }
 
   public ngxCurrencyOptions = {
-    prefix: 'MXN ',
+    prefix: ``,
     thousands: '.',
     decimal: ',',
     allowNegative: false,
@@ -91,6 +93,12 @@ export class ProductFormComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    const {currency, currencySymbol} = this.share.getSettings();
+    this.currency = currency;
+    this.currencySymbol = currencySymbol;
+    this.ngxCurrencyOptions = {...this.ngxCurrencyOptions,...{
+      prefix:`${currency} `
+      }}
 
     this.form = this.formBuilder.group({
       name: ['', Validators.required],

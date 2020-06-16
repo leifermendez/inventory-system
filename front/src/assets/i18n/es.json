@@ -5,8 +5,8 @@
     "NEXT_PAGINATE": "Siguiente",
     "PREV_PAGINATE": "Anterior",
     "ERROR_404": "Lo sentimos esta pagina no existe, o estamos trabajando en ella",
-    "CURRENCY": "MXN ",
-    "CURRENCY_SYMBOL": "$",
+    "CURRENCY": " ",
+    "CURRENCY_SYMBOL": "",
     "GO_HOME": "Volver a inicio",
     "SAVE": "Guardar",
     "LOADING": "Cargando información",
@@ -41,6 +41,8 @@
       "LOGO": "Logo",
       "LOGO_PLACEHOLDER": "Formatos permitidos .jpg, .jpeg, .png",
       "CURRENCY": "Divisa",
+      "CURRENCY_SYMBOL": "Simbolo de divisa",
+      "CURRENCY_SYMBOL_PLACEHOLDER": "Dejar vacio de no tener. Ejemplo $, €",
       "CURRENCY_PLACEHOLDER": "Ingresa la nomenclatura de tu divisa, Ejemplo: (MXN, EUR, USD)"
     },
     "TITLE": "Configuración rápida",
@@ -92,6 +94,7 @@
   },
   "PROVIDER": {
     "NEW_PROVIDER": "Crear proveedor",
+    "SEARCH_PRODUCT": "Escribe...",
     "NAME": "Nombre de empresa",
     "ADDRESS": "Dirección de empresa",
     "EMAIL": "Email de empresa",
@@ -102,6 +105,7 @@
     "ADD": "Agregar"
   },
   "DEPOSITS": {
+    "SEARCH_PRODUCT": "Escribe...",
     "NEW_DEPOSITS": "Crear deposito",
     "NAME": "Nombre de deposito",
     "ADDRESS": "Dirección de deposito",

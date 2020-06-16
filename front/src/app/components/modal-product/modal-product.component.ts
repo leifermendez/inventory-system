@@ -38,6 +38,8 @@ export class ModalProductComponent implements OnInit {
   faAngleLeft = faAngleLeft;
   faSave = faSave;
   faExclamation = faExclamation;
+  public currency: any = null;
+  public currencySymbol: any = null;
 
   constructor(private share: ShareService,
               private formBuilder: FormBuilder,
@@ -45,6 +47,9 @@ export class ModalProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const {currency, currencySymbol} = this.share.getSettings();
+    this.currency = currency;
+    this.currencySymbol = currencySymbol;
     this.form = this.formBuilder.group({
       price: ['', Validators.required],
       qty: ['', Validators.required]

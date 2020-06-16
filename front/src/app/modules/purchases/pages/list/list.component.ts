@@ -38,7 +38,8 @@ export class ListComponent implements OnInit {
   faUser = faUser
   public data = [];
   public source = 'purchase';
-
+  public currency = null;
+  public currencySymbol = null;
   public history: any = [
     {
       name: 'Pedidos'
@@ -46,6 +47,9 @@ export class ListComponent implements OnInit {
   ]
 
   ngOnInit(): void {
+    const {currency, currencySymbol} = this.share.getSettings();
+    this.currency = currency;
+    this.currencySymbol = currencySymbol
     this.load()
   }
 

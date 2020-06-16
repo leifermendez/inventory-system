@@ -40,6 +40,8 @@ export class DetailInvoiceComponent implements OnInit, AfterViewInit {
   public items: any = [];
   bsModalRef: BsModalRef;
   private animationItem: AnimationItem;
+  public currency: any = null;
+  public currencySymbol: any = null;
 
   selectTab(tabId: number) {
     this.staticTabs.tabs[tabId].active = true;
@@ -53,6 +55,9 @@ export class DetailInvoiceComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    const {currency, currencySymbol} = this.share.getSettings();
+    this.currencySymbol = currencySymbol;
+    this.currency = currency;
     this.route.params.subscribe(params => {
       this.id = params.id;
       this.loadData()
@@ -176,11 +181,12 @@ export class DetailInvoiceComponent implements OnInit, AfterViewInit {
   }
 
   submitData = () => {
-    const body = {...this.data,
+    const body = {
+      ...this.data,
       ...{
-      items: this.items,
-      total: this.total,
-    }
+        items: this.items,
+        total: this.total,
+      }
     }
     this.rest.patch(`purchase/${this.id}`,
       body)

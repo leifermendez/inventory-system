@@ -50,10 +50,8 @@ export class ProviderFormComponent implements OnInit {
       this.form.patchValue({manager: res})
     })
 
-
-
     this.loadProvider()
-    this.loadUser()
+
   }
 
   loadProvider = () => {
@@ -68,15 +66,7 @@ export class ProviderFormComponent implements OnInit {
   }
 
   loadUser = () => {
-    this.rest.get(`users?filter=manager&fields=role&limit=10000&sort=name&order=-1`)
-      .subscribe(res => {
-        this.users = [...[{
-          _id: 0,
-          name: 'New User',
-          value: 'new'
-        }],
-          ...this.parseData(res)];
-      })
+
   }
 
   parseData = (data: any) => {
@@ -85,7 +75,7 @@ export class ProviderFormComponent implements OnInit {
     return data.docs;
   }
   selectUser = (e) => {
-    if (e.value === 'new') {
+    if (e && e.value === 'new') {
       this.form.patchValue({manager: null})
       this.open({
         role: 'customer'
@@ -125,5 +115,27 @@ export class ProviderFormComponent implements OnInit {
       })
     );
   }
+
+  src = (e) => {
+    const {term} = e;
+    const q = [
+      `users?`,
+      `filter=${term}`,
+      `&fields=name,email`,
+      `&page=1&limit=5`,
+      `&sort=name&order=-1`,
+    ];
+
+    this.rest.get(q.join(''))
+      .subscribe(res => {
+        this.users = [...[{
+          _id: 0,
+          name: 'New User',
+          value: 'new'
+        }],
+          ...this.parseData(res)];
+      })
+  }
+
 
 }

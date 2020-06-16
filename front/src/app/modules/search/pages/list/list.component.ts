@@ -47,6 +47,8 @@ export class ListComponent implements OnInit {
   faBox = faBox;
   public source = 'search';
   public cbMode: any = false;
+  public currency = null;
+  public currencySymbol = null;
 
   constructor(private rest: RestService,
               private router: Router,
@@ -55,6 +57,9 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const {currency, currencySymbol} = this.share.getSettings();
+    this.currency = currency;
+    this.currencySymbol = currencySymbol
     this.countDocs();
     this.route.queryParams.subscribe(
       params => {

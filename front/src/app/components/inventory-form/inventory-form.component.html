@@ -52,6 +52,8 @@
             <!--                   placeholder=""></div>-->
             <ng-select formControlName="provider" [items]="providers"
                        bindLabel="name"
+                       (search)="src($event,'providers','providers')"
+                       [notFoundText]="'PROVIDER.SEARCH_PRODUCT' |translate"
                        (change)="selectProvider($event)"
                        [required]="true"
                        placeholder="">
@@ -92,6 +94,8 @@
             <!--                   placeholder=""></div>-->
             <ng-select formControlName="deposit" [items]="deposits"
                        bindLabel="name"
+                       (search)="src($event,'deposits','deposits')"
+                       [notFoundText]="'DEPOSITS.SEARCH_PRODUCT' |translate"
                        (change)="selectDeposit($event)"
                        [required]="true"
                        placeholder="">

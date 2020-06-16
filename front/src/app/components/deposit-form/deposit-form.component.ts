@@ -49,7 +49,6 @@ export class DepositFormComponent implements OnInit {
     })
 
     this.loadProvider()
-    this.loadUser()
   }
 
   onSubmit(): void {
@@ -122,5 +121,26 @@ export class DepositFormComponent implements OnInit {
         ignoreBackdropClick: false
       })
     );
+  }
+
+  src = (e) => {
+    const {term} = e;
+    const q = [
+      `users?`,
+      `filter=${term}`,
+      `&fields=name,email`,
+      `&page=1&limit=5`,
+      `&sort=name&order=-1`,
+    ];
+
+    this.rest.get(q.join(''))
+      .subscribe(res => {
+        this.users = [...[{
+          _id: 0,
+          name: 'New User',
+          value: 'new'
+        }],
+          ...this.parseData(res)];
+      })
   }
 }
