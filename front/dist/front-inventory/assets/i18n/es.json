@@ -5,8 +5,8 @@
     "NEXT_PAGINATE": "Siguiente",
     "PREV_PAGINATE": "Anterior",
     "ERROR_404": "Lo sentimos esta pagina no existe, o estamos trabajando en ella",
-    "CURRENCY": "MXN ",
-    "CURRENCY_SYMBOL": "$",
+    "CURRENCY": " ",
+    "CURRENCY_SYMBOL": "",
     "GO_HOME": "Volver a inicio",
     "SAVE": "Guardar",
     "LOADING": "Cargando información",
@@ -27,7 +27,26 @@
     "ARE_YOU_SURE": "¿Estas seguro?",
     "ARE_YOU_SURE_SENTENCE": "Los cambios no pueden revertirse",
     "OK": "OK",
-    "ANY_ISSUE": "¿Algun problema? Contactanos"
+    "ANY_ISSUE": "¿Algun problema? Contactanos",
+    "BETA_TITLE": "Versión Beta",
+    "NOTICE_BETA": "Actualmente estás participando en una versión de prueba sin costo. Te notificaremos cuando acabe el periodo de gracia.",
+    "SUB_NOTICE_BETA": "Gracias por participar",
+    "ACCEPT": "Entendido"
+  },
+  "WIZARD": {
+    "FORM": {
+      "DRAG_ZONE": "Subir logo",
+      "COMPANY": "Nombre de empresa",
+      "COMPANY_PLACEHOLDER": "Ingresa el nombre de tu empresa",
+      "LOGO": "Logo",
+      "LOGO_PLACEHOLDER": "Formatos permitidos .jpg, .jpeg, .png",
+      "CURRENCY": "Divisa",
+      "CURRENCY_SYMBOL": "Simbolo de divisa",
+      "CURRENCY_SYMBOL_PLACEHOLDER": "Dejar vacio de no tener. Ejemplo $, €",
+      "CURRENCY_PLACEHOLDER": "Ingresa la nomenclatura de tu divisa, Ejemplo: (MXN, EUR, USD)"
+    },
+    "TITLE": "Configuración rápida",
+    "CONTENT": "Nuestro asistente te guiará para la configuración rápida de tu panel. Solo tomará 1 minuto"
   },
   "HOME": {
   },
@@ -74,6 +93,8 @@
     "ADD_PRODUCT_PLACEHOLDER": "Haz clik para comenzar agregar articulos al pedido"
   },
   "PROVIDER": {
+    "NEW_PROVIDER": "Crear proveedor",
+    "SEARCH_PRODUCT": "Escribe...",
     "NAME": "Nombre de empresa",
     "ADDRESS": "Dirección de empresa",
     "EMAIL": "Email de empresa",
@@ -84,6 +105,8 @@
     "ADD": "Agregar"
   },
   "DEPOSITS": {
+    "SEARCH_PRODUCT": "Escribe...",
+    "NEW_DEPOSITS": "Crear deposito",
     "NAME": "Nombre de deposito",
     "ADDRESS": "Dirección de deposito",
     "EMAIL": "Email de deposito",
@@ -109,6 +132,7 @@
     "ADD": "Agregar"
   },
   "INVENTORY": {
+    "SEARCH_PRODUCT": "Escribe el producto...",
     "PRODUCT": "Producto",
     "PROVIDER": "Proveedor",
     "QTY": "Inventario",
@@ -127,6 +151,17 @@
       "TRASH": "Borra facilmente, desde aquí",
       "SAVE": "¡No olvides guardar! El icono en <span class='badge badge-danger'>rojo</span> indica que falta algun campo requerido."
     }
+  },
+  "SEARCH": {
+    "USERS": "Usuarios",
+    "PRODUCTS": "Productos",
+    "DEPOSITS": "Depositos",
+    "PURCHASES": {
+      "TITLE": "Pedidos",
+      "DATE": "Fecha",
+      "CONTROL": "Número de pedido"
+    },
+    "PROVIDERS": "Proveedores"
   },
   "UPGRADE": {
     "TITLE": "Actualización disponible",
