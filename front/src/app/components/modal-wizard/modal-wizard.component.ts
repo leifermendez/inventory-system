@@ -2,6 +2,10 @@ import {Component, NgZone, OnInit} from '@angular/core';
 import {AnimationOptions} from "ngx-lottie";
 import {AnimationItem} from "lottie-web";
 import {BsModalRef} from "ngx-bootstrap/modal";
+import {
+  faTimes
+}
+  from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-modal-wizard',
@@ -9,6 +13,7 @@ import {BsModalRef} from "ngx-bootstrap/modal";
   styleUrls: ['./modal-wizard.component.css']
 })
 export class ModalWizardComponent implements OnInit {
+  faTimes = faTimes
   options: AnimationOptions = {
     path: '/assets/images/wizard.json',
   };
@@ -36,6 +41,10 @@ export class ModalWizardComponent implements OnInit {
 
   pause(): void {
     this.ngZone.runOutsideAngular(() => this.animationItem.setSegment(43, 44));
+  }
+
+  close = () => {
+    this.bsModalRef.hide()
   }
 
 }

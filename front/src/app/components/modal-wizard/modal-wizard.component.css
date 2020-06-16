@@ -1,6 +1,7 @@
 .text-content {
   font-size: .8rem;
 }
+
 .text-muted {
   font-weight: 600;
   color: #808291;
@@ -22,10 +23,11 @@
 
 .form-group label {
   font-size: .8rem;
+  font-weight: 600;
 }
 
 .form-group {
-  margin-bottom: 0;
+  margin-bottom: 1rem;
 }
 
 .form-product .label {
@@ -56,7 +58,7 @@
   border-bottom: 0 !important;
 }
 
-.list-menu-header{
+.list-menu-header {
   position: absolute;
   bottom: 1.5rem;
   right: 0rem;
@@ -100,6 +102,15 @@
   color: #221ECD;
 
 }
-.btn-light-trash{
+
+.btn-light-trash {
   cursor: pointer;
+}
+
+.close-icon {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 1rem;
 }

@@ -34,6 +34,14 @@
     "ACCEPT": "Entendido"
   },
   "WIZARD": {
+    "FORM": {
+      "COMPANY": "Nombre de empresa",
+      "COMPANY_PLACEHOLDER": "Ingresa el nombre de tu empresa",
+      "LOGO": "Logo",
+      "LOGO_PLACEHOLDER": "Formatos permitidos .jpg, .jpeg, .png",
+      "CURRENCY": "Divisa",
+      "CURRENCY_PLACEHOLDER": "Ingresa la nomenclatura de tu divisa, Ejemplo: (MXN, EUR, USD)"
+    },
     "TITLE": "Configuración rápida",
     "CONTENT": "Nuestro asistente te guiará para la configuración rápida de tu panel. Solo tomará 1 minuto"
   },

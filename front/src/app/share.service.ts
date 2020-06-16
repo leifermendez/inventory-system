@@ -160,7 +160,7 @@ export class ShareService {
     this.bsModalRef = this.modalService.show(
       ModalWizardComponent,
       Object.assign({initialState}, {
-        class: 'modal-profile-small',
+        class: 'modal-wizard',
         ignoreBackdropClick: false
       })
     );
