@@ -173,4 +173,12 @@ export class ShareService {
       return null
     }
   }
+
+  public getSettings = () => {
+    try {
+      return JSON.parse(this.cookie.get('settings'))
+    } catch (e) {
+      return null
+    }
+  }
 }

@@ -65,7 +65,7 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.shared.openWizard()
+
     if (this.swUpdate.isEnabled) {
       this.swUpdate.available.subscribe(() => {
         this.shared.openUpdateModal()

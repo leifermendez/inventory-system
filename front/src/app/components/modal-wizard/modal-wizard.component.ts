@@ -6,6 +6,7 @@ import {
   faTimes
 }
   from '@fortawesome/free-solid-svg-icons';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-modal-wizard',
@@ -13,16 +14,22 @@ import {
   styleUrls: ['./modal-wizard.component.css']
 })
 export class ModalWizardComponent implements OnInit {
+  public form: FormGroup;
   faTimes = faTimes
   options: AnimationOptions = {
     path: '/assets/images/wizard.json',
   };
   private animationItem: AnimationItem;
 
-  constructor(private ngZone: NgZone, public bsModalRef: BsModalRef) {
+  constructor(private ngZone: NgZone, public bsModalRef: BsModalRef, private formBuilder: FormBuilder,) {
   }
 
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      name: ['', Validators.required],
+      currency: ['', Validators.required],
+      logo: [''],
+    });
   }
 
   animationCreated(animationItem: AnimationItem): void {
@@ -47,4 +54,7 @@ export class ModalWizardComponent implements OnInit {
     this.bsModalRef.hide()
   }
 
+  update() {
+
+  }
 }

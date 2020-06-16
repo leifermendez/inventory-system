@@ -43,8 +43,8 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const {settings} = this.share.getUserInfo();
-    this.title = settings.name;
+    const {name} = this.share.getSettings();
+    this.title = name;
     this.form = this.formBuilder.group({
       q: ['']
     });

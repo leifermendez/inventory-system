@@ -265,7 +265,9 @@ module.exports = {
   /**
    * Updates an item in database by id
    * @param {string} id - item id
+   * @param model
    * @param {Object} req - request object
+   * @param tenant
    */
   async updateItem(id, model, req, tenant = null) {
     return new Promise((resolve, reject) => {

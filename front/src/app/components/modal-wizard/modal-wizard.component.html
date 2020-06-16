@@ -19,26 +19,29 @@
     <div [innerHTML]="'WIZARD.CONTENT' | translate"></div>
     <hr>
     <div>
-      <form class="form-product">
+      <form class="form-product" [formGroup]="form" (ngSubmit)="update()">
         <div class="form-group">
-          <label for="exampleInputEmail1">{{'WIZARD.FORM.COMPANY' |translate}}</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                 placeholder="LeangaSoftware">
+          <label>{{'WIZARD.FORM.COMPANY' |translate}}</label>
+          <input type="text" class="form-control"
+                 placeholder="LeangaSoftware" formControlName="name">
           <small class="form-text text-muted">{{'WIZARD.FORM.COMPANY_PLACEHOLDER' | translate}}</small>
         </div>
         <div class="form-group">
           <label>{{'WIZARD.FORM.CURRENCY' |translate}}</label>
-          <input type="text" class="form-control" placeholder="EUR">
+          <input type="text" class="form-control" formControlName="currency" placeholder="EUR">
           <small class="form-text text-muted">{{'WIZARD.FORM.CURRENCY_PLACEHOLDER' | translate}}</small>
+        </div>
+        <div>
+          
         </div>
         <div class="form-group">
           <label>{{'WIZARD.FORM.LOGO' |translate}}</label>
-          <input type="text" class="form-control" placeholder="">
+          <input type="text" class="form-control" formControlName="logo" placeholder="">
           <small class="form-text text-muted">{{'WIZARD.FORM.LOGO_PLACEHOLDER' | translate}}</small>
         </div>
 
         <div class="text-center mt-4 mb-2">
-          <button type="button" class="btn btn-primary btn-radius">
+          <button  [disabled]="!form.valid" class="btn btn-primary btn-radius">
             {{'UPGRADE.UPGRADE_OK' | translate}}
           </button>
         </div>

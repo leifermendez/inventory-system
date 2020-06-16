@@ -96,9 +96,9 @@ export class SideBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const {settings} = this.share.getUserInfo();
-    this.logo = settings.logo;
-    this.name = settings.name;
+    const {logo, name} = this.share.getSettings();
+    this.logo = logo;
+    this.name = name;
   }
 
   open(data: any = null) {

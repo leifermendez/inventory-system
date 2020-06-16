@@ -30,6 +30,11 @@ export class AuthService {
           JSON.stringify(res.user),
           environment.daysTokenExpire,
           '/');
+        this.cookieService.set(
+          'settings',
+          JSON.stringify(res.settings),
+          environment.daysTokenExpire,
+          '/');
         resolve(res);
       }, error => {
         reject(error);
@@ -54,7 +59,12 @@ export class AuthService {
     return new Promise((resolve, reject) => {
         if (this.cookieService.check('session')) {
           this.rest.get(`token`).subscribe(res => {
-            // console.log(res)
+
+            if (res.user &&
+              (res.user.role === 'admin') &&
+              (!res.settings.currency || !res.settings.logo || !res.settings.name)) {
+              this.share.openWizard()
+            }
             if (res.parentAccount && res.parentAccount.status) {
               this.share.limitAccount.emit(res.parentAccount)
             }

@@ -67,15 +67,6 @@ const UserSchema = new mongoose.Schema(
       default: 0,
       select: false
     },
-    settings: {
-      type: Object,
-      default: {
-        currency: null,
-        name: null,
-        logo: null
-      },
-      select: true
-    },
     blockExpires: {
       type: Date,
       default: Date.now,

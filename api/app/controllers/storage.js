@@ -68,24 +68,6 @@ const getUrlPath = (mode = '', name = '') => {
 }
 
 /**
- * Checks if a city already exists in database
- * @param {string} name - name of item
- */
-const cityExists = async (name) => {
-  return new Promise((resolve, reject) => {
-    model.findOne(
-      {
-        name
-      },
-      (err, item) => {
-        utils.itemAlreadyExists(err, item, reject, 'CITY_ALREADY_EXISTS')
-        resolve(false)
-      }
-    )
-  })
-}
-
-/**
  * Gets all items from database
  */
 const getAllItemsFromDB = async () => {

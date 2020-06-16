@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken')
+const Settings = require('../models/settings')
 const User = require('../models/user')
 const UserAccess = require('../models/userAccess')
 const ForgotPassword = require('../models/forgotPassword')
@@ -68,13 +69,15 @@ const setUserInfo = (req) => {
  */
 const saveUserAccessAndReturnToken = async (req, user) => {
   return new Promise((resolve, reject) => {
+    const tenant = req.clientAccount;
     const userAccess = new UserAccess({
       email: user.email,
       ip: utils.getIP(req),
       browser: utils.getBrowserInfo(req),
       country: utils.getCountry(req)
     })
-    userAccess.save((err) => {
+    console.log('-----------------',tenant)
+    userAccess.save(async (err) => {
       if (err) {
         reject(utils.buildErrObject(422, err.message))
       }
@@ -82,7 +85,8 @@ const saveUserAccessAndReturnToken = async (req, user) => {
       // Returns data with access token
       resolve({
         session: generateToken(user._id),
-        user: userInfo
+        user: userInfo,
+        settings: await getSettings(tenant)
       })
     })
   })
@@ -216,6 +220,48 @@ const passwordsDoNotMatch = async (user) => {
     reject(utils.buildErrObject(422, 'ERROR'))
   })
 }
+
+/**
+ * Registers a settings user in database
+ * @param {Object} req - request object
+ */
+const registerSettings = async (req, tenant = null) => {
+  return new Promise((resolve, reject) => {
+    const model = Settings.byTenant(tenant);
+    const settings = new model({
+      name: req.name,
+      currency: req.currency,
+      logo: req.logo
+    })
+    settings.save((err, item) => {
+      if (err) {
+        reject(utils.buildErrObject(422, err.message))
+      }
+      resolve(item)
+    })
+  })
+}
+
+/**
+ * Get settings by tenant
+ */
+
+const getSettings = async (tenant = null) => {
+  return new Promise((resolve, reject) => {
+    Settings
+      .byTenant(tenant)
+      .findOne(
+        {},
+        (err, user) => {
+          if (err) {
+            reject(utils.buildErrObject(422, 'NOT_SETTINGS_FOR_TENANT'))
+          }
+          resolve(user)
+        }
+      )
+  })
+}
+
 
 /**
  * Registers a new user in database
@@ -486,6 +532,12 @@ exports.register = async (req, res) => {
     const doesEmailExists = await emailer.emailExists(req.email, tenant)
     if (!doesEmailExists) {
       const item = await registerUser(req, tenant)
+      const settingsParameters = {
+        name: null,
+        currency: null,
+        logo: null
+      };
+      await registerSettings(settingsParameters, tenant)
       const userInfo = setUserInfo(item)
       const response = returnRegisterToken(item, userInfo)
       emailer.sendRegistrationEmailMessage(locale, item)
@@ -571,6 +623,7 @@ exports.getRefreshToken = async (req, res) => {
     if (req.parentAccount) {
       token.parentAccount = req.parentAccount;
     }
+    token.settings = await getSettings(tenant)
     // delete token.user
     res.status(200).json(token)
   } catch (error) {
