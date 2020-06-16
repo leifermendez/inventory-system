@@ -40,6 +40,7 @@ import { ListAddonsComponent } from './components/list-addons/list-addons.compon
 import { CountSearchDataPipe } from './count-search-data.pipe';
 import { ModalProfileComponent } from './components/modal-profile/modal-profile.component';
 import { ModalWizardComponent } from './components/modal-wizard/modal-wizard.component';
+import {FilePickerModule} from "ngx-awesome-uploader";
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
@@ -101,7 +102,8 @@ export function playerFactory() {
     ProductModule,
     AvatarModule,
     TooltipModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+    FilePickerModule
   ],
   providers: [
     {provide: BsDatepickerConfig, useFactory: getDatepickerConfig},

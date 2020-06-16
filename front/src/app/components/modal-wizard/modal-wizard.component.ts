@@ -7,6 +7,8 @@ import {
 }
   from '@fortawesome/free-solid-svg-icons';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {DemoFilePickerAdapter} from "../../demo-file-picker.adapter";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-modal-wizard',
@@ -14,6 +16,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./modal-wizard.component.css']
 })
 export class ModalWizardComponent implements OnInit {
+  adapter = new DemoFilePickerAdapter(this.http);
   public form: FormGroup;
   faTimes = faTimes
   options: AnimationOptions = {
@@ -21,7 +24,9 @@ export class ModalWizardComponent implements OnInit {
   };
   private animationItem: AnimationItem;
 
-  constructor(private ngZone: NgZone, public bsModalRef: BsModalRef, private formBuilder: FormBuilder,) {
+  constructor(private ngZone: NgZone, public bsModalRef: BsModalRef,
+              private http: HttpClient,
+              private formBuilder: FormBuilder,) {
   }
 
   ngOnInit(): void {

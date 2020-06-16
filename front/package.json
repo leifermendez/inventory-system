@@ -35,6 +35,7 @@
     "lottie-web": "^5.6.10",
     "moment": "^2.26.0",
     "ngx-avatar": "^3.7.0",
+    "ngx-awesome-uploader": "^9.0.4",
     "ngx-bootstrap": "^5.6.1",
     "ngx-chips": "^2.1.0",
     "ngx-cookie-service": "^3.0.4",
