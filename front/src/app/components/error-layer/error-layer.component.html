@@ -84,8 +84,8 @@
         {{'GENERAL.ERROR_CODE' | translate}}: <b>{{error?.code}}</b> <br>
         {{'GENERAL.ERROR_MESSAGE' | translate}}:
 
-        <b *ngIf="error?.e">{{error?.e?.errors?.msg}}</b>
-        <b *ngIf="!error?.e && error?.message">{{error?.message}}</b>
+        <b *ngIf="error?.e.length">{{error?.e?.errors?.msg}}</b>
+        <b *ngIf="!error?.e.length && error?.message">{{error?.message}}</b>
       </small>
     </div>
 
