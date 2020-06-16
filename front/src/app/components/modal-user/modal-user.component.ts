@@ -10,8 +10,9 @@ import {ShareService} from "../../share.service";
 })
 export class ModalUserComponent implements OnInit {
   faTimes = faTimes
+  public section: any;
 
-  constructor(public bsModalRef: BsModalRef, private shared: ShareService,) {
+  constructor(public bsModalRef: BsModalRef, private shared: ShareService) {
   }
 
   ngOnInit(): void {

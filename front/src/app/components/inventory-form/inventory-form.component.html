@@ -12,18 +12,19 @@
             <!--            <input type="text" formControlName="manager"-->
             <!--                   class="form-control"-->
             <!--                   placeholder=""></div>-->
-<!--            {{products | json}}-->
+            <!--            {{products | json}}-->
             <ng-select formControlName="product" #selectProductRef [items]="products"
                        bindLabel="name"
                        (search)="srcProduct($event)"
                        (change)="selectProduct($event)"
                        [required]="true"
+                       [notFoundText]="'INVENTORY.SEARCH_PRODUCT' | translate"
                        placeholder="">
               <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
                 <div class="card-list d-flex">
                   <div class="p-1">
                     <img class="img-product"
-                         src="https://cdn.dribbble.com/users/1334861/screenshots/6676523/sales_order.png" alt="">
+                         [src]="item?.gallery | firstImage:'large'" alt="">
                   </div>
                   <div class="p-1">
                     <div>{{item?.name}}</div>
@@ -51,7 +52,7 @@
             <!--                   placeholder=""></div>-->
             <ng-select formControlName="provider" [items]="providers"
                        bindLabel="name"
-                       (change)="selectUser($event)"
+                       (change)="selectProvider($event)"
                        [required]="true"
                        placeholder="">
             </ng-select>
@@ -91,7 +92,7 @@
             <!--                   placeholder=""></div>-->
             <ng-select formControlName="deposit" [items]="deposits"
                        bindLabel="name"
-                       (change)="selectUser($event)"
+                       (change)="selectDeposit($event)"
                        [required]="true"
                        placeholder="">
             </ng-select>

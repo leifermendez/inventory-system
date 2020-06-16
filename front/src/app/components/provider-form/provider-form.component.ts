@@ -46,7 +46,11 @@ export class ProviderFormComponent implements OnInit {
     this.shared.registerUser.subscribe(res => {
       this.users = [...[res],
         ...this.users];
+
+      this.form.patchValue({manager: res})
     })
+
+
 
     this.loadProvider()
     this.loadUser()
@@ -83,7 +87,9 @@ export class ProviderFormComponent implements OnInit {
   selectUser = (e) => {
     if (e.value === 'new') {
       this.form.patchValue({manager: null})
-      this.open()
+      this.open({
+        role: 'customer'
+      })
     }
   }
 

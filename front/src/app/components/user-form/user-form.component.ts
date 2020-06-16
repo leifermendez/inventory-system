@@ -13,6 +13,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class UserFormComponent implements OnInit {
   @Input() mode: string = 'list'
+  @Input() formInit: any = {};
   public form: FormGroup;
   public roles: any = [
     {
@@ -40,7 +41,7 @@ export class UserFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const password = this.shared.generate(10)
+
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -48,7 +49,7 @@ export class UserFormComponent implements OnInit {
       email: ['', Validators.required],
       nie: ['', Validators.required],
       role: ['', Validators.required],
-      password: ['', Validators.required],
+      password: [''],
       phone: ['', Validators.required],
       tag: [''],
       description: [''],
@@ -58,12 +59,15 @@ export class UserFormComponent implements OnInit {
       this.id = (params.id === 'add') ? '' : params.id;
     });
 
+    if(this.form && this.formInit){
+      this.form.patchValue(this.formInit)
+    }
     this.loadProvider()
-    this.form.patchValue({password})
   }
 
   onSubmit(): void {
-    console.log(this.mode)
+    const password = this.shared.generate(10)
+    this.form.patchValue({password})
     const method = (this.id) ? 'patch' : 'post';
     this.rest[method](`users${(method === 'patch') ? `/${this.id}` : ''}`, this.form.value)
       .subscribe(res => {
@@ -82,11 +86,8 @@ export class UserFormComponent implements OnInit {
     if (this.id && (this.id.length)) {
       this.rest.get(`users/${this.id}`)
         .subscribe(res => {
-          console.log(res)
           this.form.patchValue(res)
-          // this.data = this.parseData(res);
         })
     }
   }
-
 }

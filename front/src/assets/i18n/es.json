@@ -35,6 +35,7 @@
   },
   "WIZARD": {
     "FORM": {
+      "DRAG_ZONE": "Subir logo",
       "COMPANY": "Nombre de empresa",
       "COMPANY_PLACEHOLDER": "Ingresa el nombre de tu empresa",
       "LOGO": "Logo",
@@ -90,6 +91,7 @@
     "ADD_PRODUCT_PLACEHOLDER": "Haz clik para comenzar agregar articulos al pedido"
   },
   "PROVIDER": {
+    "NEW_PROVIDER": "Crear proveedor",
     "NAME": "Nombre de empresa",
     "ADDRESS": "Dirección de empresa",
     "EMAIL": "Email de empresa",
@@ -100,6 +102,7 @@
     "ADD": "Agregar"
   },
   "DEPOSITS": {
+    "NEW_DEPOSITS": "Crear deposito",
     "NAME": "Nombre de deposito",
     "ADDRESS": "Dirección de deposito",
     "EMAIL": "Email de deposito",
@@ -125,6 +128,7 @@
     "ADD": "Agregar"
   },
   "INVENTORY": {
+    "SEARCH_PRODUCT": "Escribe el producto...",
     "PRODUCT": "Producto",
     "PROVIDER": "Proveedor",
     "QTY": "Inventario",

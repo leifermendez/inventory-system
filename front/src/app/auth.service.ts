@@ -4,13 +4,18 @@ import {environment} from "../environments/environment";
 import {CookieService} from "ngx-cookie-service";
 import {RestService} from "./rest.service";
 import {ShareService} from "./share.service";
+import {ModalWizardComponent} from "./components/modal-wizard/modal-wizard.component";
+import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  bsModalRef: BsModalRef;
+
   constructor(private rest: RestService,
               private router: Router,
+              private modalService: BsModalService,
               private share: ShareService,
               private cookieService: CookieService) {
   }
@@ -55,6 +60,20 @@ export class AuthService {
     }
   });
 
+  public openWizard = (data: any = {}) => {
+    const initialState = {
+      section: data
+    };
+    this.bsModalRef = this.modalService.show(
+      ModalWizardComponent,
+      Object.assign({initialState}, {
+        class: 'modal-wizard',
+        ignoreBackdropClick: false
+      })
+    );
+  }
+
+
   checkSession = (verify = false, redirect = true, extra: any = {}) => {
     return new Promise((resolve, reject) => {
         if (this.cookieService.check('session')) {
@@ -63,7 +82,7 @@ export class AuthService {
             if (res.user &&
               (res.user.role === 'admin') &&
               (!res.settings.currency || !res.settings.logo || !res.settings.name)) {
-              this.share.openWizard()
+              this.openWizard()
             }
             if (res.parentAccount && res.parentAccount.status) {
               this.share.limitAccount.emit(res.parentAccount)

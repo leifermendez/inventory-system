@@ -48,7 +48,10 @@ export class HeaderComponent implements OnInit {
     this.form = this.formBuilder.group({
       q: ['']
     });
-
+    this.share.changeSetting.subscribe(res => {
+      const {name} = res
+      this.title = name;
+    })
     this.share.limitAccount.subscribe(res => {
       if (res) {
         this.limitAccount = res;

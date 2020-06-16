@@ -30,6 +30,7 @@
     "@ngx-loading-bar/http-client": "^4.2.0",
     "@ngx-translate/core": "^12.1.2",
     "@ngx-translate/http-loader": "^4.0.0",
+    "cropperjs": "^1.5.7",
     "express": "^4.17.1",
     "install": "^0.13.0",
     "lottie-web": "^5.6.10",

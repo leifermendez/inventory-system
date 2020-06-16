@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ShareService} from "../../share.service";
 import {RestService} from "../../rest.service";
 import {ModalUserComponent} from "../modal-user/modal-user.component";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-inventory-form',
@@ -27,6 +28,7 @@ export class InventoryFormComponent implements OnInit {
               private modalService: BsModalService,
               private route: ActivatedRoute,
               private shared: ShareService,
+              private translate: TranslateService,
               public router: Router,
               private rest: RestService) {
   }
@@ -67,11 +69,15 @@ export class InventoryFormComponent implements OnInit {
   }
 
   loadProviders = () => {
+    let name = null;
+    this.translate.get('PROVIDER.NEW_PROVIDER').subscribe((res: string) => {
+      name = res;
+    });
     this.rest.get(`providers?filter&limit=10000&sort=name&order=-1`)
       .subscribe(res => {
         this.providers = [...[{
           _id: 0,
-          name: 'New User',
+          name,
           value: 'new'
         }],
           ...this.parseData(res)];
@@ -79,6 +85,7 @@ export class InventoryFormComponent implements OnInit {
   }
 
   loadProducts = () => {
+
     this.rest.get(`products?filter&limit=10000&sort=name&order=-1`)
       .subscribe(res => {
         this.products = [...[{
@@ -91,11 +98,15 @@ export class InventoryFormComponent implements OnInit {
   }
 
   loadDeposits = () => {
+    let name = null;
+    this.translate.get('DEPOSITS.NEW_DEPOSITS').subscribe((res: string) => {
+      name = res;
+    });
     this.rest.get(`deposits?filter&limit=10000&sort=name&order=-1`)
       .subscribe(res => {
         this.deposits = [...[{
           _id: 0,
-          name: 'New User',
+          name,
           value: 'new'
         }],
           ...this.parseData(res)];
@@ -110,10 +121,10 @@ export class InventoryFormComponent implements OnInit {
     // }
   }
 
-  selectUser = (e) => {
+  selectProvider = (e) => {
     if (e.value === 'new') {
-      this.form.patchValue({manager: null})
-      this.open()
+      this.form.patchValue({provider: null})
+      this.router.navigate(['/', 'providers', 'add'])
     }
   }
 
@@ -170,10 +181,16 @@ export class InventoryFormComponent implements OnInit {
 
     this.rest.get(q.join(''))
       .subscribe(res => {
-        this.products = [...this.parseData(res), {id: 1, name: 'New item'}];
+        this.products = [...this.parseData(res)];
       })
 
     console.log(this.products)
   }
 
+  selectDeposit(e: any) {
+    if (e.value === 'new') {
+      this.form.patchValue({deposit: null})
+      this.router.navigate(['/', 'deposits', 'add'])
+    }
+  }
 }

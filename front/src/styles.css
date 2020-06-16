@@ -35,17 +35,20 @@ body {
   font-size: .65rem;
   box-shadow: 0 0 5px rgba(55, 51, 209, 0.56);
 }
-bs-tooltip-container{
+
+bs-tooltip-container {
   pointer-events: auto !important;
 }
-.btn-copilot{
+
+.btn-copilot {
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.42);
   border: 0;
   border-radius: .25rem;
   color: white;
 }
-.btn-copilot:hover{
+
+.btn-copilot:hover {
   transform: scale(1.05);
 }
 
@@ -90,13 +93,15 @@ bs-tooltip-container{
 .btn-primary {
   background-color: #221ECD !important;
 }
-.btn-primary:hover{
+
+.btn-primary:hover {
   transform: scale(1.1);
   -webkit-transition: all 200ms;
   -moz-transition: all 200ms;
   -o-transition: all 200ms;
   transition: all 200ms;
 }
+
 .detail-invoice .nav-tabs {
   border-bottom: solid 1px #f2f3fd;
   padding-bottom: .75rem;
@@ -346,11 +351,11 @@ tag-input-form input {
 }
 
 
-.modal-profile-small{
+.modal-profile-small {
   max-width: 500px;
 }
 
-.modal-profile-small .modal-content{
+.modal-profile-small .modal-content {
   border-radius: 1rem;
   min-height: 10rem;
   box-shadow: 1px 3px 17px rgba(110, 110, 110, 0.32);
@@ -358,7 +363,7 @@ tag-input-form input {
   border: solid 1px #f6f6f6;
 }
 
-.modal-light-upgrade{
+.modal-light-upgrade {
   max-width: 600px;
 }
 
@@ -648,21 +653,22 @@ sw-item-list .left-swipe {
     box-shadow: 0 0 0 20px rgba(34, 30, 205, 0)
   }
 }
-.purchase-status-badge-paid{
+
+.purchase-status-badge-paid {
   background-color: rgba(44, 164, 46, 0.84);
   padding: .5rem;
   border-radius: 1rem;
   color: white;
 }
 
-.purchase-status-badge-hold{
+.purchase-status-badge-hold {
   background-color: rgba(251, 175, 148, 0.91);
   padding: .5rem;
   border-radius: 1rem;
   color: white;
 }
 
-.purchase-status-badge-process{
+.purchase-status-badge-process {
   background-color: rgba(145, 140, 231, 0.9);
   padding: .5rem;
   border-radius: 1rem;
@@ -670,14 +676,14 @@ sw-item-list .left-swipe {
 }
 
 
-.purchase-status-badge-exceptional{
+.purchase-status-badge-exceptional {
   background-color: rgba(1, 177, 255, 0.9);
   padding: .5rem;
   border-radius: 1rem;
   color: white;
 }
 
-.modal-wizard{
+.modal-wizard {
   max-width: 100%;
   position: fixed;
   margin-top: 0;
@@ -685,8 +691,30 @@ sw-item-list .left-swipe {
   height: 100%;
 }
 
-.modal-wizard .modal-content{
+.modal-wizard .modal-content {
   height: 100%;
   padding: 2rem 1rem;
 }
 
+.logo-drop ngx-file-picker {
+  max-width: 100%;
+  margin: auto;
+}
+
+.logo-drop ngx-file-picker .file-drop-wrapper {
+  padding: 0;
+  background-color: #ffffff;
+}
+
+.logo-drop ngx-file-picker file-drop {
+  padding: 1rem 0;
+}
+
+.logo-drop #dropZone {
+  max-width: 100% !important;
+  border-color: #f1f1f1 !important;
+}
+
+.logo-drop file-preview-item {
+  max-width: 100%;
+}

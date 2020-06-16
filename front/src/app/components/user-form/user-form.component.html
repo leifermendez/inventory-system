@@ -3,7 +3,6 @@
     <div class="text-right w-100">
       <app-section-btn [trash]="true" (cbList)="cbList()" [valid]="form.valid"></app-section-btn>
     </div>
-    <!--  {{ findInvalidControls() | json}}-->
     <div class="custom-card-style col-12 flex-wrap d-flex">
       <div class="col-12 p-0">
         <div class="name">
@@ -37,17 +36,18 @@
         </div>
       </div>
     </div>
-    <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
-      <div class="col-12 p-0">
-        <div class="name">
-          <div class="form-group">
-            <label>{{"USER.PASSWORD" |translate}}</label>
-            <input type="text" formControlName="password"
-                   class="form-control"
-                   placeholder=""></div>
-        </div>
-      </div>
-    </div>
+
+    <!--    <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">-->
+    <!--      <div class="col-12 p-0">-->
+    <!--        <div class="name">-->
+    <!--          <div class="form-group">-->
+    <!--            <label>{{"USER.PASSWORD" |translate}}</label>-->
+    <!--            <input type="text" formControlName="password"-->
+    <!--                   class="form-control"-->
+    <!--                   placeholder=""></div>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
     <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
       <div class="col-12 p-0">
         <div class="name">
@@ -81,7 +81,9 @@
         </div>
       </div>
     </div>
-    <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
+
+    <div [ngClass]="{'invisible':(mode === 'modal'),'d-flex':(mode !== 'modal')}"
+         class="custom-card-style col-12 mt-2 flex-wrap">
       <div class="col-12 p-0">
         <div class="name">
           <div class="form-group">
@@ -97,6 +99,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </form>

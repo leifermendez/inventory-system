@@ -99,6 +99,11 @@ export class SideBarComponent implements OnInit {
     const {logo, name} = this.share.getSettings();
     this.logo = logo;
     this.name = name;
+    this.share.changeSetting.subscribe(res => {
+      const {name, logo} = res
+      this.name = name;
+      this.logo = logo;
+    })
   }
 
   open(data: any = null) {

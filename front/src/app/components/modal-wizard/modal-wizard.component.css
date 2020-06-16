@@ -114,3 +114,13 @@
   top: 0;
   padding: 1rem;
 }
+
+
+.avatar-preview{
+  cursor: pointer;
+  width: 150px;
+  height: 150px;
+  border-radius: 10rem;
+  object-fit: cover;
+  box-shadow: 0 0 25px rgba(134, 134, 134, 0.28);
+}

@@ -19,15 +19,26 @@
     <div [innerHTML]="'WIZARD.CONTENT' | translate"></div>
     <hr>
     <div>
+      <div class="text-center p-3" *ngIf="preview?.image">
+        <img class="avatar-preview" (click)="reset()"  [src]="preview?.image" alt="">
+      </div>
+
+      <div class="form-group logo-drop" *ngIf="!preview?.image">
+        <label>{{'WIZARD.FORM.LOGO' |translate}}</label>
+        <ngx-file-picker
+          [fileMaxCount]="1"
+          (fileAdded)="fileAdded($event)"
+          [fileExtensions]="['jpg', 'jpeg', 'png']"
+          [enableCropper]="false"
+          [showPreviewContainer]="false">
+          <div class="dropzoneTemplate text-center">
+            <small class="text-muted">{{'WIZARD.FORM.DRAG_ZONE' | translate}}</small>
+          </div>
+        </ngx-file-picker>
+        <small class="form-text text-muted">{{'WIZARD.FORM.LOGO_PLACEHOLDER' | translate}}</small>
+      </div>
+
       <form class="form-product" [formGroup]="form" (ngSubmit)="update()">
-        <div class="form-group">
-          <label>{{'WIZARD.FORM.LOGO' |translate}}</label>
-          <ngx-file-picker
-            [enableCropper]="'true'"
-            [adapter]="adapter">
-          </ngx-file-picker>
-          <small class="form-text text-muted">{{'WIZARD.FORM.LOGO_PLACEHOLDER' | translate}}</small>
-        </div>
 
         <div class="form-group">
 

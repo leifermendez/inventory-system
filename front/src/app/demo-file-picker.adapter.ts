@@ -1,19 +1,33 @@
 import {FilePreviewModel} from 'ngx-awesome-uploader';
-import {HttpRequest, HttpClient, HttpEvent, HttpEventType} from '@angular/common/http';
+import {HttpRequest, HttpClient, HttpEvent, HttpEventType, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {FilePickerAdapter} from 'ngx-awesome-uploader';
+import {environment} from "../environments/environment";
+import {CookieService} from "ngx-cookie-service";
 
 export class DemoFilePickerAdapter extends FilePickerAdapter {
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private cookieService: CookieService) {
     super();
   }
 
+  parseHeader = () => {
+    const token = this.cookieService.get('session');
+    let header = {
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`
+    };
+    return new HttpHeaders(header);
+  };
+
   public uploadFile(fileItem: FilePreviewModel) {
     const form = new FormData();
-    form.append('file', fileItem.file);
-    const api = 'https://demo-file-uploader.free.beeceptor.com';
-    const req = new HttpRequest('POST', api, form, {reportProgress: true});
+    form.append('files[]', fileItem.file);
+    const api = `${environment.api}/storage`;
+    const req = new HttpRequest('POST', api, form, {
+      reportProgress: true,
+      headers: this.parseHeader()
+    });
     return this.http.request(req)
       .pipe(
         map((res: HttpEvent<any>) => {
@@ -29,7 +43,6 @@ export class DemoFilePickerAdapter extends FilePickerAdapter {
   }
 
   public removeFile(fileItem): Observable<any> {
-    const removeApi = 'https://file-remove-demo.free.beeceptor.com';
-    return this.http.post(removeApi, {});
+    return of({});
   }
 }

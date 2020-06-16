@@ -7,6 +7,7 @@ import {ModalUserComponent} from "./components/modal-user/modal-user.component";
 import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
 import {ModalUpdateComponent} from "./components/modal-update/modal-update.component";
 import {ModalWizardComponent} from "./components/modal-wizard/modal-wizard.component";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +20,11 @@ export class ShareService {
   @Output() loading = new EventEmitter<string>();
   @Output() copilot = new EventEmitter<any>();
   @Output() limitAccount = new EventEmitter<any>();
+  @Output() changeSetting = new EventEmitter<any>();
   bsModalRef: BsModalRef;
 
   constructor(private router: Router,
+              private sanitizer: DomSanitizer,
               private modalService: BsModalService,
               private cookie: CookieService,
               private translate: TranslateService) {
@@ -153,18 +156,6 @@ export class ShareService {
     );
   }
 
-  public openWizard = (data: any = {}) => {
-    const initialState = {
-      section: data
-    };
-    this.bsModalRef = this.modalService.show(
-      ModalWizardComponent,
-      Object.assign({initialState}, {
-        class: 'modal-wizard',
-        ignoreBackdropClick: false
-      })
-    );
-  }
 
   public getUserInfo = () => {
     try {
@@ -181,4 +172,6 @@ export class ShareService {
       return null
     }
   }
+
+
 }

@@ -43,6 +43,7 @@ export class DepositFormComponent implements OnInit {
     });
 
     this.shared.registerUser.subscribe(res => {
+      this.form.patchValue({manager: res})
       this.users = [...[res],
         ...this.users];
     })
@@ -73,7 +74,7 @@ export class DepositFormComponent implements OnInit {
   selectUser = (e) => {
     if (e.value === 'new') {
       this.form.patchValue({manager: null})
-      this.open()
+      this.open({role: 'customer'})
     }
   }
 
