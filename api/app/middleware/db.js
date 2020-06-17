@@ -209,6 +209,33 @@ module.exports = {
           }
         },
         {
+          $lookup: {
+            from: 'inventories',
+            let: {idProduct: "$_id"},
+            pipeline: [
+              {
+                $match:
+                  {
+                    $expr:
+                      {
+                        $and:
+                          [
+                            {$eq: ["$$idProduct", "$product._id"]}
+                          ]
+                      }
+                  }
+              },
+              {
+                "$project":{
+                  "provider.name":1,
+                  "provider._id":1,
+                }
+              }
+            ],
+            as: 'providers'
+          }
+        },
+        {
           "$project": {
             "_id": 1,
             "gallery": 1,
@@ -222,7 +249,8 @@ module.exports = {
             "author": 1,
             "createdAt": 1,
             "updatedAt": 1,
-            "qty": {"$sum": "$inventories.qty"}
+            "qty": {"$sum": "$inventories.qty"},
+            "providers": "$providers.provider"
           }
         },
       ])
@@ -322,5 +350,18 @@ module.exports = {
         resolve(cleanPaginationID(items))
       })
     })
-  }
+  },
+
+  async getPreviousData(model = {}, filter = {}) {
+    return new Promise((resolve, reject) => {
+      model.findOne(filter, (err, item) => {
+        if (!err) {
+          resolve(item)
+        } else {
+          reject(err)
+        }
+      })
+    })
+  },
+
 }

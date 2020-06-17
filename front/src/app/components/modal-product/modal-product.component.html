@@ -35,6 +35,22 @@
         <div class="col-12 p-0">
           <div class="name">
             <div class="form-group">
+              <label>{{"GENERAL.PROVIDER"|translate}}</label>
+              <ng-select formControlName="providers" [items]="providers"
+                         bindLabel="name"
+                         [notFoundText]="'PROVIDER.SEARCH_PRODUCT' |translate"
+                         [required]="true"
+                         placeholder="">
+              </ng-select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="custom-card-style col-12 mt-2 flex-wrap d-flex">
+        <div class="col-12 p-0">
+          <div class="name">
+            <div class="form-group">
               <label>{{"GENERAL.QTY"|translate}}</label>
               <input type="text" formControlName="qty"
                      class="form-control" aria-describedby="emailHelp"

@@ -13,6 +13,7 @@
     "LOADING_SINGLE": "Cargando",
     "LIST": "Lista",
     "ADD": "Agregar",
+    "PROVIDER": "Proveedor",
     "DELETE": "Eliminar",
     "EMPTY": "Sin resultados",
     "UPGRADE": "Proximamente",
@@ -75,6 +76,7 @@
   },
   "PURCHASE": {
     "CUSTOMER": "Cliente",
+    "SEARCH_PRODUCT": "Escribe...",
     "ADDRESS": "Dirección de envio",
     "DELIVERY_TYPE": "Envio",
     "STATUS": "Estatus",

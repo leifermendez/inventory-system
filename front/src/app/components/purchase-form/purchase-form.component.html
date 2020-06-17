@@ -42,6 +42,7 @@
             <ng-select formControlName="customer" #selectProductRef [items]="products"
                        bindLabel="name"
                        [clearable]="false"
+                       [notFoundText]="'PURCHASE.SEARCH_PRODUCT' | translate"
                        (search)="srcCustomer($event)"
                        (change)="selectCustomer($event)"
                        [required]="true"
@@ -49,9 +50,7 @@
               <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
                 <div class="card-list d-flex">
                   <div class="p-1">
-                    <img class="img-product"
-                         src="https://cdn.dribbble.com/users/1334861/screenshots/6676523/sales_order.png" alt="">
-                  </div>
+                    <ngx-avatar [name]="item?.name"></ngx-avatar>    </div>
                   <div class="p-1">
                     <div>{{item?.name}}</div>
                     <div class="font-weight-normal text-muted">

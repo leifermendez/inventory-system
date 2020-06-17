@@ -24,6 +24,10 @@ const InventorySchema = new mongoose.Schema(
       type: Object,
       required: true
     },
+    purchase: {
+      type: Object,
+      required: false
+    },
     author: {
       type: Object,
       required: true

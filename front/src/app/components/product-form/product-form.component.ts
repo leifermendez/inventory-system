@@ -1,5 +1,5 @@
 import {Component, ElementRef, Input, NgZone, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {
   faLifeRing,
   faSave,
@@ -96,9 +96,11 @@ export class ProductFormComponent implements OnInit {
     const {currency, currencySymbol} = this.share.getSettings();
     this.currency = currency;
     this.currencySymbol = currencySymbol;
-    this.ngxCurrencyOptions = {...this.ngxCurrencyOptions,...{
-      prefix:`${currency} `
-      }}
+    this.ngxCurrencyOptions = {
+      ...this.ngxCurrencyOptions, ...{
+        prefix: `${currency} `
+      }
+    }
 
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
@@ -109,9 +111,11 @@ export class ProductFormComponent implements OnInit {
       sku: ['', Validators.required],
       tag: [''],
       gallery: [''],
-      prices: [''],
+      prices: ['', Validators.required],
       measures: ['']
     });
+
+
     this.route.params.subscribe(params => {
       this.id = (params.id === 'add') ? '' : params.id;
       if (this.id.length && this.id !== 'add') {
@@ -125,6 +129,22 @@ export class ProductFormComponent implements OnInit {
     this.animationItem = animationItem;
     // this.animationItem.stop();
   }
+
+  tt = () => {
+    this.form.get('prices').setValidators([Validators.required])
+    // this.form.controls['email'].setErrors({'incorrect': true});
+  }
+
+  changePrices = () => {
+
+    if (!this.prices.length) {
+         this.form.get('prices').setValidators([Validators.required]);
+      this.form.controls.prices.reset();
+    } else {
+      this.form.get('prices').clearValidators();
+      this.form.controls.prices.reset();
+    }
+  };
 
   loopComplete(e): void {
     // e.stop().then();
@@ -152,11 +172,12 @@ export class ProductFormComponent implements OnInit {
   }
 
   addPrice = (e) => {
-    console.log('price', this.prices)
+
     this.prices.push({
       amount: this.priceTmp
     });
     this.priceTmp = 0;
+    this.changePrices();
   }
 
   viewImage = (e, data: any = {}) => {
@@ -168,7 +189,10 @@ export class ProductFormComponent implements OnInit {
     this.editorContent = doc;
   }
 
-  deletePrice = (i) => this.prices.splice(i, 1)
+  deletePrice = (i) => {
+    this.prices.splice(i, 1)
+    this.changePrices();
+  }
 
   onFocus = (e) => {
     this.priceTmp = null

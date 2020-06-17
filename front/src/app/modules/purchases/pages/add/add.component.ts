@@ -42,6 +42,5 @@ export class AddComponent implements OnInit {
 
   cbAdd() {
     this.share.addPurchase.emit(true)
-    console.log('addd Purchase')
   }
 }

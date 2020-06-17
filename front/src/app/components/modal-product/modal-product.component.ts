@@ -35,6 +35,7 @@ export class ModalProductComponent implements OnInit {
   public select: any = false;
   form: any;
   prices: any = []
+  providers: any = []
   faAngleLeft = faAngleLeft;
   faSave = faSave;
   faExclamation = faExclamation;
@@ -52,19 +53,28 @@ export class ModalProductComponent implements OnInit {
     this.currencySymbol = currencySymbol;
     this.form = this.formBuilder.group({
       price: ['', Validators.required],
+      providers: ['', Validators.required],
       qty: ['', Validators.required]
     });
   }
 
   getClick($event: any) {
     this.select = $event;
-    const {prices} = $event;
+    const {prices, providers} = $event;
     this.prices = prices;
+    this.providers = providers;
 
   }
 
   onSubmit() {
-    this.select = {...this.select, ...{qty: this.form.value.qty}};
+    const {qty, providers} = this.form.value;
+    console.log(this.form.value)
+    this.select = {
+      ...this.select,
+      ...{qty},
+      ...{providers}
+    };
+    console.log(this.select)
     this.share.common.emit(this.select)
     this.bsModalRef.hide()
   }

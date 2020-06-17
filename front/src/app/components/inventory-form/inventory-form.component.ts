@@ -182,10 +182,18 @@ export class InventoryFormComponent implements OnInit {
     this.rest.get(q.join(''))
       .subscribe(res => {
         let name = null;
-        this.translate.get('PROVIDER.NEW_PROVIDER').subscribe((res: string) => {
-          name = res;
-        });
-        console.log('---',model)
+        if (model === 'deposits') {
+          this.translate.get('DEPOSITS.NEW_DEPOSITS').subscribe((res: string) => {
+            name = res;
+          });
+        }
+        if (model === 'providers') {
+          this.translate.get('PROVIDER.NEW_PROVIDER').subscribe((res: string) => {
+            name = res;
+          });
+        }
+
+        console.log('---', model)
         this[model] = [...[{
           _id: 0,
           name,
@@ -214,7 +222,7 @@ export class InventoryFormComponent implements OnInit {
   }
 
   selectDeposit(e: any) {
-    if (e.value === 'new') {
+    if (e && e.value === 'new') {
       this.form.patchValue({deposit: null})
       this.router.navigate(['/', 'deposits', 'add'])
     }
