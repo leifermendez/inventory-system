@@ -79,4 +79,10 @@ export class ListComponent implements OnInit {
     this.page = this.page + 1;
     this.load();
   }
+
+  goToDetail(data = null) {
+    if (data && data.purchase) {
+      this.router.navigate(['/', 'purchase', data.purchase])
+    }
+  }
 }

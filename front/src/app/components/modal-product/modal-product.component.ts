@@ -53,7 +53,6 @@ export class ModalProductComponent implements OnInit {
     this.currencySymbol = currencySymbol;
     this.form = this.formBuilder.group({
       price: ['', Validators.required],
-      providers: ['', Validators.required],
       qty: ['', Validators.required]
     });
   }
@@ -67,12 +66,11 @@ export class ModalProductComponent implements OnInit {
   }
 
   onSubmit() {
-    const {qty, providers} = this.form.value;
+    const {qty} = this.form.value;
     console.log(this.form.value)
     this.select = {
       ...this.select,
-      ...{qty},
-      ...{providers}
+      ...{qty}
     };
     console.log(this.select)
     this.share.common.emit(this.select)

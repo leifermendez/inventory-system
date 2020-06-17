@@ -33,7 +33,9 @@ export class AddComponent implements OnInit {
   }
 
   save = () => {
-    this.share.savePurchase.emit(true)
+      this.share.confirm().then(() => {
+        this.share.savePurchase.emit(true)
+      })
   }
 
   cbList() {

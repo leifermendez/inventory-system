@@ -76,7 +76,7 @@ const saveUserAccessAndReturnToken = async (req, user) => {
       browser: utils.getBrowserInfo(req),
       country: utils.getCountry(req)
     })
-    console.log('-----------------',tenant)
+    console.log('-----------------', tenant)
     userAccess.save(async (err) => {
       if (err) {
         reject(utils.buildErrObject(422, err.message))
@@ -195,14 +195,7 @@ const findUser = async (email, tenant = null) => {
  * Finds user by ID
  * @param {string} id - user´s id
  */
-const findUserById = async (userId, tenant = null) => {
-  return new Promise((resolve, reject) => {
-    User.byTenant(tenant).findById(userId, (err, item) => {
-      utils.itemNotFound(err, item, reject, 'USER_DOES_NOT_EXIST')
-      resolve(item)
-    })
-  })
-}
+
 
 /**
  * Adds one attempt to loginAttempts, then compares loginAttempts with the constant LOGIN_ATTEMPTS, if is less returns wrong password, else returns blockUser function
@@ -616,7 +609,7 @@ exports.getRefreshToken = async (req, res) => {
       .trim();
     let userId = await getUserIdFromToken(tokenEncrypted)
     userId = await utils.isIDGood(userId)
-    const user = await findUserById(userId, tenant)
+    const user = await this.findUserById(userId, tenant)
     const token = await saveUserAccessAndReturnToken(req, user)
 
     // Removes user info from response
@@ -646,4 +639,14 @@ exports.roleAuthorization = (roles) => async (req, res, next) => {
   } catch (error) {
     utils.handleError(res, error)
   }
+}
+
+
+exports.findUserById = async (userId, tenant = null) => {
+  return new Promise((resolve, reject) => {
+    User.byTenant(tenant).findById(userId, (err, item) => {
+      utils.itemNotFound(err, item, reject, 'USER_DOES_NOT_EXIST')
+      resolve(item)
+    })
+  })
 }

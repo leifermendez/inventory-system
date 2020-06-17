@@ -31,7 +31,7 @@
 <!-- ***************** TEMPLATE ************** -->
 <ng-template #customTemplateSrc let-dat='dat'>
   <ul [@listAnimation] *ngIf="dat?.length">
-    <li *ngFor="let inside of dat" [routerLink]="['/','inventory',inside?._id]"
+    <li *ngFor="let inside of dat" (click)="goToDetail(inside)"
         class="d-flex item-list-single justify-content-between">
       <div class="d-flex">
         <div class="d-none d-md-block">
@@ -61,7 +61,9 @@
         <div class="pl-2 pr-2 pt-1 pb-1">
           <div class="d-flex">
 
-            <h6 class="name mr-2">{{inside?.product?.name}} ({{inside?.provider?.name}})</h6>
+            <h6 class="name mr-2">{{inside?.product?.name}}
+              <span *ngIf="inside?.provider?.name">({{inside?.provider?.name}})</span>
+            </h6>
             <small class="text-muted mr-1 d-none d-md-block" [tooltip]="inside?.createdAt | date"
                    timeago [date]="inside?.createdAt"></small>
             <span class="badge-tag badge mr-1" *ngFor="let tag of inside?.tag">

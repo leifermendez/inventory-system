@@ -3,9 +3,12 @@ const {matchedData} = require('express-validator')
 const utils = require('../middleware/utils')
 const db = require('../middleware/db')
 
+
 /*********************
  * Private functions *
  *********************/
+
+
 /**
  * Gets all items from database
  */
@@ -94,6 +97,7 @@ exports.updateItem = async (req, res) => {
         provider: await utils.isIDGood(req.provider, true)
       }
     }
+
     const id = await utils.isIDGood(req.id)
     res.status(200).json(await db.updateItem(id, model, req, tenant))
   } catch (error) {
@@ -141,42 +145,4 @@ exports.deleteItem = async (req, res) => {
   }
 }
 
-/**
- * Use in model
- */
-exports.insideCreate = async (data) => {
-  try {
-    if (data.get('status').includes(['paid'])) {
-      // const author = await utils.getUserCurrent(req, true)
-      // req = matchedData(req)
-      // req = {
-      //   ...req, ...{
-      //     author,
-      //     product: {...req.product, ...{_id: await utils.isIDGood(req.product._id, true)}},
-      //     deposit: {...req.deposit, ...{_id: await utils.isIDGood(req.deposit._id, true)}},
-      //     provider: {...req.provider, ...{_id: await utils.isIDGood(req.provider._id, true)}},
-      //   }
-      // }
-      // res.status(201).json(await db.createItem(req, model, tenant))
 
-      const author = await utils.isIDGood(data.get('author'), true);
-      const items = data.get('items');
-
-      console.log('----author-------', data.get('author'))
-      console.log('-----------', data.get('tenantId'))
-
-
-      // db.products.insert(
-      //   [
-      //     { _id: 11, item: "pencil", qty: 50, type: "no.2" },
-      //     { item: "pen", qty: 20 },
-      //     { item: "eraser", qty: 25 }
-      //   ]
-      // )
-    }
-
-  } catch (e) {
-    console.log(e)
-    return null
-  }
-}

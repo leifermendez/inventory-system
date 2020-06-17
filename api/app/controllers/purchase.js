@@ -1,11 +1,55 @@
 const model = require('../models/purchase')
+const modelInventory = require('../models/inventory')
 const {matchedData} = require('express-validator')
 const utils = require('../middleware/utils')
 const db = require('../middleware/db')
-
+const AuthController = require('../controllers/auth')
+const mongoose = require('mongoose')
+const moment = require('moment')
 /*********************
  * Private functions *
  *********************/
+/**
+ * Use in model
+ */
+const insideCreate = async (data, tenant = null) => {
+  try {
+
+    const authorId = await utils.isIDGood(data.author, true);
+    const author = await AuthController.findUserById(authorId, tenant);
+    let inventory = data.items.map((item) => {
+        return {
+          product: {
+            ...item, ...{
+              _id: mongoose.Types.ObjectId(item._id),
+              id: null
+            }
+          },
+          provider: null,
+          qty: (Math.abs(item.qty) * -1),
+          deposit: null,
+          author,
+          purchase: mongoose.Types.ObjectId(data.id),
+          createdAt: moment().toDate(),
+          updatedAt: moment().toDate(),
+          deleted: false,
+          deletedAt: null
+        };
+      }
+    )
+    modelInventory.byTenant(tenant).remove({
+      purchase: mongoose.Types.ObjectId(data.id),
+    }, (err, item) => {
+      if (!err) {
+        modelInventory.byTenant(tenant).insertMany(inventory)
+      }
+    })
+
+  } catch (e) {
+    console.log(e)
+    return null
+  }
+}
 /**
  * Gets all items from database
  */
@@ -97,6 +141,7 @@ exports.updateItem = async (req, res) => {
         customer: await utils.isIDGood(req.customer._id, true)
       }
     }
+    await insideCreate(req, tenant)
     const id = await utils.isIDGood(req.id)
     res.status(200).json(await db.updateItem(id, model, req, tenant))
   } catch (error) {
@@ -120,6 +165,7 @@ exports.createItem = async (req, res) => {
         customer: await utils.isIDGood(req.customer._id, true)
       }
     }
+
     res.status(201).json(await db.createItem(req, model, tenant))
   } catch (error) {
     utils.handleError(res, error)

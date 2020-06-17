@@ -3,8 +3,6 @@ const mongoose = require('mongoose')
 const aggregatePaginate = require('mongoose-aggregate-paginate-v2');
 const softDelete = require('mongoose-softdelete');
 const moment = require('moment'); // require
-const db = require('../middleware/db')
-const Inventory = require('../controllers/inventory')
 const mongoTenant = require('mongo-tenant');
 
 const PurchaseSchema = new mongoose.Schema(
@@ -64,21 +62,6 @@ PurchaseSchema.post('save', (obj) => {
   const nextControl = moment().unix();
   obj.set('controlNumber', `${prefix}-${nextControl}${day}`, {strict: false})
   obj.save();
-})
-
-PurchaseSchema.pre('findOneAndUpdate', function (next) {
-  db.getPreviousData(this, this.getFilter()).then(res => {
-    // console.log('STATUS---------->', res.status)
-    // console.log('ITEMS----------->', res.items)
-    next();
-  }).catch(err => next())
-});
-
-PurchaseSchema.post('findOneAndUpdate', async (obj) => {
-  console.log('ACTUALIZACION EN commentssss', obj.get('status'))
-  // Inventory.insideCreate(obj);
-
-
 })
 
 PurchaseSchema.plugin(aggregatePaginate)

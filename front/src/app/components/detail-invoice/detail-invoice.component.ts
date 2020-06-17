@@ -1,4 +1,13 @@
-import {AfterViewChecked, AfterViewInit, Component, DoCheck, NgZone, OnInit, ViewChild} from '@angular/core';
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  DoCheck,
+  NgZone, OnDestroy,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 import {TabsetComponent} from "ngx-bootstrap/tabs";
 import {
   faTrashAlt, faFileAlt, faBox, faFolderOpen, faCrown, faChartPie, faUsers, faAngleRight,
@@ -13,6 +22,7 @@ import {ShareService} from "../../share.service";
 import {animate, query, stagger, style, transition, trigger} from "@angular/animations";
 import {AnimationOptions} from "ngx-lottie";
 import {AnimationItem} from "lottie-web";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-detail-invoice',
@@ -28,7 +38,7 @@ import {AnimationItem} from "lottie-web";
   ]
 
 })
-export class DetailInvoiceComponent implements OnInit, AfterViewInit {
+export class DetailInvoiceComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('staticTabs', {static: false}) staticTabs: TabsetComponent;
   faFileAlt = faFileAlt;
   faPlus = faPlus;
@@ -42,6 +52,8 @@ export class DetailInvoiceComponent implements OnInit, AfterViewInit {
   private animationItem: AnimationItem;
   public currency: any = null;
   public currencySymbol: any = null;
+  public channel: Subscription;
+  private modal: Subscription;
 
   selectTab(tabId: number) {
     this.staticTabs.tabs[tabId].active = true;
@@ -51,7 +63,9 @@ export class DetailInvoiceComponent implements OnInit, AfterViewInit {
               private rest: RestService,
               private share: ShareService,
               private ngZone: NgZone,
+              private cd: ChangeDetectorRef,
               private modalService: BsModalService) {
+
   }
 
   ngOnInit(): void {
@@ -68,19 +82,25 @@ export class DetailInvoiceComponent implements OnInit, AfterViewInit {
       this.parseData()
     })
 
-    this.share.addPurchase.subscribe(data => {
+
+    this.modal = this.share.addPurchase.subscribe(data => {
       this.open()
     })
 
-    this.share.savePurchase.subscribe(data => {
-      console.log('savee')
+    this.channel = this.share.savePurchase.subscribe(data => {
       this.submitData()
     })
+
+
+  }
+
+  ngOnDestroy() {
+    this.channel.unsubscribe()
+    this.modal.unsubscribe()
   }
 
   ngAfterViewInit() {
-
-
+    this.cd.detectChanges();
   }
 
   loadData = () => {

@@ -226,9 +226,9 @@ module.exports = {
                   }
               },
               {
-                "$project":{
-                  "provider.name":1,
-                  "provider._id":1,
+                "$project": {
+                  "provider.name": 1,
+                  "provider._id": 1,
                 }
               }
             ],
@@ -363,5 +363,4 @@ module.exports = {
       })
     })
   },
-
 }

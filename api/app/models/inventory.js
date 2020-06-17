@@ -10,7 +10,8 @@ const InventorySchema = new mongoose.Schema(
     },
     provider: {
       type: Object,
-      required: true
+      required: false,
+      default: []
     },
     qty: {
       type: Number,
@@ -22,11 +23,12 @@ const InventorySchema = new mongoose.Schema(
     },
     deposit: {
       type: Object,
-      required: true
+      required: false
     },
     purchase: {
       type: Object,
-      required: false
+      required: false,
+      default: null,
     },
     author: {
       type: Object,
