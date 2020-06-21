@@ -81,8 +81,51 @@ exports.getItem = async (req, res) => {
   try {
     const tenant = req.clientAccount;
     req = matchedData(req)
-    const id = await utils.isIDGood(req.id)
-    res.status(200).json(await db.getItem(id, model, tenant))
+    const id = await utils.isIDGood(req.id, true);
+    const aggregate = [
+      {
+        $match: {_id: id}
+      },
+      {
+        $lookup: {
+          from: 'inventories',
+          let: {idProduct: "$_id"},
+          pipeline: [
+            {
+              $match:
+                {
+                  $expr:
+                    {
+                      $and:
+                        [
+                          {$eq: ["$$idProduct", "$product._id"]}
+                        ]
+                    }
+                }
+            }
+          ],
+          as: 'provider'
+        }
+      },
+      {
+        "$project": {
+          "_id": 1,
+          "name": 1,
+          "prices": 1,
+          "author": 1,
+          "measures": 1,
+          "categories": 1,
+          "tag": 1,
+          "gallery": 1,
+          "sku": 1,
+          "description": 1,
+          "createdAt": 1,
+          "updatedAt": 1,
+          "provider":1
+        }
+      },
+    ]
+    res.status(200).json(await db.getItemAggregate(aggregate, model, tenant))
   } catch (error) {
     utils.handleError(res, error)
   }

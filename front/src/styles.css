@@ -26,6 +26,11 @@ body {
   z-index: 999 !important;
 }
 
+.avatar-content {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .customToolTip .tooltip-inner {
   background-color: #221ECD;
   color: #fff;
@@ -248,6 +253,18 @@ tag-input-form input {
   justify-content: space-between;
 }
 
+.badge-zone {
+  max-height: 20px;
+  overflow: hidden;
+}
+
+h6.name {
+  white-space: nowrap;
+  overflow: hidden;
+  display: block !important;
+  text-overflow: ellipsis;
+}
+
 .btn-round {
   cursor: pointer;
   background-color: white;
@@ -301,6 +318,8 @@ tag-input-form input {
   font-weight: 600;
   color: #505050;
   margin-bottom: 0;
+  display: flex;
+  align-items: center;
 }
 
 .items ul li:hover {
@@ -311,6 +330,10 @@ tag-input-form input {
   -moz-transition: all 200ms;
   -o-transition: all 200ms;
   transition: all 200ms;
+}
+
+.items ul li:hover .badge-tag-price {
+  color: white;
 }
 
 .items ul li:hover .name {

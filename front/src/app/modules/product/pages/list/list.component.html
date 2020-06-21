@@ -31,58 +31,38 @@
 
 <!-- ***************** TEMPLATE ************** -->
 <ng-template #customTemplateSrc let-dat='dat'>
-  <ul *ngIf="dat?.length">
-    <li *ngFor="let inside of dat" (click)="emitCbClick(inside)">
-      <div class="pl-2 pr-2 d-block d-sm-none">
-        <span class="badge-tag badge mr-1 " *ngFor="let tag of inside?.tag">
-              {{tag?.name}}
-            </span>
-      </div>
-      <div class="d-flex item-list-single justify-content-between">
-
-        <div class="d-flex">
-          <div class="d-none d-md-block">
-            <img class="img-50" onerror="this.style.display='none'"
-                 [src]="inside?.gallery | firstImage:'large'" alt="">
-            <!--          <ngx-avatar-->
-            <!--            (error)="s($event)"-->
-            <!--            *ngIf="inside?.gallery | firstImage:'large'"-->
-            <!--                      [src]="inside?.gallery | firstImage:'large'">-->
-            <!--          </ngx-avatar>-->
-
-            <ngx-avatar [name]="inside?.name"
-                        *ngIf="!(inside?.gallery | firstImage:'large')">
-            </ngx-avatar>
-          </div>
-          <div class="pl-2 pr-2 pt-1 pb-1">
-            <div class="d-flex">
-              <h6 class="name mr-2">{{inside?.name}}</h6>
-              <span class="badge-tag badge mr-1 d-none d-md-block" *ngFor="let tag of inside?.tag">
-              {{tag?.name}}
-            </span>
-            </div>
-            <div class="d-flex pt-1">
-            <span class="text-muted mt-1">
-              <span class="badge-tag-price badge mr-2" *ngFor="let price of inside?.prices">
-                {{currencySymbol}} {{price?.amount | number:'1.2-2'}} {{currency}}
+  <ul  [@listAnimation] *ngIf="dat?.length">
+    <li *ngFor="let inside of dat" (click)="emitCbClick(inside)" class="col-12 row ml-0 mr-0">
+      <div class="col-md-10 col-lg-10 col-sm-10 pl-0 pr-0">
+        <div class="d-flex ">
+          <ngx-avatar class="d-none d-md-block" [name]="inside?.name"
+                      *ngIf="!(inside?.gallery | firstImage:'small')">
+          </ngx-avatar>
+          <div class="w-100">
+            <h6 class="name mr-2 ml-1">{{inside?.name}}</h6>
+            <div class="ml-1 mt-1 badge-zone" *ngIf="inside?.tag?.length">
+                <span class="badge-tag badge mr-1 " *ngFor="let tag of inside?.tag">
+                {{tag?.name}}
               </span>
-            </span>
+            </div>
+            <div class="ml-1 mt-1" *ngIf="inside?.prices?.length">
+                <span class="badge-tag-price badge mr-2" *ngFor="let price of inside?.prices">
+                  {{currencySymbol}} {{price?.amount | number:'1.2-2'}} {{currency}}
+                </span>
             </div>
           </div>
+
         </div>
-        <div class="text-right d-none d-md-block">
-          <div>
-            <b class="price-main">{{inside?.manager?.name}} {{inside?.manager?.lastName}}</b>
-          </div>
-          <div class="m-2">
-            <h6 class="m-0 text-hover font-weight-bold" [ngClass]="{
-          'text-danger':(inside?.qty<=0)
-          }">{{inside?.qty}}</h6>
-            <small class="text-muted">{{"INVENTORY.QTY" |translate}}</small>
-          </div>
+        <div>
+
         </div>
       </div>
-
+      <div class="col-md-2 col-lg-2 col-sm-2  text-right">
+        <h6 class="m-0 text-hover font-weight-bold" [ngClass]="{
+                  'text-danger':(inside?.qty<=0)
+                  }">{{inside?.qty}}</h6>
+        <small class="text-muted">{{"INVENTORY.QTY" |translate}}</small>
+      </div>
     </li>
   </ul>
 </ng-template>

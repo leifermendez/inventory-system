@@ -256,6 +256,17 @@ module.exports = {
       ])
   },
 
+  /**
+   * GetItem aggregate
+   */
+  async getItemAggregate(aggregate = {}, model, tenant = null) {
+    return new Promise((resolve, reject) => {
+      model.byTenant(tenant).aggregate(aggregate, (err, item) => {
+        itemNotFound(err, item, reject, 'NOT_FOUND')
+        resolve(item.find(a => true))
+      });
+    })
+  },
 
   /**
    * Gets item from database by id
